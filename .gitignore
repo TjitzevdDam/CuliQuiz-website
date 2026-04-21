@@ -1,0 +1,6 @@
+.DS_Store
+*.webarchive
+Thumbs.db
+
+# Lokale bronmaterialen hoef je niet mee te pushen
+bronmateriaal/

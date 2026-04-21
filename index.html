@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CuliQuiz | Jouw culinaire kennis</title>
+  <meta name="description" content="CuliQuiz daagt je culinaire team uit met speelse quizzen. Leer, battle en groei in de wereld van eten en drinken." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat:wght@300;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="logo" aria-label="CuliQuiz home">
+        <img src="assets/logo.jpg" alt="CuliQuiz logo" />
+      </a>
+      <nav class="main-nav" aria-label="Hoofdmenu">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul id="primary-menu" class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="wat-leveren-we.html">Wat leveren we?</a></li>
+          <li><a href="nieuws.html">Nieuws</a></li>
+          <li><a href="top100.html">Top 100</a></li>
+          <li><a href="ambassadeurs.html">Ambassadeurs</a></li>
+          <li><a href="#leren" class="nav-cta">Zelf leren?</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow eyebrow-stack">
+            Voor aanstormend talent, professionals,<br />
+            teams en merken.<br />
+            &Eacute;&eacute;n platform. Direct toepasbaar.
+          </p>
+          <h1>Food, drinks &amp; gastvrijheid. <span class="accent">Een wereld waarin kennis elke dag beweegt.</span></h1>
+          <p class="lead">
+            Wij geloven dat vakmanschap groeit uit honger naar kennis. CuliQuiz is het kennisplatform voor food, drinks &amp; gastvrijheid.
+          </p>
+          <div class="hero-cta">
+            <a href="https://apps.apple.com/nl/app/culiquiz/id6657982432" target="_blank" rel="noopener" class="store-badge" aria-label="Download in de App Store">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.46 2.18-1.21 2.93-.79.79-2.07 1.4-3.12 1.31-.13-1.12.43-2.27 1.16-3 .82-.83 2.18-1.43 3.17-1.24zM20.5 17.4c-.52 1.21-.78 1.75-1.45 2.81-.94 1.49-2.27 3.34-3.91 3.36-1.46.01-1.84-.95-3.83-.94-1.99.01-2.41.96-3.87.94-1.64-.02-2.9-1.7-3.84-3.18-2.62-4.16-2.9-9.04-1.28-11.64C3.45 6.91 5.34 5.7 7.13 5.7c1.82 0 2.96.99 4.46.99 1.46 0 2.35-.99 4.45-.99 1.6 0 3.29.86 4.51 2.36-3.96 2.17-3.32 7.85-.05 9.34z"/></svg>
+              <span><small>Download in de</small><strong>App Store</strong></span>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=nl.fourgrowth.culiquiz&amp;hl=nl" target="_blank" rel="noopener" class="store-badge" aria-label="Ontdek op Google Play">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.3c-.4.3-.6.8-.6 1.5v18.4c0 .7.2 1.2.6 1.5l10.6-10.7L3.6 1.3zm12 12.1l2.7 2.7-12 6.7c-.4.2-.8.2-1.2 0l10.5-9.4zm0-2.8L5.1 1.2c.4-.2.8-.2 1.2 0l12 6.7-2.7 2.7zM21 10.5c.6.4 1 .9 1 1.5s-.4 1.1-1 1.5l-3 1.7-3-3 3-3 3 1.3z"/></svg>
+              <span><small>Ontdek op</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-phone">
+          <div class="phone-stage">
+            <img src="assets/iphone2_transparent.png" alt="CuliQuiz app op iPhone" class="phone-img" />
+            <div class="float-bullet bullet-1" data-slot="0"></div>
+            <div class="float-bullet bullet-2" data-slot="1"></div>
+            <div class="float-bullet bullet-3" data-slot="2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2DE BLOK: DE UITDAGING ============ -->
+    <section id="uitdaging" class="challenge">
+      <div class="container challenge-inner">
+        <div class="challenge-image">
+          <img src="assets/keuken.png" alt="Kok in een professionele keuken bekijkt CuliQuiz" />
+        </div>
+        <div class="challenge-copy">
+          <p class="eyebrow">De uitdaging</p>
+          <h2>Kennis is er wel. Alleen niet op het moment dat het nodig is.</h2>
+          <ul class="check-list">
+            <li>Iedereen wil beter worden. Maar tijd ontbreekt.</li>
+            <li>Training voelt als extra werk. En zakt snel weg.</li>
+            <li>Nieuwe mensen starten opnieuw. Teams groeien ongelijk.</li>
+            <li>Kennis is er wel. Alleen niet op het moment dat het nodig is.</li>
+          </ul>
+          <a href="#leren" class="btn btn-primary">Ontdek hoe het werkt</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3DE BLOK: VOOR WIE ============ -->
+    <section id="voor-wie" class="sectors">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow">Voor wie?</p>
+          <h2>Voor iedereen die het vak vooruit wil brengen.</h2>
+        </div>
+
+        <div class="sector-grid">
+          <article class="sector-card">
+            <h3>Professional</h3>
+            <p>Leer wanneer het jou uitkomt en word beter in je vak.</p>
+          </article>
+          <article class="sector-card">
+            <h3>Team &amp; horeca</h3>
+            <p>Maak van leren een vast onderdeel van de werkdag.</p>
+          </article>
+          <article class="sector-card">
+            <h3>Eigenaar &amp; manager</h3>
+            <p>Zie waar je team groeit en waar je kunt bijsturen.</p>
+          </article>
+          <article class="sector-card">
+            <h3>Studenten &amp; opleidingen</h3>
+            <p>Sluit aan op hoe het werk echt werkt.</p>
+          </article>
+          <article class="sector-card">
+            <h3>Leveranciers &amp; merken</h3>
+            <p>Breng je merk van campagne naar gedrag op de vloer.</p>
+          </article>
+          <article class="sector-card">
+            <h3>Sales teams</h3>
+            <p>Maak gesprekken makkelijker en relevanter in de praktijk.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4DE BLOK: WIE LEREN AL MET CULIQUIZ ============ -->
+    <section id="ambassadeurs" class="partners">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow">Wie leren al met CuliQuiz</p>
+          <h2>Onze ambassadeurs &amp; partners.</h2>
+          <p class="lead">
+            Van keukens tot klaslokalen. Van vloer tot hoofdkantoor. Professionals, teams, aankomend talent en merken die elke dag beter willen worden.
+          </p>
+        </div>
+
+        <div class="partner-slider" aria-label="Partners en ambassadeurs">
+          <div class="partner-track">
+            <!-- set 1 -->
+            <div class="partner-logo"><img src="assets/partners/kikkoman.jpg"       alt="Kikkoman" /></div>
+            <div class="partner-logo"><img src="assets/partners/san-pellegrino.png" alt="San Pellegrino" /></div>
+            <div class="partner-logo"><img src="assets/partners/rational.png"       alt="Rational" /></div>
+            <div class="partner-logo"><img src="assets/partners/koppert-cress.png"  alt="Koppert Cress" /></div>
+            <div class="partner-logo"><img src="assets/partners/big-green-egg.jpg"  alt="Big Green Egg" /></div>
+            <div class="partner-logo"><img src="assets/partners/think-ahead.jpg"    alt="Think Ahead" /></div>
+            <div class="partner-logo"><img src="assets/partners/van-drie.jpg"       alt="Van Drie" /></div>
+            <div class="partner-logo"><img src="assets/partners/wtol.png"           alt="WTOL" /></div>
+            <div class="partner-logo"><img src="assets/partners/print.jpg"          alt="Partner" /></div>
+
+            <!-- set 2 (duplicate for seamless loop) -->
+            <div class="partner-logo"><img src="assets/partners/kikkoman.jpg"       alt="" aria-hidden="true" /></div>
+            <div class="partner-logo"><img src="assets/partners/san-pellegrino.png" alt="" aria-hidden="true" /></div>
+            <div class="partner-logo"><img src="assets/partners/rational.png"       alt="" aria-hidden="true" /></div>
+            <div class="partner-logo"><img src="assets/partners/koppert-cress.png"  alt="" aria-hidden="true" /></div>
+            <div class="partner-logo"><img src="assets/partners/big-green-egg.jpg"  alt="" aria-hidden="true" /></div>
+            <div class="partner-logo"><img src="assets/partners/think-ahead.jpg"    alt="" aria-hidden="true" /></div>
+            <div class="partner-logo"><img src="assets/partners/van-drie.jpg"       alt="" aria-hidden="true" /></div>
+            <div class="partner-logo"><img src="assets/partners/wtol.png"           alt="" aria-hidden="true" /></div>
+            <div class="partner-logo"><img src="assets/partners/print.jpg"          alt="" aria-hidden="true" /></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA STRIP ============ -->
+    <section id="leren" class="cta-strip">
+      <div class="container cta-inner">
+        <h2>Klaar om je culinaire kennis te boosten?</h2>
+        <p>Download de app en speel je eerste quiz binnen een minuut.</p>
+        <div class="hero-cta center">
+          <a href="https://apps.apple.com/nl/app/culiquiz/id6657982432" target="_blank" rel="noopener" class="store-badge dark">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.46 2.18-1.21 2.93-.79.79-2.07 1.4-3.12 1.31-.13-1.12.43-2.27 1.16-3 .82-.83 2.18-1.43 3.17-1.24zM20.5 17.4c-.52 1.21-.78 1.75-1.45 2.81-.94 1.49-2.27 3.34-3.91 3.36-1.46.01-1.84-.95-3.83-.94-1.99.01-2.41.96-3.87.94-1.64-.02-2.9-1.7-3.84-3.18-2.62-4.16-2.9-9.04-1.28-11.64C3.45 6.91 5.34 5.7 7.13 5.7c1.82 0 2.96.99 4.46.99 1.46 0 2.35-.99 4.45-.99 1.6 0 3.29.86 4.51 2.36-3.96 2.17-3.32 7.85-.05 9.34z"/></svg>
+            <span><small>Download in de</small><strong>App Store</strong></span>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=nl.fourgrowth.culiquiz&amp;hl=nl" target="_blank" rel="noopener" class="store-badge dark">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.3c-.4.3-.6.8-.6 1.5v18.4c0 .7.2 1.2.6 1.5l10.6-10.7L3.6 1.3zm12 12.1l2.7 2.7-12 6.7c-.4.2-.8.2-1.2 0l10.5-9.4zm0-2.8L5.1 1.2c.4-.2.8-.2 1.2 0l12 6.7-2.7 2.7zM21 10.5c.6.4 1 .9 1 1.5s-.4 1.1-1 1.5l-3 1.7-3-3 3-3 3 1.3z"/></svg>
+            <span><small>Ontdek op</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.jpg" alt="CuliQuiz" />
+        <p>Jouw culinaire kennis, elke dienst een stapje slimmer.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Menu</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="wat-leveren-we.html">Wat leveren we?</a></li>
+            <li><a href="nieuws.html">Nieuws</a></li>
+            <li><a href="top100.html">Top 100</a></li>
+            <li><a href="ambassadeurs.html">Ambassadeurs</a></li>
+            <li><a href="#leren">Zelf leren?</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@culiquiz.nl">info@culiquiz.nl</a></li>
+            <li><a href="tel:+31619150928">06 - 19 15 09 28</a></li>
+            <li class="footer-address">Vlielandstraat 2<br />1506 ZK Zaandam</li>
+            <li class="footer-meta">KvK 92064213<br />BTW NL865871358B01</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Volg ons</h4>
+          <ul class="social-list">
+            <li><a href="https://instagram.com/culiquiz" target="_blank" rel="noopener" class="social-link social-instagram" aria-label="CuliQuiz op Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.3.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.5.3 1.1.4 2.3.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.3-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.5.2-1.1.3-2.3.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.3-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.5-.3-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.3.2-.6.5-1 1-1.5s.9-.8 1.5-1c.5-.2 1.1-.3 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 5.8.1 4.9.3 4.1.6c-.8.3-1.5.7-2.2 1.4S.9 3.3.6 4.1C.3 4.9.1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.2 2.2.5 3 .3.8.7 1.5 1.4 2.2.7.7 1.4 1.1 2.2 1.4.8.3 1.7.5 3 .5C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c1.3-.1 2.2-.2 3-.5.8-.3 1.5-.7 2.2-1.4.7-.7 1.1-1.4 1.4-2.2.3-.8.5-1.7.5-3 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.2-2.2-.5-3-.3-.8-.7-1.5-1.4-2.2C20.5 1.3 19.8.9 19 .6c-.8-.3-1.7-.5-3-.5C15.7 0 15.3 0 12 0z"/><path d="M12 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z"/><circle cx="18.4" cy="5.6" r="1.4"/></svg>
+              <span>Instagram</span>
+            </a></li>
+            <li><a href="https://www.linkedin.com/company/culiquiz" target="_blank" rel="noopener" class="social-link social-linkedin" aria-label="CuliQuiz op LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 2h-17C2.7 2 2 2.7 2 3.5v17c0 .8.7 1.5 1.5 1.5h17c.8 0 1.5-.7 1.5-1.5v-17c0-.8-.7-1.5-1.5-1.5zM8 19H5V9h3v10zM6.5 7.7c-1 0-1.7-.8-1.7-1.7s.8-1.7 1.7-1.7 1.7.8 1.7 1.7-.7 1.7-1.7 1.7zM19 19h-3v-5.3c0-1.4-.5-2.3-1.7-2.3-.9 0-1.5.6-1.7 1.2-.1.2-.1.5-.1.8V19h-3V9h3v1.3c.4-.6 1.1-1.5 2.7-1.5 2 0 3.5 1.3 3.5 4.1V19z"/></svg>
+              <span>LinkedIn</span>
+            </a></li>
+            <li><a href="https://www.tiktok.com/@culiquiz" target="_blank" rel="noopener" class="social-link social-tiktok" aria-label="CuliQuiz op TikTok">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 6.3c-1.6-.1-3-.7-4.1-1.8-.7-.7-1.2-1.6-1.4-2.5h-3v13.4c0 1.5-1.2 2.7-2.7 2.7s-2.7-1.2-2.7-2.7 1.2-2.7 2.7-2.7c.3 0 .6.1.9.2v-3.1c-.3 0-.6-.1-.9-.1-3.2 0-5.8 2.6-5.8 5.7s2.6 5.8 5.8 5.8 5.8-2.6 5.8-5.8V9.7c1.3.9 2.9 1.4 4.6 1.4V8c-.4 0-.8 0-1.2-.1V6.3z"/></svg>
+              <span>TikTok</span>
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>&copy; <span id="year"></span> CuliQuiz. Alle rechten voorbehouden.</span>
+        <span><a href="#">Privacy</a> &middot; <a href="#">Voorwaarden</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
