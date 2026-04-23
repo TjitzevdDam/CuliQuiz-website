@@ -7,12 +7,11 @@
  * Deploy: zie apps-script/README.md
  */
 
-// ID van de spreadsheet met de nominaties.
-// Je vindt 'm in de URL: https://docs.google.com/spreadsheets/d/<SHEET_ID>/edit
-const SHEET_ID = '1SiwtGrz78Sm-CH77mK_2wo9QBIa_FK6xGvBb4cMWZ7k';
+// ID van de spreadsheet "CuliQuiz Top 100 Nominaties 2026".
+// https://docs.google.com/spreadsheets/d/1aEwmWcv7Fc-Kh_NNwPXC1JieuVMOdqxRH5eySHEUeHI/edit
+const SHEET_ID = '1aEwmWcv7Fc-Kh_NNwPXC1JieuVMOdqxRH5eySHEUeHI';
 
 // Naam van het tabblad waarin de nominaties worden weggeschreven.
-// Pas aan als je tab anders heet (default is vaak 'Blad1' of 'Formulier reacties 1').
 const SHEET_NAME = 'Blad1';
 
 function doPost(e) {
@@ -31,8 +30,7 @@ function doPost(e) {
       params.functie_bedrijf || '',              // E  - Functie en/of bedrijf
       params.motivatie || '',                    // F  - Motivatie
       params.toestemming || '',                  // G  - Toestemming
-      params.email_genomineerde || '',           // H  - Mailadres genomineerde
-      ''                                         // I  - (duplicate kolom in bestaande sheet, leeg laten)
+      params.email_genomineerde || ''            // H  - Mailadres genomineerde
     ];
 
     const ss = SpreadsheetApp.openById(SHEET_ID);

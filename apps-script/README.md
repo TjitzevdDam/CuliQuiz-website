@@ -1,16 +1,17 @@
 # Top 100 Nominatie-webhook (Google Apps Script)
 
-Het nominatieformulier op `top100.html` stuurt inzendingen naar een Google Apps Script, dat ze wegschrijft naar de Top 100 Google Sheet.
+Het nominatieformulier op `top100.html` stuurt inzendingen naar een Google Apps Script, dat ze wegschrijft naar de sheet **CuliQuiz Top 100 Nominaties 2026**.
+
+Sheet: https://docs.google.com/spreadsheets/d/1aEwmWcv7Fc-Kh_NNwPXC1JieuVMOdqxRH5eySHEUeHI/edit
 
 Dit moet eenmalig worden gedeployed. Daarna werkt het formulier automatisch.
 
 ## Stap 1 — Script koppelen aan de sheet
 
-1. Open de spreadsheet: https://docs.google.com/spreadsheets/d/1SiwtGrz78Sm-CH77mK_2wo9QBIa_FK6xGvBb4cMWZ7k/edit
+1. Open de spreadsheet hierboven
 2. Menu → **Extensies** → **Apps Script**
 3. Vervang de code in `Code.gs` door de inhoud van [`Code.gs`](./Code.gs) in deze map
-4. Controleer onderin `SHEET_NAME` — als het tabblad van de nominaties anders heet dan `Blad1`, pas aan (bv. `Formulierreacties 1`)
-5. Klik op 💾 **Opslaan**
+4. Klik op 💾 **Opslaan**
 
 ## Stap 2 — Deployen als web app
 
