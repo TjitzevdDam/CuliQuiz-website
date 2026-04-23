@@ -41,8 +41,8 @@
     <!-- ============ HERO BANNER ============ -->
     <section class="top100-banner">
       <div class="container">
-        <h1>De nominaties zijn gesloten.</h1>
-        <p>Maandag 22 september wordt hier de Top 100 bekend gemaakt.</p>
+        <h1>Nomineer een aanjager.</h1>
+        <p>Ken jij iemand die het vak vooruithelpt? Draag ze voor voor de CuliQuiz Top 100.</p>
       </div>
     </section>
 
@@ -73,7 +73,7 @@
             <h2>Nomineer een aanjager van vakmanschap</h2>
             <p>Ken jij iemand die vakmanschap zichtbaar maakt &eacute;n doorgeeft? Iemand die anderen inspireert, jonge mensen begeleidt of stilletjes achter de schermen het verschil maakt?</p>
             <p>Nomineer deze persoon dan voor de <strong>CuliQuiz Top 100 van 2025</strong>. De CuliQuiz Top 100 is een jaarlijks eerbetoon aan 100 aanjagers binnen de hospitalitysector. Van chef tot docent, van ondernemer tot bartender. Het zijn mensen die het vak vooruithelpen door hun inzet, kennis en voorbeeldrol.</p>
-            <p class="top100-deadline">Nomineren kan tot en met zondag 31 augustus 2025.</p>
+            <p class="top100-deadline">Nomineer hieronder direct iemand uit de sector.</p>
           </div>
           <div class="top100-intro-visual">
             <div class="top100-badge">
@@ -133,11 +133,67 @@
           </ol>
         </article>
 
-        <!-- ============ CLOSING ============ -->
-        <div class="top100-close">
-          De nominaties zijn gesloten.
-          <strong>Maandag 22 september wordt hier de Top 100 bekend gemaakt.</strong>
-        </div>
+        <!-- ============ NOMINATIEFORMULIER ============ -->
+        <article class="top100-block top100-form-block" id="nomineren">
+          <h3>Nominatieformulier</h3>
+          <p>Vul het formulier in — je inzending komt direct bij ons binnen.</p>
+
+          <form id="nominate-form" class="nominate-form" novalidate>
+            <div class="form-row">
+              <label for="jouw_naam">Jouw naam <span aria-hidden="true">*</span></label>
+              <input type="text" id="jouw_naam" name="jouw_naam" required autocomplete="name" />
+            </div>
+
+            <div class="form-row">
+              <label for="email">Jouw e-mailadres <span aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email" />
+            </div>
+
+            <div class="form-row">
+              <label for="naam_genomineerde">Naam van de genomineerde <span aria-hidden="true">*</span></label>
+              <input type="text" id="naam_genomineerde" name="naam_genomineerde" required />
+            </div>
+
+            <div class="form-row">
+              <label for="functie_bedrijf">Functie en / of bedrijf <span aria-hidden="true">*</span></label>
+              <input type="text" id="functie_bedrijf" name="functie_bedrijf" required />
+            </div>
+
+            <div class="form-row">
+              <label for="motivatie">Motivatie <span aria-hidden="true">*</span></label>
+              <textarea id="motivatie" name="motivatie" rows="6" required placeholder="Waarom verdient deze persoon een plek in de Top 100?"></textarea>
+            </div>
+
+            <div class="form-row">
+              <label for="email_genomineerde">E-mailadres van de genomineerde</label>
+              <input type="email" id="email_genomineerde" name="email_genomineerde" autocomplete="off" />
+              <small class="form-hint">Optioneel, zodat we ze kunnen laten weten als ze worden geselecteerd.</small>
+            </div>
+
+            <fieldset class="form-fieldset">
+              <legend>Mogen we je motivatie gebruiken in onze communicatie? <span aria-hidden="true">*</span></legend>
+              <label class="form-radio">
+                <input type="radio" name="toestemming" value="Ja" required />
+                <span>Ja</span>
+              </label>
+              <label class="form-radio">
+                <input type="radio" name="toestemming" value="Liever niet" />
+                <span>Liever niet</span>
+              </label>
+            </fieldset>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="nominate-submit">Verstuur nominatie</button>
+              <p class="form-status" id="nominate-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+
+          <div class="nominate-success" id="nominate-success" hidden>
+            <h4>Bedankt voor je nominatie!</h4>
+            <p>We hebben je inzending ontvangen. Het expertpanel bekijkt alle nominaties zorgvuldig.</p>
+            <button type="button" class="btn btn-primary" id="nominate-again">Nog iemand nomineren</button>
+          </div>
+        </article>
 
       </div>
     </section>

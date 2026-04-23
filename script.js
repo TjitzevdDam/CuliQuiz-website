@@ -98,4 +98,80 @@
       tick++;
     }, 2200);
   }
+
+  // ============ Top 100 | Nominatieformulier ============
+  const form = document.getElementById('nominate-form');
+  if (form) {
+    // Endpoint: zet hier de Google Apps Script Web App URL.
+    // Zie apps-script/README.md voor deploy-instructies.
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbz__VERVANG_DIT__/exec';
+
+    const status = document.getElementById('nominate-status');
+    const successBox = document.getElementById('nominate-success');
+    const submitBtn = document.getElementById('nominate-submit');
+    const againBtn = document.getElementById('nominate-again');
+
+    const setStatus = (msg, isError) => {
+      status.textContent = msg || '';
+      status.classList.toggle('is-error', !!isError);
+    };
+
+    const showSuccess = () => {
+      form.hidden = true;
+      successBox.hidden = false;
+      successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+
+    if (againBtn) {
+      againBtn.addEventListener('click', () => {
+        form.reset();
+        form.hidden = false;
+        successBox.hidden = true;
+        setStatus('');
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      setStatus('');
+
+      // HTML5 validation
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        setStatus('Vul a.u.b. de verplichte velden in.', true);
+        return;
+      }
+
+      const data = new FormData(form);
+      // Add ISO timestamp — Apps Script kan dit negeren of gebruiken
+      data.append('timestamp', new Date().toISOString());
+
+      form.classList.add('is-submitting');
+      submitBtn.disabled = true;
+      setStatus('Verzenden…');
+
+      try {
+        // Apps Script webhooks gebruiken text/plain om CORS preflight te vermijden
+        const body = new URLSearchParams();
+        data.forEach((v, k) => body.append(k, v));
+
+        await fetch(ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+          body: body.toString(),
+        });
+
+        // Met no-cors kunnen we de response niet lezen; we nemen aan dat het werkt
+        showSuccess();
+      } catch (err) {
+        console.error(err);
+        setStatus('Er ging iets mis. Probeer het later opnieuw of mail naar info@culiquiz.nl.', true);
+      } finally {
+        form.classList.remove('is-submitting');
+        submitBtn.disabled = false;
+      }
+    });
+  }
 })();
