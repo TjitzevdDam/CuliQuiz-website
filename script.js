@@ -104,7 +104,7 @@
   if (form) {
     // Endpoint: zet hier de Google Apps Script Web App URL.
     // Zie apps-script/README.md voor deploy-instructies.
-    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbz__VERVANG_DIT__/exec';
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzmv2ZgHE4xytK0IsKxBOY2C8imTSiBkAfUhKEdiUy5pf1LJiiKxs_Fhihb9nFPuLv30Q/exec';
 
     const status = document.getElementById('nominate-status');
     const successBox = document.getElementById('nominate-success');
