@@ -34,7 +34,17 @@
     { "source": "/ambassadeur", "destination": "/ambassadeurs", "permanent": true },
 
     { "source": "/app", "destination": "/scholen", "permanent": true },
-    { "source": "/download", "destination": "/scholen", "permanent": true }
+    { "source": "/download", "destination": "/scholen", "permanent": true },
+
+    { "source": "/what-we-deliver", "destination": "/en/what-we-deliver", "permanent": false },
+    { "source": "/what-we-deliver.html", "destination": "/en/what-we-deliver", "permanent": false },
+    { "source": "/schools", "destination": "/en/schools", "permanent": false },
+    { "source": "/schools.html", "destination": "/en/schools", "permanent": false },
+    { "source": "/ambassadors", "destination": "/en/ambassadors", "permanent": false },
+    { "source": "/ambassadors.html", "destination": "/en/ambassadors", "permanent": false },
+    { "source": "/news", "destination": "/en/news", "permanent": false },
+    { "source": "/news.html", "destination": "/en/news", "permanent": false },
+    { "source": "/news/:slug", "destination": "/en/news/:slug", "permanent": false }
   ],
   "headers": [
     {

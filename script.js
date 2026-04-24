@@ -46,12 +46,12 @@
     crown:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18M3 8l4 4 5-7 5 7 4-4v10H3z"/></svg>',
   };
 
-  const BULLETS = [
+  const BULLETS_NL = [
     { text: 'Speelse quizzen',         icon: 'star',    theme: 'teal'   },
     { text: 'Echte kennis',            icon: 'fork',    theme: 'orange' },
     { text: 'Battle je team',          icon: 'trophy',  theme: 'yellow', metric: '7x gewonnen' },
     { text: 'Micro-leren',             icon: 'clock',   theme: 'teal',   metric: '3 min' },
-    { text: "Thema battles",           icon: 'trophy',  theme: 'red',    metric: 'LIVE' },
+    { text: 'Thema battles',           icon: 'trophy',  theme: 'red',    metric: 'LIVE' },
     { text: 'Kennis & gedrag',         icon: 'doc',     theme: 'yellow' },
     { text: 'Touchpoints',             icon: 'target',  theme: 'orange', metric: '200+ / jaar' },
     { text: 'Insights',                icon: 'chart',   theme: 'teal' },
@@ -60,6 +60,25 @@
     { text: 'Leaderboard',             icon: 'medal',   theme: 'red',    metric: '#1 deze week' },
     { text: 'Highscore',               icon: 'crown',   theme: 'teal',   metric: '5.642' },
   ];
+
+  const BULLETS_EN = [
+    { text: 'Playful quizzes',         icon: 'star',    theme: 'teal'   },
+    { text: 'Real knowledge',          icon: 'fork',    theme: 'orange' },
+    { text: 'Battle your team',        icon: 'trophy',  theme: 'yellow', metric: '7x won' },
+    { text: 'Microlearning',           icon: 'clock',   theme: 'teal',   metric: '3 min' },
+    { text: 'Theme battles',           icon: 'trophy',  theme: 'red',    metric: 'LIVE' },
+    { text: 'Knowledge & behaviour',   icon: 'doc',     theme: 'yellow' },
+    { text: 'Touchpoints',             icon: 'target',  theme: 'orange', metric: '200+ / year' },
+    { text: 'Insights',                icon: 'chart',   theme: 'teal' },
+    { text: 'Upsell chances',          icon: 'arrowUp', theme: 'orange', metric: '+18%' },
+    { text: 'XP',                      icon: 'sparkle', theme: 'yellow', metric: '+250' },
+    { text: 'Leaderboard',             icon: 'medal',   theme: 'red',    metric: '#1 this week' },
+    { text: 'High score',              icon: 'crown',   theme: 'teal',   metric: '5,642' },
+  ];
+
+  // Pick the right bullet set based on <html lang>.
+  const lang = (document.documentElement.lang || 'nl').slice(0, 2).toLowerCase();
+  const BULLETS = lang === 'en' ? BULLETS_EN : BULLETS_NL;
 
   const slots = document.querySelectorAll('.float-bullet[data-slot]');
   if (slots.length) {
