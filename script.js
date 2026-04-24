@@ -106,12 +106,28 @@
     { text: 'Meilleur score',          icon: 'crown',   theme: 'teal',   metric: '5 642' },
   ];
 
+  const BULLETS_ES = [
+    { text: 'Quizzes lúdicos',         icon: 'star',    theme: 'teal'   },
+    { text: 'Conocimiento real',       icon: 'fork',    theme: 'orange' },
+    { text: 'Reta a tu equipo',        icon: 'trophy',  theme: 'yellow', metric: '7× ganadas' },
+    { text: 'Microlearning',           icon: 'clock',   theme: 'teal',   metric: '3 min' },
+    { text: 'Batallas temáticas',      icon: 'trophy',  theme: 'red',    metric: 'LIVE' },
+    { text: 'Saber & comportamiento',  icon: 'doc',     theme: 'yellow' },
+    { text: 'Touchpoints',             icon: 'target',  theme: 'orange', metric: '200+ / año' },
+    { text: 'Insights',                icon: 'chart',   theme: 'teal' },
+    { text: 'Oportunidades de upsell', icon: 'arrowUp', theme: 'orange', metric: '+18%' },
+    { text: 'XP',                      icon: 'sparkle', theme: 'yellow', metric: '+250' },
+    { text: 'Clasificación',           icon: 'medal',   theme: 'red',    metric: '#1 esta semana' },
+    { text: 'Mejor puntuación',        icon: 'crown',   theme: 'teal',   metric: '5.642' },
+  ];
+
   // Pick the right bullet set based on <html lang>.
   const lang = (document.documentElement.lang || 'nl').slice(0, 2).toLowerCase();
   const BULLETS =
     lang === 'en' ? BULLETS_EN :
     lang === 'de' ? BULLETS_DE :
     lang === 'fr' ? BULLETS_FR :
+    lang === 'es' ? BULLETS_ES :
     BULLETS_NL;
 
   const slots = document.querySelectorAll('.float-bullet[data-slot]');
