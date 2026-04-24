@@ -1630,11 +1630,17 @@ p { margin: 0 0 1rem; }
   line-height: 1;
 }
 .lang-caret {
-  width: 10px;
-  height: 6px;
-  transition: transform .25s;
+  width: 8px;
+  height: 5px;
+  margin-left: 2px;
+  opacity: .55;
+  transition: transform .25s, opacity .2s;
   flex-shrink: 0;
 }
+.lang-caret path {
+  stroke-width: 1.1;
+}
+.lang-switch > summary:hover .lang-caret { opacity: 1; }
 .lang-switch[open] > summary .lang-caret { transform: rotate(180deg); }
 .lang-menu {
   position: absolute;
