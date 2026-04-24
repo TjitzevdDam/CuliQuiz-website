@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Disallow: /bronmateriaal/
+Disallow: /apps-script/
+
+Sitemap: https://www.culiquiz.nl/sitemap.xml
