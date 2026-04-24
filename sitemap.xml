@@ -3,7 +3,6 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- ============ HOMEPAGE ============ -->
   <url>
     <loc>https://www.culiquiz.nl/</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/" />
@@ -11,13 +10,14 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/" />
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.culiquiz.nl/assets/og-image.png</image:loc>
       <image:title>CuliQuiz | Jouw culinaire kennis</image:title>
     </image:image>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://www.culiquiz.nl/en/</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/" />
@@ -28,6 +28,7 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://www.culiquiz.nl/de/</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/" />
@@ -38,6 +39,7 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://www.culiquiz.nl/fr/</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/" />
@@ -49,117 +51,271 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- ============ WAT LEVEREN WE / WHAT WE DELIVER ============ -->
   <url>
     <loc>https://www.culiquiz.nl/wat-leveren-we.html</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/wat-leveren-we.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/what-we-deliver.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/what-we-deliver.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/what-we-deliver.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/wat-leveren-we.html" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
     <loc>https://www.culiquiz.nl/en/what-we-deliver.html</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/wat-leveren-we.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/what-we-deliver.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/what-we-deliver.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/what-we-deliver.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/wat-leveren-we.html" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- ============ SCHOLEN / SCHOOLS ============ -->
+  <url>
+    <loc>https://www.culiquiz.nl/de/what-we-deliver.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/wat-leveren-we.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/what-we-deliver.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/what-we-deliver.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/what-we-deliver.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/wat-leveren-we.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/fr/what-we-deliver.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/wat-leveren-we.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/what-we-deliver.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/what-we-deliver.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/what-we-deliver.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/wat-leveren-we.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <url>
     <loc>https://www.culiquiz.nl/scholen.html</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/scholen.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/schools.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/schools.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/schools.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/scholen.html" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
     <loc>https://www.culiquiz.nl/en/schools.html</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/scholen.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/schools.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/schools.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/schools.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/scholen.html" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- ============ TOP 100 ============ -->
+  <url>
+    <loc>https://www.culiquiz.nl/de/schools.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/scholen.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/schools.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/schools.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/schools.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/scholen.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/fr/schools.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/scholen.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/schools.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/schools.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/schools.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/scholen.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <url>
     <loc>https://www.culiquiz.nl/top100.html</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/top100.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/top100.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/top100.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/top100.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/top100.html" />
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://www.culiquiz.nl/en/top100.html</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/top100.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/top100.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/top100.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/top100.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/top100.html" />
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- ============ AMBASSADEURS / AMBASSADORS ============ -->
+  <url>
+    <loc>https://www.culiquiz.nl/de/top100.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/top100.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/top100.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/top100.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/top100.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/top100.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/fr/top100.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/top100.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/top100.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/top100.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/top100.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/top100.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <url>
     <loc>https://www.culiquiz.nl/ambassadeurs.html</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/ambassadeurs.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/ambassadors.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/ambassadors.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/ambassadors.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/ambassadeurs.html" />
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://www.culiquiz.nl/en/ambassadors.html</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/ambassadeurs.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/ambassadors.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/ambassadors.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/ambassadors.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/ambassadeurs.html" />
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- ============ NIEUWS / NEWS ============ -->
+  <url>
+    <loc>https://www.culiquiz.nl/de/ambassadors.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/ambassadeurs.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/ambassadors.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/ambassadors.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/ambassadors.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/ambassadeurs.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/fr/ambassadors.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/ambassadeurs.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/ambassadors.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/ambassadors.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/ambassadors.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/ambassadeurs.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <url>
     <loc>https://www.culiquiz.nl/nieuws.html</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws.html" />
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+
   <url>
     <loc>https://www.culiquiz.nl/en/news.html</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws.html" />
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- ============ NEWS ARTICLE: CULIQUIZ LIVE ============ -->
+  <url>
+    <loc>https://www.culiquiz.nl/de/news.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/fr/news.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <url>
     <loc>https://www.culiquiz.nl/nieuws/culiquiz-live.html</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/culiquiz-live.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/culiquiz-live.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/culiquiz-live.html" />
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.culiquiz.nl/en/news/culiquiz-live.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/culiquiz-live.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/culiquiz-live.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/culiquiz-live.html" />
-    <lastmod>2026-04-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- ============ NL-ONLY NEWS ARTICLES ============ -->
+  <url>
+    <loc>https://www.culiquiz.nl/en/news/culiquiz-live.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/culiquiz-live.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/de/news/culiquiz-live.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/culiquiz-live.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/fr/news/culiquiz-live.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/culiquiz-live.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/culiquiz-live.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- NL-only news articles -->
   <url>
     <loc>https://www.culiquiz.nl/nieuws/mocca-dor.html</loc>
     <lastmod>2026-04-17</lastmod>
@@ -175,13 +331,13 @@
   </url>
 
   <url>
-    <loc>https://www.culiquiz.nl/nieuws/battle-2025.html</loc>
+    <loc>https://www.culiquiz.nl/nieuws/coca-cola.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://www.culiquiz.nl/nieuws/coca-cola.html</loc>
+    <loc>https://www.culiquiz.nl/nieuws/battle-2025.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
