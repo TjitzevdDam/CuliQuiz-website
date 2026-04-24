@@ -174,4 +174,56 @@
       }
     });
   }
+
+  // ============ Wat leveren we | Contact form (Formsubmit.co) ============
+  const cform = document.getElementById('wlw-contact-form');
+  if (cform) {
+    const cStatus = document.getElementById('cf-status');
+    const cSuccess = document.getElementById('wlw-contact-success');
+    const cBtn = document.getElementById('cf-submit');
+
+    const setCStatus = (msg, isError) => {
+      cStatus.textContent = msg || '';
+      cStatus.classList.toggle('is-error', !!isError);
+    };
+
+    cform.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      setCStatus('');
+
+      if (!cform.checkValidity()) {
+        cform.reportValidity();
+        setCStatus('Vul a.u.b. de verplichte velden in.', true);
+        return;
+      }
+
+      cform.classList.add('is-submitting');
+      cBtn.disabled = true;
+      setCStatus('Verzenden…');
+
+      try {
+        const data = new FormData(cform);
+        const res = await fetch(cform.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data,
+        });
+        const json = await res.json().catch(() => ({}));
+
+        if (res.ok && (json.success === 'true' || json.success === true)) {
+          cform.hidden = true;
+          cSuccess.hidden = false;
+          cSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          setCStatus('Er ging iets mis. Probeer het later opnieuw of mail naar info@culiquiz.nl.', true);
+        }
+      } catch (err) {
+        console.error(err);
+        setCStatus('Er ging iets mis. Probeer het later opnieuw of mail naar info@culiquiz.nl.', true);
+      } finally {
+        cform.classList.remove('is-submitting');
+        cBtn.disabled = false;
+      }
+    });
+  }
 })();

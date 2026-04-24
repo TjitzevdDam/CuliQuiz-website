@@ -1554,6 +1554,388 @@ p { margin: 0 0 1rem; }
   .phone-stage { max-width: 190px; }
 }
 
+/* ============ PARTNERS | WTOL tweak ============ */
+.partner-logo.is-wtol img {
+  max-height: 90px;
+}
+
+/* ============ WAT LEVEREN WE | CONTACT FORM ============ */
+.wlw-contact {
+  padding: 90px 0;
+  background: var(--c-bg-soft);
+}
+.wlw-contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 60px;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 56px;
+  box-shadow: var(--shadow-lg);
+  align-items: start;
+}
+.wlw-contact-copy .eyebrow {
+  color: var(--c-primary);
+  font-weight: 600;
+}
+.wlw-contact-copy h2 {
+  font-family: var(--font-head);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  line-height: 1.15;
+  margin: 12px 0 16px;
+  color: var(--c-ink);
+}
+.wlw-contact-copy p {
+  color: var(--c-ink-soft);
+  margin: 0;
+}
+.wlw-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.wlw-contact-form .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.wlw-contact-form label {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--c-ink);
+}
+.wlw-contact-form label span {
+  color: var(--c-primary);
+}
+.wlw-contact-form input,
+.wlw-contact-form textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 12px 14px;
+  border: 1.5px solid var(--c-grey);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--c-ink);
+  transition: border-color .2s, box-shadow .2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+.wlw-contact-form input:focus,
+.wlw-contact-form textarea:focus {
+  outline: none;
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 3px rgba(38, 168, 176, .18);
+}
+.wlw-contact-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.wlw-contact-form .form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+.wlw-contact-form .btn {
+  align-self: flex-start;
+  min-width: 220px;
+}
+.wlw-contact-form .form-status {
+  margin: 0;
+  font-size: .9rem;
+  color: var(--c-ink-soft);
+  min-height: 1.4em;
+}
+.wlw-contact-form .form-status.is-error {
+  color: #b3261e;
+}
+.wlw-contact-form.is-submitting button[type="submit"] {
+  opacity: .6;
+  cursor: wait;
+}
+.wlw-contact-success {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 30px;
+  background: rgba(38, 168, 176, .08);
+  border: 1.5px solid var(--c-primary);
+  border-radius: var(--radius-lg);
+}
+.wlw-contact-success h3 {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  margin: 0 0 10px;
+  color: var(--c-ink);
+}
+.wlw-contact-success p {
+  margin: 0;
+  color: var(--c-ink-soft);
+}
+
+@media (max-width: 960px) {
+  .wlw-contact-inner {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 40px 30px;
+  }
+  .wlw-contact-form .btn { min-width: 0; width: 100%; }
+}
+
+/* ============ SCHOLEN PAGE ============ */
+.scholen-hero {
+  background: linear-gradient(135deg, #26A8B0 0%, #1f8a91 55%, #0f6f76 100%);
+  color: #fff;
+  padding: 110px 0 130px;
+  position: relative;
+  overflow: hidden;
+}
+.scholen-hero::before,
+.scholen-hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .45;
+  pointer-events: none;
+}
+.scholen-hero::before {
+  width: 360px; height: 360px;
+  background: var(--c-yellow);
+  top: -120px; right: -80px;
+}
+.scholen-hero::after {
+  width: 320px; height: 320px;
+  background: var(--c-orange);
+  bottom: -160px; left: -60px;
+}
+.scholen-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 820px;
+  text-align: center;
+}
+.scholen-hero .eyebrow {
+  color: rgba(255, 255, 255, .85);
+  letter-spacing: .12em;
+  font-weight: 600;
+}
+.scholen-hero h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  line-height: 1.05;
+  margin: 14px 0 22px;
+  color: #fff;
+}
+.scholen-hero h1 .accent {
+  color: var(--c-yellow);
+  font-style: italic;
+}
+.scholen-hero .lead {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, .92);
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+.scholen-duo {
+  padding: 90px 0;
+  background: var(--c-bg-soft);
+}
+.duo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 40px;
+}
+.duo-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 42px 38px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
+}
+.duo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.duo-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 8px;
+}
+.duo-app::before { background: var(--c-primary); }
+.duo-live::before { background: var(--c-orange); }
+
+.duo-card-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+.duo-app .duo-card-tag {
+  background: var(--c-primary-light);
+  color: var(--c-primary-dark);
+}
+.duo-live .duo-card-tag {
+  background: rgba(225, 94, 23, .12);
+  color: var(--c-orange);
+}
+.duo-card h3 {
+  font-family: var(--font-head);
+  font-size: 1.7rem;
+  line-height: 1.15;
+  margin: 0 0 14px;
+  color: var(--c-ink);
+}
+.duo-card p {
+  color: var(--c-ink-soft);
+  margin: 0 0 20px;
+}
+.duo-card .check-list {
+  margin-bottom: 28px;
+}
+.duo-card-cta {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.duo-secondary {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--c-ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.duo-secondary:hover {
+  color: var(--c-primary);
+}
+
+/* Waarom-sectie */
+.scholen-why {
+  padding: 90px 0;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 44px;
+}
+.why-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 30px 26px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: transform .25s;
+}
+.why-card:hover {
+  transform: translateY(-3px);
+}
+.why-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 18px;
+  border-radius: 14px;
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.why-icon svg {
+  width: 28px;
+  height: 28px;
+}
+.why-card h3 {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  margin: 0 0 10px;
+  color: var(--c-ink);
+}
+.why-card p {
+  font-size: .95rem;
+  color: var(--c-ink-soft);
+  margin: 0;
+}
+
+/* Hoe werkt het */
+.scholen-how {
+  padding: 90px 0;
+  background: var(--c-bg-soft);
+}
+.how-steps {
+  list-style: none;
+  padding: 0;
+  margin: 44px auto 0;
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  counter-reset: step;
+}
+.how-steps li {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 26px 30px 26px 100px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+.how-num {
+  position: absolute;
+  left: 26px;
+  top: 26px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--c-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.how-steps li:nth-child(2) .how-num { background: var(--c-orange); }
+.how-steps li:nth-child(3) .how-num { background: var(--c-yellow); color: var(--c-ink); }
+.how-steps h3 {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+  color: var(--c-ink);
+}
+.how-steps p {
+  margin: 0;
+  color: var(--c-ink-soft);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .duo-grid { grid-template-columns: 1fr; gap: 22px; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .scholen-hero { padding: 80px 0 90px; }
+  .scholen-duo, .scholen-why, .scholen-how { padding: 60px 0; }
+  .duo-card { padding: 32px 26px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .how-steps li { padding: 22px 22px 22px 82px; }
+  .how-num { width: 44px; height: 44px; left: 20px; top: 22px; font-size: 1.25rem; }
+}
+
 /* ============ TOP 100 | NOMINATIEFORMULIER ============ */
 .top100-form-block {
   scroll-margin-top: 100px;

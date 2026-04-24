@@ -26,6 +26,7 @@
         <ul id="primary-menu" class="nav-list">
           <li><a href="index.html">Home</a></li>
           <li><a href="wat-leveren-we.html" aria-current="page">Wat leveren we?</a></li>
+          <li><a href="scholen.html">Scholen</a></li>
           <li><a href="nieuws.html">Nieuws</a></li>
           <li><a href="top100.html">Top 100</a></li>
           <li><a href="ambassadeurs.html">Ambassadeurs</a></li>
@@ -242,6 +243,53 @@
       </div>
     </section>
 
+    <!-- ============ CONTACT / AANVRAAG ============ -->
+    <section class="wlw-contact" id="aanvraag">
+      <div class="container">
+        <div class="wlw-contact-inner">
+          <div class="wlw-contact-copy">
+            <p class="eyebrow">Benieuwd wat CuliQuiz voor jouw team of merk kan doen?</p>
+            <h2>Vraag de mogelijkheden en prijzen op.</h2>
+            <p>Laat je gegevens achter, dan sturen we je binnen &eacute;&eacute;n werkdag onze aanpak en pakketten per e-mail. Geen spam, geen gedoe.</p>
+          </div>
+
+          <form class="wlw-contact-form" id="wlw-contact-form" action="https://formsubmit.co/ajax/info@culiquiz.nl" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="Nieuwe aanvraag via Wat leveren we?" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <div class="form-row">
+              <label for="cf-naam">Jouw naam <span aria-hidden="true">*</span></label>
+              <input type="text" id="cf-naam" name="Naam" required autocomplete="name" />
+            </div>
+            <div class="form-row">
+              <label for="cf-bedrijf">Bedrijf <span aria-hidden="true">*</span></label>
+              <input type="text" id="cf-bedrijf" name="Bedrijf" required autocomplete="organization" />
+            </div>
+            <div class="form-row">
+              <label for="cf-email">E-mailadres <span aria-hidden="true">*</span></label>
+              <input type="email" id="cf-email" name="E-mail" required autocomplete="email" />
+            </div>
+            <div class="form-row">
+              <label for="cf-msg">Jouw vraag of context</label>
+              <textarea id="cf-msg" name="Bericht" rows="4" placeholder="Optioneel &mdash; vertel bijv. over hoeveel medewerkers of welk merk het gaat."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="cf-submit">Verstuur aanvraag</button>
+              <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+
+          <div class="wlw-contact-success" id="wlw-contact-success" hidden>
+            <h3>Bedankt! Je aanvraag staat bij ons binnen.</h3>
+            <p>We nemen binnen &eacute;&eacute;n werkdag contact met je op via het opgegeven e-mailadres.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ CTA STRIP ============ -->
     <section class="cta-strip">
       <div class="container cta-inner">
@@ -275,7 +323,8 @@
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="wat-leveren-we.html">Wat leveren we?</a></li>
-            <li><a href="nieuws.html">Nieuws</a></li>
+          <li><a href="scholen.html">Scholen</a></li>
+          <li><a href="nieuws.html">Nieuws</a></li>
             <li><a href="top100.html">Top 100</a></li>
             <li><a href="ambassadeurs.html">Ambassadeurs</a></li>
             <li><a href="https://www.culiquiz-live.nl/" target="_blank" rel="noopener">Live spelen</a></li>
