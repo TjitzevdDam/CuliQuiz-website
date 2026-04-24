@@ -1593,6 +1593,36 @@ p { margin: 0 0 1rem; }
   max-height: 90px;
 }
 
+/* ============ LANGUAGE SWITCHER ============ */
+.nav-list .nav-lang {
+  margin-left: 6px;
+}
+.nav-list .nav-lang a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 30px;
+  padding: 0 10px;
+  border: 1.5px solid var(--c-grey);
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+  transition: border-color .2s, color .2s, background .2s;
+}
+.nav-list .nav-lang a:hover {
+  border-color: var(--c-primary);
+  color: var(--c-primary);
+  background: var(--c-primary-light);
+}
+@media (max-width: 720px) {
+  .nav-list .nav-lang { margin-left: 0; }
+  .nav-list .nav-lang a { margin-top: 8px; }
+}
+
 /* ============ WAT LEVEREN WE | CONTACT FORM ============ */
 .wlw-contact {
   padding: 90px 0;
