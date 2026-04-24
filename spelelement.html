@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Speel de CuliQuiz | Dobbelsteen &amp; timer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat:wght@300;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
+  <meta name="description" content="Speel de CuliQuiz. Rol de dobbelsteen voor een categorie en gebruik de timer voor het verboden woord." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#26A8B0" />
+  <style>
+    /* ============================================================
+       Brand
+       ============================================================ */
+    :root {
+      --c-primary: #26A8B0;
+      --c-primary-dark: #1f8a91;
+      --c-primary-light: #d6f0f2;
+      --c-red: #A91917;
+      --c-orange: #E15E17;
+      --c-yellow: #EAB600;
+      --c-ink: #1d2b30;
+      --c-ink-soft: #4a5a60;
+      --c-bg: #f6f9fa;
+      --c-card: #ffffff;
+      --shadow-sm: 0 4px 14px rgba(20, 50, 60, .08);
+      --shadow-md: 0 10px 30px rgba(20, 50, 60, .14);
+      --shadow-lg: 0 22px 60px rgba(20, 50, 60, .22);
+      --font-head: 'Fraunces', 'Georgia', serif;
+      --font-body: 'Montserrat', system-ui, -apple-system, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      color: var(--c-ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(38,168,176,.12), transparent 60%),
+        radial-gradient(900px 500px at 100% 110%, rgba(225,94,23,.10), transparent 60%),
+        var(--c-bg);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    }
+    img { max-width: 100%; display: block; }
+
+    .wrap {
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 28px 22px 60px;
+    }
+
+    /* Logo header */
+    .header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .header img {
+      width: 150px;
+      height: auto;
+      margin: 0 auto;
+    }
+    .header h1 {
+      font-family: var(--font-head);
+      font-size: clamp(1.7rem, 6vw, 2.2rem);
+      line-height: 1.05;
+      margin: 14px 0 4px;
+      letter-spacing: -.01em;
+    }
+    .header p {
+      margin: 0;
+      color: var(--c-ink-soft);
+      font-size: .95rem;
+    }
+
+    /* Section title */
+    .eyebrow {
+      text-align: center;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--c-ink-soft);
+      margin: 36px 0 14px;
+    }
+
+    /* ============================================================
+       DICE — big tap-target, 3D flip, color-coded result
+       ============================================================ */
+    .dice-wrap {
+      perspective: 1200px;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+    .dice {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 1.55 / 1;
+      border-radius: 28px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: var(--shadow-lg);
+      transition: transform .25s ease;
+    }
+    .dice:hover { transform: translateY(-2px); }
+    .dice:active { transform: translateY(0) scale(.98); }
+
+    .dice-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 28px;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+      backface-visibility: hidden;
+      transition: opacity .35s ease;
+    }
+    .dice-face .icon {
+      width: 52px;
+      height: 52px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: .95;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.18));
+    }
+    .dice-face .label {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(1.6rem, 6vw, 2rem);
+      letter-spacing: -.005em;
+      line-height: 1.05;
+      max-width: 100%;
+    }
+    .dice-face .hint {
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      opacity: .8;
+      margin-top: 4px;
+    }
+
+    /* Color palettes per category */
+    .face-idle    { background: linear-gradient(135deg, #2bb8c1 0%, #1f8a91 100%); }
+    .food         { background: linear-gradient(135deg, #ff7a3a 0%, #c4470d 100%); }
+    .drinks       { background: linear-gradient(135deg, #2bb8c1 0%, #14747b 100%); }
+    .verboden     { background: linear-gradient(135deg, #d92f2c 0%, #7a0f0e 100%); }
+    .funfact      { background: linear-gradient(135deg, #f4cb37 0%, #b88d00 100%); color: #2a1f00; }
+    .wereldkeuken { background: linear-gradient(135deg, #4ed1d8 0%, #1f8a91 100%); }
+    .waarniet     { background: linear-gradient(135deg, #ff8a4a 0%, #d23b1d 100%); }
+
+    /* Roll animation: shake + scale pulse */
+    .dice.rolling {
+      animation: dice-shake .65s cubic-bezier(.36,.07,.19,.97) infinite;
+    }
+    @keyframes dice-shake {
+      0%, 100% { transform: translate3d(0,0,0) rotate(0deg); }
+      15%      { transform: translate3d(-6px, 2px, 0) rotate(-2deg); }
+      30%      { transform: translate3d(5px, -3px, 0) rotate(2.2deg); }
+      45%      { transform: translate3d(-4px, 3px, 0) rotate(-1.6deg); }
+      60%      { transform: translate3d(4px, -2px, 0) rotate(1.2deg); }
+      80%      { transform: translate3d(-2px, 1px, 0) rotate(-.6deg); }
+    }
+    /* Reveal animation when result lands */
+    .dice .reveal {
+      animation: pop-in .45s cubic-bezier(.34, 1.56, .64, 1) both;
+    }
+    @keyframes pop-in {
+      0%   { opacity: 0; transform: scale(.7); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* ============================================================
+       TIMER — circular progress ring, color shifts as it drains
+       ============================================================ */
+    .timer-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 6px;
+    }
+    .timer {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      filter: drop-shadow(0 14px 32px rgba(20,50,60,.18));
+    }
+    .timer svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+    .timer .track {
+      fill: none;
+      stroke: rgba(20, 50, 60, .08);
+      stroke-width: 14;
+    }
+    .timer .progress {
+      fill: none;
+      stroke: var(--c-primary);
+      stroke-width: 14;
+      stroke-linecap: round;
+      transition: stroke .4s, stroke-dashoffset .9s linear;
+    }
+    .timer.warn .progress { stroke: var(--c-yellow); }
+    .timer.danger .progress { stroke: var(--c-orange); }
+    .timer.expired .progress { stroke: var(--c-red); }
+
+    .timer .label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .timer .label .num {
+      font-family: var(--font-head);
+      font-size: 4.4rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--c-ink);
+      letter-spacing: -.02em;
+      transition: color .3s;
+    }
+    .timer .label .unit {
+      margin-top: 6px;
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--c-ink-soft);
+    }
+    .timer.expired .label .num {
+      color: var(--c-red);
+      animation: pulse 1s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.05); }
+    }
+
+    .timer-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+      width: 100%;
+      max-width: 320px;
+    }
+    .btn {
+      flex: 1;
+      padding: 14px 18px;
+      border: 0;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: .92rem;
+      letter-spacing: .02em;
+      cursor: pointer;
+      transition: transform .18s, box-shadow .18s, background .18s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-primary {
+      background: var(--c-orange);
+      color: #fff;
+      box-shadow: 0 8px 22px rgba(225, 94, 23, .35);
+    }
+    .btn-primary:hover { background: #cf5413; transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0) scale(.98); }
+    .btn-ghost {
+      background: #fff;
+      color: var(--c-ink);
+      box-shadow: 0 4px 16px rgba(20,50,60,.08);
+    }
+    .btn-ghost:hover { background: var(--c-primary-light); color: var(--c-primary-dark); transform: translateY(-1px); }
+    .btn-ghost:active { transform: translateY(0) scale(.98); }
+
+    /* ============================================================
+       Rules card
+       ============================================================ */
+    .rules {
+      margin-top: 44px;
+      background: var(--c-card);
+      border-radius: 22px;
+      padding: 28px 26px;
+      box-shadow: var(--shadow-sm);
+    }
+    .rules h2 {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      margin: 0 0 16px;
+    }
+    .rules p {
+      margin: 0 0 14px;
+      color: var(--c-ink-soft);
+      line-height: 1.55;
+    }
+    .rules ol {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .rules ol li {
+      counter-increment: step;
+      position: relative;
+      padding: 6px 0 6px 38px;
+      color: var(--c-ink);
+      line-height: 1.5;
+    }
+    .rules ol li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 26px;
+      height: 26px;
+      background: var(--c-primary);
+      color: #fff;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: .9rem;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .rules p.outro {
+      margin-top: 18px;
+      font-weight: 600;
+      color: var(--c-primary-dark);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: .8rem;
+      color: var(--c-ink-soft);
+    }
+    .footer a { color: var(--c-primary-dark); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <!-- Header -->
+    <header class="header">
+      <img src="assets/logo.png" alt="CuliQuiz" />
+      <h1>Speel de CuliQuiz</h1>
+      <p>Rol de dobbelsteen voor je categorie.</p>
+    </header>
+
+    <p class="eyebrow">Rol de dobbelsteen</p>
+
+    <!-- Dice -->
+    <div class="dice-wrap">
+      <button class="dice" id="dice" type="button" aria-label="Rol de dobbelsteen voor een categorie">
+        <span class="dice-face face-idle" id="diceFace">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="3" />
+            <circle cx="9" cy="9" r="1.2" fill="currentColor" stroke="none" />
+            <circle cx="15" cy="9" r="1.2" fill="currentColor" stroke="none" />
+            <circle cx="9" cy="15" r="1.2" fill="currentColor" stroke="none" />
+            <circle cx="15" cy="15" r="1.2" fill="currentColor" stroke="none" />
+          </svg>
+          <span class="label">Tik om te rollen</span>
+          <span class="hint">Categorie kiezen</span>
+        </span>
+      </button>
+    </div>
+
+    <p class="eyebrow">Timer voor het verboden woord</p>
+
+    <!-- Timer -->
+    <div class="timer-wrap">
+      <div class="timer" id="timer">
+        <svg viewBox="0 0 220 220" aria-hidden="true">
+          <circle class="track"    cx="110" cy="110" r="98" />
+          <circle class="progress" cx="110" cy="110" r="98" id="timerProgress" />
+        </svg>
+        <div class="label">
+          <span class="num" id="timerNum">15</span>
+          <span class="unit" id="timerUnit">seconden</span>
+        </div>
+      </div>
+
+      <div class="timer-buttons">
+        <button class="btn btn-primary" id="timerStart" type="button">Start</button>
+        <button class="btn btn-ghost"   id="timerReset" type="button">Reset</button>
+      </div>
+    </div>
+
+    <!-- Rules -->
+    <section class="rules">
+      <h2>Spelregels</h2>
+      <p>De CuliQuiz bestaat uit 50 kaarten, en elke kaart bevat 6 categorieën. Volg deze stappen om te spelen:</p>
+      <ol>
+        <li>Rol de dobbelsteen om de categorie te bepalen.</li>
+        <li>Speel met de klok mee. De rechter buurman/vrouw stelt &eacute;&eacute;n vraag per beurt.</li>
+        <li>Iedere speler krijgt in totaal 5 vragen.</li>
+        <li>Vragen hebben 1, 2 of 3 punten, waarbij 1 makkelijk en 3 moeilijk is.</li>
+        <li>Gebruik de timer voor de categorie &ldquo;Verboden woord&rdquo;.</li>
+        <li>Na 5 vragen per speler tel je de punten op.</li>
+      </ol>
+      <p class="outro">De speler met de meeste punten wint. Veel plezier met de CuliQuiz!</p>
+    </section>
+
+    <p class="footer">
+      <a href="/">culiquiz.nl</a> &middot; <a href="mailto:info@culiquiz.nl">info@culiquiz.nl</a>
+    </p>
+
+  </div>
+
+  <!-- ============================================================
+       JS — dice + timer
+       ============================================================ -->
+  <script>
+    /* ---------- DICE ---------- */
+    const CATEGORIES = [
+      { name: 'Food',           cls: 'food',         icon: 'fork'   },
+      { name: 'Drinks',         cls: 'drinks',       icon: 'glass'  },
+      { name: 'Verboden woord', cls: 'verboden',     icon: 'mute'   },
+      { name: 'Funfact',        cls: 'funfact',      icon: 'bulb'   },
+      { name: 'Wereldkeuken',   cls: 'wereldkeuken', icon: 'globe'  },
+      { name: 'Waar/Niet waar', cls: 'waarniet',     icon: 'check'  },
+    ];
+
+    const ICONS = {
+      fork:  '<path d="M7 2v8a3 3 0 0 0 3 3v9"/><path d="M11 2v8M15 2v8a3 3 0 0 1-3 3"/><path d="M19 2c-1 0-2 1-2 4v8h2V2z"/>',
+      glass: '<path d="M6 3h12l-1.2 8a5 5 0 0 1-9.6 0L6 3z"/><path d="M12 16v5"/><path d="M9 21h6"/>',
+      mute:  '<path d="M9 5l-4 4H2v6h3l4 4V5z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/>',
+      bulb:  '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c1 .9 1.5 1.7 1.5 2.8V18h5v-.5c0-1 .5-1.9 1.5-2.8A7 7 0 0 0 12 2z"/>',
+      globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/>',
+      check: '<polyline points="20 6 9 17 4 12"/>',
+    };
+
+    const dice = document.getElementById('dice');
+    const diceFace = document.getElementById('diceFace');
+    let isRolling = false;
+    let lastIndex = -1;
+
+    function renderFace(cat) {
+      diceFace.className = 'dice-face ' + cat.cls + ' reveal';
+      diceFace.innerHTML =
+        '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">' + ICONS[cat.icon] + '</svg>' +
+        '<span class="label">' + cat.name + '</span>' +
+        '<span class="hint">Tik nogmaals voor opnieuw</span>';
+    }
+
+    function rollDice() {
+      if (isRolling) return;
+      isRolling = true;
+      dice.classList.add('rolling');
+
+      // Pick a category, avoid repeating immediately if possible
+      let idx;
+      do { idx = Math.floor(Math.random() * CATEGORIES.length); }
+      while (idx === lastIndex && CATEGORIES.length > 1);
+      lastIndex = idx;
+
+      const duration = 800;
+      setTimeout(() => {
+        dice.classList.remove('rolling');
+        renderFace(CATEGORIES[idx]);
+        isRolling = false;
+      }, duration);
+    }
+
+    dice.addEventListener('click', rollDice);
+
+
+    /* ---------- TIMER ---------- */
+    const TIMER_TOTAL = 15;
+    const timerEl    = document.getElementById('timer');
+    const timerNum   = document.getElementById('timerNum');
+    const timerUnit  = document.getElementById('timerUnit');
+    const progress   = document.getElementById('timerProgress');
+    const startBtn   = document.getElementById('timerStart');
+    const resetBtn   = document.getElementById('timerReset');
+
+    const RADIUS = 98;
+    const CIRC = 2 * Math.PI * RADIUS;
+    progress.style.strokeDasharray = CIRC;
+    progress.style.strokeDashoffset = '0';
+
+    let interval = null;
+    let remaining = TIMER_TOTAL;
+    let running = false;
+
+    function setRing(seconds) {
+      const ratio = seconds / TIMER_TOTAL;
+      progress.style.strokeDashoffset = String(CIRC * (1 - ratio));
+    }
+
+    function setColorClass(seconds) {
+      timerEl.classList.remove('warn', 'danger', 'expired');
+      if (seconds <= 0)       timerEl.classList.add('expired');
+      else if (seconds <= 3)  timerEl.classList.add('danger');
+      else if (seconds <= 7)  timerEl.classList.add('warn');
+    }
+
+    function tick() {
+      remaining -= 1;
+      timerNum.textContent = remaining;
+      setRing(remaining);
+      setColorClass(remaining);
+      if (remaining <= 0) {
+        clearInterval(interval);
+        interval = null;
+        running = false;
+        timerUnit.textContent = 'tijd om!';
+        startBtn.textContent = 'Start';
+      }
+    }
+
+    function startTimer() {
+      if (running) return;
+      // If at 0, restart from full
+      if (remaining <= 0) resetTimer(false);
+      running = true;
+      timerUnit.textContent = 'seconden';
+      startBtn.textContent = 'Pauze';
+      // Start the visual ring drain immediately
+      setRing(remaining);
+      interval = setInterval(tick, 1000);
+    }
+
+    function pauseTimer() {
+      if (!running) return;
+      clearInterval(interval);
+      interval = null;
+      running = false;
+      startBtn.textContent = 'Hervat';
+    }
+
+    function resetTimer(updateUi = true) {
+      clearInterval(interval);
+      interval = null;
+      running = false;
+      remaining = TIMER_TOTAL;
+      if (updateUi) {
+        timerNum.textContent = remaining;
+        timerUnit.textContent = 'seconden';
+        startBtn.textContent = 'Start';
+        setRing(remaining);
+        setColorClass(remaining);
+      }
+    }
+
+    startBtn.addEventListener('click', () => {
+      if (running)            pauseTimer();
+      else                    startTimer();
+    });
+    resetBtn.addEventListener('click', () => resetTimer(true));
+
+    // Init
+    setRing(TIMER_TOTAL);
+  </script>
+</body>
+</html>
