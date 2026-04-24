@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Speel de CuliQuiz | Dobbelsteen &amp; timer</title>
+  <title>Speel het CuliQuiz kaartspel | Dobbelsteen &amp; timer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat:wght@300;500;600;700;800&display=swap" rel="stylesheet" />
@@ -353,16 +353,59 @@
     }
     .footer a { color: var(--c-primary-dark); text-decoration: none; }
     .footer a:hover { text-decoration: underline; }
+
+    /* Sound toggle pill */
+    .sound-toggle {
+      position: fixed;
+      top: calc(env(safe-area-inset-top, 0px) + 14px);
+      right: calc(env(safe-area-inset-right, 0px) + 14px);
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--c-ink);
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: background .18s, color .18s, transform .18s;
+      -webkit-tap-highlight-color: transparent;
+      z-index: 50;
+    }
+    .sound-toggle:hover { background: var(--c-primary-light); color: var(--c-primary-dark); }
+    .sound-toggle:active { transform: scale(.94); }
+    .sound-toggle svg { width: 20px; height: 20px; }
+    .sound-toggle .icon-on  { display: block; }
+    .sound-toggle .icon-off { display: none; }
+    .sound-toggle.muted .icon-on  { display: none; }
+    .sound-toggle.muted .icon-off { display: block; }
+    .sound-toggle.muted { color: var(--c-ink-soft); }
   </style>
 </head>
 <body>
+
+  <!-- Sound toggle -->
+  <button class="sound-toggle" id="soundToggle" type="button" aria-label="Geluid aan of uit" aria-pressed="true">
+    <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+      <path d="M19 5a9 9 0 0 1 0 14"/>
+    </svg>
+    <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <line x1="22" y1="9"  x2="16" y2="15"/>
+      <line x1="16" y1="9"  x2="22" y2="15"/>
+    </svg>
+  </button>
 
   <div class="wrap">
 
     <!-- Header -->
     <header class="header">
       <img src="assets/logo.png" alt="CuliQuiz" />
-      <h1>Speel de CuliQuiz</h1>
+      <h1>Speel het CuliQuiz kaartspel</h1>
       <p>Rol de dobbelsteen voor je categorie.</p>
     </header>
 
@@ -431,6 +474,139 @@
        JS — dice + timer
        ============================================================ -->
   <script>
+    /* ---------- AUDIO (Web Audio API, no external files) ---------- */
+    let audioCtx = null;
+    let muted = (function () {
+      try { return localStorage.getItem('culiquiz-muted') === '1'; } catch(e) { return false; }
+    })();
+
+    function ensureCtx() {
+      if (!audioCtx) {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return null;
+        audioCtx = new AC();
+      }
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      return audioCtx;
+    }
+
+    // Short tick (clock-like) — soft, not too piercing
+    function playTick() {
+      if (muted) return;
+      const ctx = ensureCtx(); if (!ctx) return;
+      const t = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(1500, t);
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(0.12, t + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.06);
+      osc.connect(g).connect(ctx.destination);
+      osc.start(t);
+      osc.stop(t + 0.06);
+    }
+
+    // Last 3 ticks louder + slightly higher pitch (urgency)
+    function playUrgentTick() {
+      if (muted) return;
+      const ctx = ensureCtx(); if (!ctx) return;
+      const t = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(1900, t);
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(0.22, t + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.09);
+      osc.connect(g).connect(ctx.destination);
+      osc.start(t);
+      osc.stop(t + 0.09);
+    }
+
+    // Wekker — 5 alternating beeps
+    function playAlarm() {
+      if (muted) return;
+      const ctx = ensureCtx(); if (!ctx) return;
+      const start = ctx.currentTime;
+      const beepDur = 0.18;
+      const gap = 0.05;
+      const tones = [880, 660, 880, 660, 880];
+      tones.forEach((freq, i) => {
+        const at = start + i * (beepDur + gap);
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, at);
+        g.gain.setValueAtTime(0, at);
+        g.gain.linearRampToValueAtTime(0.32, at + 0.02);
+        g.gain.linearRampToValueAtTime(0.32, at + beepDur - 0.04);
+        g.gain.linearRampToValueAtTime(0, at + beepDur);
+        osc.connect(g).connect(ctx.destination);
+        osc.start(at);
+        osc.stop(at + beepDur + 0.02);
+      });
+    }
+
+    // Dice rattle — cluster of random pitched clicks during the roll
+    function playDiceRoll(durationMs) {
+      if (muted) return;
+      const ctx = ensureCtx(); if (!ctx) return;
+      const start = ctx.currentTime;
+      const dur = durationMs / 1000;
+      let t = 0;
+      while (t < dur) {
+        const at = start + t;
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'square';
+        // Random rattle pitch
+        osc.frequency.setValueAtTime(700 + Math.random() * 900, at);
+        g.gain.setValueAtTime(0, at);
+        g.gain.linearRampToValueAtTime(0.10 + Math.random() * 0.06, at + 0.002);
+        g.gain.exponentialRampToValueAtTime(0.0001, at + 0.04);
+        osc.connect(g).connect(ctx.destination);
+        osc.start(at);
+        osc.stop(at + 0.045);
+        t += 0.035 + Math.random() * 0.05;  // 35–85ms apart
+      }
+    }
+
+    // Soft thud at the end of dice roll (settle)
+    function playDiceSettle() {
+      if (muted) return;
+      const ctx = ensureCtx(); if (!ctx) return;
+      const t = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(180, t);
+      osc.frequency.exponentialRampToValueAtTime(80, t + 0.18);
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(0.35, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+      osc.connect(g).connect(ctx.destination);
+      osc.start(t);
+      osc.stop(t + 0.24);
+    }
+
+    // Sound toggle UI
+    const soundToggle = document.getElementById('soundToggle');
+    function applyMutedState() {
+      soundToggle.classList.toggle('muted', muted);
+      soundToggle.setAttribute('aria-pressed', muted ? 'false' : 'true');
+      soundToggle.setAttribute('aria-label', muted ? 'Geluid aanzetten' : 'Geluid uitzetten');
+    }
+    applyMutedState();
+    soundToggle.addEventListener('click', () => {
+      muted = !muted;
+      try { localStorage.setItem('culiquiz-muted', muted ? '1' : '0'); } catch(e) {}
+      applyMutedState();
+      // Tap-feedback when un-muting so user hears it works
+      if (!muted) playTick();
+    });
+
+
     /* ---------- DICE ---------- */
     const CATEGORIES = [
       { name: 'Food',           cls: 'food',         icon: 'fork'   },
@@ -475,9 +651,14 @@
       lastIndex = idx;
 
       const duration = 800;
+      // Sound: rattle during the roll
+      playDiceRoll(duration);
+
       setTimeout(() => {
         dice.classList.remove('rolling');
         renderFace(CATEGORIES[idx]);
+        // Sound: settle thud when the result lands
+        playDiceSettle();
         isRolling = false;
       }, duration);
     }
@@ -526,6 +707,14 @@
         running = false;
         timerUnit.textContent = 'tijd om!';
         startBtn.textContent = 'Start';
+        // Sound: wekker
+        playAlarm();
+      } else if (remaining <= 3) {
+        // Sound: laatste 3 seconden — urgenter
+        playUrgentTick();
+      } else {
+        // Sound: rustige tik
+        playTick();
       }
     }
 
