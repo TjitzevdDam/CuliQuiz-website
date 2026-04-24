@@ -833,8 +833,9 @@ p { margin: 0 0 1rem; }
 
 /* ============ FOOTER ============ */
 .site-footer {
-  background: #0f2226;
-  color: #cdd9dc;
+  background: #eef3f5;
+  color: var(--c-ink-soft);
+  border-top: 1px solid #dfe6ea;
 }
 .footer-inner {
   display: grid;
@@ -843,26 +844,28 @@ p { margin: 0 0 1rem; }
   padding: 64px 24px 40px;
 }
 .footer-brand img {
-  height: 50px;
+  height: 56px;
   width: auto;
-  background: #fff;
-  padding: 8px 12px;
-  border-radius: 10px;
   margin-bottom: 14px;
 }
-.footer-brand p { color: #97a8ad; max-width: 320px; }
+.footer-brand p { color: var(--c-ink-soft); max-width: 320px; }
 .footer-cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
-.footer-col h4 { color: #fff; margin-bottom: 14px; }
+.footer-col h4 {
+  color: var(--c-ink);
+  margin-bottom: 14px;
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+}
 .footer-col li { margin-bottom: 8px; }
-.footer-col a { color: #cdd9dc; }
+.footer-col a { color: var(--c-ink-soft); }
 .footer-col a:hover { color: var(--c-primary); }
 
-.footer-address { line-height: 1.5; margin-top: 12px; color: #cdd9dc; }
-.footer-meta { font-size: .8rem; color: #8095a0; line-height: 1.5; margin-top: 6px; }
+.footer-address { line-height: 1.5; margin-top: 12px; color: var(--c-ink-soft); }
+.footer-meta { font-size: .8rem; color: #8a97a0; line-height: 1.5; margin-top: 6px; }
 
 /* Social icons in footer (kleur per kanaal) */
 .social-list { display: flex; flex-direction: column; gap: 10px; }
@@ -871,7 +874,7 @@ p { margin: 0 0 1rem; }
   align-items: center;
   gap: 12px;
   font-weight: 500;
-  color: #cdd9dc;
+  color: var(--c-ink-soft);
   transition: color .2s, transform .2s;
 }
 .social-link:hover { transform: translateX(3px); }
@@ -880,24 +883,25 @@ p { margin: 0 0 1rem; }
   height: 22px;
   border-radius: 6px;
   padding: 4px;
-  fill: #fff;
+  fill: var(--c-ink);
   transition: background .25s, fill .25s, transform .25s;
 }
-/* Default state: white icon on subtle dark chip; hover = full brand color. */
-.social-link svg { background: rgba(255,255,255,.06); }
-.social-instagram:hover { color: #fff; }
+/* Default state: ink icon on subtle chip; hover = full brand color with white fill. */
+.social-link svg { background: rgba(29, 43, 48, .06); }
+.social-instagram:hover { color: var(--c-ink); }
 .social-instagram:hover svg {
   background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+  fill: #fff;
 }
-.social-linkedin:hover  { color: #fff; }
-.social-linkedin:hover svg  { background: #0A66C2; }
-.social-tiktok:hover    { color: #fff; }
-.social-tiktok:hover svg    { background: #000; box-shadow: 2px 0 0 #ff0050, -2px 0 0 #25f4ee; }
+.social-linkedin:hover  { color: var(--c-ink); }
+.social-linkedin:hover svg  { background: #0A66C2; fill: #fff; }
+.social-tiktok:hover    { color: var(--c-ink); }
+.social-tiktok:hover svg    { background: #000; fill: #fff; box-shadow: 2px 0 0 #ff0050, -2px 0 0 #25f4ee; }
 
 .footer-bottom {
-  border-top: 1px solid #1d3438;
+  border-top: 1px solid #dfe6ea;
   font-size: .85rem;
-  color: #8095a0;
+  color: #8a97a0;
 }
 .footer-bottom .container {
   display: flex;
@@ -907,7 +911,7 @@ p { margin: 0 0 1rem; }
   flex-wrap: wrap;
   gap: 12px;
 }
-.footer-bottom a { color: #8095a0; }
+.footer-bottom a { color: #8a97a0; }
 .footer-bottom a:hover { color: var(--c-primary); }
 
 /* ============================================================
