@@ -8,6 +8,8 @@
     <loc>https://www.culiquiz.nl/</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/" />
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -20,6 +22,28 @@
     <loc>https://www.culiquiz.nl/en/</loc>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.culiquiz.nl/de/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.culiquiz.nl/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/" />
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>

@@ -76,9 +76,43 @@
     { text: 'High score',              icon: 'crown',   theme: 'teal',   metric: '5,642' },
   ];
 
+  const BULLETS_DE = [
+    { text: 'Spielerische Quizze',     icon: 'star',    theme: 'teal'   },
+    { text: 'Echtes Wissen',           icon: 'fork',    theme: 'orange' },
+    { text: 'Team-Battle',             icon: 'trophy',  theme: 'yellow', metric: '7× gewonnen' },
+    { text: 'Microlearning',           icon: 'clock',   theme: 'teal',   metric: '3 Min.' },
+    { text: 'Thema-Battles',           icon: 'trophy',  theme: 'red',    metric: 'LIVE' },
+    { text: 'Wissen & Verhalten',      icon: 'doc',     theme: 'yellow' },
+    { text: 'Touchpoints',             icon: 'target',  theme: 'orange', metric: '200+ / Jahr' },
+    { text: 'Insights',                icon: 'chart',   theme: 'teal' },
+    { text: 'Upsell-Chancen',          icon: 'arrowUp', theme: 'orange', metric: '+18%' },
+    { text: 'XP',                      icon: 'sparkle', theme: 'yellow', metric: '+250' },
+    { text: 'Leaderboard',             icon: 'medal',   theme: 'red',    metric: '#1 diese Woche' },
+    { text: 'Highscore',               icon: 'crown',   theme: 'teal',   metric: '5.642' },
+  ];
+
+  const BULLETS_FR = [
+    { text: 'Quiz ludiques',           icon: 'star',    theme: 'teal'   },
+    { text: 'Vrai savoir',             icon: 'fork',    theme: 'orange' },
+    { text: 'Défiez votre équipe',     icon: 'trophy',  theme: 'yellow', metric: '7× gagné' },
+    { text: 'Microlearning',           icon: 'clock',   theme: 'teal',   metric: '3 min' },
+    { text: 'Battles thématiques',     icon: 'trophy',  theme: 'red',    metric: 'LIVE' },
+    { text: 'Savoir & comportement',   icon: 'doc',     theme: 'yellow' },
+    { text: 'Touchpoints',             icon: 'target',  theme: 'orange', metric: '200+ / an' },
+    { text: 'Insights',                icon: 'chart',   theme: 'teal' },
+    { text: 'Opportunités upsell',     icon: 'arrowUp', theme: 'orange', metric: '+18%' },
+    { text: 'XP',                      icon: 'sparkle', theme: 'yellow', metric: '+250' },
+    { text: 'Classement',              icon: 'medal',   theme: 'red',    metric: '#1 cette semaine' },
+    { text: 'Meilleur score',          icon: 'crown',   theme: 'teal',   metric: '5 642' },
+  ];
+
   // Pick the right bullet set based on <html lang>.
   const lang = (document.documentElement.lang || 'nl').slice(0, 2).toLowerCase();
-  const BULLETS = lang === 'en' ? BULLETS_EN : BULLETS_NL;
+  const BULLETS =
+    lang === 'en' ? BULLETS_EN :
+    lang === 'de' ? BULLETS_DE :
+    lang === 'fr' ? BULLETS_FR :
+    BULLETS_NL;
 
   const slots = document.querySelectorAll('.float-bullet[data-slot]');
   if (slots.length) {

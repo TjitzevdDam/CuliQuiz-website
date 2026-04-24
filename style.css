@@ -1596,14 +1596,16 @@ p { margin: 0 0 1rem; }
 /* ============ LANGUAGE SWITCHER ============ */
 .nav-list .nav-lang {
   margin-left: 6px;
+  position: relative;
 }
-.nav-list .nav-lang a {
+.lang-switch {
+  display: inline-block;
+}
+.lang-switch > summary {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 40px;
-  height: 30px;
-  padding: 0 10px;
+  gap: 6px;
+  padding: 6px 10px 6px 12px;
   border: 1.5px solid var(--c-grey);
   border-radius: 999px;
   font-size: .78rem;
@@ -1611,16 +1613,74 @@ p { margin: 0 0 1rem; }
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--c-ink-soft);
+  cursor: pointer;
+  list-style: none;
   transition: border-color .2s, color .2s, background .2s;
+  -webkit-tap-highlight-color: transparent;
 }
-.nav-list .nav-lang a:hover {
+.lang-switch > summary::-webkit-details-marker { display: none; }
+.lang-switch > summary::marker { content: ''; }
+.lang-switch > summary:hover {
   border-color: var(--c-primary);
   color: var(--c-primary);
   background: var(--c-primary-light);
 }
+.lang-switch .flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+.lang-caret {
+  width: 10px;
+  height: 6px;
+  transition: transform .25s;
+  flex-shrink: 0;
+}
+.lang-switch[open] > summary .lang-caret { transform: rotate(180deg); }
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 180px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(20, 50, 60, .16);
+  padding: 6px;
+  margin: 0;
+  list-style: none;
+  z-index: 100;
+  animation: lang-menu-in .15s ease;
+}
+@keyframes lang-menu-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.lang-menu li { margin: 0; }
+.lang-menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border-radius: 8px;
+  font-size: .92rem;
+  font-weight: 500;
+  color: var(--c-ink);
+  text-decoration: none;
+  transition: background .15s, color .15s;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.lang-menu a:hover {
+  background: var(--c-bg-soft);
+  color: var(--c-primary);
+}
+.lang-menu .flag {
+  font-size: 1.15rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
 @media (max-width: 720px) {
-  .nav-list .nav-lang { margin-left: 0; }
-  .nav-list .nav-lang a { margin-top: 8px; }
+  .nav-list .nav-lang { margin-left: 0; margin-top: 6px; }
+  .lang-menu { right: auto; left: 0; }
 }
 
 /* ============ WAT LEVEREN WE | CONTACT FORM ============ */
