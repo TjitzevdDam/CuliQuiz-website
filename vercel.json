@@ -8,32 +8,33 @@
   "redirects": [
     { "source": "/home", "destination": "/", "permanent": true },
     { "source": "/index", "destination": "/", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
 
-    { "source": "/events", "destination": "/nieuws.html", "permanent": true },
-    { "source": "/events.html", "destination": "/nieuws.html", "permanent": true },
-    { "source": "/blog", "destination": "/nieuws.html", "permanent": true },
-    { "source": "/blog/:slug", "destination": "/nieuws.html", "permanent": true },
+    { "source": "/events", "destination": "/nieuws", "permanent": true },
+    { "source": "/events.html", "destination": "/nieuws", "permanent": true },
+    { "source": "/blog", "destination": "/nieuws", "permanent": true },
+    { "source": "/blog/:slug", "destination": "/nieuws", "permanent": true },
 
-    { "source": "/contact", "destination": "/wat-leveren-we.html#aanvraag", "permanent": true },
-    { "source": "/contact.html", "destination": "/wat-leveren-we.html#aanvraag", "permanent": true },
+    { "source": "/contact", "destination": "/wat-leveren-we#aanvraag", "permanent": true },
+    { "source": "/contact.html", "destination": "/wat-leveren-we#aanvraag", "permanent": true },
 
-    { "source": "/spel-elementen", "destination": "/wat-leveren-we.html", "permanent": true },
-    { "source": "/spel-elementen.html", "destination": "/wat-leveren-we.html", "permanent": true },
+    { "source": "/spel-elementen", "destination": "/wat-leveren-we", "permanent": true },
+    { "source": "/spel-elementen.html", "destination": "/wat-leveren-we", "permanent": true },
 
-    { "source": "/top-100", "destination": "/top100.html", "permanent": true },
-    { "source": "/culiquiz-top100", "destination": "/top100.html", "permanent": true },
-    { "source": "/culiquiz-top-100", "destination": "/top100.html", "permanent": true },
+    { "source": "/top-100", "destination": "/top100", "permanent": true },
+    { "source": "/culiquiz-top100", "destination": "/top100", "permanent": true },
+    { "source": "/culiquiz-top-100", "destination": "/top100", "permanent": true },
 
-    { "source": "/finale", "destination": "/nieuws/finale-2023-2024.html", "permanent": true },
-    { "source": "/finale-2024", "destination": "/nieuws/finale-2023-2024.html", "permanent": true },
-    { "source": "/finale-2025", "destination": "/nieuws/battle-2025.html", "permanent": true },
+    { "source": "/finale", "destination": "/nieuws/finale-2023-2024", "permanent": true },
+    { "source": "/finale-2024", "destination": "/nieuws/finale-2023-2024", "permanent": true },
+    { "source": "/finale-2025", "destination": "/nieuws/battle-2025", "permanent": true },
 
-    { "source": "/partners", "destination": "/ambassadeurs.html", "permanent": true },
-    { "source": "/partners.html", "destination": "/ambassadeurs.html", "permanent": true },
-    { "source": "/ambassadeur", "destination": "/ambassadeurs.html", "permanent": true },
+    { "source": "/partners", "destination": "/ambassadeurs", "permanent": true },
+    { "source": "/partners.html", "destination": "/ambassadeurs", "permanent": true },
+    { "source": "/ambassadeur", "destination": "/ambassadeurs", "permanent": true },
 
-    { "source": "/app", "destination": "/scholen.html", "permanent": true },
-    { "source": "/download", "destination": "/scholen.html", "permanent": true }
+    { "source": "/app", "destination": "/scholen", "permanent": true },
+    { "source": "/download", "destination": "/scholen", "permanent": true }
   ],
   "headers": [
     {
