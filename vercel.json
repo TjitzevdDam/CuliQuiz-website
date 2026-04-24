@@ -21,7 +21,6 @@
     { "source": "/spel-elementen.html", "destination": "/wat-leveren-we.html", "permanent": true },
 
     { "source": "/top-100", "destination": "/top100.html", "permanent": true },
-    { "source": "/top100", "destination": "/top100.html", "permanent": true },
     { "source": "/culiquiz-top100", "destination": "/top100.html", "permanent": true },
     { "source": "/culiquiz-top-100", "destination": "/top100.html", "permanent": true },
 

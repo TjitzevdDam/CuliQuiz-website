@@ -1232,13 +1232,26 @@ p { margin: 0 0 1rem; }
   object-fit: cover;
   transition: transform .4s;
 }
-/* For logo-style thumbnails: contain instead of cover, with padding. */
+/* For logo-style thumbnails: contain instead of cover, with padding.
+   Higher specificity via !important to win from base .news-photo img rule. */
+.news-photo.news-photo-contain,
 .news-photo-contain {
-  background: #fff;
-  padding: 24px;
+  background: var(--c-bg-soft);
+  padding: 48px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .news-photo-contain img {
-  object-fit: contain;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain !important;
+}
+.news-card:hover .news-photo-contain img { transform: none; }
+@media (max-width: 720px) {
+  .news-photo-contain { padding: 32px 40px; }
 }
 .news-card:hover .news-photo img { transform: scale(1.04); }
 .news-body {
@@ -1323,6 +1336,15 @@ p { margin: 0 0 1rem; }
   color: var(--c-text);
 }
 .article-body p { margin: 0 0 20px; }
+/* Links inside article-body should not style .btn elements */
+.article-body a.btn,
+.article-body a.btn-primary {
+  color: #fff;
+  text-decoration: none;
+}
+.article-body a.btn:hover,
+.article-body a.btn-primary:hover { color: #fff; }
+
 .article-body a {
   color: var(--c-primary);
   text-decoration: underline;
