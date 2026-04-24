@@ -1232,6 +1232,14 @@ p { margin: 0 0 1rem; }
   object-fit: cover;
   transition: transform .4s;
 }
+/* For logo-style thumbnails: contain instead of cover, with padding. */
+.news-photo-contain {
+  background: #fff;
+  padding: 24px;
+}
+.news-photo-contain img {
+  object-fit: contain;
+}
 .news-card:hover .news-photo img { transform: scale(1.04); }
 .news-body {
   padding: 22px 26px 26px;
