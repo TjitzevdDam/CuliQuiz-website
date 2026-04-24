@@ -49,7 +49,7 @@
   const BULLETS = [
     { text: 'Speelse quizzen',         icon: 'star',    theme: 'teal'   },
     { text: 'Echte kennis',            icon: 'fork',    theme: 'orange' },
-    { text: 'Battle je team',          icon: 'trophy',  theme: 'yellow', metric: 'Win streak 7' },
+    { text: 'Battle je team',          icon: 'trophy',  theme: 'yellow', metric: '7x gewonnen' },
     { text: 'Micro-leren',             icon: 'clock',   theme: 'teal',   metric: '3 min' },
     { text: "Thema battles",           icon: 'trophy',  theme: 'red',    metric: 'LIVE' },
     { text: 'Kennis & gedrag',         icon: 'doc',     theme: 'yellow' },
