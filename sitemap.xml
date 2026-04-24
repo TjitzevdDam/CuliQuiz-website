@@ -427,27 +427,187 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- NL-only news articles -->
   <url>
     <loc>https://www.culiquiz.nl/nieuws/mocca-dor.html</loc>
-    <lastmod>2026-04-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/mocca-dor.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/en/news/mocca-dor.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/mocca-dor.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/de/news/mocca-dor.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/mocca-dor.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/fr/news/mocca-dor.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/mocca-dor.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/es/news/mocca-dor.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/mocca-dor.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/mocca-dor.html" />
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.culiquiz.nl/nieuws/hendi.html</loc>
-    <lastmod>2026-02-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/hendi.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/en/news/hendi.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/hendi.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/de/news/hendi.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/hendi.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/fr/news/hendi.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/hendi.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/es/news/hendi.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/hendi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/hendi.html" />
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.culiquiz.nl/nieuws/coca-cola.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/coca-cola.html" />
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://www.culiquiz.nl/en/news/coca-cola.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/coca-cola.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/de/news/coca-cola.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/coca-cola.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/fr/news/coca-cola.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/coca-cola.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.culiquiz.nl/es/news/coca-cola.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://www.culiquiz.nl/nieuws/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.culiquiz.nl/en/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.culiquiz.nl/de/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.culiquiz.nl/fr/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.culiquiz.nl/es/news/coca-cola.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.culiquiz.nl/nieuws/coca-cola.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- NL-only news articles (Dutch events) -->
   <url>
     <loc>https://www.culiquiz.nl/nieuws/battle-2025.html</loc>
     <changefreq>yearly</changefreq>
