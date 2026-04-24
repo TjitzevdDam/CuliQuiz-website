@@ -897,6 +897,8 @@ p { margin: 0 0 1rem; }
 .social-linkedin:hover svg  { background: #0A66C2; fill: #fff; }
 .social-tiktok:hover    { color: var(--c-ink); }
 .social-tiktok:hover svg    { background: #000; fill: #fff; box-shadow: 2px 0 0 #ff0050, -2px 0 0 #25f4ee; }
+.social-spotify:hover   { color: var(--c-ink); }
+.social-spotify:hover svg   { background: #1DB954; fill: #fff; }
 
 .footer-bottom {
   border-top: 1px solid #dfe6ea;
