@@ -167,7 +167,8 @@ p { margin: 0 0 1rem; }
 .nav-list {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 22px;
+  flex-wrap: nowrap;
 }
 .nav-list a {
   font-weight: 500;
@@ -175,6 +176,7 @@ p { margin: 0 0 1rem; }
   font-size: .95rem;
   position: relative;
   padding: 6px 0;
+  white-space: nowrap;
 }
 .nav-list a:hover { color: var(--c-primary); }
 .nav-list .nav-cta {
@@ -1394,7 +1396,7 @@ p { margin: 0 0 1rem; }
   .footer-inner { grid-template-columns: 1fr; gap: 40px; padding-top: 50px; }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1080px) {
   .nav-toggle { display: flex; }
   .nav-list {
     position: absolute;
