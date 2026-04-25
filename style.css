@@ -1600,9 +1600,27 @@ p { margin: 0 0 1rem; }
 /* ============ LANGUAGE SWITCHER — final, bulletproof ============
    Pill with flag + code. No caret. Dropdown with flag + language name
    side-by-side. Works cleanly even if legacy SVG carets still exist in
-   cached HTML (we hide them). */
+   cached HTML (we hide them).
+   Lives OUTSIDE .nav-list so it's always visible (also on mobile,
+   never collapsed into the hamburger). */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.main-nav .nav-list  { order: 1; }
+.main-nav .nav-lang  { order: 2; }
+.main-nav .nav-toggle { order: 3; }
+
+.main-nav .nav-lang {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+/* Legacy support: still allow .nav-list .nav-lang for any cached pages
+   served before the HTML refactor. */
 .nav-list .nav-lang {
-  margin-left: 10px;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -1697,10 +1715,14 @@ p { margin: 0 0 1rem; }
   font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
 }
 
-/* Mobile: nav wraps; language pill moves next to burger */
-@media (max-width: 960px) {
-  .nav-list .nav-lang { margin-left: 0; margin-top: 6px; }
-  .lang-menu { right: auto; left: 0; }
+/* Mobile: nav-lang lives in the header next to the hamburger,
+   never inside the collapsed nav-list. */
+@media (max-width: 1080px) {
+  .main-nav .nav-lang {
+    margin: 0;
+  }
+  /* Open dropdown to the LEFT so it doesn't clip off-screen */
+  .lang-menu { right: 0; left: auto; }
 }
 
 /* ============ WAT LEVEREN WE | CONTACT FORM ============ */
