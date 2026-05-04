@@ -193,6 +193,20 @@
     })(window, document, 'clarity', 'script', 'wlryoe0sms');
   }
 
+  // Zoho SalesIQ — live chat widget (loads after Statistics consent
+  // because SalesIQ uses cookies for visitor tracking + chat context)
+  function loadZohoSalesIQ() {
+    if (window.__cqSalesIQLoaded) return;
+    window.__cqSalesIQLoaded = true;
+    window.$zoho = window.$zoho || {};
+    window.$zoho.salesiq = window.$zoho.salesiq || { ready: function () {} };
+    var s = document.createElement('script');
+    s.id = 'zsiqscript';
+    s.defer = true;
+    s.src = 'https://salesiq.zohopublic.eu/widget?wc=siqcb335552ec2c2159be8cd3c54539b62fdf03ed1a2c326b8ddc571a0209d48afa';
+    document.body.appendChild(s);
+  }
+
   // LinkedIn Insight Tag — Partner ID: 8485786
   function loadLinkedInInsight() {
     if (window.__cqLinkedInLoaded) return;
@@ -269,6 +283,7 @@
       loadVercelAnalytics();
       loadGA4();
       loadClarity();
+      loadZohoSalesIQ();
     }
     if (consent.marketing) {
       loadLinkedInInsight();
