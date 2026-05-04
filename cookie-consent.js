@@ -163,10 +163,29 @@
     document.head.appendChild(s);
   }
 
+  // Google Analytics 4 (gtag.js) — Measurement ID: G-5Y4GQWX2W1
+  function loadGA4() {
+    if (window.__cqGA4Loaded) return;
+    window.__cqGA4Loaded = true;
+    var GA_ID = 'G-5Y4GQWX2W1';
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
   function applyConsent(consent) {
     if (!consent) return;
-    if (consent.analytics) loadVercelAnalytics();
-    // Extension point: GA4, Meta Pixel, LinkedIn live here later.
+    if (consent.analytics) {
+      loadVercelAnalytics();
+      loadGA4();
+    }
+    // Extension point: Meta Pixel, LinkedIn Insight Tag, etc.
     // Listen via document.addEventListener('culiquiz:consent-update', ...)
     document.dispatchEvent(new CustomEvent('culiquiz:consent-update', { detail: consent }));
   }
