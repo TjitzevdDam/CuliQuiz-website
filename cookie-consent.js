@@ -164,10 +164,12 @@
   }
 
   // Google Analytics 4 (gtag.js) — Measurement ID: G-5Y4GQWX2W1
+  // Plus Google Ads conversion tag: AW-623191309 (loads alongside GA4)
   function loadGA4() {
     if (window.__cqGA4Loaded) return;
     window.__cqGA4Loaded = true;
     var GA_ID = 'G-5Y4GQWX2W1';
+    var AW_ID = 'AW-623191309';
     var s = document.createElement('script');
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
@@ -177,6 +179,7 @@
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', GA_ID, { anonymize_ip: true });
+    gtag('config', AW_ID); // Google Ads conversion tracking
   }
 
   // Microsoft Clarity — Project ID: wlryoe0sms
