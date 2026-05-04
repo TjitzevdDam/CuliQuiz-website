@@ -36,6 +36,23 @@
     if (typeof window.lintrk === 'function' && eventName === 'generate_lead') {
       try { window.lintrk('track', { conversion_id: null }); } catch (e) {}
     }
+    // TikTok — map our events to standard TikTok Pixel events
+    if (typeof window.ttq !== 'undefined' && window.ttq && typeof window.ttq.track === 'function') {
+      try {
+        var ttMap = {
+          generate_lead:    'SubmitForm',
+          app_store_click:  'Download',
+          play_store_click: 'Download',
+          learnstrike_click:'CompleteRegistration',
+          live_click:       'ClickButton',
+          email_click:      'Contact',
+        };
+        var ttEvent = ttMap[eventName];
+        if (ttEvent) {
+          window.ttq.track(ttEvent, params || {});
+        }
+      } catch (e) {}
+    }
   }
   window.cqTrack = cqTrack;
 

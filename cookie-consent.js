@@ -229,6 +229,37 @@
     window.fbq('track', 'PageView');
   }
 
+  // TikTok Pixel — Pixel ID: D7S87K3C77U4TTGIGRSG
+  function loadTikTokPixel() {
+    if (window.__cqTikTokLoaded) return;
+    window.__cqTikTokLoaded = true;
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject = t;
+      var ttq = w[t] = w[t] || [];
+      ttq.methods = ['page','track','identify','instances','debug','on','off','once','ready','alias','group','enableCookie','disableCookie','holdConsent','revokeConsent','grantConsent'];
+      ttq.setAndDefer = function (t, e) { t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))); }; };
+      for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+      ttq.instance = function (t) {
+        for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]);
+        return e;
+      };
+      ttq.load = function (e, n) {
+        var r = 'https://analytics.tiktok.com/i18n/pixel/events.js';
+        var o = n && n.partner;
+        ttq._i = ttq._i || {}; ttq._i[e] = []; ttq._i[e]._u = r;
+        ttq._t = ttq._t || {}; ttq._t[e] = +new Date();
+        ttq._o = ttq._o || {}; ttq._o[e] = n || {};
+        var s = document.createElement('script');
+        s.type = 'text/javascript'; s.async = !0;
+        s.src = r + '?sdkid=' + e + '&lib=' + t;
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      };
+      ttq.load('D7S87K3C77U4TTGIGRSG');
+      ttq.page();
+    }(window, document, 'ttq');
+  }
+
   function applyConsent(consent) {
     if (!consent) return;
     if (consent.analytics) {
@@ -239,8 +270,9 @@
     if (consent.marketing) {
       loadLinkedInInsight();
       loadMetaPixel();
+      loadTikTokPixel();
     }
-    // Extension point: TikTok Pixel, Google Ads, etc.
+    // Extension point: Google Ads conversion tag (currently auto-imports via GA4 link).
     // Listen via document.addEventListener('culiquiz:consent-update', ...)
     document.dispatchEvent(new CustomEvent('culiquiz:consent-update', { detail: consent }));
   }
