@@ -1,6 +1,106 @@
 /* CuliQuiz | small interactions */
 
 (function () {
+  /* ============================================================
+     Analytics tracking helper
+     Fires a GA4 event only if gtag is available (i.e. the visitor
+     accepted the Analytics consent category). Safe to call anywhere.
+     ============================================================ */
+  function cqTrack(eventName, params) {
+    if (typeof window.gtag === 'function') {
+      try { window.gtag('event', eventName, params || {}); } catch (e) {}
+    }
+    // Microsoft Clarity custom events too (for filterable session recordings)
+    if (typeof window.clarity === 'function') {
+      try { window.clarity('event', eventName); } catch (e) {}
+    }
+  }
+  window.cqTrack = cqTrack;
+
+  /* ============ Auto-tracking: link clicks ============ */
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest && e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var path = window.location.pathname;
+
+    // App Store
+    if (href.indexOf('apps.apple.com') > -1) {
+      cqTrack('app_store_click', { store: 'apple', page: path });
+      return;
+    }
+    // Google Play
+    if (href.indexOf('play.google.com') > -1) {
+      cqTrack('play_store_click', { store: 'google_play', page: path });
+      return;
+    }
+    // Learnstrike (Zelf leren CTA)
+    if (href.indexOf('learnstrike.app') > -1) {
+      cqTrack('learnstrike_click', { page: path });
+      return;
+    }
+    // CuliQuiz Live
+    if (href.indexOf('culiquiz-live.nl') > -1) {
+      cqTrack('live_click', { page: path });
+      return;
+    }
+    // Social
+    if (href.indexOf('instagram.com') > -1)        { cqTrack('social_click', { network: 'instagram' });  return; }
+    if (href.indexOf('linkedin.com') > -1)         { cqTrack('social_click', { network: 'linkedin' });   return; }
+    if (href.indexOf('tiktok.com') > -1)           { cqTrack('social_click', { network: 'tiktok' });     return; }
+    if (href.indexOf('open.spotify.com') > -1)     { cqTrack('social_click', { network: 'spotify' });    return; }
+    // Email
+    if (href.indexOf('mailto:') === 0) {
+      cqTrack('email_click', { email: href.replace('mailto:', '') });
+      return;
+    }
+    // Generic outbound
+    try {
+      var url = new URL(href, window.location.href);
+      if (url.host && url.host !== window.location.host && href.charAt(0) !== '#') {
+        cqTrack('outbound_click', { url: url.href, host: url.host });
+      }
+    } catch (e) {}
+  }, true);
+
+  /* ============ Auto-tracking: nav CTA (Zelf leren?) ============ */
+  document.querySelectorAll('.nav-cta').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      cqTrack('nav_cta_click', { destination: btn.getAttribute('href') });
+    });
+  });
+
+  /* ============ Auto-tracking: language switch ============ */
+  document.querySelectorAll('.lang-menu a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var code = (a.getAttribute('hreflang') || a.getAttribute('lang') || '').trim();
+      cqTrack('language_switch', { to: code });
+    });
+  });
+
+  /* ============ Auto-tracking: scroll depth ============ */
+  (function () {
+    var milestones = [25, 50, 75, 100];
+    var fired = {};
+    var throttle = null;
+    function check() {
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return;
+      var pct = Math.round((window.scrollY / docHeight) * 100);
+      for (var i = 0; i < milestones.length; i++) {
+        var m = milestones[i];
+        if (pct >= m && !fired[m]) {
+          fired[m] = true;
+          cqTrack('scroll_depth', { percent: m, page: window.location.pathname });
+        }
+      }
+    }
+    window.addEventListener('scroll', function () {
+      if (throttle) return;
+      throttle = setTimeout(function () { throttle = null; check(); }, 250);
+    }, { passive: true });
+  })();
+
   // Mobile nav toggle
   const toggle = document.querySelector('.nav-toggle');
   const list = document.getElementById('primary-menu');
@@ -233,6 +333,10 @@
         });
 
         // Met no-cors kunnen we de response niet lezen; we nemen aan dat het werkt
+        cqTrack('generate_lead', {
+          form_name: 'top100_nomination',
+          page: window.location.pathname,
+        });
         showSuccess();
       } catch (err) {
         console.error(err);
@@ -280,6 +384,10 @@
         const json = await res.json().catch(() => ({}));
 
         if (res.ok && (json.success === 'true' || json.success === true)) {
+          cqTrack('generate_lead', {
+            form_name: 'contact_request',
+            page: window.location.pathname,
+          });
           cform.hidden = true;
           cSuccess.hidden = false;
           cSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
