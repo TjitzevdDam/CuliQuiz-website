@@ -2236,3 +2236,192 @@ p { margin: 0 0 1rem; }
 @media (max-width: 720px) {
   .nominate-form .form-actions .btn { min-width: 0; width: 100%; }
 }
+
+/* ============ COOKIE CONSENT ============ */
+.cq-banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 9999;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 22px 60px rgba(20, 50, 60, .22), 0 4px 14px rgba(20, 50, 60, .08);
+  padding: 22px 26px;
+  max-width: 760px;
+  margin: 0 auto;
+  font-family: var(--font-body);
+  animation: cq-banner-in .3s ease;
+}
+@keyframes cq-banner-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.cq-banner-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+.cq-banner-text { flex: 1 1 auto; min-width: 0; }
+.cq-banner-text strong {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+  color: var(--c-ink);
+}
+.cq-banner-text p {
+  margin: 0;
+  color: var(--c-ink-soft);
+  font-size: .88rem;
+  line-height: 1.55;
+}
+.cq-banner-buttons {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+.cq-btn {
+  border: 0;
+  cursor: pointer;
+  padding: 11px 20px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: .85rem;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  transition: background .18s, transform .18s, box-shadow .18s, color .18s;
+  -webkit-tap-highlight-color: transparent;
+}
+.cq-btn-primary {
+  background: var(--c-primary);
+  color: #fff;
+}
+.cq-btn-primary:hover {
+  background: var(--c-primary-dark);
+  transform: translateY(-1px);
+}
+.cq-btn-ghost {
+  background: rgba(20, 50, 60, .06);
+  color: var(--c-ink);
+}
+.cq-btn-ghost:hover { background: rgba(20, 50, 60, .12); }
+
+@media (max-width: 760px) {
+  .cq-banner { left: 8px; right: 8px; bottom: 8px; padding: 18px 20px; border-radius: 14px; }
+  .cq-banner-inner { flex-direction: column; align-items: stretch; gap: 14px; }
+  .cq-banner-buttons { justify-content: stretch; }
+  .cq-btn { flex: 1 1 auto; min-width: 0; padding: 12px 14px; }
+}
+
+/* Preferences modal */
+.cq-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: cq-modal-in .2s ease;
+}
+@keyframes cq-modal-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.cq-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 50, 60, .5);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  cursor: pointer;
+}
+.cq-modal-card {
+  position: relative;
+  background: #fff;
+  border-radius: 18px;
+  max-width: 540px;
+  width: 100%;
+  padding: 32px 30px 24px;
+  box-shadow: 0 30px 80px rgba(20, 50, 60, .35);
+  max-height: 90vh;
+  overflow-y: auto;
+  font-family: var(--font-body);
+}
+.cq-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--c-ink-soft);
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background .15s, color .15s;
+}
+.cq-modal-close:hover { background: rgba(20, 50, 60, .08); color: var(--c-ink); }
+.cq-modal-card h3 {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  margin: 0 0 10px;
+  color: var(--c-ink);
+}
+.cq-modal-card > p {
+  margin: 0 0 18px;
+  color: var(--c-ink-soft);
+  font-size: .9rem;
+  line-height: 1.55;
+}
+.cq-pref-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid #ecf2f3;
+  cursor: pointer;
+}
+.cq-pref-row.cq-pref-locked { cursor: default; opacity: .9; }
+.cq-pref-row input[type="checkbox"] {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--c-primary);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.cq-pref-row.cq-pref-locked input[type="checkbox"] { cursor: not-allowed; }
+.cq-pref-row > div { flex: 1; }
+.cq-pref-row strong {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  color: var(--c-ink);
+  margin-bottom: 4px;
+}
+.cq-pref-row span {
+  display: block;
+  color: var(--c-ink-soft);
+  font-size: .85rem;
+  line-height: 1.5;
+}
+.cq-modal-card .cq-banner-buttons {
+  margin-top: 20px;
+  border-top: 1px solid #ecf2f3;
+  padding-top: 18px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 600px) {
+  .cq-modal-card { padding: 26px 22px 18px; }
+  .cq-modal-card .cq-banner-buttons { flex-direction: column-reverse; align-items: stretch; }
+}
