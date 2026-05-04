@@ -2,6 +2,51 @@
 
 (function () {
   /* ============================================================
+     Click-ID capture (GCLID, FBCLID, LI_FAT_ID, MSCLKID, TTCLID)
+     Reads the click-tracking parameters Google/Meta/LinkedIn add
+     to landing URLs and stores them for 90 days, so we can attach
+     them to the contact-form submission later (offline conversion
+     tracking — needed for Google Ads → Zoho Deals integration).
+     ============================================================ */
+  (function captureClickIds() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var keys = {
+        gclid:    'cq_gclid',     // Google Ads
+        gbraid:   'cq_gbraid',    // Google Ads (iOS)
+        wbraid:   'cq_wbraid',    // Google Ads (web → app)
+        fbclid:   'cq_fbclid',    // Meta
+        msclkid:  'cq_msclkid',   // Microsoft Ads
+        li_fat_id:'cq_li_fat_id', // LinkedIn
+        ttclid:   'cq_ttclid',    // TikTok
+      };
+      var ttl = 90 * 24 * 60 * 60 * 1000; // 90 days
+      Object.keys(keys).forEach(function (k) {
+        var v = params.get(k);
+        if (v) {
+          try {
+            localStorage.setItem(keys[k], JSON.stringify({ v: v, t: Date.now() + ttl }));
+          } catch (e) {}
+        }
+      });
+    } catch (e) {}
+  })();
+
+  // Read a stored click-ID, expires after TTL
+  function readClickId(key) {
+    try {
+      var raw = localStorage.getItem('cq_' + key);
+      if (!raw) return '';
+      var obj = JSON.parse(raw);
+      if (obj && obj.t && obj.t > Date.now()) return obj.v || '';
+      // expired — clear
+      localStorage.removeItem('cq_' + key);
+    } catch (e) {}
+    return '';
+  }
+  window.cqReadClickId = readClickId;
+
+  /* ============================================================
      Analytics tracking helper
      Fires a GA4 event only if gtag is available (i.e. the visitor
      accepted the Analytics consent category). Safe to call anywhere.
@@ -429,6 +474,20 @@
       body.append('Last Name', last || naam || 'Onbekend');
       body.append('Email', email || '');
       body.append('Lead Source', 'Anders'); // default — until we add a select to the website form
+
+      // Click-IDs for offline conversion tracking (Google Ads, Meta, LinkedIn, TikTok, Bing)
+      // Zoho only stores these once the matching custom field is added to the webform.
+      // Until then they're silently ignored — no harm done.
+      var gclid = readClickId('gclid');
+      if (gclid)             body.append('GCLID', gclid);
+      var fbclid = readClickId('fbclid');
+      if (fbclid)            body.append('FBCLID', fbclid);
+      var liFatId = readClickId('li_fat_id');
+      if (liFatId)           body.append('LinkedIn_Click_ID', liFatId);
+      var ttclid = readClickId('ttclid');
+      if (ttclid)            body.append('TikTok_Click_ID', ttclid);
+      var msclkid = readClickId('msclkid');
+      if (msclkid)           body.append('MSCLKID', msclkid);
 
       // Append the message as part of Last Name so it's not lost — quick hack until
       // a Description field is added to the Zoho webform.
