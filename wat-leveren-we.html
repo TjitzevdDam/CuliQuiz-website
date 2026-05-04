@@ -313,6 +313,17 @@
               <input type="text" id="cf-bedrijf" name="Bedrijf" required autocomplete="organization" />
             </div>
             <div class="form-row">
+              <label for="cf-rol">Ik ben <span aria-hidden="true">*</span></label>
+              <select id="cf-rol" name="Rol" required>
+                <option value="">Maak een keuze…</option>
+                <option value="Horecaondernemer">Horecaondernemer</option>
+                <option value="Toeleverancier of Producent">Toeleverancier / Producent / Merk</option>
+                <option value="Docent">Docent / opleider</option>
+                <option value="Student">Student</option>
+                <option value="Anders">Anders</option>
+              </select>
+            </div>
+            <div class="form-row">
               <label for="cf-email">E-mailadres <span aria-hidden="true">*</span></label>
               <input type="email" id="cf-email" name="E-mail" required autocomplete="email" />
             </div>
@@ -415,7 +426,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=13"></script>
+  <script src="script.js?v=14"></script>
   <script src="/cookie-consent.js?v=6" defer></script>
 </body>
 </html>
