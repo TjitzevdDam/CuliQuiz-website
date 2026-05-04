@@ -475,19 +475,17 @@
       body.append('Email', email || '');
       body.append('Lead Source', 'Anders'); // default — until we add a select to the website form
 
-      // Click-IDs for offline conversion tracking (Google Ads, Meta, LinkedIn, TikTok, Bing)
-      // Zoho only stores these once the matching custom field is added to the webform.
-      // Until then they're silently ignored — no harm done.
-      var gclid = readClickId('gclid');
-      if (gclid)             body.append('GCLID', gclid);
-      var fbclid = readClickId('fbclid');
-      if (fbclid)            body.append('FBCLID', fbclid);
-      var liFatId = readClickId('li_fat_id');
-      if (liFatId)           body.append('LinkedIn_Click_ID', liFatId);
-      var ttclid = readClickId('ttclid');
-      if (ttclid)            body.append('TikTok_Click_ID', ttclid);
-      var msclkid = readClickId('msclkid');
-      if (msclkid)           body.append('MSCLKID', msclkid);
+      // Click-IDs for offline conversion tracking (Google Ads, Meta, LinkedIn, TikTok)
+      // Zoho expects them in their LEADCF-numbered custom fields (mapped via webform layout):
+      //   LEADCF10 = Google Click ID
+      //   LEADCF11 = LinkedIn Click ID
+      //   LEADCF12 = FBCLID
+      //   LEADCF13 = TikTok Click ID
+      // Default '-' is set on each hidden field, so we always send a value (not empty).
+      body.append('LEADCF10', readClickId('gclid')     || '-'); // Google
+      body.append('LEADCF11', readClickId('li_fat_id') || '-'); // LinkedIn
+      body.append('LEADCF12', readClickId('fbclid')    || '-'); // Meta
+      body.append('LEADCF13', readClickId('ttclid')    || '-'); // TikTok
 
       // Append the message as part of Last Name so it's not lost — quick hack until
       // a Description field is added to the Zoho webform.
