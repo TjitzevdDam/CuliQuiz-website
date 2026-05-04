@@ -10,9 +10,31 @@
     if (typeof window.gtag === 'function') {
       try { window.gtag('event', eventName, params || {}); } catch (e) {}
     }
-    // Microsoft Clarity custom events too (for filterable session recordings)
+    // Microsoft Clarity custom events (for filterable session recordings)
     if (typeof window.clarity === 'function') {
       try { window.clarity('event', eventName); } catch (e) {}
+    }
+    // Meta Pixel — map our events to standard Meta events where possible
+    if (typeof window.fbq === 'function') {
+      try {
+        var metaMap = {
+          generate_lead:    'Lead',
+          app_store_click:  'ViewContent',
+          play_store_click: 'ViewContent',
+          learnstrike_click:'CompleteRegistration',
+          live_click:       'ViewContent',
+        };
+        var metaEvent = metaMap[eventName];
+        if (metaEvent) {
+          window.fbq('track', metaEvent, params || {});
+        } else {
+          window.fbq('trackCustom', eventName, params || {});
+        }
+      } catch (e) {}
+    }
+    // LinkedIn — generic event ping (conversion IDs added later via Campaign Manager)
+    if (typeof window.lintrk === 'function' && eventName === 'generate_lead') {
+      try { window.lintrk('track', { conversion_id: null }); } catch (e) {}
     }
   }
   window.cqTrack = cqTrack;

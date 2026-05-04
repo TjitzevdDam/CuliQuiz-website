@@ -190,6 +190,45 @@
     })(window, document, 'clarity', 'script', 'wlryoe0sms');
   }
 
+  // LinkedIn Insight Tag — Partner ID: 8485786
+  function loadLinkedInInsight() {
+    if (window.__cqLinkedInLoaded) return;
+    window.__cqLinkedInLoaded = true;
+    var partnerId = '8485786';
+    window._linkedin_partner_id = partnerId;
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(partnerId);
+    if (!window.lintrk) {
+      window.lintrk = function (a, b) { window.lintrk.q.push([a, b]); };
+      window.lintrk.q = [];
+    }
+    var s = document.getElementsByTagName('script')[0];
+    var b = document.createElement('script');
+    b.type = 'text/javascript';
+    b.async = true;
+    b.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
+    s.parentNode.insertBefore(b, s);
+  }
+
+  // Meta Pixel — Pixel ID: 986148519536894
+  function loadMetaPixel() {
+    if (window.__cqMetaPixelLoaded) return;
+    window.__cqMetaPixelLoaded = true;
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e); t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', '986148519536894');
+    window.fbq('track', 'PageView');
+  }
+
   function applyConsent(consent) {
     if (!consent) return;
     if (consent.analytics) {
@@ -197,7 +236,11 @@
       loadGA4();
       loadClarity();
     }
-    // Extension point: Meta Pixel, LinkedIn Insight Tag, etc.
+    if (consent.marketing) {
+      loadLinkedInInsight();
+      loadMetaPixel();
+    }
+    // Extension point: TikTok Pixel, Google Ads, etc.
     // Listen via document.addEventListener('culiquiz:consent-update', ...)
     document.dispatchEvent(new CustomEvent('culiquiz:consent-update', { detail: consent }));
   }
