@@ -283,7 +283,7 @@
       loadVercelAnalytics();
       loadGA4();
       loadClarity();
-      loadZohoSalesIQ();
+      // loadZohoSalesIQ(); // Mr. Q bot uitgeschakeld — paraphrasing was onbetrouwbaar
     }
     if (consent.marketing) {
       loadLinkedInInsight();
