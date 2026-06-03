@@ -700,4 +700,146 @@
       }
     });
   }
+
+  // ============ Nieuwsbrief popup ============
+  // Verschijnt na 30s rechtsonder. Wegklikken = 7 dagen stilte.
+  // Inschrijven = permanent uit. Gebruikt dezelfde Campaigns/CRM-endpoints
+  // als het reguliere nieuwsbrief-form (Lead Source = "Anders" als rol).
+  (function initNewsletterPopup() {
+    const STORAGE_KEY = 'cq_nl_popup_state';
+    const DISMISS_DAYS = 7;
+    const SHOW_DELAY_MS = 30 * 1000;
+
+    function getState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) { return {}; }
+    }
+    function setState(patch) {
+      try {
+        const next = Object.assign({}, getState(), patch);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      } catch (e) { /* no-op */ }
+    }
+    function shouldShow() {
+      const st = getState();
+      if (st.subscribedAt) return false;
+      if (st.dismissedAt) {
+        const ageMs = Date.now() - st.dismissedAt;
+        if (ageMs < DISMISS_DAYS * 24 * 60 * 60 * 1000) return false;
+      }
+      // Niet tonen op de bedankt-pagina of in de admin/preview
+      const p = window.location.pathname;
+      if (p.indexOf('nieuwsbrief-bedankt') !== -1) return false;
+      return true;
+    }
+
+    function buildPopup() {
+      const el = document.createElement('aside');
+      el.className = 'nl-popup';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Schrijf je in voor de CuliQuiz-nieuwsbrief');
+      el.innerHTML = ''
+        + '<button type="button" class="nl-popup-close" aria-label="Sluiten">&times;</button>'
+        + '<p class="nl-popup-eyebrow">Nieuwsbrief</p>'
+        + '<h3>Eén mail per maand. Geen ruis.</h3>'
+        + '<p class="nl-popup-sub">Wat we leren uit de data van horeca-teams die elke dag CuliQuiz spelen.</p>'
+        + '<form id="nl-popup-form" novalidate>'
+        +   '<div class="nl-popup-row">'
+        +     '<input type="email" name="email" placeholder="je@adres.nl" required autocomplete="email">'
+        +     '<button type="submit" class="nl-popup-btn">Inschrijven</button>'
+        +   '</div>'
+        +   '<p class="nl-popup-status" id="nl-popup-status" aria-live="polite"></p>'
+        +   '<p class="nl-popup-fineprint">Geen spam. Uitschrijven met een klik.</p>'
+        + '</form>'
+        + '<div class="nl-popup-success" id="nl-popup-success" hidden>'
+        +   '<p><strong>Top, je staat erop.</strong><br>Check je inbox voor de welkomstmail.</p>'
+        + '</div>';
+      return el;
+    }
+
+    function showPopup() {
+      if (!shouldShow()) return;
+      if (document.querySelector('.nl-popup')) return;
+
+      const el = buildPopup();
+      document.body.appendChild(el);
+
+      // Volgende frame: triggert CSS-transition
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => el.classList.add('is-visible'));
+      });
+
+      const closeBtn = el.querySelector('.nl-popup-close');
+      const form = el.querySelector('#nl-popup-form');
+      const statusEl = el.querySelector('#nl-popup-status');
+      const successEl = el.querySelector('#nl-popup-success');
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      function dismiss() {
+        setState({ dismissedAt: Date.now() });
+        el.classList.remove('is-visible');
+        setTimeout(() => el.remove(), 400);
+        cqTrack('newsletter_popup_dismissed', { page: window.location.pathname });
+      }
+      closeBtn.addEventListener('click', dismiss);
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (statusEl) { statusEl.textContent = ''; statusEl.classList.remove('is-error'); }
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          if (statusEl) { statusEl.textContent = 'Vul een geldig e-mailadres in.'; statusEl.classList.add('is-error'); }
+          return;
+        }
+
+        const email = (new FormData(form).get('email') || '').toString().trim();
+        if (!email) return;
+
+        submitBtn.disabled = true;
+        if (statusEl) statusEl.textContent = 'Bezig…';
+
+        // Beide endpoints parallel, no-cors. Lead Source = "Anders" want geen
+        // rol-veld in popup — bewust minimale friction.
+        postNewsletterToZoho({ email, rol: 'Anders' }).catch((err) => {
+          console.warn('Zoho CRM popup post failed (non-fatal):', err);
+        });
+        postNewsletterToCampaigns({ email }).catch((err) => {
+          console.warn('Zoho Campaigns popup subscribe failed (non-fatal):', err);
+        });
+
+        cqTrack('newsletter_signup', {
+          source: 'popup',
+          page: window.location.pathname,
+          rol: 'Anders',
+        });
+
+        // Permanent suppress en success state tonen
+        setState({ subscribedAt: Date.now() });
+        form.hidden = true;
+        if (successEl) successEl.hidden = false;
+
+        // Sluit automatisch na 5s
+        setTimeout(() => {
+          el.classList.remove('is-visible');
+          setTimeout(() => el.remove(), 400);
+        }, 5000);
+      });
+
+      cqTrack('newsletter_popup_shown', { page: window.location.pathname });
+    }
+
+    // Wacht tot DOM ready (script staat in <body> dus meestal al ready)
+    function schedule() {
+      if (!shouldShow()) return;
+      setTimeout(showPopup, SHOW_DELAY_MS);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', schedule, { once: true });
+    } else {
+      schedule();
+    }
+  })();
 })();

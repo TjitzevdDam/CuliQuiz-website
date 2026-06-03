@@ -2548,3 +2548,132 @@ p { margin: 0 0 1rem; }
   flex-shrink: 0;
   accent-color: #26A8B0;
 }
+
+/* ============ NIEUWSBRIEF POPUP (rechtsonder na 30s) ============ */
+.nl-popup {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 340px;
+  max-width: calc(100vw - 32px);
+  background: #fff;
+  border-radius: var(--radius, 14px);
+  box-shadow: var(--shadow-lg, 0 24px 60px rgba(20,50,60,.18));
+  padding: 22px 22px 20px;
+  z-index: 9000;
+  font: inherit;
+  color: var(--c-ink, #0d2628);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
+  pointer-events: none;
+  border-top: 3px solid #26A8B0;
+}
+.nl-popup.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.nl-popup .nl-popup-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #6b7d80;
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nl-popup .nl-popup-close:hover { background: rgba(0,0,0,.05); color: #0d2628; }
+.nl-popup .nl-popup-eyebrow {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: #26A8B0;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+.nl-popup h3 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  color: #0d2628;
+  padding-right: 28px;
+}
+.nl-popup .nl-popup-sub {
+  margin: 0 0 14px;
+  color: #4a5d60;
+  font-size: .92rem;
+  line-height: 1.4;
+}
+.nl-popup form { margin: 0; }
+.nl-popup .nl-popup-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+.nl-popup input[type="email"] {
+  background: #f5f7f7;
+  border: 1px solid #d9e1e2;
+  border-radius: 8px;
+  padding: 11px 12px;
+  font: inherit;
+  color: #0d2628;
+  min-height: 42px;
+}
+.nl-popup input[type="email"]:focus {
+  outline: 2px solid #26A8B0;
+  outline-offset: 1px;
+  border-color: transparent;
+}
+.nl-popup .nl-popup-btn {
+  background: #26A8B0;
+  border: none;
+  color: #fff;
+  padding: 11px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: .92rem;
+}
+.nl-popup .nl-popup-btn:hover { background: #1f8e95; }
+.nl-popup .nl-popup-btn:disabled { opacity: .6; cursor: wait; }
+.nl-popup .nl-popup-fineprint {
+  margin: 10px 0 0;
+  font-size: .72rem;
+  color: #6b7d80;
+}
+.nl-popup .nl-popup-status {
+  margin: 8px 0 0;
+  font-size: .82rem;
+  color: #4a5d60;
+}
+.nl-popup .nl-popup-status.is-error { color: #c53030; }
+.nl-popup .nl-popup-success {
+  text-align: left;
+}
+.nl-popup .nl-popup-success p {
+  margin: 0;
+  color: #0d2628;
+  font-size: .95rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 560px) {
+  .nl-popup {
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    width: auto;
+    padding: 18px 18px 16px;
+  }
+  .nl-popup .nl-popup-row { grid-template-columns: 1fr; }
+}
