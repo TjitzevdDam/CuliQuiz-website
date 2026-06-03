@@ -608,32 +608,64 @@
   }
 
   // Directe inschrijving in Zoho Campaigns mailing-lijst "CuliQuiz Nieuwsbrief".
-  // Bypass CRM-workflow: zelfs als de CRM-actie haperts, komt de subscriber direct
-  // in de juiste Campaigns-lijst en triggert de autoresponder welkomstmail.
   // Endpoint en hidden fields komen 1-op-1 uit de gehoste Aanmeldformulier
   // (signupform 222109000002622295, gekoppeld aan lijst CuliQuiz Nieuwsbrief).
+  //
+  // We gebruiken bewust GEEN fetch — Zoho weigert silent POSTs zonder de juiste
+  // browser-context (session cookies, fingerprint). In plaats daarvan bootsen
+  // we Zoho's eigen mechanisme na: een echte <form> met target=hidden-iframe.
+  // Browser stuurt cookies + Referer + alles wat Zoho verwacht en de response
+  // landt in de iframe (die we negeren).
   function postNewsletterToCampaigns({ email }) {
     if (!email) return Promise.resolve();
-    const body = new URLSearchParams();
-    body.append('submitType', 'optinCustomView');
-    body.append('emailReportId', '');
-    body.append('formType', 'QuickForm');
-    body.append('zx', '14ae401ddc');
-    body.append('zcvers', '2.0');
-    body.append('oldListIds', '');
-    body.append('mode', 'OptinCreateView');
-    body.append('zcld', '131516f56e9294c6');
-    body.append('zctd', '131516f56e6b4159');
-    body.append('zc_trackCode', 'ZCFORMVIEW');
-    body.append('zc_formIx', '3z06a7cae3fd68733aa0943a711f62ab953b0ef3c9add406954fa6205a7f78ab18');
-    body.append('scriptless', 'yes');
-    body.append('CONTACT_EMAIL', email);
-
-    return fetch('https://rtlj-zcmp.maillist-manage.eu/weboptin.zc', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-      body: body.toString(),
+    return new Promise((resolve) => {
+      const FRAME_NAME = 'cq_nl_campaigns_target';
+      let frame = document.querySelector('iframe[name="' + FRAME_NAME + '"]');
+      if (!frame) {
+        frame = document.createElement('iframe');
+        frame.name = FRAME_NAME;
+        frame.style.cssText = 'position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none;left:-9999px;top:-9999px;';
+        frame.setAttribute('aria-hidden', 'true');
+        frame.setAttribute('tabindex', '-1');
+        document.body.appendChild(frame);
+      }
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://rtlj-zcmp.maillist-manage.eu/weboptin.zc';
+      form.target = FRAME_NAME;
+      form.acceptCharset = 'UTF-8';
+      form.enctype = 'application/x-www-form-urlencoded';
+      form.style.cssText = 'display:none;';
+      const fields = {
+        submitType: 'optinCustomView',
+        emailReportId: '',
+        formType: 'QuickForm',
+        zx: '14ae401ddc',
+        zcvers: '2.0',
+        oldListIds: '',
+        mode: 'OptinCreateView',
+        zcld: '131516f56e9294c6',
+        zctd: '131516f56e6b4159',
+        zc_trackCode: 'ZCFORMVIEW',
+        zc_formIx: '3z06a7cae3fd68733aa0943a711f62ab953b0ef3c9add406954fa6205a7f78ab18',
+        scriptless: 'yes',
+        viewFrom: 'URL_ACTION',
+        CONTACT_EMAIL: email,
+      };
+      Object.keys(fields).forEach((k) => {
+        const inp = document.createElement('input');
+        inp.type = 'hidden';
+        inp.name = k;
+        inp.value = fields[k];
+        form.appendChild(inp);
+      });
+      document.body.appendChild(form);
+      try { form.submit(); } catch (e) { /* no-op */ }
+      // Cleanup na korte vertraging — de iframe POST is dan zeker afgevuurd.
+      setTimeout(() => {
+        try { form.remove(); } catch (e) { /* no-op */ }
+        resolve();
+      }, 1500);
     });
   }
 
