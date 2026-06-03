@@ -608,64 +608,143 @@
   }
 
   // Directe inschrijving in Zoho Campaigns mailing-lijst "CuliQuiz Nieuwsbrief".
-  // Endpoint en hidden fields komen 1-op-1 uit de gehoste Aanmeldformulier
-  // (signupform 222109000002622295, gekoppeld aan lijst CuliQuiz Nieuwsbrief).
   //
-  // We gebruiken bewust GEEN fetch — Zoho weigert silent POSTs zonder de juiste
-  // browser-context (session cookies, fingerprint). In plaats daarvan bootsen
-  // we Zoho's eigen mechanisme na: een echte <form> met target=hidden-iframe.
-  // Browser stuurt cookies + Referer + alles wat Zoho verwacht en de response
-  // landt in de iframe (die we negeren).
+  // Eerdere pogingen (kale fetch, hidden-iframe form-POST) werden silent geweigerd
+  // door Zoho's anti-bot bescherming. setupSF() bouwt namelijk runtime fingerprint
+  // tokens op en die zitten niet in de statische form HTML. We hebben dus echt
+  // hun JS nodig.
+  //
+  // Strategie: embed exact Zoho's gehoste form-HTML in een off-screen container,
+  // laad hun optin.min.js, en roep setupSF() aan. Bij onze nieuwsbrief-submit
+  // vullen we het officiele Zoho-emailveld en clicken we hun submit-knop — hun
+  // JS regelt token/validation/POST en de response landt in hun eigen
+  // success/error handlers (die we via off-screen positioning niet hoeven te zien).
+  let _zohoCampaignsReady = null;
+  function ensureZohoCampaignsForm() {
+    if (_zohoCampaignsReady) return _zohoCampaignsReady;
+    _zohoCampaignsReady = new Promise((resolve) => {
+      if (document.getElementById('cq-zoho-host')) { resolve(); return; }
+
+      // Zoho's zcScptlessSubmit helper — embedden direct ipv vertrouwen op de
+      // inline script tag uit hun HTML (die slecht parsed wanneer dynamisch
+      // ingeprikt via innerHTML).
+      if (typeof window.zcScptlessSubmit !== 'function') {
+        window.zcScptlessSubmit = function (parentNode) {
+          try {
+            const spm = parentNode.querySelector('#zc_spmSubmit');
+            if (spm) spm.remove();
+            parentNode.submit();
+          } catch (e) { /* no-op */ }
+        };
+      }
+
+      const host = document.createElement('div');
+      host.id = 'cq-zoho-host';
+      host.setAttribute('aria-hidden', 'true');
+      host.style.cssText = 'position:absolute;left:-10000px;top:-10000px;width:1px;height:1px;overflow:hidden;pointer-events:none;';
+      // 1-op-1 kopie van Zoho's gehoste form-HTML (signupform 222109000002622295,
+      // lijst CuliQuiz Nieuwsbrief). NIET inkorten — setupSF() leest meerdere
+      // van deze hidden fields uit om de POST-context te bouwen.
+      host.innerHTML = ''
+        + '<div id="customForm">'
+        +   '<div name="SIGNUP_BODY">'
+        +     '<div id="errorMsgDiv" style="display:none;">Please correct the marked field(s) below.</div>'
+        +     '<div style="position:relative;">'
+        +       '<div id="Zc_SignupSuccess" style="display:none;"><span id="signupSuccessMsg"></span></div>'
+        +     '</div>'
+        +     '<form method="POST" id="zcampaignOptinForm" action="https://rtlj-zcmp.maillist-manage.eu/weboptin.zc" target="_zcSignup" onsubmit="zcScptlessSubmit(this)">'
+        +       '<input placeholder="Email" name="CONTACT_EMAIL" id="EMBED_FORM_EMAIL_LABEL" type="text">'
+        +       '<input type="submit" name="SIGNUP_SUBMIT_BUTTON" id="zcWebOptin" value="Sign Up">'
+        +       '<input type="hidden" id="fieldBorder" value="">'
+        +       '<input type="hidden" id="submitType" name="submitType" value="optinCustomView">'
+        +       '<input type="hidden" id="emailReportId" name="emailReportId" value="">'
+        +       '<input type="hidden" id="formType" name="formType" value="QuickForm">'
+        +       '<input type="hidden" name="zx" id="cmpZuid" value="14ae401ddc">'
+        +       '<input type="hidden" name="zcvers" value="2.0">'
+        +       '<input type="hidden" name="oldListIds" id="allCheckedListIds" value="">'
+        +       '<input type="hidden" id="mode" name="mode" value="OptinCreateView">'
+        +       '<input type="hidden" id="zcld" name="zcld" value="131516f56e9294c6">'
+        +       '<input type="hidden" id="zctd" name="zctd" value="131516f56e6b4159">'
+        +       '<input type="hidden" id="document_domain" value="">'
+        +       '<input type="hidden" id="zc_Url" value="rtlj-zcmp.maillist-manage.eu">'
+        +       '<input type="hidden" id="new_optin_response_in" value="0">'
+        +       '<input type="hidden" id="duplicate_optin_response_in" value="0">'
+        +       '<input type="hidden" name="zc_trackCode" id="zc_trackCode" value="ZCFORMVIEW">'
+        +       '<input type="hidden" id="zc_formIx" name="zc_formIx" value="3z06a7cae3fd68733aa0943a711f62ab953b0ef3c9add406954fa6205a7f78ab18">'
+        +       '<input type="hidden" id="viewFrom" value="URL_ACTION">'
+        +       '<input type="hidden" id="scriptless" name="scriptless" value="yes">'
+        +       '<input type="hidden" id="zc_spmSubmit" name="zc_spmSubmit" value="ZCSPMSUBMIT">'
+        +     '</form>'
+        +   '</div>'
+        + '</div>'
+        + '<div id="zcOptinOverLay" style="display:none;"></div>'
+        + '<div id="zcOptinSuccessPopup" style="display:none;"><span id="closeSuccess"></span><div id="zcOptinSuccessPanel"></div></div>'
+        // Named iframe target — zo landt de POST-response niet in onze main page.
+        + '<iframe name="_zcSignup" style="position:absolute;left:-10000px;top:-10000px;width:1px;height:1px;border:0;" aria-hidden="true" tabindex="-1"></iframe>';
+      document.body.appendChild(host);
+
+      const s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.src = 'https://rtlj-zcmp.maillist-manage.eu/js/optin.min.js';
+      s.onload = function () {
+        try {
+          if (typeof window.setupSF === 'function') {
+            window.setupSF(
+              'sf3z06a7cae3fd68733aa0943a711f62ab953b0ef3c9add406954fa6205a7f78ab18',
+              'ZCFORMVIEW',
+              false,
+              'light',
+              false,
+              '0'
+            );
+          }
+        } catch (e) {
+          console.warn('Zoho setupSF init failed (non-fatal):', e);
+        }
+        // Geef Zoho's init code nog 300ms om het form helemaal te wiren.
+        setTimeout(resolve, 300);
+      };
+      s.onerror = function () {
+        console.warn('Zoho optin.min.js failed to load — Campaigns POST disabled');
+        resolve();
+      };
+      document.body.appendChild(s);
+    });
+    return _zohoCampaignsReady;
+  }
+
   function postNewsletterToCampaigns({ email }) {
     if (!email) return Promise.resolve();
-    return new Promise((resolve) => {
-      const FRAME_NAME = 'cq_nl_campaigns_target';
-      let frame = document.querySelector('iframe[name="' + FRAME_NAME + '"]');
-      if (!frame) {
-        frame = document.createElement('iframe');
-        frame.name = FRAME_NAME;
-        frame.style.cssText = 'position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none;left:-9999px;top:-9999px;';
-        frame.setAttribute('aria-hidden', 'true');
-        frame.setAttribute('tabindex', '-1');
-        document.body.appendChild(frame);
+    return ensureZohoCampaignsForm().then(() => {
+      const emailField = document.getElementById('EMBED_FORM_EMAIL_LABEL');
+      const zohoForm = document.getElementById('zcampaignOptinForm');
+      const submitBtn = document.getElementById('zcWebOptin');
+      if (!emailField || !zohoForm) return;
+
+      emailField.value = email;
+      // Belangrijk: dispatch een echte input event zodat Zoho's listeners
+      // (validation, token-binding) triggeren — niet alleen .value setten.
+      emailField.dispatchEvent(new Event('input', { bubbles: true }));
+      emailField.dispatchEvent(new Event('change', { bubbles: true }));
+
+      // Trigger Zoho's eigen submit. Hun click-handler op #zcWebOptin doet
+      // validatie en roept dan zcScptlessSubmit aan (verwijdert zc_spmSubmit
+      // veld pas op het laatste moment — dat is hun anti-bot trick).
+      try {
+        if (submitBtn && typeof submitBtn.click === 'function') {
+          submitBtn.click();
+        } else if (typeof zohoForm.requestSubmit === 'function') {
+          zohoForm.requestSubmit(submitBtn || undefined);
+        } else {
+          zohoForm.submit();
+        }
+      } catch (e) {
+        console.warn('Zoho Campaigns submit threw (non-fatal):', e);
       }
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = 'https://rtlj-zcmp.maillist-manage.eu/weboptin.zc';
-      form.target = FRAME_NAME;
-      form.acceptCharset = 'UTF-8';
-      form.enctype = 'application/x-www-form-urlencoded';
-      form.style.cssText = 'display:none;';
-      const fields = {
-        submitType: 'optinCustomView',
-        emailReportId: '',
-        formType: 'QuickForm',
-        zx: '14ae401ddc',
-        zcvers: '2.0',
-        oldListIds: '',
-        mode: 'OptinCreateView',
-        zcld: '131516f56e9294c6',
-        zctd: '131516f56e6b4159',
-        zc_trackCode: 'ZCFORMVIEW',
-        zc_formIx: '3z06a7cae3fd68733aa0943a711f62ab953b0ef3c9add406954fa6205a7f78ab18',
-        scriptless: 'yes',
-        viewFrom: 'URL_ACTION',
-        CONTACT_EMAIL: email,
-      };
-      Object.keys(fields).forEach((k) => {
-        const inp = document.createElement('input');
-        inp.type = 'hidden';
-        inp.name = k;
-        inp.value = fields[k];
-        form.appendChild(inp);
-      });
-      document.body.appendChild(form);
-      try { form.submit(); } catch (e) { /* no-op */ }
-      // Cleanup na korte vertraging — de iframe POST is dan zeker afgevuurd.
-      setTimeout(() => {
-        try { form.remove(); } catch (e) { /* no-op */ }
-        resolve();
-      }, 1500);
+
+      // Resolve nadat de POST de kans heeft gehad af te vuren. We kunnen de
+      // response niet lezen (zit in de _zcSignup iframe), maar dat is OK.
+      return new Promise((resolve) => setTimeout(resolve, 1500));
     });
   }
 
