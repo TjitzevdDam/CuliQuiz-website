@@ -2554,8 +2554,8 @@ p { margin: 0 0 1rem; }
   position: fixed;
   right: 20px;
   bottom: 20px;
-  width: 340px;
-  max-width: calc(100vw - 32px);
+  width: min(340px, calc(100vw - 40px));
+  box-sizing: border-box;
   background: #fff;
   border-radius: var(--radius, 14px);
   box-shadow: var(--shadow-lg, 0 24px 60px rgba(20,50,60,.18));
@@ -2568,6 +2568,7 @@ p { margin: 0 0 1rem; }
   transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
   pointer-events: none;
   border-top: 3px solid #26A8B0;
+  overflow: hidden;
 }
 .nl-popup.is-visible {
   transform: translateY(0);
@@ -2615,8 +2616,8 @@ p { margin: 0 0 1rem; }
 }
 .nl-popup form { margin: 0; }
 .nl-popup .nl-popup-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 .nl-popup input[type="email"] {
@@ -2627,6 +2628,9 @@ p { margin: 0 0 1rem; }
   font: inherit;
   color: #0d2628;
   min-height: 42px;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 .nl-popup input[type="email"]:focus {
   outline: 2px solid #26A8B0;
@@ -2637,12 +2641,15 @@ p { margin: 0 0 1rem; }
   background: #26A8B0;
   border: none;
   color: #fff;
-  padding: 11px 16px;
+  padding: 12px 18px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
   font-size: .92rem;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 44px;
 }
 .nl-popup .nl-popup-btn:hover { background: #1f8e95; }
 .nl-popup .nl-popup-btn:disabled { opacity: .6; cursor: wait; }
@@ -2675,5 +2682,4 @@ p { margin: 0 0 1rem; }
     width: auto;
     padding: 18px 18px 16px;
   }
-  .nl-popup .nl-popup-row { grid-template-columns: 1fr; }
 }
