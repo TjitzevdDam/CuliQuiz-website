@@ -479,10 +479,9 @@
       // Falls back to "Anders" if user somehow didn't select.
       body.append('Lead Source', rol || 'Anders');
 
-      // Description: bericht + optionele [NB-OPTIN] marker zodat workflow rule
-      // in Zoho de "Nieuwsbrief" tag kan zetten.
-      const desc = (newsletterOptIn ? '[NB-OPTIN] ' : '') + (bericht || '');
-      if (desc.trim()) body.append('Description', desc);
+      // Description: het bericht zoals de gebruiker dat invulde.
+      // Newsletter opt-in wordt apart geregeld via postNewsletterToZoho.
+      if (bericht && bericht.trim()) body.append('Description', bericht);
 
       // Click-IDs for offline conversion tracking (Google Ads, Meta, LinkedIn, TikTok)
       // Zoho expects them in their LEADCF-numbered custom fields (mapped via webform layout):
@@ -536,13 +535,17 @@
         const json = await res.json().catch(() => ({}));
 
         // 2. PARALLEL: POST naar Zoho CRM (fire-and-forget, niet-blokkerend).
-        //    Opt-in voor nieuwsbrief? → Description krijgt [NB-OPTIN] prefix,
-        //    een Zoho workflow rule zet daarop de tag "Nieuwsbrief".
         postToZoho({ naam, bedrijf, email, bericht, rol, newsletterOptIn }).catch((err) => {
           console.warn('Zoho lead post failed (non-fatal):', err);
         });
 
+        // 3. Opt-in voor nieuwsbrief? Tweede lead met Company = "Nieuwsbrief-abonnee".
+        //    De Zoho workflow rule "Newsletter opt-in tag" triggert daarop en plakt
+        //    de tag "Nieuwsbrief" op deze lead. Sales kan beide leads mergen.
         if (newsletterOptIn) {
+          postNewsletterToZoho({ email, rol, naam }).catch((err) => {
+            console.warn('Zoho newsletter post failed (non-fatal):', err);
+          });
           cqTrack('newsletter_signup', {
             source: 'contact_form',
             page: window.location.pathname,
@@ -572,9 +575,9 @@
   }
 
   // ============ Newsletter shared helper ============
-  // Posts a newsletter-only lead naar Zoho CRM. Lead Source = rol (persona),
-  // Description = "[NB-OPTIN] Nieuwsbrief signup" — een workflow rule in Zoho
-  // zet daarop de tag "Nieuwsbrief" waar Campaigns op filtert.
+  // Posts a newsletter-only lead naar Zoho CRM. Company = "Nieuwsbrief-abonnee"
+  // → een workflow rule in Zoho ("Newsletter opt-in tag") plakt daarop de tag
+  // "Nieuwsbrief" waar Campaigns op filtert. Lead Source = rol (persona).
   function postNewsletterToZoho({ email, rol, naam }) {
     const body = new URLSearchParams();
     body.append('xnQsjsdp', '11da360329b7870fcfed08c3c802acf8ac4a9b12b5bacced61fd4078cd69aa48');
@@ -587,7 +590,7 @@
     body.append('Last Name', (naam && naam.trim()) || 'Nieuwsbrief-abonnee');
     body.append('Email', email || '');
     body.append('Lead Source', rol || 'Anders');
-    body.append('Description', '[NB-OPTIN] Nieuwsbrief signup via website');
+    body.append('Description', 'Nieuwsbrief-aanmelding via website');
     body.append('LEADCF10', readClickId('gclid')     || '-');
     body.append('LEADCF11', readClickId('li_fat_id') || '-');
     body.append('LEADCF12', readClickId('fbclid')    || '-');
