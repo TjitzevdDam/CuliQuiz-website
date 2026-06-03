@@ -521,6 +521,7 @@
       const email = data.get('E-mail') || '';
       const bericht = data.get('Bericht') || '';
       const rol = data.get('Rol') || '';
+      const newsletterOptIn = data.get('Nieuwsbrief') === 'ja';
 
       try {
         // 1. POST naar Formsubmit (e-mail naar info@culiquiz.nl)
@@ -535,6 +536,19 @@
         postToZoho({ naam, bedrijf, email, bericht, rol }).catch((err) => {
           console.warn('Zoho lead post failed (non-fatal):', err);
         });
+
+        // 3. Als opt-in voor nieuwsbrief: extra Zoho-lead met aparte Lead Source
+        //    zodat Zoho Campaigns deze direct in de juiste mailing-lijst zet.
+        if (newsletterOptIn) {
+          postNewsletterToZoho({ email, rol, naam }).catch((err) => {
+            console.warn('Zoho newsletter post failed (non-fatal):', err);
+          });
+          cqTrack('newsletter_signup', {
+            source: 'contact_form',
+            page: window.location.pathname,
+            rol,
+          });
+        }
 
         if (res.ok && (json.success === 'true' || json.success === true)) {
           cqTrack('generate_lead', {
@@ -553,6 +567,90 @@
       } finally {
         cform.classList.remove('is-submitting');
         cBtn.disabled = false;
+      }
+    });
+  }
+
+  // ============ Newsletter shared helper ============
+  // Posts a "newsletter only" lead to Zoho CRM with Lead Source = "Nieuwsbrief — [rol]".
+  // Used by zowel de losse nieuwsbrief-form als de opt-in checkbox in het contactform.
+  function postNewsletterToZoho({ email, rol, naam }) {
+    const body = new URLSearchParams();
+    body.append('xnQsjsdp', '11da360329b7870fcfed08c3c802acf8ac4a9b12b5bacced61fd4078cd69aa48');
+    body.append('zc_gad', '');
+    body.append('xmIwtLD', '9cebdb408e5c30dc2652f0f31063e7c8df9b02bb1707bd1b7507cc95d26e7bf394904e98b0f88b7265d641b5d99cb450');
+    body.append('actionType', 'TGVhZHM=');
+    body.append('returnURL', 'https://www.culiquiz.nl/nieuwsbrief-bedankt');
+    body.append('aG9uZXlwb3Q', '');
+    body.append('Company', 'Nieuwsbrief-abonnee');
+    body.append('Last Name', (naam && naam.trim()) || 'Nieuwsbrief-abonnee');
+    body.append('Email', email || '');
+    body.append('Lead Source', 'Nieuwsbrief — ' + (rol || 'Anders'));
+    body.append('LEADCF10', readClickId('gclid')     || '-');
+    body.append('LEADCF11', readClickId('li_fat_id') || '-');
+    body.append('LEADCF12', readClickId('fbclid')    || '-');
+    body.append('LEADCF13', readClickId('ttclid')    || '-');
+
+    return fetch('https://crm.zoho.eu/crm/WebToLeadForm', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body: body.toString(),
+    });
+  }
+
+  // ============ Losse nieuwsbrief-form ============
+  const nlForm = document.getElementById('nl-form');
+  if (nlForm) {
+    const nlStatus = document.getElementById('nl-status');
+    const nlSuccess = document.getElementById('nl-success');
+    const nlBtn = document.getElementById('nl-submit');
+
+    nlForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (nlStatus) { nlStatus.textContent = ''; nlStatus.classList.remove('is-error'); }
+
+      if (!nlForm.checkValidity()) {
+        nlForm.reportValidity();
+        if (nlStatus) { nlStatus.textContent = 'Vul je e-mailadres in en kies een rol.'; nlStatus.classList.add('is-error'); }
+        return;
+      }
+
+      nlBtn.disabled = true;
+      if (nlStatus) nlStatus.textContent = 'Verzenden…';
+
+      const data = new FormData(nlForm);
+      const email = data.get('E-mail') || '';
+      const rol = data.get('Rol') || '';
+
+      try {
+        const res = await fetch(nlForm.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data,
+        });
+        const json = await res.json().catch(() => ({}));
+
+        postNewsletterToZoho({ email, rol }).catch((err) => {
+          console.warn('Zoho newsletter post failed (non-fatal):', err);
+        });
+
+        if (res.ok && (json.success === 'true' || json.success === true)) {
+          cqTrack('newsletter_signup', {
+            source: 'newsletter_form',
+            page: window.location.pathname,
+            rol,
+          });
+          nlForm.hidden = true;
+          if (nlSuccess) nlSuccess.hidden = false;
+        } else {
+          if (nlStatus) { nlStatus.textContent = 'Er ging iets mis. Probeer het opnieuw of mail info@culiquiz.nl.'; nlStatus.classList.add('is-error'); }
+        }
+      } catch (err) {
+        console.error(err);
+        if (nlStatus) { nlStatus.textContent = 'Er ging iets mis. Probeer het opnieuw of mail info@culiquiz.nl.'; nlStatus.classList.add('is-error'); }
+      } finally {
+        nlBtn.disabled = false;
       }
     });
   }

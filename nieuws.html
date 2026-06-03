@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Montserrat:wght@300;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=12" />
+  <link rel="stylesheet" href="style.css?v=13" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
@@ -211,6 +211,44 @@
         <p>Volg ons op social media of meld je aan voor de nieuwsbrief.</p>
       </div>
     </section>
+
+    <!-- ============ NIEUWSBRIEF ============ -->
+    <section class="newsletter-cta" aria-labelledby="nl-heading">
+      <div class="container">
+        <div class="nl-inner">
+          <div class="nl-copy">
+            <p class="eyebrow">Blijf op de hoogte</p>
+            <h2 id="nl-heading">CuliQuiz nieuwsbrief</h2>
+            <p>E&eacute;n mail per maand. Productupdates, cases en wat we leren uit de data. Geen spam.</p>
+          </div>
+          <form class="nl-form" id="nl-form" action="https://formsubmit.co/ajax/info@culiquiz.nl" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="Nieuwe nieuwsbrief-aanmelding" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_autoresponse" value="Bedankt - je staat op de CuliQuiz-nieuwsbrief. Je krijgt eens per maand een mail met de belangrijkste updates. Tot snel - Team CuliQuiz" />
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+            <div class="nl-row">
+              <input type="email" id="nl-email" name="E-mail" placeholder="Je e-mailadres" required autocomplete="email" />
+              <select id="nl-rol" name="Rol" required aria-label="Ik ben">
+                <option value="">Ik ben&hellip;</option>
+                <option value="Horecaondernemer">Horecaondernemer</option>
+                <option value="Toeleverancier of Producent">Toeleverancier / Producent / Merk</option>
+                <option value="Docent">Docent / opleider</option>
+                <option value="Student">Student</option>
+                <option value="Anders">Anders</option>
+              </select>
+              <button type="submit" class="btn btn-primary" id="nl-submit">Schrijf me in</button>
+            </div>
+            <p class="form-status" id="nl-status" role="status" aria-live="polite"></p>
+            <p class="nl-fineprint">Door je in te schrijven ga je akkoord met onze <a href="/privacy">privacyverklaring</a>. Uitschrijven kan altijd, met &eacute;&eacute;n klik in elke mail.</p>
+          </form>
+          <div class="nl-success" id="nl-success" hidden>
+            <p>&check; Je staat erop. Tot in de inbox.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
@@ -272,7 +310,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=14"></script>
+  <script src="script.js?v=15"></script>
   <script src="/cookie-consent.js?v=8" defer></script>
 </body>
 </html>
