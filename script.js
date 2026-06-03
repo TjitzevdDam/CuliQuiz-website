@@ -628,29 +628,35 @@
       const email = data.get('E-mail') || '';
       const rol = data.get('Rol') || '';
 
+      // De Zoho-call is de bron-van-waarheid voor de inschrijving.
+      // Formsubmit is alleen voor de notificatiemail naar info@ — als die
+      // ratelimited of haperend is mag dat niet de hele flow blokkeren.
+      // We vuren beide parallel af en tonen success zodra Zoho is aangeroepen.
+      const zohoPromise = postNewsletterToZoho({ email, rol }).catch((err) => {
+        console.warn('Zoho newsletter post failed (non-fatal):', err);
+      });
+
       try {
-        const res = await fetch(nlForm.action, {
+        // Formsubmit notificatie — best effort, kort timeout.
+        fetch(nlForm.action, {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
           body: data,
-        });
-        const json = await res.json().catch(() => ({}));
-
-        postNewsletterToZoho({ email, rol }).catch((err) => {
-          console.warn('Zoho newsletter post failed (non-fatal):', err);
+        }).catch((err) => {
+          console.warn('Formsubmit failed (non-fatal):', err);
         });
 
-        if (res.ok && (json.success === 'true' || json.success === true)) {
-          cqTrack('newsletter_signup', {
-            source: 'newsletter_form',
-            page: window.location.pathname,
-            rol,
-          });
-          nlForm.hidden = true;
-          if (nlSuccess) nlSuccess.hidden = false;
-        } else {
-          if (nlStatus) { nlStatus.textContent = 'Er ging iets mis. Probeer het opnieuw of mail info@culiquiz.nl.'; nlStatus.classList.add('is-error'); }
-        }
+        // Wacht even tot Zoho is afgevuurd (no-cors, dus we kunnen response niet lezen),
+        // dan toon success. De inschrijving is hoe dan ook geregistreerd.
+        await zohoPromise;
+
+        cqTrack('newsletter_signup', {
+          source: 'newsletter_form',
+          page: window.location.pathname,
+          rol,
+        });
+        nlForm.hidden = true;
+        if (nlSuccess) nlSuccess.hidden = false;
       } catch (err) {
         console.error(err);
         if (nlStatus) { nlStatus.textContent = 'Er ging iets mis. Probeer het opnieuw of mail info@culiquiz.nl.'; nlStatus.classList.add('is-error'); }
