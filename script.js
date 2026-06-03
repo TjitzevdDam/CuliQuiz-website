@@ -544,7 +544,10 @@
         //    de tag "Nieuwsbrief" op deze lead. Sales kan beide leads mergen.
         if (newsletterOptIn) {
           postNewsletterToZoho({ email, rol, naam }).catch((err) => {
-            console.warn('Zoho newsletter post failed (non-fatal):', err);
+            console.warn('Zoho CRM newsletter post failed (non-fatal):', err);
+          });
+          postNewsletterToCampaigns({ email }).catch((err) => {
+            console.warn('Zoho Campaigns subscribe failed (non-fatal):', err);
           });
           cqTrack('newsletter_signup', {
             source: 'contact_form',
@@ -604,6 +607,36 @@
     });
   }
 
+  // Directe inschrijving in Zoho Campaigns mailing-lijst "CuliQuiz Nieuwsbrief".
+  // Bypass CRM-workflow: zelfs als de CRM-actie haperts, komt de subscriber direct
+  // in de juiste Campaigns-lijst en triggert de autoresponder welkomstmail.
+  // Endpoint en hidden fields komen 1-op-1 uit de gehoste Aanmeldformulier
+  // (signupform 222109000002622295, gekoppeld aan lijst CuliQuiz Nieuwsbrief).
+  function postNewsletterToCampaigns({ email }) {
+    if (!email) return Promise.resolve();
+    const body = new URLSearchParams();
+    body.append('submitType', 'optinCustomView');
+    body.append('emailReportId', '');
+    body.append('formType', 'QuickForm');
+    body.append('zx', '14ae401ddc');
+    body.append('zcvers', '2.0');
+    body.append('oldListIds', '');
+    body.append('mode', 'OptinCreateView');
+    body.append('zcld', '131516f56e9294c6');
+    body.append('zctd', '131516f56e6b4159');
+    body.append('zc_trackCode', 'ZCFORMVIEW');
+    body.append('zc_formIx', '3z06a7cae3fd68733aa0943a711f62ab953b0ef3c9add406954fa6205a7f78ab18');
+    body.append('scriptless', 'yes');
+    body.append('CONTACT_EMAIL', email);
+
+    return fetch('https://rtlj-zcmp.maillist-manage.eu/weboptin.zc', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body: body.toString(),
+    });
+  }
+
   // ============ Losse nieuwsbrief-form ============
   const nlForm = document.getElementById('nl-form');
   if (nlForm) {
@@ -628,12 +661,14 @@
       const email = data.get('E-mail') || '';
       const rol = data.get('Rol') || '';
 
-      // De Zoho-call is de bron-van-waarheid voor de inschrijving.
-      // Formsubmit is alleen voor de notificatiemail naar info@ — als die
-      // ratelimited of haperend is mag dat niet de hele flow blokkeren.
-      // We vuren beide parallel af en tonen success zodra Zoho is aangeroepen.
+      // Twee Zoho-calls parallel: CRM (lead + tag voor segmentatie) en Campaigns
+      // (direct in de mailing-lijst, triggert welkomstmail). Beide no-cors,
+      // dus we kunnen response niet lezen — fire-and-forget.
       const zohoPromise = postNewsletterToZoho({ email, rol }).catch((err) => {
-        console.warn('Zoho newsletter post failed (non-fatal):', err);
+        console.warn('Zoho CRM newsletter post failed (non-fatal):', err);
+      });
+      postNewsletterToCampaigns({ email }).catch((err) => {
+        console.warn('Zoho Campaigns subscribe failed (non-fatal):', err);
       });
 
       try {
