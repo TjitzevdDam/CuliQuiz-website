@@ -47,6 +47,50 @@
   window.cqReadClickId = readClickId;
 
   /* ============================================================
+     Anti-bot defense voor alle Formsubmit-forms.
+     Bots posten doorgaans direct na page-load en negeren of vullen
+     juist de honeypot. Drie checks:
+       1. Honeypot _honey ingevuld -> bot
+       2. Tijd tussen form-load en submit te kort -> bot
+       3. Geen enkele user-interaction (keyboard/pointer) op de form -> bot
+     Bij detect: silent block. Geen errorstate tonen — anders leren
+     bots dat ze gespot zijn en passen ze hun script aan.
+     ============================================================ */
+  const CQ_MIN_FILL_TIME_MS = 2500;
+
+  function cqInstrumentForm(form) {
+    if (!form || form.dataset.cqInstrumented === '1') return;
+    form.dataset.cqInstrumented = '1';
+    form.dataset.cqLoadedAt = String(Date.now());
+    form.dataset.cqInteracted = '0';
+    const markInteracted = () => { form.dataset.cqInteracted = '1'; };
+    form.addEventListener('keydown', markInteracted, { once: true, passive: true });
+    form.addEventListener('pointerdown', markInteracted, { once: true, passive: true });
+    form.addEventListener('focusin', markInteracted, { once: true, passive: true });
+  }
+
+  function cqIsLikelyBot(form) {
+    if (!form) return { blocked: false };
+    const honey = form.querySelector('input[name="_honey"]');
+    if (honey && honey.value && honey.value.trim().length > 0) {
+      return { blocked: true, reason: 'honeypot' };
+    }
+    const loadedAt = parseInt(form.dataset.cqLoadedAt || '0', 10);
+    if (loadedAt) {
+      const elapsed = Date.now() - loadedAt;
+      if (elapsed < CQ_MIN_FILL_TIME_MS) {
+        return { blocked: true, reason: 'too-fast', elapsed };
+      }
+    }
+    if (form.dataset.cqInteracted !== '1') {
+      return { blocked: true, reason: 'no-interaction' };
+    }
+    return { blocked: false };
+  }
+  window.cqInstrumentForm = cqInstrumentForm;
+  window.cqIsLikelyBot = cqIsLikelyBot;
+
+  /* ============================================================
      Analytics tracking helper
      Fires a GA4 event only if gtag is available (i.e. the visitor
      accepted the Analytics consent category). Safe to call anywhere.
@@ -355,6 +399,7 @@
   // ============ Top 100 | Nominatieformulier ============
   const form = document.getElementById('nominate-form');
   if (form) {
+    cqInstrumentForm(form);
     // Endpoint: zet hier de Google Apps Script Web App URL.
     // Zie apps-script/README.md voor deploy-instructies.
     const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzmv2ZgHE4xytK0IsKxBOY2C8imTSiBkAfUhKEdiUy5pf1LJiiKxs_Fhihb9nFPuLv30Q/exec';
@@ -388,6 +433,14 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       setStatus('');
+
+      const botCheck = cqIsLikelyBot(form);
+      if (botCheck.blocked) {
+        // Silent block — toon success-state alsof het is gelukt, dan leert de bot niets
+        successBox.hidden = false;
+        form.hidden = true;
+        return;
+      }
 
       // HTML5 validation
       if (!form.checkValidity()) {
@@ -437,6 +490,7 @@
   // and to Zoho CRM Web-to-Lead (lead in CRM-pijplijn).
   const cform = document.getElementById('wlw-contact-form');
   if (cform) {
+    cqInstrumentForm(cform);
     const cStatus = document.getElementById('cf-status');
     const cSuccess = document.getElementById('wlw-contact-success');
     const cBtn = document.getElementById('cf-submit');
@@ -506,6 +560,14 @@
     cform.addEventListener('submit', async (e) => {
       e.preventDefault();
       setCStatus('');
+
+      const botCheck = cqIsLikelyBot(cform);
+      if (botCheck.blocked) {
+        // Silent block — toon success-state, geen email naar info@, geen Zoho lead
+        cform.hidden = true;
+        if (cSuccess) cSuccess.hidden = false;
+        return;
+      }
 
       if (!cform.checkValidity()) {
         cform.reportValidity();
@@ -751,6 +813,7 @@
   // ============ Losse nieuwsbrief-form ============
   const nlForm = document.getElementById('nl-form');
   if (nlForm) {
+    cqInstrumentForm(nlForm);
     const nlStatus = document.getElementById('nl-status');
     const nlSuccess = document.getElementById('nl-success');
     const nlBtn = document.getElementById('nl-submit');
@@ -758,6 +821,14 @@
     nlForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (nlStatus) { nlStatus.textContent = ''; nlStatus.classList.remove('is-error'); }
+
+      const botCheck = cqIsLikelyBot(nlForm);
+      if (botCheck.blocked) {
+        // Silent block — toon "succes" maar verstuur niets
+        nlForm.hidden = true;
+        if (nlSuccess) nlSuccess.hidden = false;
+        return;
+      }
 
       if (!nlForm.checkValidity()) {
         nlForm.reportValidity();
