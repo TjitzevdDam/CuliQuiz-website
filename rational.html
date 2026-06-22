@@ -113,6 +113,16 @@
   @media (max-width:780px){.dashboard-embed iframe{height:520px;}}
   @media print{.dashboard-embed iframe{height:auto;min-height:480px;}}
 
+  /* ---------- GAME EMBED ---------- */
+  .game-intro{margin-top:48px;font-size:17px;color:var(--ink);}
+  .game-embed{max-width:540px;margin:18px auto 0;border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(15,78,84,.14);border:1px solid var(--line);background:#000;}
+  .game-embed iframe{width:100%;height:760px;border:0;display:block;}
+  .game-meta{max-width:540px;margin:14px auto 0;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:13.5px;color:var(--muted);flex-wrap:wrap;}
+  .game-meta a{color:var(--teal-dark);font-weight:600;border-bottom:1px solid rgba(38,168,176,.3);transition:border-color .15s ease;}
+  .game-meta a:hover{border-bottom-color:var(--teal);}
+  @media (max-width:780px){.game-embed iframe{height:620px;}}
+  @media print{.game-embed{display:none;}.game-intro{display:none;}}
+
   /* ---------- NEXT STEPS ---------- */
   .next-list{margin-top:32px;display:grid;gap:18px;}
   .next-item{display:flex;gap:18px;align-items:flex-start;padding:20px 24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;}
@@ -247,14 +257,22 @@
     </div>
     <div class="lead-body reveal d1">
       <p>Het platform staat. Het dashboard staat. Er komt elke week content bij. We zijn nu bezig met uitrol in andere landen, dezelfde aanpak die jullie internationaal voor ogen hebben.</p>
-      <p>Hieronder een eerste schets van hoe een Rational-dashboard er binnen ons platform uit kan zien. Geen finale, wel waar het op neerkomt.</p>
+      <p>Twee schetsen hieronder. Eerst hoe een partner-dashboard voor Rational eruit kan zien. Daarna een van de games die de eindgebruikers spelen.</p>
     </div>
     <div class="dashboard-embed reveal d2">
       <iframe src="https://quest-shared-67849119.figma.site" title="Partner Dashboard voor Rational" loading="lazy" allowfullscreen></iframe>
     </div>
     <div class="dashboard-meta reveal d2">
-      <span>Schets · klikbaar prototype</span>
+      <span>Partner-dashboard · klikbaar prototype</span>
       <a href="https://quest-shared-67849119.figma.site" target="_blank" rel="noopener">Open in vol scherm →</a>
+    </div>
+    <p class="game-intro reveal">En zo speelt een van de games.</p>
+    <div class="game-embed reveal d1">
+      <iframe src="https://culiquiz.learnstrike.app/micro-game/micro_games_culiquiz_editable?moduleData=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbnZpcm9ubWVudCI6eyJkb21haW4iOiJsZWFybnN0cmlrZS5hcHAiLCJ0eXBlIjoicHJvZHVjdGlvbiJ9LCJwbGF5ZXIiOnsib3JnYW5pc2F0aW9uX2lkIjoiZDNhYTI4ODItY2E1Zi00MjUyLTgwMWEtYWFmMjk2Zjc1N2MxIiwidXNlcl9pZCI6ImNhMGE4MmU4LTc2MzYtNGY4YS05Zjg5LTgyYTAyYWNjMGNiYyIsInVzZXJfbmFtZSI6IlRqaXR6ZSIsInVzZXJfYXZhdGFyIjoiaHR0cHM6Ly91c2VyLWFzc2V0cy5sZWFybnN0cmlrZS5hcHAvYXZhdGFycy9lNzllYmQ3Ni03ZTkxLTQwNWMtODRlNy00OGQ4YWFhNDdmZTU_cGxhY2Vob2xkZXI9MSZvcmdhbmlzYXRpb249ZDNhYTI4ODItY2E1Zi00MjUyLTgwMWEtYWFmMjk2Zjc1N2MxIiwidXNlcl90YWdzIjpbIkFkbWluIiwiRXVyby10b3F1ZXMiLCJIb3RlbHNjaG9vbCBUaGUgSGFndWUiLCJDdWxpUXVpeiB0ZXN0IiwidGVzdCIsIlJhdGlvbmFsIiwiVE9SSyIsIkhBQ0NQIiwiVGVzdCIsImV4dGVybmFsIiwiY29jYS1jb2xhIiwiNGdyb3d0aCIsIkxlYXJuaW5nRm9yTGlmZSJdLCJsYW5ndWFnZSI6Im5sIiwicm9sZSI6IlJlc2VsbGVyIn0sIm9yZ2FuaXNhdGlvbiI6eyJpZCI6ImQzYWEyODgyLWNhNWYtNDI1Mi04MDFhLWFhZjI5NmY3NTdjMSIsIm5hbWUiOiJDdWxpUXVpeiIsInN1YmRvbWFpbiI6ImN1bGlxdWl6IiwicmVzZWxsZXJfaWQiOm51bGwsInNldHRpbmdzIjp7InRoZW1lX3N0eWxlIjoibGlnaHQiLCJwcmltYXJ5X2NvbG9yIjoicmdiYSgyMjUsIDk0LCAyMywgMSkiLCJzZWNvbmRhcnlfY29sb3IiOiJyZ2JhKDgyLCA5NywgMTA4LCAxKSIsImFjY2VudF9jb2xvciI6InJnYmEoMTUxLCAyNDksIDI1NSwgMSkiLCJiYWNrZ3JvdW5kX2NvbG9yIjoicmdiYSgyNDgsIDI1MiwgMjUyLCAxKSIsInByaW1hcnlfZm9udF9jb2xvciI6InJnYmEoMzgsIDE2OCwgMTc2LCAxKSIsInNlY29uZGFyeV9mb250X2NvbG9yIjoicmdiYSgwLCAwLCAwLCAxKSIsIm1pY3JvZ2FtZV9iYWNrZHJvcF9jb2xvciI6InJnYmEoMzgsIDE2OCwgMTc2LCAxKSIsIm1pY3JvZ2FtZV9mb3JlZ3JvdW5kX2NvbG9yIjoicmdiYSgyMjUsIDk0LCAyMywgMSkifX0sIm1pY3JvX2dhbWUiOnsiaWQiOiI0YWI2Y2M5Ni1lOTNiLTQ0YzctYWM4Zi1lMWM0MGZhMDU1NjIiLCJuYW1lIjoiTUlYMjYiLCJpZGVudGlmaWVyIjoiTUlYMjYiLCJzdGFycyI6eyJmaXZlIjo5MDAwLCJmb3VyIjo3MDAwLCJ0aHJlZSI6NTAwMCwidHdvIjo0MDAwLCJvbmUiOjB9LCJleHRyYV9kYXRhIjp7InRoZW1lIjoiU3RhbmRhcmQiLCJhcGlLZXkiOiJTRUNSRVQiLCJiYWRnZSI6ImN1bGlxdWl6IiwiYnVja2V0TmFtZSI6ImxlYXJuc3RyaWtlLmZpcmViYXNlc3RvcmFnZS5hcHAifX0sImludGVncmF0aW9uIjpudWxsLCJzZXNzaW9uIjp7ImNoYWxsZW5nZV9zZXNzaW9uX2lkIjoiNDQ5OWIzNGQtMGQxZi00YzMzLWJiNzAtMzc0MTQ1NjRjOGM1IiwibW9kdWxlX3Nlc3Npb25faWQiOiI0OTYxZmQwMS03YTBhLTQxODgtOWY0ZS1iNGJmNWVkMzU3MTYifSwibW9kdWxlIjp7ImlkIjoiYjczM2FhYzMtNTA5NC00YmE1LWIyMGItNDlhY2I5NWUyYjdjIiwibXVsdGlwbGllciI6MTAwLCJtYXhfc2NvcmUiOjEwMDAwLCJjdXJyZW50X3Njb3JlIjowLCJjdXJyZW50X2JvbnVzIjowLCJjdXJyZW50X3RvdGFsIjowfSwiYmF0dGxlIjp7ImJhdHRsZV9zZXNzaW9uX2lkIjpudWxsLCJiYXR0bGVfcm9sZSI6bnVsbCwib3Bwb25lbnRfaWQiOm51bGwsIm9wcG9uZW50X25hbWUiOm51bGwsIm9wcG9uZW50X2F2YXRhciI6bnVsbH0sInN1Ym1pdF90b2tlbiI6ImV5SjBlWEFpT2lKS1YxUWlMQ0poYkdjaU9pSklVekkxTmlKOS5leUowZVhCbElqb2liV2xqY205ZloyRnRaU0lzSW1wMGFTSTZJbU0zT1dFeE16QXlMV0kyTURRdE5HRmhOQzFpWVRjMUxUUTVOek0wT1RSaVpUVTFZaUlzSW1saGRDSTZNVGM0TWpFeU9Ea3hNeXdpYm1KbUlqb3hOemd5TVRJNE9URXpMQ0psZUhBaU9qRTNPREl4TlRjM01UTXNJbk4xWWlJNkltTmhNR0U0TW1VNExUYzJNell0TkdZNFlTMDVaamc1TFRneVlUQXlZV05qTUdOaVl5SXNJbWx6Y3lJNkltUXpZV0V5T0RneUxXTmhOV1l0TkRJMU1pMDRNREZoTFdGaFpqSTVObVkzTlRkak1TSXNJbTFwWTNKdlgyZGhiV1VpT2lJMFlXSTJZMk01TmkxbE9UTmlMVFEwWXpjdFlXTTRaaTFsTVdNME1HWmhNRFUxTmpJaUxDSmhjSEJmYzJOdmNtVWlPbnNpWTI5dWRHVjRkRjkwZVhCbElqb2liVzlrZFd4bFgzTmxjM05wYjI0aUxDSmpiMjUwWlhoMFgybGtJam9pTkRrMk1XWmtNREV0TjJFd1lTMDBNVGc0TFRsbU5HVXRZalJpWmpWbFpETTFOekUySW4xOS5pNjNGcVljQUZISmNCdlpybXpsaHZzcHluV1ZRMm5XdS1rYVJsT3UxUGI0IiwiY29udGV4dF90eXBlIjoibW9kdWxlX3Nlc3Npb24ifQ.jml4-DQDtI3z5r6lKh4RXdYvv8-YBT2QITsGL6lN8pE" title="CuliQuiz microgame MIX26" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <div class="game-meta reveal d1">
+      <span>Microgame · MIX26</span>
+      <a href="https://culiquiz.learnstrike.app" target="_blank" rel="noopener">Naar het platform →</a>
     </div>
     <div class="lead-body reveal" style="margin-top:32px;">
       <p>Makkelijkst om er echt iets van te vinden is in Hengelo. Een uur, een demo, geen verkoop.</p>
