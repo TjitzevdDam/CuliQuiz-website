@@ -143,6 +143,91 @@
     section.dark p, section.dark .lead-body, .closer p, .signature{color:var(--muted) !important;}
   }
 
+  /* ---------- MINI GAME (cq-game prefix) ---------- */
+  .cq-game-section{padding:64px 0;background:var(--bg);}
+  .cq-game-stage{display:flex;justify-content:center;margin-top:40px;}
+  .cq-game-device{
+    width:100%;max-width:340px;height:620px;
+    background:#0F4E54;border-radius:48px;overflow:hidden;
+    display:flex;flex-direction:column;position:relative;
+    box-shadow:0 30px 60px -16px rgba(15,78,84,.4), inset 0 0 0 2px rgba(255,255,255,.06);
+    border:11px solid #0c0c0e;
+    font-family:'Montserrat',system-ui,sans-serif;color:#fff;
+    -webkit-user-select:none;user-select:none;
+  }
+  .cq-game-device::after{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);
+    width:92px;height:22px;background:#050607;border-radius:999px;z-index:30;pointer-events:none;}
+  .cq-game-body{position:relative;flex:1;overflow:hidden;
+    background:linear-gradient(180deg,#0F4E54 0%, #1B7A80 100%);
+  }
+  .cq-game-body::before{content:"";position:absolute;inset:0;
+    background-image:url('/assets/icons-pattern.png');
+    background-size:280px auto;background-repeat:repeat;opacity:.10;pointer-events:none;}
+  .cq-game-topbar{display:flex;align-items:center;justify-content:center;padding:30px 18px 8px;position:relative;z-index:5;}
+  .cq-game-topbar img{height:22px;width:auto;filter:brightness(0) invert(1);}
+  .cq-game-sublabel{text-align:center;font-size:9.5px;letter-spacing:.22em;font-weight:700;color:rgba(255,255,255,.7);position:relative;z-index:5;margin-top:2px;}
+  .cq-game-hud{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px 6px;position:relative;z-index:5;}
+  .cq-game-chip{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#0F4E54;font-weight:700;font-size:11px;padding:4px 12px;border-radius:999px;}
+  .cq-game-chip .cq-x3{color:#E15E17;font-weight:800;}
+  .cq-game-progress{display:flex;justify-content:center;gap:6px;padding:8px 18px 6px;position:relative;z-index:5;}
+  .cq-game-progress span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);}
+  .cq-game-progress span.on{background:#EAB600;}
+
+  .cq-game-screen{position:absolute;inset:80px 18px 18px;display:none;flex-direction:column;align-items:center;}
+  .cq-game-screen.is-active{display:flex;animation:cqgfade .25s ease both;}
+  @keyframes cqgfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* START screen */
+  .cq-game-start{justify-content:center;text-align:center;padding-top:60px;}
+  .cq-game-start h3{font-family:'Fraunces',serif;font-size:26px;font-weight:900;margin-bottom:10px;color:#fff;}
+  .cq-game-start p{font-size:13.5px;color:rgba(255,255,255,.85);max-width:24ch;margin:0 auto 24px;line-height:1.5;}
+  .cq-game-startbtn{appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:15px;color:#0F4E54;padding:12px 28px;border-radius:999px;background:#EAB600;box-shadow:0 6px 0 #B48A00;transition:transform .1s ease,box-shadow .1s ease;}
+  .cq-game-startbtn:active{transform:translateY(3px);box-shadow:0 3px 0 #B48A00;}
+
+  /* PLAY screen */
+  .cq-game-play{padding-top:90px;}
+  .cq-game-card{width:100%;background:#fff;border-radius:14px;padding:14px 16px 14px 56px;position:relative;box-shadow:0 8px 20px -4px rgba(0,0,0,.25);margin-bottom:16px;}
+  .cq-game-card::before{content:"?";position:absolute;left:12px;top:50%;transform:translateY(-50%);width:34px;height:34px;background:#E15E17;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:900;font-size:22px;}
+  .cq-game-card .cq-game-q{font-size:13px;font-weight:600;color:#0F4E54;line-height:1.35;}
+  .cq-game-answers{display:flex;flex-direction:column;gap:10px;width:100%;}
+  .cq-game-answer{
+    position:relative;background:#EAB600;color:#0F4E54;
+    padding:12px 16px 12px 48px;font-weight:700;font-size:12.5px;
+    cursor:pointer;border:0;text-align:left;line-height:1.3;
+    clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 100%, 14px 100%);
+    transition:background .15s ease;
+    font-family:inherit;
+  }
+  .cq-game-answer .cq-game-letter{
+    position:absolute;left:8px;top:0;bottom:0;width:32px;display:flex;align-items:center;justify-content:center;
+    background:#D4A300;font-family:'Fraunces',serif;font-weight:900;font-size:18px;color:#fff;
+    clip-path:polygon(0 0, 100% 0, calc(100% - 14px) 100%, 14px 100%);
+  }
+  .cq-game-answer:hover:not(:disabled){background:#F2C42A;}
+  .cq-game-answer:disabled{cursor:default;opacity:.95;}
+  .cq-game-answer.is-correct{background:#5DA836;color:#fff;}
+  .cq-game-answer.is-correct .cq-game-letter{background:#3F7E1E;color:#fff;}
+  .cq-game-answer.is-wrong{background:#D8463A;color:#fff;}
+  .cq-game-answer.is-wrong .cq-game-letter{background:#B2301F;color:#fff;}
+
+  .cq-game-feedback{margin-top:14px;padding:11px 14px;background:rgba(0,0,0,.25);border-radius:10px;color:#fff;font-size:12px;line-height:1.45;display:none;width:100%;}
+  .cq-game-feedback.is-shown{display:block;animation:cqgfade .25s ease both;}
+  .cq-game-feedback strong{display:block;margin-bottom:4px;color:#EAB600;font-size:11.5px;letter-spacing:.05em;}
+  .cq-game-nextbtn{margin-top:12px;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13px;color:#0F4E54;padding:10px 24px;border-radius:999px;background:#EAB600;box-shadow:0 4px 0 #B48A00;}
+  .cq-game-nextbtn:active{transform:translateY(2px);box-shadow:0 2px 0 #B48A00;}
+
+  /* RESULT screen */
+  .cq-game-result{justify-content:center;text-align:center;padding-top:50px;}
+  .cq-game-result .cq-game-score{font-family:'Fraunces',serif;font-weight:900;font-size:48px;color:#EAB600;margin-bottom:4px;}
+  .cq-game-result h3{font-family:'Fraunces',serif;font-size:22px;color:#fff;margin-bottom:8px;}
+  .cq-game-result p{font-size:13px;color:rgba(255,255,255,.85);max-width:26ch;margin:0 auto 20px;line-height:1.5;}
+  .cq-game-stars{display:flex;gap:6px;margin-bottom:22px;}
+  .cq-game-stars span{width:24px;height:24px;background:#EAB600;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);}
+  .cq-game-stars span.off{background:rgba(255,255,255,.25);}
+
+  @media (max-width:420px){.cq-game-device{height:580px;}}
+  @media print{.cq-game-section{display:none;}}
+
   /* ---------- SCROLL REVEAL ---------- */
   .js .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease, transform .55s ease;}
   .js .reveal.in{opacity:1;transform:none;}
@@ -171,6 +256,63 @@
     <p class="lead">Een vervolg op ons gesprek van 16 juni.</p>
   </div>
 </header>
+
+<section class="cq-game-section">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <div class="sec-label" style="justify-content:center;">Een proefje</div>
+      <h2 class="sec" style="margin:0 auto;">Hoe het op de vloer <em>speelt</em>.</h2>
+      <p class="sec-intro" style="margin:14px auto 0;">Drie korte vragen vanuit Rational-perspectief. Klik in de telefoon en speel mee.</p>
+    </div>
+    <div class="cq-game-stage reveal d1">
+      <div class="cq-game-device" id="cqGameDevice">
+        <div class="cq-game-topbar">
+          <img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" />
+        </div>
+        <div class="cq-game-sublabel">CARD GAME</div>
+
+        <div class="cq-game-body">
+          <!-- Start scherm -->
+          <div class="cq-game-screen cq-game-start is-active" id="cqGameStart">
+            <h3>Klaar voor 3 vragen?</h3>
+            <p>Rational-content, drie keuzes per vraag. Goed of fout, je krijgt er uitleg bij.</p>
+            <button class="cq-game-startbtn" id="cqGameStartBtn">Start</button>
+          </div>
+
+          <!-- Play scherm -->
+          <div class="cq-game-screen cq-game-play" id="cqGamePlay">
+            <div class="cq-game-hud">
+              <span class="cq-game-chip">Score <span class="cq-x3" id="cqGameScore">0</span></span>
+            </div>
+            <div class="cq-game-progress" id="cqGameProgress">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="cq-game-card">
+              <div class="cq-game-q" id="cqGameQ">Laden…</div>
+            </div>
+            <div class="cq-game-answers" id="cqGameAnswers"></div>
+            <div class="cq-game-feedback" id="cqGameFeedback">
+              <strong id="cqGameFeedbackTitle">UITLEG</strong>
+              <span id="cqGameWhy"></span>
+            </div>
+            <button class="cq-game-nextbtn" id="cqGameNext" style="display:none;">Volgende</button>
+          </div>
+
+          <!-- Result scherm -->
+          <div class="cq-game-screen cq-game-result" id="cqGameResult">
+            <div class="cq-game-score" id="cqGameFinal">0 / 3</div>
+            <h3 id="cqGameTitle">Mooi gespeeld.</h3>
+            <p id="cqGameMsg">Speel nog een keer of bekijk hieronder wat we nu al doen.</p>
+            <div class="cq-game-stars" id="cqGameStars">
+              <span class="off"></span><span class="off"></span><span class="off"></span>
+            </div>
+            <button class="cq-game-startbtn" id="cqGameAgain">Opnieuw</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="block">
   <div class="wrap">
@@ -339,6 +481,154 @@
       var embed = document.querySelector('.dashboard-embed');
       if(embed) new ResizeObserver(fitDashboard).observe(embed);
     }
+  })();
+
+  /* ============================================================
+     Mini-game met Rational content. Drie vragen, drie keuzes.
+     ============================================================ */
+  (function(){
+    var device = document.getElementById('cqGameDevice');
+    if(!device) return;
+
+    var QUESTIONS = [
+      {
+        q: "Wat onderscheidt de iCom Pro van een traditionele combi-steamer?",
+        a: [
+          "Hij past de garing automatisch aan op het gerecht",
+          "Hij is sneller schoon te maken",
+          "Hij verbruikt minder stroom in standby"
+        ],
+        c: 0,
+        why: "De iCom Pro stuurt zelf naar het gewenste gareresultaat. Geen programma vooraf intikken, het apparaat denkt mee."
+      },
+      {
+        q: "Wat is het idee achter Rational's Smart Kitchen visie?",
+        a: [
+          "Een keuken die volledig zonder mensen draait",
+          "Geconnecteerde apparatuur die intelligent samenwerkt",
+          "Een keuken die alleen via een mobiele app werkt"
+        ],
+        c: 1,
+        why: "Smart Kitchen draait om apparatuur die met elkaar praat en de chef ontlast. Niet vervanging van mensen, wel ondersteuning."
+      },
+      {
+        q: "Wat is een veelgemaakte fout bij het inladen van een combisteamer?",
+        a: [
+          "Producten op verschillende roosters laten ademen",
+          "Te dicht op elkaar laden zodat de stoom niet doorstroomt",
+          "Op de hoogste temperatuur starten en daarna terugschakelen"
+        ],
+        c: 1,
+        why: "Dicht stapelen verstoort de stoomcirculatie. Het resultaat: ongelijk gegaarde gerechten. Ruimte tussen producten is essentieel."
+      }
+    ];
+
+    var idx = 0, score = 0, answered = false;
+    var screens = {
+      start: document.getElementById('cqGameStart'),
+      play:  document.getElementById('cqGamePlay'),
+      result:document.getElementById('cqGameResult')
+    };
+    var elQ = document.getElementById('cqGameQ');
+    var elAnswers = document.getElementById('cqGameAnswers');
+    var elScore = document.getElementById('cqGameScore');
+    var elProgress = document.getElementById('cqGameProgress');
+    var elFeedback = document.getElementById('cqGameFeedback');
+    var elFeedbackTitle = document.getElementById('cqGameFeedbackTitle');
+    var elWhy = document.getElementById('cqGameWhy');
+    var elNext = document.getElementById('cqGameNext');
+
+    function show(name){
+      Object.keys(screens).forEach(function(k){
+        screens[k].classList.toggle('is-active', k===name);
+      });
+    }
+
+    function render(){
+      answered = false;
+      var q = QUESTIONS[idx];
+      elQ.textContent = q.q;
+      elAnswers.innerHTML = '';
+      var letters = ['A','B','C'];
+      q.a.forEach(function(txt, i){
+        var btn = document.createElement('button');
+        btn.className = 'cq-game-answer';
+        btn.type = 'button';
+        btn.innerHTML = '<span class="cq-game-letter">' + letters[i] + '</span>' + txt;
+        btn.addEventListener('click', function(){ answer(i, btn); });
+        elAnswers.appendChild(btn);
+      });
+      // progress dots
+      var dots = elProgress.querySelectorAll('span');
+      dots.forEach(function(d, i){
+        d.classList.toggle('on', i <= idx);
+      });
+      elFeedback.classList.remove('is-shown');
+      elNext.style.display = 'none';
+    }
+
+    function answer(i, btn){
+      if(answered) return;
+      answered = true;
+      var q = QUESTIONS[idx];
+      var correct = q.c;
+      var allButtons = elAnswers.querySelectorAll('.cq-game-answer');
+      allButtons.forEach(function(b, j){
+        b.disabled = true;
+        if(j === correct) b.classList.add('is-correct');
+      });
+      if(i !== correct){
+        btn.classList.add('is-wrong');
+      } else {
+        score++;
+        elScore.textContent = String(score);
+      }
+      elFeedbackTitle.textContent = (i === correct) ? 'GOED' : 'NIET HELEMAAL';
+      elFeedbackTitle.style.color = (i === correct) ? '#5DA836' : '#FFB4AB';
+      elWhy.textContent = q.why;
+      elFeedback.classList.add('is-shown');
+      var last = (idx === QUESTIONS.length - 1);
+      elNext.textContent = last ? 'Resultaat' : 'Volgende';
+      elNext.style.display = 'inline-block';
+    }
+
+    function next(){
+      if(idx < QUESTIONS.length - 1){
+        idx++;
+        render();
+      } else {
+        result();
+      }
+    }
+
+    function result(){
+      show('result');
+      document.getElementById('cqGameFinal').textContent = score + ' / ' + QUESTIONS.length;
+      var msgs = [
+        {t: 'Nog even oefenen.', m: 'Niets om je voor te schamen. De vragen gaan over inhoud die mensen pas leren op de vloer.'},
+        {t: 'Op de goede weg.', m: 'Een stukje van het verhaal zit al bij je. De rest leert het platform op de vloer.'},
+        {t: 'Sterk.', m: 'Twee van de drie. Dit is precies het niveau waar we naartoe willen op grote schaal.'},
+        {t: 'Foutloos.', m: 'Drie van de drie. Niet veel mensen halen dit zonder oefening.'}
+      ];
+      var info = msgs[score] || msgs[0];
+      document.getElementById('cqGameTitle').textContent = info.t;
+      document.getElementById('cqGameMsg').textContent = info.m;
+      var stars = document.getElementById('cqGameStars').querySelectorAll('span');
+      stars.forEach(function(s, i){
+        s.classList.toggle('off', i >= score);
+      });
+    }
+
+    function start(){
+      idx = 0; score = 0;
+      elScore.textContent = '0';
+      show('play');
+      render();
+    }
+
+    document.getElementById('cqGameStartBtn').addEventListener('click', start);
+    document.getElementById('cqGameAgain').addEventListener('click', start);
+    elNext.addEventListener('click', next);
   })();
 </script>
 
