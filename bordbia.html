@@ -181,6 +181,12 @@
 
   @media print{.dashboard-embed{display:none;}}
 
+  /* ---------- DOWNLOAD BUTTON ---------- */
+  .closer-download{display:inline-flex;align-items:center;gap:10px;margin-top:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.32);color:#fff;padding:12px 22px;border-radius:999px;font-weight:600;font-size:14.5px;transition:background .15s ease, border-color .15s ease, transform .15s ease;}
+  .closer-download:hover{background:rgba(255,255,255,.22);border-color:var(--gold);transform:translateY(-1px);}
+  .closer-download svg{width:16px;height:16px;flex-shrink:0;}
+  .closer-download .file-meta{opacity:.7;font-size:12.5px;font-weight:500;margin-left:4px;}
+
   /* ---------- CLOSER ---------- */
   .closer{background:linear-gradient(135deg,var(--teal) 0%, var(--teal-dark) 100%);color:#fff;padding:80px 0 70px;text-align:center;}
   .closer h2{font-size:clamp(28px,3.4vw,40px);color:#fff;margin-bottom:18px;}
@@ -640,6 +646,10 @@
   <div class="wrap">
     <h2>An introduction, not a proposal.</h2>
     <p>If any of this lines up with what Bord Bia is working on, the next step is a conversation. No deck, no quote, just a sharper read of where it could actually fit.</p>
+    <a class="closer-download" href="/assets/downloads/CuliQuiz-FMCG-EN.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span>CuliQuiz for FMCG <span class="file-meta">PDF · 3.5 MB</span></span>
+    </a>
     <div class="signature">
       <strong>Tjitze van der Dam</strong><br>
       CuliQuiz  ·  tjitze@culiquiz.nl
