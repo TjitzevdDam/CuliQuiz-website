@@ -46,14 +46,21 @@
   .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;}
   .nav-logos{display:flex;align-items:center;gap:14px;}
-  .nav{height:96px;}
-  .nav-inner{height:96px;}
+  .nav{height:140px;}
+  .nav-inner{height:140px;}
+  .nav-logos{gap:18px;}
   .nav-logos .logo img{height:50px;width:auto;display:block;}
-  .nav-logos .cross{color:#B7C2C6;font-size:26px;font-weight:300;line-height:1;}
-  .nav-logos .partner img{height:54px;width:auto;display:block;}
+  .nav-logos .cross{color:#B7C2C6;font-size:28px;font-weight:300;line-height:1;}
+  .nav-logos .partner img{height:108px;width:auto;display:block;}
   .nav-meta{font-size:13px;color:var(--muted);}
   .nav-meta strong{color:var(--ink);font-weight:600;}
-  @media (max-width:560px){.nav{height:80px;}.nav-inner{height:80px;}.nav-logos{gap:10px;} .nav-logos .partner img{height:44px;} .nav-logos .logo img{height:40px;} .nav-meta{display:none;}}
+  @media (max-width:560px){
+    .nav{height:72px;}.nav-inner{height:72px;}
+    .nav-logos{gap:10px;}
+    .nav-logos .partner, .nav-logos .cross{display:none;}
+    .nav-logos .logo img{height:38px;}
+    .nav-meta{display:none;}
+  }
   @media print { .nav{display:none;} }
 
   /* ---------- HERO ---------- */
