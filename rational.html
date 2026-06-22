@@ -46,14 +46,14 @@
   .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;}
   .nav-logos{display:flex;align-items:center;gap:14px;}
-  .nav{height:84px;}
-  .nav-inner{height:84px;}
-  .nav-logos .logo img{height:42px;width:auto;display:block;}
-  .nav-logos .cross{color:#B7C2C6;font-size:22px;font-weight:300;line-height:1;}
-  .nav-logos .partner img{height:42px;width:auto;display:block;}
+  .nav{height:96px;}
+  .nav-inner{height:96px;}
+  .nav-logos .logo img{height:50px;width:auto;display:block;}
+  .nav-logos .cross{color:#B7C2C6;font-size:26px;font-weight:300;line-height:1;}
+  .nav-logos .partner img{height:54px;width:auto;display:block;}
   .nav-meta{font-size:13px;color:var(--muted);}
   .nav-meta strong{color:var(--ink);font-weight:600;}
-  @media (max-width:560px){.nav{height:72px;}.nav-inner{height:72px;}.nav-logos{gap:10px;} .nav-logos .partner img{height:34px;} .nav-logos .logo img{height:34px;}}
+  @media (max-width:560px){.nav{height:80px;}.nav-inner{height:80px;}.nav-logos{gap:10px;} .nav-logos .partner img{height:44px;} .nav-logos .logo img{height:40px;} .nav-meta{display:none;}}
   @media print { .nav{display:none;} }
 
   /* ---------- HERO ---------- */
@@ -173,15 +173,15 @@
     -webkit-user-select:none;user-select:none;
   }
   .cq-game-device::before{content:"";position:absolute;inset:0;
-    background-image:url('/assets/icons-pattern.png');
-    background-size:260px auto;background-repeat:repeat;opacity:.08;pointer-events:none;z-index:1;}
+    background-image:url('https://www.culiquiz.nl/assets/icons-pattern.png');
+    background-size:220px auto;background-repeat:repeat;opacity:.14;pointer-events:none;z-index:1;}
   .cq-game-device::after{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);
     width:92px;height:22px;background:#050607;border-radius:999px;z-index:30;pointer-events:none;}
 
   .cq-game-topbar{display:flex;align-items:center;justify-content:center;gap:10px;padding:48px 18px 6px;position:relative;z-index:5;}
   .cq-game-topbar img.cq-cuq{height:22px;width:auto;filter:brightness(0) invert(1);}
   .cq-game-topbar .cq-game-cross{color:rgba(255,255,255,.55);font-size:16px;font-weight:300;line-height:1;}
-  .cq-game-topbar img.cq-rat{height:18px;width:auto;background:#fff;padding:4px 7px;border-radius:5px;box-sizing:content-box;}
+  .cq-game-topbar img.cq-rat{height:22px;width:auto;background:#fff;padding:6px 10px;border-radius:8px;box-sizing:content-box;box-shadow:0 2px 6px rgba(0,0,0,.18);}
   .cq-game-sublabel{text-align:center;font-size:9.5px;letter-spacing:.22em;font-weight:700;color:rgba(255,255,255,.7);position:relative;z-index:5;margin-top:2px;}
 
   .cq-game-body{position:relative;flex:1;overflow:hidden;background:transparent;}
