@@ -180,8 +180,13 @@
     -webkit-user-select:none;user-select:none;
   }
   .cq-game-device::before{content:"";position:absolute;inset:0;
-    background-image:url('https://www.culiquiz.nl/assets/icons-pattern.png');
-    background-size:220px auto;background-repeat:repeat;opacity:.14;pointer-events:none;z-index:1;}
+    background-image:
+      radial-gradient(circle at 25% 30%, rgba(255,255,255,.14) 2px, transparent 2.5px),
+      radial-gradient(circle at 75% 70%, rgba(234,182,0,.18) 1.6px, transparent 2px),
+      radial-gradient(circle, rgba(255,255,255,.06) 1.2px, transparent 1.6px);
+    background-size:120px 120px, 90px 90px, 26px 26px;
+    background-position:0 0, 0 0, 0 0;
+    pointer-events:none;z-index:1;}
   .cq-game-device::after{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);
     width:92px;height:22px;background:#050607;border-radius:999px;z-index:30;pointer-events:none;}
 
