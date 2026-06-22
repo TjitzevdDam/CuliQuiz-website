@@ -46,12 +46,14 @@
   .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;}
   .nav-logos{display:flex;align-items:center;gap:14px;}
-  .nav-logos .logo img{height:30px;width:auto;display:block;}
-  .nav-logos .cross{color:#B7C2C6;font-size:18px;font-weight:300;line-height:1;}
-  .nav-logos .partner img{height:30px;width:auto;display:block;}
+  .nav{height:84px;}
+  .nav-inner{height:84px;}
+  .nav-logos .logo img{height:42px;width:auto;display:block;}
+  .nav-logos .cross{color:#B7C2C6;font-size:22px;font-weight:300;line-height:1;}
+  .nav-logos .partner img{height:42px;width:auto;display:block;}
   .nav-meta{font-size:13px;color:var(--muted);}
   .nav-meta strong{color:var(--ink);font-weight:600;}
-  @media (max-width:560px){.nav-logos{gap:10px;} .nav-logos .partner img{height:26px;} .nav-logos .logo img{height:26px;}}
+  @media (max-width:560px){.nav{height:72px;}.nav-inner{height:72px;}.nav-logos{gap:10px;} .nav-logos .partner img{height:34px;} .nav-logos .logo img{height:34px;}}
   @media print { .nav{display:none;} }
 
   /* ---------- HERO ---------- */
@@ -111,6 +113,20 @@
   .phase h3{font-size:19px;margin-bottom:10px;}
   .phase p{font-size:15.5px;color:var(--muted);}
   @media (max-width:780px){.timeline{grid-template-columns:1fr;}}
+
+  /* ---------- BEURZEN ---------- */
+  .shows-section{padding:80px 0;background:linear-gradient(135deg,#F0F9FA 0%, #E6F4F5 100%);}
+  .shows-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
+  .show-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 26px;box-shadow:0 6px 18px rgba(15,78,84,.05);transition:transform .15s ease, box-shadow .15s ease;}
+  .show-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(15,78,84,.10);}
+  .show-card .show-date{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);margin-bottom:14px;display:inline-flex;align-items:center;gap:8px;}
+  .show-card .show-date::before{content:"";width:18px;height:2px;background:var(--gold);display:inline-block;}
+  .show-card h3{font-size:20px;margin-bottom:10px;color:var(--ink);}
+  .show-card h3 em{color:var(--teal);font-style:italic;}
+  .show-card p{font-size:15px;color:var(--ink);line-height:1.6;}
+  .show-card .show-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--teal-dark);font-weight:600;font-size:14px;border-bottom:1px solid rgba(38,168,176,.3);transition:border-color .15s ease;}
+  .show-card .show-link:hover{border-bottom-color:var(--teal);}
+  @media (max-width:780px){.shows-grid{grid-template-columns:1fr;}}
 
   /* ---------- DASHBOARD EMBED (scaled fit) ---------- */
   .dashboard-embed{margin-top:36px;position:relative;width:100%;aspect-ratio:1440/900;overflow:hidden;border-radius:14px;box-shadow:0 24px 60px rgba(15,78,84,.14);border:1px solid var(--line);background:#fff;}
@@ -394,6 +410,29 @@
           <li>Aggregated dashboard voor Rational over alle klanten heen</li>
           <li>Te koppelen aan Smart Kitchen als kennis-laag onder de hardware</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="shows-section">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <div class="sec-label" style="justify-content:center;">Op de beurs</div>
+      <h2 class="sec" style="margin:0 auto;">Twee momenten waar je <em>zichtbaar</em> bent.</h2>
+      <p class="sec-intro" style="margin:14px auto 0;">Naast platform en content gebeuren er twee dingen op de vloer. Concreet, datum-gebonden, founding-partner-positie beschikbaar.</p>
+    </div>
+    <div class="shows-grid">
+      <div class="show-card reveal d1">
+        <div class="show-date">21–23 september 2026</div>
+        <h3>Gastvrij Rotterdam · <em>Battle Arena</em></h3>
+        <p>Een fysieke arena van 12 bij 11 meter midden in de hal. Deelnemers spelen een interactieve battle, met LED-schermen, hosting en publiek eromheen. Founding partners staan in de arena: in de content, op de schermen en bij de programmering.</p>
+        <a class="show-link" href="https://6a1eafe8b35c2c3edb7810b1--cheerful-melba-a3cc6f.netlify.app" target="_blank" rel="noopener">Bekijk de arena in 3D →</a>
+      </div>
+      <div class="show-card reveal d2">
+        <div class="show-date">Horecava 2026 · donderdag</div>
+        <h3>Battle-editie op de <em>hoofddag</em>.</h3>
+        <p>Op de donderdag van Horecava draaien we een battle-editie. Andere energie dan de openingsdagen: vakmensen met ruimte om iets te zien dat blijft hangen. Founding partners doen mee in de programmering en op de schermen.</p>
       </div>
     </div>
   </div>
