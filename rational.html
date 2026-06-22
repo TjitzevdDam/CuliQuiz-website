@@ -42,6 +42,21 @@
   .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
   .wide{max-width:1080px;}
 
+  /* ---------- GATE (wachtwoord) ---------- */
+  html.cq-locked body > *:not(#cqGate){visibility:hidden;}
+  html.cq-locked, html.cq-locked body{overflow:hidden;}
+  html:not(.cq-locked) #cqGate{display:none;}
+  .cq-gate{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#0F4E54 0%, #26A8B0 100%);display:flex;align-items:center;justify-content:center;padding:24px;visibility:visible !important;}
+  .cq-gate-card{background:#fff;border-radius:18px;padding:38px 32px 32px;max-width:380px;width:100%;text-align:center;box-shadow:0 30px 60px -16px rgba(15,78,84,.5);}
+  .cq-gate-card img{height:36px;width:auto;margin:0 auto 18px;display:block;}
+  .cq-gate-card h2{font-family:'Fraunces',serif;font-weight:900;font-size:24px;color:var(--ink);margin-bottom:8px;line-height:1.15;}
+  .cq-gate-card p{color:var(--muted);font-size:14px;margin-bottom:22px;line-height:1.5;}
+  .cq-gate-card input{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:15px;margin-bottom:10px;color:var(--ink);box-sizing:border-box;}
+  .cq-gate-card input:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:transparent;}
+  .cq-gate-card button{width:100%;padding:12px 24px;background:var(--teal);color:#fff;border:0;border-radius:10px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;transition:background .15s ease;}
+  .cq-gate-card button:hover{background:var(--teal-dark);}
+  .cq-gate-card .cq-gate-error{color:#C53030;font-size:13px;margin:8px 0 0;}
+
   /* ---------- NAV ---------- */
   .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;}
@@ -291,6 +306,28 @@
 </style>
 </head>
 <body>
+<script>
+  // Set lock class BEFORE rendering to prevent flash of content
+  try{
+    if(localStorage.getItem('cq_rational_unlocked') !== '1'){
+      document.documentElement.classList.add('cq-locked');
+    }
+  }catch(e){
+    document.documentElement.classList.add('cq-locked');
+  }
+</script>
+<div id="cqGate" class="cq-gate">
+  <div class="cq-gate-card">
+    <img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" />
+    <h2>Voor Rational</h2>
+    <p>Deze pagina is voor jullie. Vul het wachtwoord in om verder te gaan.</p>
+    <form id="cqGateForm" novalidate>
+      <input type="password" id="cqGateInput" placeholder="Wachtwoord" autocomplete="off" />
+      <button type="submit">Open</button>
+    </form>
+    <p id="cqGateError" class="cq-gate-error" hidden>Wachtwoord klopt niet.</p>
+  </div>
+</div>
 
 <nav class="nav">
   <div class="wrap wide nav-inner">
@@ -538,6 +575,62 @@
 
 <script>
   document.documentElement.classList.add('js');
+
+  /* ============================================================
+     Gate (wachtwoord-bescherming)
+     Wachtwoord: iCom2026 (case-insensitive vergelijking)
+     Hash bijwerken: echo -n "nieuw_ww_lowercase" | shasum -a 256
+     ============================================================ */
+  (function(){
+    if(!document.documentElement.classList.contains('cq-locked')) return;
+
+    var EXPECTED_HASH = '61096ec329c9cede13741a5bef384d8cbd07df965d3aa12e4b6834b39f477232';
+    var STORAGE_KEY = 'cq_rational_unlocked';
+
+    async function sha256(text){
+      var enc = new TextEncoder();
+      var hash = await crypto.subtle.digest('SHA-256', enc.encode(text));
+      return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
+    }
+
+    function unlock(){
+      document.documentElement.classList.remove('cq-locked');
+      var gate = document.getElementById('cqGate');
+      if(gate) gate.remove();
+      try{ localStorage.setItem(STORAGE_KEY, '1'); }catch(e){}
+    }
+
+    function init(){
+      var form = document.getElementById('cqGateForm');
+      var input = document.getElementById('cqGateInput');
+      var error = document.getElementById('cqGateError');
+      if(!form || !input) return;
+
+      setTimeout(function(){ input.focus(); }, 80);
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        error.hidden = true;
+        var ww = input.value.trim();
+        if(!ww) return;
+        sha256(ww.toLowerCase()).then(function(hash){
+          if(hash === EXPECTED_HASH){
+            unlock();
+          } else {
+            error.hidden = false;
+            input.select();
+          }
+        });
+      });
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+
   (function(){
     var els = document.querySelectorAll('.reveal');
     if(!('IntersectionObserver' in window)){
