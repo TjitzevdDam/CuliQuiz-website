@@ -44,10 +44,14 @@
 
   /* ---------- NAV ---------- */
   .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
-  .nav .logo img{height:30px;width:auto;}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;}
+  .nav-logos{display:flex;align-items:center;gap:14px;}
+  .nav-logos .logo img{height:30px;width:auto;display:block;}
+  .nav-logos .cross{color:#B7C2C6;font-size:18px;font-weight:300;line-height:1;}
+  .nav-logos .partner img{height:24px;width:auto;display:block;}
   .nav-meta{font-size:13px;color:var(--muted);}
   .nav-meta strong{color:var(--ink);font-weight:600;}
+  @media (max-width:560px){.nav-logos{gap:10px;} .nav-logos .partner img{height:20px;} .nav-logos .logo img{height:26px;}}
   @media print { .nav{display:none;} }
 
   /* ---------- HERO ---------- */
@@ -154,8 +158,12 @@
 <body>
 
 <nav class="nav">
-  <div class="wrap wide" style="display:flex;align-items:center;justify-content:space-between;height:64px;">
-    <a class="logo" href="https://www.culiquiz.nl"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></a>
+  <div class="wrap wide nav-inner">
+    <div class="nav-logos">
+      <a class="logo" href="https://www.culiquiz.nl"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></a>
+      <span class="cross" aria-hidden="true">×</span>
+      <span class="partner"><img src="https://www.culiquiz.nl/assets/partners/rational.svg" alt="Rational" /></span>
+    </div>
     <div class="nav-meta">Voor <strong>Luc</strong> · juni 2026</div>
   </div>
 </nav>
