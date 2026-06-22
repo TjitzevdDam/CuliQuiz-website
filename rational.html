@@ -97,6 +97,10 @@
   .path.gold h3 em{color:#a37e00;}
   .path .what{font-size:14px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:18px;margin-bottom:6px;}
   .path p{font-size:16px;color:var(--ink);}
+  .path-list{list-style:none;padding:0;margin:0;}
+  .path-list li{position:relative;padding-left:18px;margin-bottom:9px;font-size:15.5px;color:var(--ink);line-height:1.55;}
+  .path-list li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:2px;background:var(--teal);}
+  .path.gold .path-list li::before{background:var(--gold);}
   @media (max-width:780px){.paths{grid-template-columns:1fr;}}
 
   /* ---------- TIMELINE ---------- */
@@ -211,9 +215,9 @@
       <h2 class="sec">Traffic is wat een platform laat <em>werken</em>.</h2>
     </div>
     <div class="lead-body reveal d1">
-      <p>Coca-Cola heeft een tijd een eigen academie geprobeerd, Snelle Skills. Op zich een goed idee. Gestopt. Reden: geen verkeer op een extern platform. Alles loopt nu via CuliQuiz.</p>
-      <p>Daar gaat het mis bij bedrijven die kennis zelf willen bouwen. Wij hebben de mensen, de bedrijven, de aandacht. Het loopt al.</p>
-      <p>Vandaar dat we naast de huidige opzet twee dingen zien die voor Rational verder kunnen gaan.</p>
+      <p>Coca-Cola probeerde een tijd een eigen trainingsplatform voor de horecateams die hun producten dagelijks tappen: Snelle Skills. Op zich een goed idee. Gestopt. Reden: geen verkeer op een extern platform. Alles loopt nu via CuliQuiz.</p>
+      <p>Het verschil zit in waar de gebruikers zitten. Niet achter een desktop voor de eerstvolgende verplichte training, maar op de vloer, in de pauze of tussen twee diensten door. Laagdrempelig, dagelijks, in spelvorm. Vandaar de traffic.</p>
+      <p>Daarnaast zien we twee dingen die voor Rational verder kunnen gaan dan zichtbaarheid alleen.</p>
     </div>
   </div>
 </section>
@@ -232,8 +236,15 @@
         <h3>Een platform voor <em>Rational zelf</em>.</h3>
         <p class="what">Wat we zien</p>
         <p>Monteurtrainingen in Hengelo. Sales-onboarding die niet meeschaalt. Marketingcontent die de vloer niet bereikt. Internationale teams die niet op één lijn staan.</p>
-        <p class="what">Wat we kunnen toevoegen</p>
-        <p>Monteurs blijven scherp tussen onsite-sessies door. Sales kent het product van binnen en buiten. Nieuwe mensen dag één actief. Een dashboard waarop je per afdeling en per land ziet wie waar staat.</p>
+        <p class="what">Wat erin zit</p>
+        <ul class="path-list">
+          <li>Een eigen Rational-omgeving binnen CuliQuiz</li>
+          <li>Microgames en challenges per rol: monteur, sales, marketing</li>
+          <li>Dagelijks 3 minuten op de telefoon, geen aparte trainingsdagen</li>
+          <li>Dashboard met inzicht per team, locatie en land</li>
+          <li>Maandelijks nieuwe content vanuit CuliQuiz, plus optionele eigen vragen</li>
+          <li>Meertalig in te zetten voor de internationale uitrol</li>
+        </ul>
       </div>
 
       <div class="path gold reveal d2">
@@ -241,8 +252,15 @@
         <h3>Een platform voor <em>jullie klanten</em>.</h3>
         <p class="what">Wat we zien</p>
         <p>Klanten kopen een iCom Pro. Op de vloer hapert de productkennis. Smart Kitchen vraagt om een kennis-laag, anders blijft het productselling. En er is nu geen doorlopend contact met de eindgebruiker.</p>
-        <p class="what">Wat we kunnen toevoegen</p>
-        <p>Een academie waar teams van jullie klanten dagelijks spelen over jullie apparaten en culinaire kennis. Per klant zichtbaar of het landt. Supportvragen omlaag, sell-out omhoog, reviews beter.</p>
+        <p class="what">Wat erin zit</p>
+        <ul class="path-list">
+          <li>Een Rational-gebrande academie binnen CuliQuiz</li>
+          <li>Toegang voor de teams van Rational-klanten, per locatie</li>
+          <li>Games over de apparaten en de gerechten die ermee gemaakt worden</li>
+          <li>Per klant zichtbaar of het landt: deelname, kennisgroei</li>
+          <li>Aggregated dashboard voor Rational over alle klanten heen</li>
+          <li>Te koppelen aan Smart Kitchen als kennis-laag onder de hardware</li>
+        </ul>
       </div>
     </div>
   </div>
