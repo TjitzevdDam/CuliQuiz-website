@@ -196,13 +196,29 @@
   .cq-game-screen{position:absolute;inset:0;display:none;flex-direction:column;padding:16px 18px 18px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
   .cq-game-screen.is-active{display:flex;animation:cqgfade .25s ease both;}
   @keyframes cqgfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @keyframes cqCardIn{from{opacity:0;transform:translateY(-10px) scale(.96);}to{opacity:1;transform:none;}}
+  @keyframes cqAnswerIn{from{opacity:0;transform:translateX(-16px);}to{opacity:1;transform:none;}}
+  @keyframes cqIconPulse{0%,100%{transform:translateY(-50%) scale(1);box-shadow:0 0 0 0 rgba(225,94,23,.45);}50%{transform:translateY(-50%) scale(1.06);box-shadow:0 0 0 10px rgba(225,94,23,0);}}
+  @keyframes cqPopHit{0%{transform:scale(1);}40%{transform:scale(1.05);}100%{transform:scale(1);}}
+  @keyframes cqShakeHit{0%,100%{transform:translateX(0);}20%{transform:translateX(-5px);}40%{transform:translateX(5px);}60%{transform:translateX(-4px);}80%{transform:translateX(4px);}}
+  @keyframes cqScorePop{0%{transform:scale(1);}40%{transform:scale(1.18);}100%{transform:scale(1);}}
+  @keyframes cqDotPop{0%{transform:scale(1);}50%{transform:scale(1.6);}100%{transform:scale(1);}}
 
   .cq-game-hud{display:flex;align-items:center;justify-content:center;gap:8px;padding:0 0 8px;}
   .cq-game-chip{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#0F4E54;font-weight:700;font-size:11.5px;padding:5px 13px;border-radius:999px;}
-  .cq-game-chip .cq-x3{color:#E15E17;font-weight:800;}
+  .cq-game-chip .cq-x3{color:#E15E17;font-weight:800;display:inline-block;}
+  .cq-game-chip.is-pop{animation:cqScorePop .45s cubic-bezier(.2,1.5,.4,1);}
   .cq-game-progress{display:flex;justify-content:center;gap:6px;padding:0 0 14px;}
-  .cq-game-progress span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);}
-  .cq-game-progress span.on{background:#EAB600;}
+  .cq-game-progress span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s ease;}
+  .cq-game-progress span.on{background:#EAB600;animation:cqDotPop .4s cubic-bezier(.2,1.4,.4,1);}
+
+  @media (prefers-reduced-motion:reduce){
+    .cq-game-card, .cq-game-card.is-fresh, .cq-game-card::before, .cq-game-answer,
+    .cq-game-answer.is-correct, .cq-game-answer.is-wrong,
+    .cq-game-chip.is-pop, .cq-game-progress span.on{
+      animation:none !important;
+    }
+  }
 
   /* START screen */
   .cq-game-start{justify-content:center;align-items:center;text-align:center;}
@@ -214,7 +230,8 @@
   /* PLAY screen */
   .cq-game-play{justify-content:flex-start;align-items:stretch;}
   .cq-game-card{width:100%;background:#fff;border-radius:14px;padding:16px 16px 16px 62px;position:relative;box-shadow:0 8px 20px -4px rgba(0,0,0,.25);margin-bottom:14px;}
-  .cq-game-card::before{content:"?";position:absolute;left:12px;top:50%;transform:translateY(-50%);width:40px;height:40px;background:#E15E17;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:900;font-size:26px;}
+  .cq-game-card.is-fresh{animation:cqCardIn .4s cubic-bezier(.2,.8,.2,1) both;}
+  .cq-game-card::before{content:"?";position:absolute;left:12px;top:50%;transform:translateY(-50%);width:40px;height:40px;background:#E15E17;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:900;font-size:26px;animation:cqIconPulse 2.2s ease-in-out infinite;}
   .cq-game-card .cq-game-q{font-size:15.5px;font-weight:600;color:#0F4E54;line-height:1.4;}
   .cq-game-answers{display:flex;flex-direction:column;gap:10px;width:100%;}
   .cq-game-answer{
@@ -224,7 +241,11 @@
     clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 100%, 14px 100%);
     transition:background .15s ease;
     font-family:inherit;
+    animation:cqAnswerIn .4s cubic-bezier(.2,.8,.2,1) both;
   }
+  .cq-game-answer:nth-child(1){animation-delay:.10s;}
+  .cq-game-answer:nth-child(2){animation-delay:.18s;}
+  .cq-game-answer:nth-child(3){animation-delay:.26s;}
   .cq-game-answer .cq-game-letter{
     position:absolute;left:8px;top:0;bottom:0;width:32px;display:flex;align-items:center;justify-content:center;
     background:#D4A300;font-family:'Fraunces',serif;font-weight:900;font-size:18px;color:#fff;
@@ -232,9 +253,9 @@
   }
   .cq-game-answer:hover:not(:disabled){background:#F2C42A;}
   .cq-game-answer:disabled{cursor:default;opacity:.95;}
-  .cq-game-answer.is-correct{background:#5DA836;color:#fff;}
+  .cq-game-answer.is-correct{background:#5DA836;color:#fff;animation:cqPopHit .45s cubic-bezier(.2,1.4,.4,1);}
   .cq-game-answer.is-correct .cq-game-letter{background:#3F7E1E;color:#fff;}
-  .cq-game-answer.is-wrong{background:#D8463A;color:#fff;}
+  .cq-game-answer.is-wrong{background:#D8463A;color:#fff;animation:cqShakeHit .4s ease;}
   .cq-game-answer.is-wrong .cq-game-letter{background:#B2301F;color:#fff;}
 
   .cq-game-feedback{margin-top:14px;padding:11px 14px;background:rgba(0,0,0,.25);border-radius:10px;color:#fff;font-size:12px;line-height:1.45;display:none;width:100%;}
@@ -600,6 +621,13 @@
       answered = false;
       var q = QUESTIONS[idx];
       elQ.textContent = q.q;
+      // Vraagkaart slide-in opnieuw triggeren
+      var card = device.querySelector('.cq-game-card');
+      if(card){
+        card.classList.remove('is-fresh');
+        void card.offsetWidth;
+        card.classList.add('is-fresh');
+      }
       elAnswers.innerHTML = '';
       var letters = ['A','B','C'];
       q.a.forEach(function(txt, i){
@@ -610,10 +638,14 @@
         btn.addEventListener('click', function(){ answer(i, btn); });
         elAnswers.appendChild(btn);
       });
-      // progress dots
+      // progress dots — eerst alle 'on' weghalen om animatie opnieuw te kunnen triggeren
       var dots = elProgress.querySelectorAll('span');
       dots.forEach(function(d, i){
-        d.classList.toggle('on', i <= idx);
+        if(i <= idx && !d.classList.contains('on')){
+          d.classList.add('on');
+        } else if(i > idx){
+          d.classList.remove('on');
+        }
       });
       elFeedback.classList.remove('is-shown');
       elNext.style.display = 'none';
@@ -634,6 +666,12 @@
       } else {
         score++;
         elScore.textContent = String(score);
+        var chip = elScore.closest('.cq-game-chip');
+        if(chip){
+          chip.classList.remove('is-pop');
+          void chip.offsetWidth;
+          chip.classList.add('is-pop');
+        }
       }
       elFeedbackTitle.textContent = (i === correct) ? 'GOED' : 'NIET HELEMAAL';
       elFeedbackTitle.style.color = (i === correct) ? '#5DA836' : '#FFB4AB';
