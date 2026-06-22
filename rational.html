@@ -104,14 +104,13 @@
   .phase p{font-size:15.5px;color:var(--muted);}
   @media (max-width:780px){.timeline{grid-template-columns:1fr;}}
 
-  /* ---------- DASHBOARD EMBED ---------- */
-  .dashboard-embed{margin-top:36px;border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(15,78,84,.14);border:1px solid var(--line);background:#fff;position:relative;}
-  .dashboard-embed iframe{width:100%;height:780px;border:0;display:block;}
-  .dashboard-meta{margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:13.5px;color:var(--muted);flex-wrap:wrap;}
+  /* ---------- DASHBOARD EMBED (9:16 portret) ---------- */
+  .dashboard-embed{max-width:420px;margin:36px auto 0;aspect-ratio:9/16;border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(15,78,84,.14);border:1px solid var(--line);background:#fff;position:relative;}
+  .dashboard-embed iframe{width:100%;height:100%;border:0;display:block;}
+  .dashboard-meta{max-width:420px;margin:14px auto 0;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:13.5px;color:var(--muted);flex-wrap:wrap;}
   .dashboard-meta a{color:var(--teal-dark);font-weight:600;border-bottom:1px solid rgba(38,168,176,.3);transition:border-color .15s ease;}
   .dashboard-meta a:hover{border-bottom-color:var(--teal);}
-  @media (max-width:780px){.dashboard-embed iframe{height:520px;}}
-  @media print{.dashboard-embed iframe{height:auto;min-height:480px;}}
+  @media (max-width:780px){.dashboard-embed{max-width:340px;}.dashboard-meta{max-width:340px;}}
 
   /* ---------- GAME EMBED ---------- */
   .game-intro{margin-top:48px;font-size:17px;color:var(--ink);}
@@ -174,18 +173,18 @@
   <div class="wrap">
     <div class="eyebrow">Naar aanleiding van ons gesprek · 16 juni</div>
     <h1>Wat we deden. Waar het naartoe <em>kan</em>.</h1>
-    <p class="lead">Hé Luc, hier wat we besproken hebben. Heb het zo opgeschreven dat je het kunt doorsturen naar Marco.</p>
+    <p class="lead">Een vervolg op ons gesprek van 16 juni.</p>
   </div>
 </header>
 
 <section class="block">
   <div class="wrap">
     <div class="reveal">
-      <div class="sec-label">Jaar 1</div>
-      <h2 class="sec">Wat we tot nu toe <em>doen</em>.</h2>
+      <div class="sec-label">Tot nu toe</div>
+      <h2 class="sec">Wat we nu al <em>doen</em>.</h2>
     </div>
     <div class="lead-body reveal d1">
-      <p>Vorig jaar zijn we begonnen met een afspraak van 5.000 euro. Doel was zichtbaarheid van Rational binnen onze community. Wat daaruit gekomen is:</p>
+      <p>Sinds 2023 is Rational partner. De afspraak was 5.000 euro per jaar, doel was zichtbaarheid van het merk binnen onze community. Wat daaruit gekomen is:</p>
     </div>
     <div class="timeline">
       <div class="phase reveal d1">
@@ -200,7 +199,7 @@
       </div>
     </div>
     <div class="lead-body reveal" style="margin-top:32px;">
-      <p>Dit werkt. Wat ons betreft mag het blijven. Maar er liggen kansen naast die jaar 1 een beetje voorbij ziet.</p>
+      <p>Dit werkt. Wat ons betreft mag het blijven. Maar er liggen kansen naast die de huidige opzet voorbij ziet.</p>
     </div>
   </div>
 </section>
@@ -212,9 +211,9 @@
       <h2 class="sec">Traffic is wat een platform laat <em>werken</em>.</h2>
     </div>
     <div class="lead-body reveal d1">
-      <p>Coca-Cola heeft een tijd een eigen academie geprobeerd, Sneller Speelt. Op zich een goed idee. Gestopt. Reden: geen verkeer op een extern platform. Alles is nu intern, in de Q-kits.</p>
+      <p>Coca-Cola heeft een tijd een eigen academie geprobeerd, Snelle Skills. Op zich een goed idee. Gestopt. Reden: geen verkeer op een extern platform. Alles loopt nu via CuliQuiz.</p>
       <p>Daar gaat het mis bij bedrijven die kennis zelf willen bouwen. Wij hebben de mensen, de bedrijven, de aandacht. Het loopt al.</p>
-      <p>Vandaar dat we naast jaar 1 twee dingen zien die voor Rational verder kunnen gaan.</p>
+      <p>Vandaar dat we naast de huidige opzet twee dingen zien die voor Rational verder kunnen gaan.</p>
     </div>
   </div>
 </section>
@@ -232,7 +231,7 @@
         <span class="tag">Pad 1 · Intern</span>
         <h3>Een platform voor <em>Rational zelf</em>.</h3>
         <p class="what">Wat we zien</p>
-        <p>Monteurstrainingen nu alleen in Hengelo. Sales-onboarding die niet meeschaalt. Marketingcontent die de vloer niet bereikt. Internationale teams die niet op één lijn staan.</p>
+        <p>Monteurtrainingen in Hengelo. Sales-onboarding die niet meeschaalt. Marketingcontent die de vloer niet bereikt. Internationale teams die niet op één lijn staan.</p>
         <p class="what">Wat we kunnen toevoegen</p>
         <p>Monteurs blijven scherp tussen onsite-sessies door. Sales kent het product van binnen en buiten. Nieuwe mensen dag één actief. Een dashboard waarop je per afdeling en per land ziet wie waar staat.</p>
       </div>
@@ -243,7 +242,7 @@
         <p class="what">Wat we zien</p>
         <p>Klanten kopen een iCom Pro. Op de vloer hapert de productkennis. Smart Kitchen vraagt om een kennis-laag, anders blijft het productselling. En er is nu geen doorlopend contact met de eindgebruiker.</p>
         <p class="what">Wat we kunnen toevoegen</p>
-        <p>Een academie waar teams van jullie klanten dagelijks spelen over jullie apparaten en culinaire kennis. Per klant zichtbaar of het landt. Supportvragen omlaag, sell-out omhoog, reviews beter. Hetzelfde verhaal als bij Coca, maar dan met traffic.</p>
+        <p>Een academie waar teams van jullie klanten dagelijks spelen over jullie apparaten en culinaire kennis. Per klant zichtbaar of het landt. Supportvragen omlaag, sell-out omhoog, reviews beter.</p>
       </div>
     </div>
   </div>
@@ -308,7 +307,7 @@
 
 <section class="closer">
   <div class="wrap">
-    <h2>Jaar 1 was zichtbaarheid. Jaar 2 kan meer zijn.</h2>
+    <h2>Tot nu toe ging het om zichtbaarheid. Het kan meer zijn.</h2>
     <p>De zichtbaarheid die er staat hoeft niet weg. Daarnaast is er ruimte voor iets dat aansluit bij waar jullie zelf naartoe willen.</p>
     <div class="signature">
       <strong>Tjitze van der Dam</strong><br>
