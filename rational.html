@@ -104,6 +104,15 @@
   .phase p{font-size:15.5px;color:var(--muted);}
   @media (max-width:780px){.timeline{grid-template-columns:1fr;}}
 
+  /* ---------- DASHBOARD EMBED ---------- */
+  .dashboard-embed{margin-top:36px;border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(15,78,84,.14);border:1px solid var(--line);background:#fff;position:relative;}
+  .dashboard-embed iframe{width:100%;height:780px;border:0;display:block;}
+  .dashboard-meta{margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:13.5px;color:var(--muted);flex-wrap:wrap;}
+  .dashboard-meta a{color:var(--teal-dark);font-weight:600;border-bottom:1px solid rgba(38,168,176,.3);transition:border-color .15s ease;}
+  .dashboard-meta a:hover{border-bottom-color:var(--teal);}
+  @media (max-width:780px){.dashboard-embed iframe{height:520px;}}
+  @media print{.dashboard-embed iframe{height:auto;min-height:480px;}}
+
   /* ---------- NEXT STEPS ---------- */
   .next-list{margin-top:32px;display:grid;gap:18px;}
   .next-item{display:flex;gap:18px;align-items:flex-start;padding:20px 24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;}
@@ -238,7 +247,17 @@
     </div>
     <div class="lead-body reveal d1">
       <p>Het platform staat. Het dashboard staat. Er komt elke week content bij. We zijn nu bezig met uitrol in andere landen, dezelfde aanpak die jullie internationaal voor ogen hebben.</p>
-      <p>Makkelijkst om dat te beoordelen is in Hengelo. Een uur, een demo, geen verkoop.</p>
+      <p>Hieronder een eerste schets van hoe een Rational-dashboard er binnen ons platform uit kan zien. Geen finale, wel waar het op neerkomt.</p>
+    </div>
+    <div class="dashboard-embed reveal d2">
+      <iframe src="https://quest-shared-67849119.figma.site" title="Partner Dashboard voor Rational" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <div class="dashboard-meta reveal d2">
+      <span>Schets · klikbaar prototype</span>
+      <a href="https://quest-shared-67849119.figma.site" target="_blank" rel="noopener">Open in vol scherm →</a>
+    </div>
+    <div class="lead-body reveal" style="margin-top:32px;">
+      <p>Makkelijkst om er echt iets van te vinden is in Hengelo. Een uur, een demo, geen verkoop.</p>
     </div>
   </div>
 </section>
