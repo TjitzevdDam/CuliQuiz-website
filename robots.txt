@@ -3,5 +3,6 @@ Allow: /
 
 Disallow: /bronmateriaal/
 Disallow: /apps-script/
+Disallow: /gastvrijrotterdam
 
 Sitemap: https://www.culiquiz.nl/sitemap.xml

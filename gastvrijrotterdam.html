@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CuliQuiz × Gastvrij Rotterdam — maak je standteam beursklaar</title>
+<meta name="description" content="Gastvrij Rotterdam maakt haar standhouders beursklaar met het CuliQuiz-platform. Zo kom je binnen: in drie stappen onboard je je standteam." />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#26A8B0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Montserrat:ital,wght@0,300..700;1,300..500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#26A8B0;
+    --teal-dark:#1B7A80;
+    --teal-deep:#0F4E54;
+    --teal-soft:#E6F4F5;
+    --gold:#EAB600;
+    --gold-ink:#B48A00;
+    --orange:#E15E17;
+    --purple:#9C2A8E;
+    --ink:#1A2226;
+    --muted:#5E6A70;
+    --line:#E7ECEE;
+    --bg:#ffffff;
+    --bg-soft:#F6FAFA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Montserrat',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    font-weight:400;
+    line-height:1.65;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:900;line-height:1.08;letter-spacing:-.015em;}
+  em{font-style:italic;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .nav .logo img{height:34px;width:auto;}
+  .nav-right{display:flex;align-items:center;gap:26px;}
+  .nav-links{display:flex;align-items:center;gap:26px;}
+  .nav-links a{font-size:14.5px;font-weight:500;color:var(--ink);transition:color .12s;position:relative;}
+  .nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:2px;background:var(--gold);transition:right .2s ease;}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-links a:hover::after{right:0;}
+  .nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff !important;padding:10px 18px;border-radius:999px;font-weight:600;font-size:14px;box-shadow:0 6px 16px rgba(38,168,176,.25);transition:transform .12s ease, background .12s ease;}
+  .nav-cta:hover{background:var(--teal-dark);transform:translateY(-1px);}
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .nav-cta{padding:9px 16px;font-size:13px;}
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+    font:inherit;font-weight:700;font-size:16px;
+    background:var(--teal);color:#fff;border:none;
+    padding:15px 28px;border-radius:999px;
+    box-shadow:0 10px 24px rgba(38,168,176,.30);
+    transition:transform .12s ease, background .12s ease;
+  }
+  .btn:hover{background:var(--teal-dark);transform:translateY(-1px);}
+  .btn svg{width:17px;height:17px;}
+  .btn.gold{background:var(--gold);color:var(--ink);box-shadow:0 10px 24px rgba(234,182,0,.30);}
+  .btn.gold:hover{background:#d9a800;}
+  .btn.ghost{background:#fff;color:var(--teal-deep);border:1.5px solid var(--line);box-shadow:none;}
+  .btn.ghost:hover{background:var(--bg-soft);border-color:var(--teal);}
+
+  /* ---------- HERO ---------- */
+  .hero{background:linear-gradient(160deg,#F6FAFA 0%, #E6F4F5 100%);position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;top:-140px;right:-120px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle, rgba(234,182,0,.20) 0%, transparent 70%);pointer-events:none;}
+  .hero::before{content:"";position:absolute;bottom:-160px;left:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, rgba(156,42,142,.12) 0%, transparent 70%);pointer-events:none;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:74px 0 70px;position:relative;z-index:1;}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;background:rgba(255,255,255,.6);padding:7px 14px 7px 10px;border-radius:999px;border:1px solid rgba(38,168,176,.2);}
+  .eyebrow::before{content:"";width:24px;height:2px;background:var(--gold);display:inline-block;}
+  .hero h1{font-size:clamp(34px,5vw,56px);color:var(--ink);}
+  .hero h1 em{color:var(--teal);position:relative;}
+  .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.08em;height:.16em;background:rgba(234,182,0,.45);border-radius:3px;z-index:-1;}
+  .hero .lead{font-size:clamp(16px,1.7vw,19px);color:var(--muted);margin-top:20px;max-width:540px;}
+  .hero-visual{position:relative;display:flex;justify-content:center;}
+  .hero-visual::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle, rgba(38,168,176,.22) 0%, transparent 70%);z-index:0;}
+  .hero-visual .phone{max-height:460px;width:auto;position:relative;z-index:1;filter:drop-shadow(0 24px 50px rgba(15,78,84,.28));}
+  .float-chip{position:absolute;z-index:2;background:#fff;border-radius:14px;padding:10px 14px;box-shadow:0 12px 28px rgba(15,78,84,.16);display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;color:var(--ink);animation:floaty 4s ease-in-out infinite;}
+  .float-chip .badge{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;}
+  .float-chip.c1{top:14%;left:-6%;}
+  .float-chip.c1 .badge{background:var(--gold);}
+  .float-chip.c2{top:46%;right:-8%;animation-delay:1.3s;}
+  .float-chip.c2 .badge{background:#1a9c50;}
+  .float-chip.c3{bottom:12%;left:2%;animation-delay:2.1s;}
+  .float-chip.c3 .badge{background:var(--purple);}
+  .float-chip svg{width:15px;height:15px;}
+  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+  @media (prefers-reduced-motion:reduce){.float-chip{animation:none;}}
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:30px;padding:48px 0 44px;}
+    .hero-visual{order:-1;}
+    .hero-visual .phone{max-height:300px;}
+    .float-chip{font-size:12px;padding:8px 11px;}
+    .float-chip.c1{left:0;top:8%;}
+    .float-chip.c2{right:0;}
+    .float-chip.c3{left:0;bottom:6%;}
+  }
+  @media (max-width:480px){
+    .float-chip.c3{display:none;}
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section.block{padding:72px 0;position:relative;}
+  .sec-label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);margin-bottom:12px;display:inline-flex;align-items:center;gap:9px;}
+  .sec-label::before{content:"";width:22px;height:2px;background:var(--gold);display:inline-block;}
+  h2.sec{font-size:clamp(26px,3.4vw,40px);color:var(--ink);max-width:18ch;}
+  h2.sec em{color:var(--teal);position:relative;}
+  h2.sec em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.14em;background:rgba(234,182,0,.4);border-radius:3px;z-index:-1;}
+  .sec-intro{color:var(--muted);max-width:620px;margin-top:14px;font-size:16.5px;}
+  .center{text-align:center;}
+  .center .sec-label{justify-content:center;}
+  .center h2.sec,.center .sec-intro{margin-left:auto;margin-right:auto;}
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease;}
+  .js .reveal.in{opacity:1;transform:none;}
+  .js .reveal.d1{transition-delay:.08s;}
+  .js .reveal.d2{transition-delay:.16s;}
+  .js .reveal.d3{transition-delay:.24s;}
+  @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none;}}
+
+  /* ---------- CHALLENGE ---------- */
+  .challenge{background:var(--teal-deep);color:#fff;}
+  .challenge .sec-label{color:var(--gold);}
+  .challenge h2.sec{color:#fff;}
+  .challenge h2.sec em{color:var(--gold);}
+  .ch-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .ch-list{list-style:none;margin-top:6px;display:flex;flex-direction:column;gap:14px;}
+  .ch-list li{display:flex;gap:14px;align-items:flex-start;font-size:16px;color:rgba(255,255,255,.92);}
+  .ch-list li svg{flex:0 0 22px;width:22px;height:22px;color:var(--gold);margin-top:2px;}
+  @media (max-width:860px){.ch-grid{grid-template-columns:1fr;gap:24px;}}
+
+  /* ---------- STEPS ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
+  .step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px 26px 30px;box-shadow:0 10px 30px rgba(15,78,84,.06);position:relative;overflow:hidden;transition:transform .15s ease, box-shadow .15s ease;}
+  .step::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--teal);}
+  .step:nth-child(2)::before{background:var(--orange);}
+  .step:nth-child(3)::before{background:var(--purple);}
+  .step::after{content:attr(data-num);position:absolute;top:-18px;right:6px;font-family:'Fraunces',serif;font-weight:900;font-size:130px;line-height:1;color:rgba(38,168,176,.07);pointer-events:none;}
+  .step:nth-child(2)::after{color:rgba(225,94,23,.08);}
+  .step:nth-child(3)::after{color:rgba(156,42,142,.07);}
+  .step:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,78,84,.12);}
+  .step .n{width:50px;height:50px;border-radius:14px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:900;font-size:23px;margin-bottom:18px;position:relative;z-index:1;box-shadow:0 8px 18px rgba(38,168,176,.30);}
+  .step:nth-child(2) .n{background:var(--orange);box-shadow:0 8px 18px rgba(225,94,23,.30);}
+  .step:nth-child(3) .n{background:var(--purple);box-shadow:0 8px 18px rgba(156,42,142,.30);}
+  .step h3{font-size:20px;margin-bottom:8px;position:relative;z-index:1;}
+  .step p{font-size:15px;color:var(--muted);position:relative;z-index:1;}
+  @media (max-width:860px){.steps{grid-template-columns:1fr;}}
+
+  /* ---------- BENEFITS CARDS ---------- */
+  .benefits{background:var(--bg-soft);position:relative;overflow:hidden;}
+  .benefits::before{content:"";position:absolute;top:-120px;right:-100px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle, rgba(38,168,176,.10) 0%, transparent 70%);pointer-events:none;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;position:relative;z-index:1;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px 26px;transition:transform .15s ease, box-shadow .15s ease;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,78,84,.10);}
+  .card .ic{width:54px;height:54px;border-radius:15px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--teal-dark);}
+  .card.c-teal .ic{background:var(--teal-soft);color:var(--teal-dark);}
+  .card.c-gold .ic{background:#FBF1CC;color:var(--gold-ink);}
+  .card.c-purple .ic{background:#F4E3F2;color:var(--purple);}
+  .card .ic svg{width:26px;height:26px;}
+  .card h3{font-size:19px;margin-bottom:7px;}
+  .card h3 em{color:var(--teal);}
+  .card.c-gold h3 em{color:var(--gold-ink);}
+  .card.c-purple h3 em{color:var(--purple);}
+  .card p{font-size:15px;color:var(--muted);}
+  @media (max-width:860px){.grid3{grid-template-columns:1fr;}}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:780px;margin:40px auto 0;}
+  .faq-list details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:14px;overflow:hidden;}
+  .faq-list summary{cursor:pointer;list-style:none;padding:20px 24px;font-weight:600;font-size:16.5px;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  .faq-list summary::-webkit-details-marker{display:none;}
+  .faq-list summary::after{content:"+";font-family:'Fraunces',serif;font-weight:900;font-size:26px;color:var(--teal);line-height:1;}
+  .faq-list details[open] summary::after{content:"–";}
+  .faq-list .ans{padding:0 24px 22px;font-size:15.5px;color:var(--muted);}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:linear-gradient(135deg,var(--teal) 0%, var(--teal-dark) 100%);color:#fff;}
+  .contact .sec-label{color:var(--gold);}
+  .contact h2.sec{color:#fff;}
+  .contact h2.sec em{color:var(--gold);}
+  .contact .sec-intro{color:rgba(255,255,255,.9);}
+  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:840px;margin:44px auto 0;}
+  .contact-card{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:28px 24px;text-align:center;color:#fff;transition:transform .12s ease, background .12s ease, border-color .12s ease;}
+  .contact-card:hover{transform:translateY(-2px);background:rgba(255,255,255,.16);border-color:var(--gold);}
+  .contact-card .ic{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--gold);}
+  .contact-card .ic svg{width:24px;height:24px;}
+  .contact-card h3{font-size:18px;margin-bottom:5px;color:#fff;}
+  .contact-card p{font-size:15px;color:rgba(255,255,255,.85);word-break:break-word;}
+  @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}}
+
+  /* ---------- FINAL CTA ---------- */
+  .final{background:linear-gradient(135deg,var(--teal) 0%, var(--teal-dark) 100%);color:#fff;text-align:center;}
+  .final h2{font-size:clamp(26px,3.4vw,40px);color:#fff;margin-bottom:14px;}
+  .final h2 em{color:var(--gold);}
+  .final p{font-size:17px;color:rgba(255,255,255,.92);max-width:560px;margin:0 auto 30px;}
+
+  /* ---------- FOOTER ---------- */
+  footer.foot{background:#0B3B40;color:rgba(255,255,255,.75);padding:54px 0 30px;font-size:14px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;}
+  .foot .logo img{height:30px;margin-bottom:14px;filter:brightness(0) invert(1);}
+  .foot .tagline{font-size:14px;color:rgba(255,255,255,.7);max-width:240px;}
+  .foot h4{font-family:'Montserrat';font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:14px;}
+  .foot ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .foot a:hover{color:var(--gold);}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:40px;padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12.5px;color:rgba(255,255,255,.55);}
+  @media (max-width:860px){.foot-grid{grid-template-columns:1fr;gap:28px;}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="https://www.culiquiz.nl"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="https://www.culiquiz.nl/wat-leveren-we.html">Wat leveren we?</a>
+        <a href="#zo-kom-je-binnen">Zo kom je binnen</a>
+        <a href="#voordelen">Wat het oplevert</a>
+      </div>
+      <a class="nav-cta" href="#contact">Start met onboarden</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Voor standhouders van Gastvrij Rotterdam</div>
+        <h1>Maak je standteam <em>beursklaar</em></h1>
+        <p class="lead">Gastvrij Rotterdam gebruikt het CuliQuiz-platform om standmedewerkers zich beter voor te bereiden en betrokken te maken bij de beurs. Met kennis, gedrag en energie op de vloer. Geen losse training, maar een dagelijks ritme.</p>
+      </div>
+      <div class="hero-visual">
+        <img class="phone" src="https://www.culiquiz.nl/assets/iphone2_transparent.png" alt="CuliQuiz app op iPhone" />
+        <div class="float-chip c1">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4zM5 4H3v2a3 3 0 0 0 3 3M19 4h2v2a3 3 0 0 1-3 3"/></svg></span>
+          #1 op de vloer
+        </div>
+        <div class="float-chip c2">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          Goed beantwoord!
+        </div>
+        <div class="float-chip c3">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21 8 14 2 9.4h7.6z"/></svg></span>
+          +10 punten
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ZO KOM JE BINNEN ============ -->
+<section class="block" id="zo-kom-je-binnen">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Onboarden in drie stappen</div>
+      <h2 class="sec">Zo kom je <em>binnen</em></h2>
+      <p class="sec-intro">Meedoen is eenvoudig. Als contactpersoon zet je je standorganisatie in een paar minuten op en nodig je je medewerkers uit. Daarna speelt ieder teamlid op zijn eigen telefoon mee.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal" data-num="1">
+        <div class="n">1</div>
+        <h3>Je ontvangt je uitnodiging</h3>
+        <p>De contactpersoon van je stand krijgt via Gastvrij Rotterdam een persoonlijke e-mailuitnodiging voor het CuliQuiz-platform. Daarmee start je.</p>
+      </div>
+      <div class="step reveal d1" data-num="2">
+        <div class="n">2</div>
+        <h3>Maak je standorganisatie aan</h3>
+        <p>Richt in een paar minuten je standorganisatie in en voeg je standmedewerkers toe. Eén keer instellen is genoeg.</p>
+      </div>
+      <div class="step reveal d2" data-num="3">
+        <div class="n">3</div>
+        <h3>Je team logt in en speelt mee</h3>
+        <p>Elke medewerker ontvangt een eigen uitnodiging, downloadt de app en speelt mee. Vanaf dat moment loopt het dagelijkse ritme richting de beurs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VOORDELEN ============ -->
+<section class="block benefits" id="voordelen">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="sec-label">Wat het je oplevert</div>
+      <h2 class="sec">Een team dat <em>klaarstaat</em></h2>
+      <p class="sec-intro">Voorbereide standteams maken het verschil. Het platform werkt daar elke dag naartoe.</p>
+    </div>
+    <div class="grid3">
+      <div class="card c-teal reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14v7"/><path d="M5 11.5V17l7 4 7-4v-5.5"/></svg></div>
+        <h3>Meer <em>kennis</em></h3>
+        <p>Je team kent het programma, de beurs en de producten. Bezoekers merken het verschil meteen.</p>
+      </div>
+      <div class="card c-gold reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <h3>Meer <em>energie</em></h3>
+        <p>Een speelse aanloop houdt iedereen scherp en betrokken, met een dagelijkse challenge tijdens de beurs.</p>
+      </div>
+      <div class="card c-purple reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Het hele <em>team mee</em></h3>
+        <p>Niet alleen de standhouder, maar elke standmedewerker doet mee. Samen sta je sterker op de vloer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="block contact" id="contact">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="sec-label">Contact</div>
+      <h2 class="sec">Een vraag over <em>meedoen</em>?</h2>
+      <p class="sec-intro">Nog geen uitnodiging ontvangen, of wil je weten hoe je je standteam aanmeldt? We helpen je graag op weg.</p>
+    </div>
+    <!-- contact cards -->
+    <div class="contact-grid">
+      <a class="contact-card reveal" href="mailto:info@culiquiz.nl?subject=CuliQuiz%20onboarding%20Gastvrij%20Rotterdam">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div>
+        <h3>E-mail</h3>
+        <p>info@culiquiz.nl</p>
+      </a>
+      <a class="contact-card reveal d1" href="https://www.linkedin.com/company/culiquiz">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <h3>LinkedIn</h3>
+        <p>@culiquiz</p>
+      </a>
+      <a class="contact-card reveal d2" href="https://www.culiquiz.nl">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Website</h3>
+        <p>www.culiquiz.nl</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></div>
+        <p class="tagline">Jouw culinaire kennis, elke dienst een stapje slimmer.</p>
+      </div>
+      <div>
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="https://www.culiquiz.nl">Home</a></li>
+          <li><a href="https://www.culiquiz.nl/wat-leveren-we.html">Wat leveren we?</a></li>
+          <li><a href="https://www.culiquiz.nl/nieuws.html">Nieuws</a></li>
+          <li><a href="https://www.culiquiz-live.nl/">Live spelen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@culiquiz.nl">info@culiquiz.nl</a></li>
+          <li>Vlielandstraat 2, 1506 ZK Zaandam</li>
+          <li><a href="https://www.linkedin.com/company/culiquiz">LinkedIn</a></li>
+          <li><a href="https://instagram.com/culiquiz">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© CuliQuiz. Alle rechten voorbehouden.</span>
+      <span>CuliQuiz × Gastvrij Rotterdam 2026 · 21–23 september · Ahoy</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(el){el.classList.add('in');});
+      return;
+    }
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){obs.observe(el);});
+  })();
+</script>
+
+</body>
+</html>
