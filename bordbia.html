@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CuliQuiz × Bord Bia · An exploration</title>
+<meta name="description" content="An introductory document for Bord Bia. Where CuliQuiz and Bord Bia could fit together." />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#26A8B0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Montserrat:ital,wght@0,300..700;1,300..500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#26A8B0;
+    --teal-dark:#1B7A80;
+    --teal-deep:#0F4E54;
+    --teal-soft:#E6F4F5;
+    --gold:#EAB600;
+    --gold-soft:#FBF1CC;
+    --ink:#1A2226;
+    --muted:#5E6A70;
+    --line:#E7ECEE;
+    --bg:#ffffff;
+    --bg-soft:#F6FAFA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Montserrat',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    font-weight:400;
+    line-height:1.7;
+    font-size:16.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:900;line-height:1.12;letter-spacing:-.015em;}
+  em{font-style:italic;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+  .wide{max-width:1080px;}
+
+  /* ---------- GATE (wachtwoord) ---------- */
+  html.cq-locked body > *:not(#cqGate){visibility:hidden;}
+  html.cq-locked, html.cq-locked body{overflow:hidden;}
+  html:not(.cq-locked) #cqGate{display:none;}
+  .cq-gate{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#0F4E54 0%, #26A8B0 100%);display:flex;align-items:center;justify-content:center;padding:24px;visibility:visible !important;}
+  .cq-gate-card{background:#fff;border-radius:18px;padding:38px 32px 32px;max-width:380px;width:100%;text-align:center;box-shadow:0 30px 60px -16px rgba(15,78,84,.5);}
+  .cq-gate-card img{height:36px;width:auto;margin:0 auto 18px;display:block;}
+  .cq-gate-card h2{font-family:'Fraunces',serif;font-weight:900;font-size:24px;color:var(--ink);margin-bottom:8px;line-height:1.15;}
+  .cq-gate-card p{color:var(--muted);font-size:14px;margin-bottom:22px;line-height:1.5;}
+  .cq-gate-card input{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:15px;margin-bottom:10px;color:var(--ink);box-sizing:border-box;}
+  .cq-gate-card input:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:transparent;}
+  .cq-gate-card button{width:100%;padding:12px 24px;background:var(--teal);color:#fff;border:0;border-radius:10px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;transition:background .15s ease;}
+  .cq-gate-card button:hover{background:var(--teal-dark);}
+  .cq-gate-card .cq-gate-error{color:#C53030;font-size:13px;margin:8px 0 0;}
+
+  /* ---------- NAV ---------- */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;}
+  .nav-logos{display:flex;align-items:center;gap:14px;}
+  .nav{height:140px;}
+  .nav-inner{height:140px;}
+  .nav-logos{gap:18px;}
+  .nav-logos .logo img{height:50px;width:auto;display:block;}
+  .nav-logos .cross{color:#B7C2C6;font-size:28px;font-weight:300;line-height:1;}
+  .nav-logos .partner img{height:108px;width:auto;display:block;}
+  .nav-meta{font-size:13px;color:var(--muted);}
+  .nav-meta strong{color:var(--ink);font-weight:600;}
+  @media (max-width:560px){
+    .nav{height:72px;}.nav-inner{height:72px;}
+    .nav-logos{gap:10px;}
+    .nav-logos .partner, .nav-logos .cross{display:none;}
+    .nav-logos .logo img{height:38px;}
+    .nav-meta{display:none;}
+  }
+  @media print { .nav{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{background:linear-gradient(165deg,#F6FAFA 0%, #E6F4F5 100%);padding:90px 0 80px;position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;top:-130px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle, rgba(234,182,0,.18) 0%, transparent 70%);pointer-events:none;}
+  .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);margin-bottom:22px;display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.7);padding:8px 16px 8px 12px;border-radius:999px;border:1px solid rgba(38,168,176,.2);}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--gold);display:inline-block;}
+  .hero h1{font-size:clamp(34px,4.6vw,52px);color:var(--ink);max-width:18ch;}
+  .hero h1 em{color:var(--teal);position:relative;}
+  .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.08em;height:.16em;background:rgba(234,182,0,.4);border-radius:3px;z-index:-1;}
+  .hero .lead{font-size:clamp(16.5px,1.6vw,19px);color:var(--muted);margin-top:24px;max-width:58ch;}
+
+  /* ---------- SECTION ---------- */
+  section.block{padding:80px 0;}
+  section.block.tight{padding:60px 0;}
+  section.alt{background:var(--bg-soft);}
+  section.dark{background:var(--teal-deep);color:#fff;}
+  section.dark h2{color:#fff;}
+  section.dark h2 em{color:var(--gold);}
+  section.dark p{color:rgba(255,255,255,.85);}
+
+  .sec-label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);margin-bottom:14px;display:inline-flex;align-items:center;gap:9px;}
+  .sec-label::before{content:"";width:22px;height:2px;background:var(--gold);display:inline-block;}
+  section.dark .sec-label{color:var(--gold);}
+  h2.sec{font-size:clamp(26px,3.2vw,38px);max-width:20ch;}
+  h2.sec em{color:var(--teal);position:relative;}
+  h2.sec em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.14em;background:rgba(234,182,0,.4);border-radius:3px;z-index:-1;}
+  .sec-intro{color:var(--muted);max-width:64ch;margin-top:16px;font-size:17px;}
+  section.dark .sec-intro{color:rgba(255,255,255,.85);}
+
+  .lead-body{font-size:17px;margin-top:28px;max-width:64ch;color:var(--ink);}
+  .lead-body p{margin-bottom:14px;}
+  section.dark .lead-body{color:rgba(255,255,255,.92);}
+
+  /* ---------- PATH BLOCK ---------- */
+  .paths{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:42px;}
+  .path{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px 30px;transition:transform .15s ease, box-shadow .15s ease;}
+  .path:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(15,78,84,.10);}
+  .path .tag{display:inline-block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);background:var(--teal-soft);padding:5px 10px;border-radius:6px;margin-bottom:14px;}
+  .path.gold .tag{color:#7a5b00;background:var(--gold-soft);}
+  .path h3{font-size:22px;margin-bottom:14px;}
+  .path h3 em{color:var(--teal);}
+  .path.gold h3 em{color:#a37e00;}
+  .path .what{font-size:14px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:18px;margin-bottom:6px;}
+  .path p{font-size:16px;color:var(--ink);}
+  .path-list{list-style:none;padding:0;margin:0;}
+  .path-list li{position:relative;padding-left:18px;margin-bottom:9px;font-size:15.5px;color:var(--ink);line-height:1.55;}
+  .path-list li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:2px;background:var(--teal);}
+  .path.gold .path-list li::before{background:var(--gold);}
+  @media (max-width:780px){.paths{grid-template-columns:1fr;}}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:42px;}
+  .phase{background:#fff;border-left:4px solid var(--gold);padding:24px 28px;border-radius:0 12px 12px 0;box-shadow:0 6px 18px rgba(15,78,84,.05);}
+  .phase.future{border-left-color:var(--teal);}
+  .phase .when{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:8px;}
+  .phase h3{font-size:19px;margin-bottom:10px;}
+  .phase p{font-size:15.5px;color:var(--muted);}
+  @media (max-width:780px){.timeline{grid-template-columns:1fr;}}
+
+  /* ---------- BEURZEN ---------- */
+  .shows-section{padding:80px 0;background:linear-gradient(135deg,#F0F9FA 0%, #E6F4F5 100%);}
+  .shows-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
+  .show-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 26px;box-shadow:0 6px 18px rgba(15,78,84,.05);transition:transform .15s ease, box-shadow .15s ease;}
+  .show-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(15,78,84,.10);}
+  .show-card .show-date{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);margin-bottom:14px;display:inline-flex;align-items:center;gap:8px;}
+  .show-card .show-date::before{content:"";width:18px;height:2px;background:var(--gold);display:inline-block;}
+  .show-card h3{font-size:20px;margin-bottom:10px;color:var(--ink);}
+  .show-card h3 em{color:var(--teal);font-style:italic;}
+  .show-card p{font-size:15px;color:var(--ink);line-height:1.6;}
+  .show-card .show-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--teal-dark);font-weight:600;font-size:14px;border-bottom:1px solid rgba(38,168,176,.3);transition:border-color .15s ease;}
+  .show-card .show-link:hover{border-bottom-color:var(--teal);}
+  @media (max-width:780px){.shows-grid{grid-template-columns:1fr;}}
+
+  /* ---------- DASHBOARD EMBED (scaled fit) ---------- */
+  .dashboard-embed{margin-top:36px;position:relative;width:100%;aspect-ratio:1440/900;overflow:hidden;border-radius:14px;box-shadow:0 24px 60px rgba(15,78,84,.14);border:1px solid var(--line);background:#fff;}
+  .dashboard-frame{position:absolute;top:0;left:0;width:1440px;height:900px;transform-origin:top left;transform:scale(var(--dash-scale,.6));}
+  .dashboard-frame iframe{width:100%;height:100%;border:0;display:block;}
+  .dashboard-meta{margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:13.5px;color:var(--muted);flex-wrap:wrap;}
+  .dashboard-meta a{color:var(--teal-dark);font-weight:600;border-bottom:1px solid rgba(38,168,176,.3);transition:border-color .15s ease;}
+  .dashboard-meta a:hover{border-bottom-color:var(--teal);}
+
+  @media print{.dashboard-embed{display:none;}}
+
+  /* ---------- CLOSER ---------- */
+  .closer{background:linear-gradient(135deg,var(--teal) 0%, var(--teal-dark) 100%);color:#fff;padding:80px 0 70px;text-align:center;}
+  .closer h2{font-size:clamp(28px,3.4vw,40px);color:#fff;margin-bottom:18px;}
+  .closer p{font-size:17px;color:rgba(255,255,255,.92);max-width:50ch;margin:0 auto 30px;}
+  .signature{margin-top:36px;font-size:15px;color:rgba(255,255,255,.92);line-height:1.7;}
+  .signature strong{font-weight:600;color:#fff;}
+
+  /* ---------- FOOTER ---------- */
+  footer.foot{background:#0B3B40;color:rgba(255,255,255,.65);padding:38px 0 30px;font-size:13.5px;text-align:center;}
+  .foot a{color:rgba(255,255,255,.85);}
+  .foot a:hover{color:var(--gold);}
+
+  /* ---------- PRINT ---------- */
+  @media print{
+    body{font-size:11pt;}
+    .hero, section.block, .closer{page-break-inside:avoid;padding:30px 0;}
+    section.dark, .closer{background:#fff !important;color:var(--ink) !important;}
+    section.dark h2, .closer h2{color:var(--ink) !important;}
+    section.dark p, section.dark .lead-body, .closer p, .signature{color:var(--muted) !important;}
+  }
+
+  /* ---------- MINI GAME (cq-game prefix) ---------- */
+  .cq-game-section{padding:64px 0;background:var(--bg);}
+  .cq-game-stage{display:flex;justify-content:center;margin-top:40px;}
+  .cq-game-device{
+    width:100%;max-width:306px;height:648px;
+    background:linear-gradient(180deg,#0F4E54 0%, #1B7A80 100%);
+    border-radius:48px;overflow:hidden;
+    display:flex;flex-direction:column;position:relative;
+    box-shadow:0 30px 60px -16px rgba(15,78,84,.4), inset 0 0 0 2px rgba(255,255,255,.06);
+    border:11px solid #0c0c0e;
+    font-family:'Montserrat',system-ui,sans-serif;color:#fff;
+    -webkit-user-select:none;user-select:none;
+  }
+  .cq-game-device::before{content:"";position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle at 25% 30%, rgba(255,255,255,.14) 2px, transparent 2.5px),
+      radial-gradient(circle at 75% 70%, rgba(234,182,0,.18) 1.6px, transparent 2px),
+      radial-gradient(circle, rgba(255,255,255,.06) 1.2px, transparent 1.6px);
+    background-size:120px 120px, 90px 90px, 26px 26px;
+    background-position:0 0, 0 0, 0 0;
+    pointer-events:none;z-index:1;}
+  .cq-game-device::after{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);
+    width:92px;height:22px;background:#050607;border-radius:999px;z-index:30;pointer-events:none;}
+
+  .cq-game-topbar{display:flex;align-items:center;justify-content:center;gap:10px;padding:48px 18px 6px;position:relative;z-index:5;}
+  .cq-game-topbar img.cq-cuq{height:22px;width:auto;filter:brightness(0) invert(1);}
+  .cq-game-topbar .cq-game-cross{color:rgba(255,255,255,.55);font-size:16px;font-weight:300;line-height:1;}
+  .cq-game-topbar img.cq-rat{height:22px;width:auto;background:#fff;padding:6px 10px;border-radius:8px;box-sizing:content-box;box-shadow:0 2px 6px rgba(0,0,0,.18);}
+  .cq-game-sublabel{text-align:center;font-size:9.5px;letter-spacing:.22em;font-weight:700;color:rgba(255,255,255,.7);position:relative;z-index:5;margin-top:2px;}
+
+  .cq-game-body{position:relative;flex:1;overflow:hidden;background:transparent;}
+
+  .cq-game-screen{position:absolute;inset:0;display:none;flex-direction:column;padding:14px 16px 16px;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .cq-game-screen::-webkit-scrollbar{display:none;}
+  .cq-game-screen.is-active{display:flex;animation:cqgfade .25s ease both;}
+  @keyframes cqgfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @keyframes cqCardIn{from{opacity:0;transform:translateY(-10px) scale(.96);}to{opacity:1;transform:none;}}
+  @keyframes cqAnswerIn{from{opacity:0;transform:translateX(-16px);}to{opacity:1;transform:none;}}
+  @keyframes cqIconPulse{0%,100%{transform:translateY(-50%) scale(1);box-shadow:0 0 0 0 rgba(225,94,23,.45);}50%{transform:translateY(-50%) scale(1.06);box-shadow:0 0 0 10px rgba(225,94,23,0);}}
+  @keyframes cqPopHit{0%{transform:scale(1);}40%{transform:scale(1.05);}100%{transform:scale(1);}}
+  @keyframes cqShakeHit{0%,100%{transform:translateX(0);}20%{transform:translateX(-5px);}40%{transform:translateX(5px);}60%{transform:translateX(-4px);}80%{transform:translateX(4px);}}
+  @keyframes cqScorePop{0%{transform:scale(1);}40%{transform:scale(1.18);}100%{transform:scale(1);}}
+  @keyframes cqDotPop{0%{transform:scale(1);}50%{transform:scale(1.6);}100%{transform:scale(1);}}
+
+  .cq-game-hud{display:flex;align-items:center;justify-content:center;gap:8px;padding:0 0 6px;}
+  .cq-game-chip{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#0F4E54;font-weight:700;font-size:11.5px;padding:5px 13px;border-radius:999px;}
+  .cq-game-chip .cq-x3{color:#E15E17;font-weight:800;display:inline-block;}
+  .cq-game-chip.is-pop{animation:cqScorePop .45s cubic-bezier(.2,1.5,.4,1);}
+  .cq-game-progress{display:flex;justify-content:center;gap:6px;padding:0 0 10px;}
+  .cq-game-progress span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s ease;}
+  .cq-game-progress span.on{background:#EAB600;animation:cqDotPop .4s cubic-bezier(.2,1.4,.4,1);}
+
+  @media (prefers-reduced-motion:reduce){
+    .cq-game-card, .cq-game-card.is-fresh, .cq-game-card::before, .cq-game-answer,
+    .cq-game-answer.is-correct, .cq-game-answer.is-wrong,
+    .cq-game-chip.is-pop, .cq-game-progress span.on{
+      animation:none !important;
+    }
+  }
+
+  /* START screen */
+  .cq-game-start{justify-content:center;align-items:center;text-align:center;}
+  .cq-game-start h3{font-family:'Fraunces',serif;font-size:26px;font-weight:900;margin-bottom:10px;color:#fff;}
+  .cq-game-start p{font-size:13.5px;color:rgba(255,255,255,.85);max-width:24ch;margin:0 auto 24px;line-height:1.5;}
+  .cq-game-startbtn{appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:15px;color:#0F4E54;padding:12px 28px;border-radius:999px;background:#EAB600;box-shadow:0 6px 0 #B48A00;transition:transform .1s ease,box-shadow .1s ease;}
+  .cq-game-startbtn:active{transform:translateY(3px);box-shadow:0 3px 0 #B48A00;}
+
+  /* PLAY screen */
+  .cq-game-play{justify-content:flex-start;align-items:stretch;}
+  .cq-game-card{width:100%;background:#fff;border-radius:14px;padding:13px 14px 13px 56px;position:relative;box-shadow:0 8px 20px -4px rgba(0,0,0,.25);margin-bottom:11px;}
+  .cq-game-card.is-fresh{animation:cqCardIn .4s cubic-bezier(.2,.8,.2,1) both;}
+  .cq-game-card::before{content:"?";position:absolute;left:11px;top:50%;transform:translateY(-50%);width:36px;height:36px;background:#E15E17;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:900;font-size:23px;animation:cqIconPulse 2.2s ease-in-out infinite;}
+  .cq-game-card .cq-game-q{font-size:15px;font-weight:600;color:#0F4E54;line-height:1.35;}
+  .cq-game-answers{display:flex;flex-direction:column;gap:8px;width:100%;}
+  .cq-game-answer{
+    position:relative;background:#EAB600;color:#0F4E54;
+    padding:10px 14px 10px 44px;font-weight:700;font-size:12px;
+    cursor:pointer;border:0;text-align:left;line-height:1.3;
+    clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 100%, 14px 100%);
+    transition:background .15s ease;
+    font-family:inherit;
+    animation:cqAnswerIn .4s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .cq-game-answer:nth-child(1){animation-delay:.10s;}
+  .cq-game-answer:nth-child(2){animation-delay:.18s;}
+  .cq-game-answer:nth-child(3){animation-delay:.26s;}
+  .cq-game-answer .cq-game-letter{
+    position:absolute;left:8px;top:0;bottom:0;width:28px;display:flex;align-items:center;justify-content:center;
+    background:#D4A300;font-family:'Fraunces',serif;font-weight:900;font-size:16px;color:#fff;
+    clip-path:polygon(0 0, 100% 0, calc(100% - 14px) 100%, 14px 100%);
+  }
+  .cq-game-answer:hover:not(:disabled){background:#F2C42A;}
+  .cq-game-answer:disabled{cursor:default;opacity:.95;}
+  .cq-game-answer.is-correct{background:#5DA836;color:#fff;animation:cqPopHit .45s cubic-bezier(.2,1.4,.4,1);}
+  .cq-game-answer.is-correct .cq-game-letter{background:#3F7E1E;color:#fff;}
+  .cq-game-answer.is-wrong{background:#D8463A;color:#fff;animation:cqShakeHit .4s ease;}
+  .cq-game-answer.is-wrong .cq-game-letter{background:#B2301F;color:#fff;}
+
+  .cq-game-feedback{margin-top:11px;padding:9px 12px;background:rgba(0,0,0,.25);border-radius:10px;color:#fff;font-size:11.5px;line-height:1.4;display:none;width:100%;}
+  .cq-game-feedback.is-shown{display:block;animation:cqgfade .25s ease both;}
+  .cq-game-feedback strong{display:block;margin-bottom:3px;color:#EAB600;font-size:10.5px;letter-spacing:.05em;}
+  .cq-game-nextbtn{margin-top:10px;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:12.5px;color:#0F4E54;padding:9px 22px;border-radius:999px;background:#EAB600;box-shadow:0 4px 0 #B48A00;align-self:center;}
+  .cq-game-nextbtn:active{transform:translateY(2px);box-shadow:0 2px 0 #B48A00;}
+
+  /* RESULT screen */
+  .cq-game-result{justify-content:center;align-items:center;text-align:center;}
+  .cq-game-result .cq-game-score{font-family:'Fraunces',serif;font-weight:900;font-size:48px;color:#EAB600;margin-bottom:4px;}
+  .cq-game-result h3{font-family:'Fraunces',serif;font-size:22px;color:#fff;margin-bottom:8px;}
+  .cq-game-result p{font-size:13px;color:rgba(255,255,255,.85);max-width:26ch;margin:0 auto 20px;line-height:1.5;}
+  .cq-game-stars{display:flex;gap:6px;margin-bottom:22px;}
+  .cq-game-stars span{width:24px;height:24px;background:#EAB600;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);}
+  .cq-game-stars span.off{background:rgba(255,255,255,.25);}
+
+  @media (max-width:420px){.cq-game-device{height:580px;}}
+  @media print{.cq-game-section{display:none;}}
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .js .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease, transform .55s ease;}
+  .js .reveal.in{opacity:1;transform:none;}
+  .js .reveal.d1{transition-delay:.08s;}
+  .js .reveal.d2{transition-delay:.16s;}
+  @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none;}}
+</style>
+</head>
+<body>
+<script>
+  // Set lock class BEFORE rendering to prevent flash of content
+  try{
+    if(localStorage.getItem('cq_bordbia_unlocked') !== '1'){
+      document.documentElement.classList.add('cq-locked');
+    }
+  }catch(e){
+    document.documentElement.classList.add('cq-locked');
+  }
+</script>
+<div id="cqGate" class="cq-gate">
+  <div class="cq-gate-card">
+    <img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" />
+    <h2>For Bord Bia</h2>
+    <p>This page is for you. Enter the password to continue.</p>
+    <form id="cqGateForm" novalidate>
+      <input type="password" id="cqGateInput" placeholder="Password" autocomplete="off" />
+      <button type="submit">Open</button>
+    </form>
+    <p id="cqGateError" class="cq-gate-error" hidden>That password is incorrect.</p>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap wide nav-inner">
+    <div class="nav-logos">
+      <a class="logo" href="https://www.culiquiz.nl"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></a>
+    </div>
+    <div class="nav-meta">For <strong>Bord Bia</strong> · 2026</div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">An introduction · 2026</div>
+    <h1>What we do, and what it could <em>mean</em> for you.</h1>
+    <p class="lead">A short document about CuliQuiz, the audience we reach, and where we see a fit with Bord Bia's work in the Netherlands and beyond.</p>
+  </div>
+</header>
+
+<section class="cq-game-section">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <div class="sec-label" style="justify-content:center;">A sample</div>
+      <h2 class="sec" style="margin:0 auto;">How it <em>reaches</em> the floor.</h2>
+      <p class="sec-intro" style="margin:14px auto 0;">Three short questions on Irish food. Tap inside the phone to play along.</p>
+    </div>
+    <div class="cq-game-stage reveal d1">
+      <div class="cq-game-device" id="cqGameDevice">
+        <div class="cq-game-topbar">
+          <img class="cq-cuq" src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" />
+          <span class="cq-game-cross" aria-hidden="true">×</span>
+          <img class="cq-rat" src="https://www.culiquiz.nl/assets/partners/rational.svg" alt="Rational" />
+        </div>
+        <div class="cq-game-sublabel">CARD GAME</div>
+
+        <div class="cq-game-body">
+          <!-- Start screen -->
+          <div class="cq-game-screen cq-game-start is-active" id="cqGameStart">
+            <h3>Ready for 3 questions?</h3>
+            <p>Three Irish food questions, three options each. Right or wrong, you'll get a short explanation.</p>
+            <button class="cq-game-startbtn" id="cqGameStartBtn">Start</button>
+          </div>
+
+          <!-- Play screen -->
+          <div class="cq-game-screen cq-game-play" id="cqGamePlay">
+            <div class="cq-game-hud">
+              <span class="cq-game-chip">Score <span class="cq-x3" id="cqGameScore">0</span></span>
+            </div>
+            <div class="cq-game-progress" id="cqGameProgress">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="cq-game-card">
+              <div class="cq-game-q" id="cqGameQ">Loading…</div>
+            </div>
+            <div class="cq-game-answers" id="cqGameAnswers"></div>
+            <div class="cq-game-feedback" id="cqGameFeedback">
+              <strong id="cqGameFeedbackTitle">EXPLANATION</strong>
+              <span id="cqGameWhy"></span>
+            </div>
+            <button class="cq-game-nextbtn" id="cqGameNext" style="display:none;">Next</button>
+          </div>
+
+          <!-- Result screen -->
+          <div class="cq-game-screen cq-game-result" id="cqGameResult">
+            <div class="cq-game-score" id="cqGameFinal">0 / 3</div>
+            <h3 id="cqGameTitle">Nicely played.</h3>
+            <p id="cqGameMsg">Play again, or scroll down to see how it could work for Bord Bia.</p>
+            <div class="cq-game-stars" id="cqGameStars">
+              <span class="off"></span><span class="off"></span><span class="off"></span>
+            </div>
+            <button class="cq-game-startbtn" id="cqGameAgain">Play again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Where we sit</div>
+      <h2 class="sec">A platform for <em>hospitality</em> professionals.</h2>
+    </div>
+    <div class="lead-body reveal d1">
+      <p>CuliQuiz is a microlearning platform for food, drinks and hospitality. Players are chefs, F&amp;B staff, butchers, sommeliers and the students who'll be doing those jobs in the next five years. Today around 50,000 of them in the Netherlands, growing.</p>
+      <p>Three things that matter for an organisation like Bord Bia:</p>
+    </div>
+    <div class="timeline">
+      <div class="phase reveal d1">
+        <div class="when">Audience</div>
+        <h3>The people you want to reach</h3>
+        <p>Hospitality professionals at every level: from culinary schools to senior chefs. The exact group that ends up telling guests where the beef, the cheese or the whiskey came from.</p>
+      </div>
+      <div class="phase reveal d2">
+        <div class="when">Behaviour</div>
+        <h3>Daily, on the floor</h3>
+        <p>Players play in short bursts of a few minutes a day. Hundreds of micro-touchpoints per person per year, instead of one annual training they forget about.</p>
+      </div>
+      <div class="phase reveal d2">
+        <div class="when">Measurable</div>
+        <h3>Per location, per team</h3>
+        <p>Who's learning what, where retention drops, which stories land. Useful in a market activation report, not just a pitch deck.</p>
+      </div>
+    </div>
+    <div class="lead-body reveal" style="margin-top:32px;">
+      <p>That's the engine. The next sections sketch where it could connect with what Bord Bia already does.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Where it lines up</div>
+      <h2 class="sec">Three places where Bord Bia's work meets <em>ours</em>.</h2>
+    </div>
+    <div class="lead-body reveal d1">
+      <p>Bord Bia already invests in product education for retailers and hospitality: butcher trainings, fresh-counter staff, the Spirit of Ireland programme. The challenge isn't the content, it's the channel. Workshops and PDFs land once and fade. The question is always whether the story still travels to the guest a month later.</p>
+      <p>Three of Bord Bia's stated objectives map directly onto what CuliQuiz does day-to-day:</p>
+      <p><strong>1. Anchoring the product story with hospitality professionals.</strong> Origin Green, grass-based farming, animal welfare, flavour profile. Specific knowledge that needs daily refresh, exactly the kind of content built for game-based repetition.</p>
+      <p><strong>2. Deepening knowledge among foodservice professionals.</strong> Spirit of Ireland already proves there's appetite for educating hospitality staff about Irish products. The same model works for beef, dairy and seafood, scaled into a daily micro-learning flow instead of one-off workshops.</p>
+      <p><strong>3. Brand awareness with the next generation.</strong> Bord Bia runs programmes aimed at young people entering the food sector. CuliQuiz already serves that exact group, in vocational programmes and the first years of their careers.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap wide">
+    <div class="reveal" style="text-align:center;">
+      <div class="sec-label" style="justify-content:center;">Two paths</div>
+      <h2 class="sec" style="margin:0 auto;">A <em>campaign</em>, or a <em>channel</em>.</h2>
+      <p class="sec-intro" style="margin-left:auto;margin-right:auto;text-align:left;">Two realistic ways to work together. One focused on the Dutch hospitality audience CuliQuiz already reaches. One opening a channel into Irish foodservice operators where Bord Bia already has relationships.</p>
+    </div>
+
+    <div class="paths">
+      <div class="path reveal d1">
+        <span class="tag">Path A · Campaign</span>
+        <h3>Bord Bia as a <em>content partner</em>.</h3>
+        <p class="what">What we see</p>
+        <p>Bord Bia has the product story. CuliQuiz has the Dutch hospitality audience playing daily. The piece in between, structured content that travels from supplier to floor staff, is exactly what microlearning is good at.</p>
+        <p class="what">What's included</p>
+        <ul class="path-list">
+          <li>A branded Bord Bia stream inside CuliQuiz</li>
+          <li>Microgames on Irish beef, dairy, seafood, spirits — built around Origin Green, sustainability, flavour</li>
+          <li>Daily 3 minutes on the phone, no extra training days for operators</li>
+          <li>Dashboard with reach per region, per role, per operator</li>
+          <li>Quarterly content refresh aligned with Bord Bia's own campaign calendar</li>
+          <li>Measurable reach, fits market-activation reporting cycles</li>
+        </ul>
+      </div>
+
+      <div class="path gold reveal d2">
+        <span class="tag">Path B · Channel</span>
+        <h3>CuliQuiz as <em>white-label</em> for Irish operators.</h3>
+        <p class="what">What we see</p>
+        <p>Bord Bia has working relationships with large Irish foodservice operators: hotel groups, catering companies, hospitality buyers. Those operators need scalable training tools. CuliQuiz can sit underneath, branded as theirs.</p>
+        <p class="what">What's included</p>
+        <ul class="path-list">
+          <li>White-label CuliQuiz environment per operator</li>
+          <li>Bord Bia as the introducing partner into Ireland as a market</li>
+          <li>Content libraries on Irish ingredients available to every operator</li>
+          <li>Per-operator dashboards plus an aggregated view for Bord Bia</li>
+          <li>Foundation for international expansion: same engine, multiple markets</li>
+          <li>Co-funded setup, recurring per-seat or per-location pricing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="shows-section">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <div class="sec-label" style="justify-content:center;">On the show floor</div>
+      <h2 class="sec" style="margin:0 auto;">Two moments where Bord Bia could be <em>visible</em>.</h2>
+      <p class="sec-intro" style="margin:14px auto 0;">Beyond the platform itself, there are two Dutch trade-show moments where Bord Bia could land directly in front of hospitality professionals. Founding-partner positions are available.</p>
+    </div>
+    <div class="shows-grid">
+      <div class="show-card reveal d1">
+        <div class="show-date">21–23 September 2026</div>
+        <h3>Gastvrij Rotterdam · <em>Battle Arena</em></h3>
+        <p>A 12 by 11 metre physical arena in the middle of the hall. Live interactive battles with LED screens, hosts and an audience. Founding partners sit inside the arena: in the content, on the screens and in the programming.</p>
+        <a class="show-link" href="https://6a1eafe8b35c2c3edb7810b1--cheerful-melba-a3cc6f.netlify.app" target="_blank" rel="noopener">View the arena in 3D →</a>
+      </div>
+      <div class="show-card reveal d2">
+        <div class="show-date">Horecava 2026 · Thursday</div>
+        <h3>Battle edition on the <em>main day</em>.</h3>
+        <p>On the Thursday of Horecava we run a battle edition. Different energy from the opening days: professionals with room to take something in that actually sticks. Founding partners feature in the programming and on the screens.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt tight">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Already running</div>
+      <h2 class="sec">Not an <em>idea</em>. Something that's live.</h2>
+    </div>
+    <div class="lead-body reveal d1">
+      <p>The platform is live. New content ships weekly. We're rolling out in other markets right now, which gives Bord Bia an obvious lever for international reach over time.</p>
+      <p>Below: a sketch of what a partner dashboard for Bord Bia could look like.</p>
+    </div>
+    <div class="dashboard-embed reveal d2">
+      <div class="dashboard-frame">
+        <iframe src="https://quest-shared-67849119.figma.site" title="Partner Dashboard sketch" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="dashboard-meta reveal d2">
+      <span>Partner dashboard · sketch</span>
+      <a href="https://quest-shared-67849119.figma.site" target="_blank" rel="noopener">Open full screen →</a>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">CuliQuiz 2.0</div>
+      <h2 class="sec">What we're <em>building</em> next to it.</h2>
+    </div>
+    <div class="lead-body reveal d1">
+      <p>Under the hood we're working on the next layer: CuliQuiz 2.0. The direction isn't a bigger quiz app, it's a learning ecosystem.</p>
+      <p>Two foundations carry it: gamification as the engine that drives the learning, and the community as the place where players, brands and educators meet. Not a standalone app, but an environment that keeps running on its own.</p>
+      <p>For an organisation like Bord Bia that matters: you join where it already happens, instead of launching a separate platform that has to fight for attention every day.</p>
+    </div>
+  </div>
+</section>
+
+<section class="closer">
+  <div class="wrap">
+    <h2>An introduction, not a proposal.</h2>
+    <p>If any of this lines up with what Bord Bia is working on, the next step is a conversation. No deck, no quote, just a sharper read of where it could actually fit.</p>
+    <div class="signature">
+      <strong>Tjitze van der Dam</strong><br>
+      CuliQuiz  ·  tjitze@culiquiz.nl
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    Private document for Bord Bia · not publicly accessible · <a href="https://www.culiquiz.nl">culiquiz.nl</a>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+
+  /* ============================================================
+     Gate (password protection)
+     Password: ireland2026 (case-insensitive comparison)
+     To change: echo -n "new_password_lowercase" | shasum -a 256
+     ============================================================ */
+  (function(){
+    if(!document.documentElement.classList.contains('cq-locked')) return;
+
+    var EXPECTED_HASH = '4982c76c7f78b81167b586890de7344d055f726a8fc62027e469f379e1763a8d';
+    var STORAGE_KEY = 'cq_bordbia_unlocked';
+
+    async function sha256(text){
+      var enc = new TextEncoder();
+      var hash = await crypto.subtle.digest('SHA-256', enc.encode(text));
+      return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
+    }
+
+    function unlock(){
+      document.documentElement.classList.remove('cq-locked');
+      var gate = document.getElementById('cqGate');
+      if(gate) gate.remove();
+      try{ localStorage.setItem(STORAGE_KEY, '1'); }catch(e){}
+    }
+
+    function init(){
+      var form = document.getElementById('cqGateForm');
+      var input = document.getElementById('cqGateInput');
+      var error = document.getElementById('cqGateError');
+      if(!form || !input) return;
+
+      setTimeout(function(){ input.focus(); }, 80);
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        error.hidden = true;
+        var ww = input.value.trim();
+        if(!ww) return;
+        sha256(ww.toLowerCase()).then(function(hash){
+          if(hash === EXPECTED_HASH){
+            unlock();
+          } else {
+            error.hidden = false;
+            input.select();
+          }
+        });
+      });
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(el){el.classList.add('in');});
+    } else {
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}
+        });
+      },{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+      els.forEach(function(el){obs.observe(el);});
+    }
+
+    // Scale dashboard iframe to fit container without inner scrollbars
+    function fitDashboard(){
+      var embed = document.querySelector('.dashboard-embed');
+      var frame = embed && embed.querySelector('.dashboard-frame');
+      if(!embed || !frame) return;
+      var scale = embed.clientWidth / 1440;
+      frame.style.setProperty('--dash-scale', scale);
+    }
+    fitDashboard();
+    window.addEventListener('resize', fitDashboard);
+    if('ResizeObserver' in window){
+      var embed = document.querySelector('.dashboard-embed');
+      if(embed) new ResizeObserver(fitDashboard).observe(embed);
+    }
+  })();
+
+  /* ============================================================
+     Mini-game with Bord Bia / Irish food content. Three questions, three options each.
+     ============================================================ */
+  (function(){
+    var device = document.getElementById('cqGameDevice');
+    if(!device) return;
+
+    var QUESTIONS = [
+      {
+        q: "What is Origin Green?",
+        a: [
+          "Ireland's national sustainability programme for food and drink",
+          "An EU eco-label for organic produce only",
+          "A grass-quality certification scheme"
+        ],
+        c: 0,
+        why: "Origin Green is Ireland's pioneering food and drink sustainability programme. It operates on a national scale, uniting government, the food industry and producers under one set of measurable commitments."
+      },
+      {
+        q: "What sets Irish beef apart in the EU market?",
+        a: [
+          "Lowest carbon footprint per kilo in the EU",
+          "Predominantly grass-fed, thanks to Ireland's wet climate",
+          "Only beef in Europe produced without antibiotics"
+        ],
+        c: 1,
+        why: "Ireland's temperate climate and rainfall make it ideal for grass-based farming. Most Irish cattle graze outdoors for the majority of the year, which contributes to a distinct flavour profile and a lower carbon footprint per kilo."
+      },
+      {
+        q: "Bord Bia runs a hospitality programme called Spirit of Ireland. What's it about?",
+        a: [
+          "Promoting Irish wine to sommeliers",
+          "Cooking workshops with Irish chefs in international markets",
+          "Educating hospitality staff on the story and character of Irish spirits"
+        ],
+        c: 2,
+        why: "Spirit of Ireland is Bord Bia's training programme for hospitality staff, focused on the story, distillation traditions and character of Irish whiskey, gin and other spirits."
+      }
+    ];
+
+    var idx = 0, score = 0, answered = false;
+    var screens = {
+      start: document.getElementById('cqGameStart'),
+      play:  document.getElementById('cqGamePlay'),
+      result:document.getElementById('cqGameResult')
+    };
+    var elQ = document.getElementById('cqGameQ');
+    var elAnswers = document.getElementById('cqGameAnswers');
+    var elScore = document.getElementById('cqGameScore');
+    var elProgress = document.getElementById('cqGameProgress');
+    var elFeedback = document.getElementById('cqGameFeedback');
+    var elFeedbackTitle = document.getElementById('cqGameFeedbackTitle');
+    var elWhy = document.getElementById('cqGameWhy');
+    var elNext = document.getElementById('cqGameNext');
+
+    function show(name){
+      Object.keys(screens).forEach(function(k){
+        screens[k].classList.toggle('is-active', k===name);
+      });
+    }
+
+    function render(){
+      answered = false;
+      var q = QUESTIONS[idx];
+      elQ.textContent = q.q;
+      // Re-trigger the question card slide-in animation
+      var card = device.querySelector('.cq-game-card');
+      if(card){
+        card.classList.remove('is-fresh');
+        void card.offsetWidth;
+        card.classList.add('is-fresh');
+      }
+      elAnswers.innerHTML = '';
+      var letters = ['A','B','C'];
+      q.a.forEach(function(txt, i){
+        var btn = document.createElement('button');
+        btn.className = 'cq-game-answer';
+        btn.type = 'button';
+        btn.innerHTML = '<span class="cq-game-letter">' + letters[i] + '</span>' + txt;
+        btn.addEventListener('click', function(){ answer(i, btn); });
+        elAnswers.appendChild(btn);
+      });
+      // progress dots — eerst alle 'on' weghalen om animatie opnieuw te kunnen triggeren
+      var dots = elProgress.querySelectorAll('span');
+      dots.forEach(function(d, i){
+        if(i <= idx && !d.classList.contains('on')){
+          d.classList.add('on');
+        } else if(i > idx){
+          d.classList.remove('on');
+        }
+      });
+      elFeedback.classList.remove('is-shown');
+      elNext.style.display = 'none';
+    }
+
+    function answer(i, btn){
+      if(answered) return;
+      answered = true;
+      var q = QUESTIONS[idx];
+      var correct = q.c;
+      var allButtons = elAnswers.querySelectorAll('.cq-game-answer');
+      allButtons.forEach(function(b, j){
+        b.disabled = true;
+        if(j === correct) b.classList.add('is-correct');
+      });
+      if(i !== correct){
+        btn.classList.add('is-wrong');
+      } else {
+        score++;
+        elScore.textContent = String(score);
+        var chip = elScore.closest('.cq-game-chip');
+        if(chip){
+          chip.classList.remove('is-pop');
+          void chip.offsetWidth;
+          chip.classList.add('is-pop');
+        }
+      }
+      elFeedbackTitle.textContent = (i === correct) ? 'CORRECT' : 'NOT QUITE';
+      elFeedbackTitle.style.color = (i === correct) ? '#5DA836' : '#FFB4AB';
+      elWhy.textContent = q.why;
+      elFeedback.classList.add('is-shown');
+      var last = (idx === QUESTIONS.length - 1);
+      elNext.textContent = last ? 'Resultaat' : 'Volgende';
+      elNext.style.display = 'inline-block';
+    }
+
+    function next(){
+      if(idx < QUESTIONS.length - 1){
+        idx++;
+        render();
+      } else {
+        result();
+      }
+    }
+
+    function result(){
+      show('result');
+      document.getElementById('cqGameFinal').textContent = score + ' / ' + QUESTIONS.length;
+      var msgs = [
+        {t: 'Room to grow.', m: "No shame in it. The questions are about content most professionals only pick up on the job."},
+        {t: 'Getting there.', m: 'Part of the story is already in you. The platform handles the rest, on the floor.'},
+        {t: 'Strong.', m: 'Two out of three. Exactly the level we want to reach at scale.'},
+        {t: 'Clean sweep.', m: "Three out of three. Not many get this without playing first."}
+      ];
+      var info = msgs[score] || msgs[0];
+      document.getElementById('cqGameTitle').textContent = info.t;
+      document.getElementById('cqGameMsg').textContent = info.m;
+      var stars = document.getElementById('cqGameStars').querySelectorAll('span');
+      stars.forEach(function(s, i){
+        s.classList.toggle('off', i >= score);
+      });
+    }
+
+    function start(){
+      idx = 0; score = 0;
+      elScore.textContent = '0';
+      show('play');
+      render();
+    }
+
+    document.getElementById('cqGameStartBtn').addEventListener('click', start);
+    document.getElementById('cqGameAgain').addEventListener('click', start);
+    elNext.addEventListener('click', next);
+  })();
+</script>
+
+</body>
+</html>
