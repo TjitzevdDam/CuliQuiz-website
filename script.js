@@ -549,9 +549,12 @@
       body.append('LEADCF12', readClickId('fbclid')    || '-'); // Meta
       body.append('LEADCF13', readClickId('ttclid')    || '-'); // TikTok
 
+      // keepalive: de POST overleeft het navigeren van de pagina. Nodig omdat
+      // we na deze call de form native submitten naar Formsubmit's captcha-pagina.
       return fetch('https://crm.zoho.eu/crm/WebToLeadForm', {
         method: 'POST',
         mode: 'no-cors',
+        keepalive: true,
         headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
         body: body.toString(),
       });
@@ -587,55 +590,35 @@
       const rol = data.get('Rol') || '';
       const newsletterOptIn = data.get('Nieuwsbrief') === 'ja';
 
-      try {
-        // 1. POST naar Formsubmit (e-mail naar info@culiquiz.nl)
-        const res = await fetch(cform.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: data,
+      // 1. Zoho CRM lead — keepalive, vuurt af en overleeft de navigatie.
+      postToZoho({ naam, bedrijf, email, bericht, rol, newsletterOptIn }).catch((err) => {
+        console.warn('Zoho lead post failed (non-fatal):', err);
+      });
+
+      // 2. Opt-in voor nieuwsbrief? Tweede lead met Company = "Nieuwsbrief-abonnee".
+      if (newsletterOptIn) {
+        postNewsletterToZoho({ email, rol, naam }).catch((err) => {
+          console.warn('Zoho CRM newsletter post failed (non-fatal):', err);
         });
-        const json = await res.json().catch(() => ({}));
-
-        // 2. PARALLEL: POST naar Zoho CRM (fire-and-forget, niet-blokkerend).
-        postToZoho({ naam, bedrijf, email, bericht, rol, newsletterOptIn }).catch((err) => {
-          console.warn('Zoho lead post failed (non-fatal):', err);
+        postNewsletterToCampaigns({ email }).catch((err) => {
+          console.warn('Zoho Campaigns subscribe failed (non-fatal):', err);
         });
-
-        // 3. Opt-in voor nieuwsbrief? Tweede lead met Company = "Nieuwsbrief-abonnee".
-        //    De Zoho workflow rule "Newsletter opt-in tag" triggert daarop en plakt
-        //    de tag "Nieuwsbrief" op deze lead. Sales kan beide leads mergen.
-        if (newsletterOptIn) {
-          postNewsletterToZoho({ email, rol, naam }).catch((err) => {
-            console.warn('Zoho CRM newsletter post failed (non-fatal):', err);
-          });
-          postNewsletterToCampaigns({ email }).catch((err) => {
-            console.warn('Zoho Campaigns subscribe failed (non-fatal):', err);
-          });
-          cqTrack('newsletter_signup', {
-            source: 'contact_form',
-            page: window.location.pathname,
-            rol,
-          });
-        }
-
-        if (res.ok && (json.success === 'true' || json.success === true)) {
-          cqTrack('generate_lead', {
-            form_name: 'contact_request',
-            page: window.location.pathname,
-          });
-          cform.hidden = true;
-          cSuccess.hidden = false;
-          cSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          setCStatus('Er ging iets mis. Probeer het later opnieuw of mail naar info@culiquiz.nl.', true);
-        }
-      } catch (err) {
-        console.error(err);
-        setCStatus('Er ging iets mis. Probeer het later opnieuw of mail naar info@culiquiz.nl.', true);
-      } finally {
-        cform.classList.remove('is-submitting');
-        cBtn.disabled = false;
+        cqTrack('newsletter_signup', {
+          source: 'contact_form',
+          page: window.location.pathname,
+          rol,
+        });
       }
+
+      cqTrack('generate_lead', {
+        form_name: 'contact_request',
+        page: window.location.pathname,
+      });
+
+      // 3. Native submit naar Formsubmit's non-AJAX endpoint. Formsubmit toont
+      //    z'n captcha-pagina (bot-bescherming) en stuurt daarna door naar _next.
+      //    submit() triggert geen submit-event opnieuw, dus geen recursie.
+      cform.submit();
     });
   }
 
@@ -661,9 +644,11 @@
     body.append('LEADCF12', readClickId('fbclid')    || '-');
     body.append('LEADCF13', readClickId('ttclid')    || '-');
 
+    // keepalive: overleeft de navigatie naar Formsubmit's captcha-pagina.
     return fetch('https://crm.zoho.eu/crm/WebToLeadForm', {
       method: 'POST',
       mode: 'no-cors',
+      keepalive: true,
       headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
       body: body.toString(),
     });
@@ -843,43 +828,24 @@
       const email = data.get('E-mail') || '';
       const rol = data.get('Rol') || '';
 
-      // Twee Zoho-calls parallel: CRM (lead + tag voor segmentatie) en Campaigns
-      // (direct in de mailing-lijst, triggert welkomstmail). Beide no-cors,
-      // dus we kunnen response niet lezen — fire-and-forget.
-      const zohoPromise = postNewsletterToZoho({ email, rol }).catch((err) => {
+      // CRM-lead (keepalive, overleeft navigatie) + Campaigns (best effort).
+      postNewsletterToZoho({ email, rol }).catch((err) => {
         console.warn('Zoho CRM newsletter post failed (non-fatal):', err);
       });
       postNewsletterToCampaigns({ email }).catch((err) => {
         console.warn('Zoho Campaigns subscribe failed (non-fatal):', err);
       });
 
-      try {
-        // Formsubmit notificatie — best effort, kort timeout.
-        fetch(nlForm.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: data,
-        }).catch((err) => {
-          console.warn('Formsubmit failed (non-fatal):', err);
-        });
+      cqTrack('newsletter_signup', {
+        source: 'newsletter_form',
+        page: window.location.pathname,
+        rol,
+      });
 
-        // Wacht even tot Zoho is afgevuurd (no-cors, dus we kunnen response niet lezen),
-        // dan toon success. De inschrijving is hoe dan ook geregistreerd.
-        await zohoPromise;
-
-        cqTrack('newsletter_signup', {
-          source: 'newsletter_form',
-          page: window.location.pathname,
-          rol,
-        });
-        nlForm.hidden = true;
-        if (nlSuccess) nlSuccess.hidden = false;
-      } catch (err) {
-        console.error(err);
-        if (nlStatus) { nlStatus.textContent = 'Er ging iets mis. Probeer het opnieuw of mail info@culiquiz.nl.'; nlStatus.classList.add('is-error'); }
-      } finally {
-        nlBtn.disabled = false;
-      }
+      // Native submit naar Formsubmit's non-AJAX endpoint -> captcha-pagina ->
+      // doorsturen naar _next (bedankt-pagina). submit() triggert geen
+      // submit-event opnieuw, dus geen recursie.
+      nlForm.submit();
     });
   }
 

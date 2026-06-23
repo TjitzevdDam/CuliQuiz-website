@@ -221,10 +221,11 @@
             <h2 id="nl-heading">CuliQuiz nieuwsbrief</h2>
             <p>E&eacute;n mail per maand. Productupdates, cases en wat we leren uit de data. Geen spam.</p>
           </div>
-          <form class="nl-form" id="nl-form" action="https://formsubmit.co/ajax/info@culiquiz.nl" method="POST" novalidate>
+          <form class="nl-form" id="nl-form" action="https://formsubmit.co/info@culiquiz.nl" method="POST" novalidate>
             <input type="hidden" name="_subject" value="Nieuwe nieuwsbrief-aanmelding" />
             <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_captcha" value="true" />
+            <input type="hidden" name="_next" value="https://www.culiquiz.nl/bedankt" />
             <input type="hidden" name="_autoresponse" value="Bedankt - je staat op de CuliQuiz-nieuwsbrief. Je krijgt eens per maand een mail met de belangrijkste updates. Tot snel - Team CuliQuiz" />
             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
             <div class="nl-row">
@@ -310,7 +311,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=23"></script>
+  <script src="script.js?v=24"></script>
   <script src="/cookie-consent.js?v=8" defer></script>
 </body>
 </html>

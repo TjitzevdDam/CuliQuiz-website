@@ -137,10 +137,11 @@
             <p>Déjanos tus datos y te enviaremos nuestra propuesta y paquetes por email en un día laborable. Sin spam, sin complicaciones.</p>
           </div>
 
-          <form class="wlw-contact-form" id="wlw-contact-form" action="https://formsubmit.co/ajax/info@culiquiz.nl" method="POST" novalidate>
+          <form class="wlw-contact-form" id="wlw-contact-form" action="https://formsubmit.co/info@culiquiz.nl" method="POST" novalidate>
             <input type="hidden" name="_subject" value="Nueva solicitud vía Qué ofrecemos (ES)" />
             <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_captcha" value="true" />
+            <input type="hidden" name="_next" value="https://www.culiquiz.nl/bedankt" />
             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
             <div class="form-row"><label for="cf-naam">Tu nombre <span aria-hidden="true">*</span></label><input type="text" id="cf-naam" name="Nombre" required autocomplete="name" /></div>
             <div class="form-row"><label for="cf-bedrijf">Empresa <span aria-hidden="true">*</span></label><input type="text" id="cf-bedrijf" name="Empresa" required autocomplete="organization" /></div>
@@ -181,7 +182,7 @@
     <div class="footer-bottom"><div class="container"><span>&copy; <span id="year"></span> CuliQuiz. Todos los derechos reservados.</span><span><a href="privacy.html">Privacidad</a> &middot; <a href="terms.html">Términos</a> &middot; <a href="#" data-cq-cookies></a></span></div></div>
   </footer>
 
-  <script src="../script.js?v=23"></script>
+  <script src="../script.js?v=24"></script>
   <script src="/cookie-consent.js?v=8" defer></script>
 </body>
 </html>
