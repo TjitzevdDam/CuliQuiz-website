@@ -6,6 +6,8 @@
   "trailingSlash": false,
   "cleanUrls": true,
   "redirects": [
+    { "source": "/hop-verantwoording", "destination": "/hop", "permanent": false },
+
     { "source": "/home", "destination": "/", "permanent": true },
     { "source": "/index", "destination": "/", "permanent": true },
     { "source": "/index.html", "destination": "/", "permanent": true },
