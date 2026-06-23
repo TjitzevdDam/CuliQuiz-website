@@ -6,5 +6,6 @@ Disallow: /apps-script/
 Disallow: /gastvrijrotterdam
 Disallow: /rational
 Disallow: /bordbia
+Disallow: /culiquiz-2-0
 
 Sitemap: https://www.culiquiz.nl/sitemap.xml
