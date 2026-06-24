@@ -1,0 +1,4 @@
+# Bron-fotomappen blijven lokaal staan, niet deployen.
+# Alleen de gekozen, verkleinde pagina-foto's (top-level .jpg/.png) worden gecommit.
+*/
+.DS_Store
