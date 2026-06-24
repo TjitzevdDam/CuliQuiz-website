@@ -658,6 +658,79 @@ p { margin: 0 0 1rem; }
   max-width: 680px;
 }
 
+.top100-winners {
+  background: var(--c-bg-soft);
+  padding: 80px 0;
+  text-align: center;
+}
+.top100-winners-label {
+  font-weight: 600;
+  color: var(--c-primary-dark);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .8rem;
+  margin: 0 0 10px;
+}
+.top100-winners h2 {
+  font-family: var(--font-head);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  color: var(--c-ink);
+  margin: 0 0 32px;
+}
+.top100-winners-photo {
+  margin: 0 auto 28px;
+  max-width: 860px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.top100-winners-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.top100-winners-awards {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 720px;
+  margin: 0 auto 24px;
+  padding: 0;
+}
+.top100-winners-awards li {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  box-shadow: var(--shadow-sm);
+  border-top: 3px solid var(--c-primary);
+}
+.top100-winners-awards li:nth-child(2) { border-top-color: var(--c-yellow); }
+.top100-winners-awards li:nth-child(3) { border-top-color: var(--c-orange); }
+.top100-winners-awards .amb-award {
+  display: block;
+  font-size: .78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--c-ink-soft);
+  margin-bottom: 6px;
+}
+.top100-winners-awards strong {
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: 1.15rem;
+  color: var(--c-ink);
+}
+.top100-winners-caption {
+  color: var(--c-ink-soft);
+  font-size: .95rem;
+  margin: 0;
+}
+@media (max-width: 720px) {
+  .top100-winners-awards { grid-template-columns: 1fr; max-width: 360px; }
+}
+
 .top100-initiatief {
   background: #fff;
   padding: 70px 0 40px;
