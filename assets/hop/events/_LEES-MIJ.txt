@@ -13,7 +13,9 @@ zodra het bestand de juiste naam heeft. Gebruik exact deze namen:
   firda-opendag.jpg          -> Firda Open dag (26 mrt 2026)
   miele.jpg                  -> Miele Talent van de Toekomst (13 apr 2026)
   sligro.jpg                 -> ZIN Inspiratie Lab Sligro (11 jun 2026)
-  gastvrij-rotterdam.png     -> Gastvrij Rotterdam (21-23 sep 2026)  (staat er al)
+  gastvrij-rotterdam-21.jpg  -> Gastvrij Rotterdam dag 1 (21 sep 2026)
+  gastvrij-rotterdam-22.jpg  -> Gastvrij Rotterdam dag 2 (22 sep 2026)
+  gastvrij-rotterdam-23.jpg  -> Gastvrij Rotterdam dag 3 (23 sep 2026)
 
 Liefst liggend (landscape), minimaal ~1200px breed. JPG of PNG.
 Zolang een foto er nog niet staat, toont de pagina "Foto volgt".
