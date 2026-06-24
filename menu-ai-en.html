@@ -335,478 +335,99 @@
   .edge-sub{color:var(--muted);font-size:16px;max-width:48ch;margin:16px auto 0;}
 
 </style>
+
+<style>
+  html,body{margin:0;}
+  #cq-gate{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px;
+    background:linear-gradient(160deg,#0F4E54 0%, #16201F 100%);font-family:'Montserrat',system-ui,sans-serif;}
+  #cq-gate .card{background:#fff;border-radius:20px;padding:40px 34px 32px;max-width:380px;width:100%;
+    box-shadow:0 30px 70px rgba(0,0,0,.35);text-align:center;border-top:4px solid #26A8B0;}
+  #cq-gate .lock{width:56px;height:56px;border-radius:16px;background:#E6F4F5;color:#0F4E54;display:flex;
+    align-items:center;justify-content:center;margin:0 auto 18px;font-size:26px;}
+  #cq-gate h1{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:23px;color:#1A2226;margin:0 0 6px;letter-spacing:-.01em;}
+  #cq-gate p{color:#5E6A70;font-size:14px;margin:0 0 22px;line-height:1.5;}
+  #cq-gate form{display:flex;flex-direction:column;gap:10px;}
+  #cq-gate input{font:inherit;font-size:15px;padding:13px 14px;border:1px solid #d9e1e2;border-radius:10px;background:#f5f7f7;color:#1A2226;width:100%;box-sizing:border-box;}
+  #cq-gate input:focus{outline:2px solid #26A8B0;outline-offset:1px;border-color:transparent;}
+  #cq-gate button{font:inherit;font-weight:700;font-size:15px;padding:13px 14px;border:none;border-radius:10px;background:#26A8B0;color:#fff;cursor:pointer;transition:background .12s;}
+  #cq-gate button:hover{background:#1B7A80;}
+  #cq-gate button:disabled{opacity:.6;cursor:wait;}
+  #cq-gate .err{color:#A91917;font-size:13px;font-weight:600;min-height:18px;margin-top:2px;}
+  #cq-gate .foot{margin-top:18px;font-size:11.5px;color:#9aa8ac;}
+  #cq-content{display:none;}
+  #cq-content.shown{display:block;}
+</style>
 </head>
 <body>
-<div class="ribbon">🔒 <strong>Internal preview</strong> &nbsp;·&nbsp; Menu AI &mdash; build spec for the technical team. Not for the outside world.</div>
 
-<nav class="nav">
-  <div class="wrap nav-inner">
-    <a class="logo" href="https://www.culiquiz.nl"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></a>
-    <div class="nav-right">
-      <div class="nav-links">
-        <a href="#flow">The flow</a>
-        <a href="#voorbeeld">Example</a>
-        <a href="#contract">Contract</a>
-        <a href="#criteria">Criteria</a>
-        <a href="#beslissingen">Open items</a>
-      </div>
-      <a class="nav-back" href="/culiquiz-2-0-en">&larr; CuliQuiz 2.0</a>
-      <span class="nav-tag"><span class="dot"></span> Menu AI</span>
-      <a class="nav-lang" href="/menu-ai">NL</a>
-    </div>
+<div id="cq-gate">
+  <div class="card">
+    <div class="lock" aria-hidden="true">&#128274;</div>
+    <h1>CuliQuiz 2.0</h1>
+    <p>Interne preview. Voer het wachtwoord in om verder te gaan.</p>
+    <form id="cq-gate-form" autocomplete="off">
+      <input type="password" id="cq-pw" placeholder="Wachtwoord" aria-label="Wachtwoord" autofocus />
+      <button type="submit" id="cq-unlock">Openen</button>
+      <div class="err" id="cq-err" aria-live="polite"></div>
+    </form>
+    <div class="foot">Alleen voor het CuliQuiz-team.</div>
   </div>
-</nav>
+</div>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <div class="eyebrow">Build spec · CuliQuiz 2.0 · AI content pipeline (E07)</div>
-        <h1>From a menu to a <em>complete training</em>, in moments</h1>
-        <p class="lead">The operator uploads their menu, Menu AI turns it into validated training content. This page is not a story but a spec: what the team builds, which data goes in and out, and when it is done.</p>
-        <div class="hero-meta">
-          <span class="pill"><span class="pdot"></span> Phase 1: food &amp; drinks menu</span>
-          <span class="pill y"><span class="pdot"></span> Phase 2: SOPs</span>
-          <span class="pill o"><span class="pdot"></span> E07 / Epic CQ-8</span>
-        </div>
-      </div>
-      <div class="xform">
-        <div class="doc">
-          <div class="dt">MENU</div>
-          <div class="ln m"></div><div class="ln s"></div><div class="ln m"></div><div class="ln s"></div>
-          <div class="pr"><span>Carpaccio</span><span>&euro;14</span></div>
-          <div class="pr"><span>Coq au vin</span><span>&euro;23</span></div>
-        </div>
-        <div class="arrowx">&rarr;<small>Menu AI</small></div>
-        <div class="cards">
-          <div class="gcard g1"><div class="gt">True / False</div><div class="gq">Carpaccio is served raw.</div></div>
-          <div class="gcard g2"><div class="gt">Multiple choice</div><div class="gq">Which sauce goes with carpaccio?</div></div>
-          <div class="gcard g3"><div class="gt">Allergens</div><div class="gq">Coq au vin contains: …</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- KADERS -->
-<section class="block frames-band">
-  <div class="wrap">
-    <div class="center reveal">
-      <div class="sec-label">Locked constraints</div>
-      <h2 class="sec" style="margin:0 auto;">What we expect, <em>hard</em></h2>
-    </div>
-    <div class="frames" style="margin-top:30px;">
-      <div class="frame reveal">
-        <div class="ft">Pace</div>
-        <h4>Playable within ~5 minutes</h4>
-        <p>From upload to a set ready for validation: a few minutes at most. Asynchronous with status or notification is allowed.</p>
-      </div>
-      <div class="frame reveal d1">
-        <div class="ft">Validation</div>
-        <h4>We only review the new</h4>
-        <p>The customer thinks of nothing. Known dishes deliver their questions instantly; only new content is proposed and reviewed by us. The fuller the database, the more goes automatically.</p>
-      </div>
-      <div class="frame reveal d2">
-        <div class="ft">Game types</div>
-        <h4>All fitting types</h4>
-        <p>Menu AI generates per item all game types that logically fit (True/False, MCQ, sorting, image), not one fixed type.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DE VOORSPRONG -->
-<section class="block" id="voorsprong">
-  <div class="wrap center">
-    <div class="reveal">
-      <div class="sec-label">The edge</div>
-      <h2 class="sec">No other tool does it <em>like this</em></h2>
-      <p class="edge-claim reveal d1">The <em>only</em> tool in the world that offers a tailored training this fast, and instantly responds to changes, like a new menu.</p>
-      <p class="edge-sub reveal d2">Known dishes playable immediately, new ones proposed and reviewed within minutes. When the menu changes, the training changes with it.</p>
-    </div>
-  </div>
-</section>
-
-<!-- USER STORY -->
-<section class="block soft" id="story">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">User story</div>
-      <h2 class="sec">The problem we <em>solve</em></h2>
-      <p class="sec-intro">Building a training is work: thinking up questions, checking answers, assembling content. That is the barrier that holds new customers back. Menu AI removes it.</p>
-    </div>
-    <div class="story reveal">
-      <div class="q">As a <b>hospitality operator</b> I want to <b>upload my menu</b>, so my team trains on our <b>own dishes</b> within minutes, without me creating questions by hand and without content that is not relevant.</div>
-      <div class="sub">The definition of done is below, testable and numbered. This is the core: take the work away.</div>
-    </div>
-  </div>
-</section>
-
-<!-- DE FLOW -->
-<section class="block soft" id="flow">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">The user flow</div>
-      <h2 class="sec">Five steps, with <em>input and output</em></h2>
-      <p class="sec-intro">Step 1 is done by the user. Steps 2 to 4 are Menu AI. Step 5 is the user’s choice. Each step shows what goes in and what comes out.</p>
-    </div>
-    <div class="flow">
-      <div class="fstep reveal">
-        <div class="fn">1</div>
-        <h3>Upload</h3>
-        <p><b>In:</b> food / drinks menu (PDF or photo, multiple files allowed).<br><b>Out:</b> a stored source document at the organisation.</p>
-      </div>
-      <div class="fstep reveal d1">
-        <div class="fn">2</div>
-        <h3>Recognise</h3>
-        <p><b>In:</b> the document.<br><b>Out:</b> per item dish/drink, ingredients, price, composition. Inspectable.</p>
-      </div>
-      <div class="fstep reveal d2">
-        <div class="fn">3</div>
-        <h3>Generate</h3>
-        <p><b>In:</b> the recognised items.<br><b>Out:</b> per item all fitting questions, linked to the Knowledge Graph.</p>
-      </div>
-      <div class="fstep reveal d3">
-        <div class="fn">4</div>
-        <h3>Validate</h3>
-        <p><b>In:</b> the generated set (status "pending").<br><b>Out:</b> a Content Set approved by CuliQuiz, ready to use.</p>
-      </div>
-      <div class="fstep reveal d4">
-        <div class="fn">5</div>
-        <h3>Offer</h3>
-        <p><b>In:</b> the approved Content Set.<br><b>Out:</b> a campaign, tournament or battle, chosen by the user.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WAT HET HERKENT -->
-<section class="block" id="herkent">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">What Menu AI recognises</div>
-      <h2 class="sec">The <em>building blocks</em> from the menu</h2>
-      <p class="sec-intro">These are the entities the extraction pulls from each document. They are the input for generation and are stored.</p>
-    </div>
-    <div class="grid4">
-      <div class="rcard reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M5 11V7a7 7 0 0 1 14 0v4M7 11v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-6"/></svg></div>
-        <h3>Dish</h3>
-        <div class="ex">Carpaccio, coq au vin, nasi, satay</div>
-      </div>
-      <div class="rcard reveal d1">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3c0 1 .5 2 1 3l-2 11h8l-2-11c.5-1 1-2 1-3a3 3 0 0 0-3-3z"/></svg></div>
-        <h3>Ingredient</h3>
-        <div class="ex">Beef tenderloin, chicken, broccoli, hollandaise, truffle mayonnaise</div>
-      </div>
-      <div class="rcard reveal d2">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l-1 7a5 5 0 0 1-10 0zM8 22h8M12 14v8"/></svg></div>
-        <h3>Drink</h3>
-        <div class="ex">Wine, coffee, teas</div>
-      </div>
-      <div class="rcard reveal d3">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6l1 3h3v17H5V5h3zM9 12l2 2 4-4"/></svg></div>
-        <h3>SOP</h3>
-        <div class="ex">Brand standards, HACCP, cleaning schedules</div>
-        <span class="later">Phase 2</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DE DATABASE -->
-<section class="block soft" id="database">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">The core</div>
-      <h2 class="sec">The database is the <em>heart</em></h2>
-      <p class="sec-intro">The real product is not a loose set of questions, but a database. Every ingredient, dish and drink is a record. The question and game forms hang off it. Games are filled by pulling from that database, filtered by organisation and sub-topic.</p>
-    </div>
-    <div class="db-grid">
-      <div class="entity reveal">
-        <div class="etag">Entity</div>
-        <h3>Beef tenderloin</h3>
-        <div class="epills">
-          <span class="ep org">Brasserie X</span>
-          <span class="ep sub">Food</span>
-        </div>
-        <div class="eattr"><b>type</b><span>ingredient</span></div>
-        <div class="eattr"><b>allergens</b><span>none</span></div>
-        <div class="eattr"><b>appears in</b><span>carpaccio, tournedos</span></div>
-        <div class="evar-h">Linked question / game forms</div>
-        <div class="evars">
-          <span class="evar">True / False</span>
-          <span class="evar">Multiple choice</span>
-          <span class="evar">Allergens</span>
-          <span class="evar">Sorting</span>
-          <span class="evar">Image recognition</span>
-        </div>
-      </div>
-      <div class="fill reveal d1">
-        <div class="ft">How we fill games</div>
-        <h3>Filter the database, pull the questions</h3>
-        <p>A game or campaign is a selection from the database. Filter by <b>organisation</b> (the own menu) and <b>sub-topic</b> (food, wine, drinks…), and the linked questions fill the game automatically. This way a team only trains on what is relevant to their menu, nothing else.</p>
-        <div class="fillflow">
-          <span class="fn">Database</span><span class="fa">&rarr;</span>
-          <span class="fn">Filter: org + sub-topic</span><span class="fa">&rarr;</span>
-          <span class="fn">Game / Content Set</span>
-        </div>
-        <p class="fillmoat">Every uploaded menu adds entities and questions. The more menus, the richer the database, for the whole platform.</p>
-      </div>
-    </div>
-    <div class="dbmodel reveal">
-<span class="c">// data model (simplified)</span><br>
-<span class="k">Entity</span> { id, type: <span class="v">ingredient | dish | drink</span>, name, <span class="k">organization_id</span>, <span class="k">subtopic</span>: <span class="v">food | wine | drinks | …</span>, allergens, price }<br>
-&nbsp;&nbsp;&nbsp;<span class="c">└─ has many →</span> <span class="k">Question</span> { game_type, prompt, correct, explanation, … }
-    </div>
-  </div>
-</section>
-
-<!-- HET KEURPROCES -->
-<section class="block" id="keuren">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">The review process</div>
-      <h2 class="sec">We only review the <em>new</em></h2>
-      <p class="sec-intro">The customer thinks of nothing. If a dish or ingredient is already in the database, the content comes instantly. If it is new, the tool proposes questions and we review them. The fuller the database, the more often it goes automatically.</p>
-    </div>
-    <div class="keur-grid">
-      <div class="keurpath reveal">
-        <div class="kp-row known"><span class="kp-tag">Known</span> Entity is already in the database <span class="kp-arrow">&rarr;</span> <b>existing validated questions, instantly</b></div>
-        <div class="kp-row new"><span class="kp-tag">New</span> Entity is unknown <span class="kp-arrow">&rarr;</span> tool proposes questions <span class="kp-arrow">&rarr;</span> CuliQuiz reviews <span class="kp-arrow">&rarr;</span> <b>added to the database</b></div>
-        <p class="flywheel">Every approval enriches the global database. Over time most of it is already there and almost nothing needs reviewing.</p>
-      </div>
-      <div class="notif reveal d1">
-        <div class="notif-h"><span class="bell">🔔</span> For approval · CuliQuiz</div>
-        <div class="notif-body">
-          <p>No questions about <b>Durian</b> in <i>Fruit · Exotic</i> yet. Proposal:</p>
-          <div class="nq"><span class="nqt">True / False</span> Durian is known for its strong smell. <span class="nqa">True</span></div>
-          <div class="nq"><span class="nqt">MCQ</span> Where does durian originally come from? <span class="nqa">Southeast Asia</span></div>
-        </div>
-        <div class="notif-actions"><span class="btn-ok">Approve</span><span class="btn-no">Reject</span></div>
-      </div>
-    </div>
-    <div class="sopnote reveal">
-      <div class="sn-h">Exception: SOPs</div>
-      <p>SOPs (brand standards, HACCP, cleaning schedules) apply only to the own organisation. The SOP is itself the source of the content, so we do not review it. The customer can adjust SOP content themselves within their own organisation.</p>
-    </div>
-  </div>
-</section>
-
-<!-- UITGEWERKT VOORBEELD -->
-<section class="block soft" id="voorbeeld">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">Worked example</div>
-      <h2 class="sec">One line, fully <em>walked through</em></h2>
-      <p class="sec-intro">One menu line, from input to importable Content Set. So the team sees exactly what goes in and what comes out.</p>
-    </div>
-    <div class="example">
-      <div class="ex-card reveal">
-        <div class="ec-h">1 · Input (line on the menu)</div>
-        <div class="ex-line">Beef carpaccio, truffle mayonnaise, Parmesan, rocket &mdash; &euro;14</div>
-        <div class="ec-h">2 · Recognised (stored)</div>
-        <div class="kv"><b>dish</b><span>Carpaccio</span></div>
-        <div class="kv"><b>ingredients</b><span>beef tenderloin, truffle mayonnaise, Parmesan, rocket</span></div>
-        <div class="kv"><b>price</b><span>&euro; 14.00</span></div>
-        <div class="kv"><b>allergens</b><span>milk, egg (derived from composition)</span></div>
-        <div class="kv"><b>domain</b><span>Culinary knowledge › Starters › Raw meat</span></div>
-      </div>
-      <div class="ex-card reveal d1">
-        <div class="ec-h">3 · Generated (all fitting types)</div>
-        <div class="exq"><div class="qt">True / False · PUZ87</div><div class="qq">Our carpaccio is served raw.</div><div class="qa"><b>True.</b> Carpaccio is thinly sliced raw beef.</div></div>
-        <div class="exq"><div class="qt">Multiple choice · PUZ144</div><div class="qq">Which sauce goes with our carpaccio?</div><div class="qa"><b>Truffle mayonnaise</b> · hollandaise · chimichurri · tzatziki</div></div>
-        <div class="exq"><div class="qt">Allergen MCQ · PUZ162</div><div class="qq">Which allergen is in our carpaccio?</div><div class="qa"><b>Milk</b> (Parmesan) · shellfish · nuts</div></div>
-        <div class="exq"><div class="qt">Sorting · PUZ93</div><div class="qq">Drag what is in our carpaccio.</div><div class="qa">in: <b>beef tenderloin, Parmesan, rocket</b> · not: salmon, feta</div></div>
-      </div>
-    </div>
-    <div class="schema reveal">
-<span class="c">// 4 · Output = importable Content Set (fragment)</span><br>
-{<br>
-&nbsp;&nbsp;<span class="k">"content_set"</span>: { <span class="k">"name"</span>: <span class="v">"Brasserie X — Menu"</span>, <span class="k">"source_type"</span>: <span class="v">"organization"</span>, <span class="k">"owner_organization_id"</span>: <span class="v">"uuid"</span>, <span class="k">"status"</span>: <span class="v">"pending_validation"</span> },<br>
-&nbsp;&nbsp;<span class="k">"questions"</span>: [{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">"game_type"</span>: <span class="v">"PUZ87"</span>, <span class="k">"domain_id"</span>: <span class="v">"…"</span>, <span class="k">"subdomain_id"</span>: <span class="v">"…"</span>, <span class="k">"topic_id"</span>: <span class="v">"…"</span>,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">"prompt"</span>: <span class="v">"Our carpaccio is served raw."</span>, <span class="k">"correct"</span>: <span class="v">true</span>,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">"explanation"</span>: <span class="v">"Carpaccio is thinly sliced raw beef."</span>, <span class="k">"allergens"</span>: [<span class="v">"milk"</span>], <span class="k">"price"</span>: <span class="v">14.0</span><br>
-&nbsp;&nbsp;}]<br>
-}
-    </div>
-  </div>
-</section>
-
-<!-- CONTRACT -->
-<section class="block" id="contract">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">Data contract</div>
-      <h2 class="sec">What may go <em>in</em> and what comes <em>out</em></h2>
-      <p class="sec-intro">The contract the tooling can build on. The output follows the Knowledge Architecture: no question without a link to domain, subdomain and topic.</p>
-    </div>
-    <div class="contract">
-      <div class="cbox reveal">
-        <h3>Input</h3>
-        <div class="csub">Phase 1 · accepted sources</div>
-        <div class="field"><code>PDF</code><span class="tag req">in</span><span class="fd">food or drinks menu, also a scan without a text layer (OCR)</span></div>
-        <div class="field"><code>foto (JPG/PNG)</code><span class="tag req">in</span><span class="fd">one or more photos of the menu</span></div>
-        <div class="field"><code>multiple files</code><span class="tag req">in</span><span class="fd">in one upload, merged into one menu</span></div>
-        <div class="field"><code>Word / Excel</code><span class="tag opt">later</span><span class="fd">and SOP documents in phase 2</span></div>
-      </div>
-      <div class="cbox reveal d1">
-        <h3>Output · Question</h3>
-        <div class="csub">Fields per question in the Content Set</div>
-        <div class="field"><code>game_type</code><span class="tag req">required</span><span class="fd">PUZ87, PUZ144/161/162, PUZ93 …</span></div>
-        <div class="field"><code>domain/subdomain/topic_id</code><span class="tag req">required</span><span class="fd">from Master Knowledge Graph</span></div>
-        <div class="field"><code>source_type</code><span class="tag req">required</span><span class="fd">"organization" + owner_organization_id</span></div>
-        <div class="field"><code>prompt / correct / explanation</code><span class="tag req">required</span><span class="fd">the question, the answer, the explanation</span></div>
-        <div class="field"><code>allergens / price / media</code><span class="tag opt">optional</span><span class="fd">where applicable</span></div>
-        <div class="field"><code>status</code><span class="tag req">required</span><span class="fd">starts at "pending_validation"</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ACCEPTATIECRITERIA -->
-<section class="block soft" id="criteria">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">Acceptance criteria</div>
-      <h2 class="sec">Definition of <em>done</em></h2>
-      <p class="sec-intro">Testable. Only when all points hold is Menu AI phase 1 done. The three constraints at the top are built in here.</p>
-    </div>
-    <ol class="crit">
-      <li class="reveal"><div><b>Upload accepts PDF and photo</b>, also multiple files at once and scans without a text layer (OCR).<div class="cp">A failed or unreadable upload gives a clear message, no silent error.</div></div></li>
-      <li class="reveal"><div><b>Extraction delivers per item</b> dish/drink, ingredients, price and composition, and is inspectable per item before generation.</div></li>
-      <li class="reveal"><div><b>Per item all fitting game types</b> generated <span class="lock">constraint</span><div class="cp">At least True/False + MCQ where applicable; sorting/image where the item lends itself to it.</div></div></li>
-      <li class="reveal"><div><b>Every question is linked</b> to domain / subdomain / topic from the Master Knowledge Graph and carries source_type=organization. No loose questions.</div></li>
-      <li class="reveal"><div><b>Output is a Content Set</b> in platform format, directly selectable in the campaign builder, without manual rework.</div></li>
-      <li class="reveal"><div><b>Only relevant content</b>: a team gets only content that fits its own menu and the chosen sub-topic. No unrelated questions.</div></li>
-      <li class="reveal"><div><b>Only new content for review</b> <span class="lock">constraint</span><div class="cp">Known entities deliver their validated questions instantly. New entities/questions go with a notification to the CuliQuiz review queue (approve/reject) before they are added to the database. SOP content is org-only and is not reviewed by CuliQuiz.</div></div></li>
-      <li class="reveal"><div><b>To a playable set within ~5 minutes</b> <span class="lock">constraint</span><div class="cp">Asynchronous processing with status or notification is allowed; the user does not wait on a blank screen.</div></div></li>
-      <li class="reveal"><div><b>Distribution choice</b> when offering: campaign, tournament or battle.</div></li>
-      <li class="reveal"><div><b>Entity database filled</b>: every item is stored as an entity (linked to organisation + sub-topic) with its question variants; games are filled from it. Enriches the global pool (dedup, see open items).</div></li>
-    </ol>
-  </div>
-</section>
-
-<!-- DISTRIBUTIE -->
-<section class="block" id="distributie">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">Distribution</div>
-      <h2 class="sec">The user picks the <em>format</em></h2>
-      <p class="sec-intro">The same approved content, three ways to roll it out.</p>
-    </div>
-    <div class="dist">
-      <div class="dcard reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-        <h3>Fixed campaign</h3>
-        <p>Continuous programme with duration and goals. For structural knowledge building.</p>
-      </div>
-      <div class="dcard reveal d1">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0zM5 4H3v2a3 3 0 0 0 3 3M19 4h2v2a3 3 0 0 1-3 3"/></svg></div>
-        <h3>Tournament</h3>
-        <p>Temporary competition with a leaderboard. For energy and a peak moment.</p>
-      </div>
-      <div class="dcard reveal d2">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-9 11h7l-2 9 9-11h-7z"/></svg></div>
-        <h3>Battle</h3>
-        <p>Fast, head-to-head. For instant adoption: play right away, learn right away.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OPEN BESLISSINGEN -->
-<section class="block soft" id="beslissingen">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">Open decisions</div>
-      <h2 class="sec">What we still <em>lock</em> together</h2>
-      <p class="sec-intro">Deliberately still open. Do not build before these are decided with product, so the team is not surprised.</p>
-    </div>
-    <div class="dec">
-      <div class="ditem reveal"><h4>Number of questions per item</h4><p>Min/max per dish or drink, and how we handle items that are too thin.</p></div>
-      <div class="ditem reveal d1"><h4>Language of the output</h4><p>Dutch only, or generate multilingual (NL/EN)?</p></div>
-      <div class="ditem reveal"><h4>Validation tooling</h4><p>What does the review queue for the content team look like: bulk approve, per question, edit?</p></div>
-      <div class="ditem reveal d1"><h4>Dedup in the database</h4><p>The same dish from multiple menus: merge, keep variants or ignore?</p></div>
-      <div class="ditem reveal"><h4>Prices</h4><p>Store and use (upselling), and what about a new menu with different prices?</p></div>
-      <div class="ditem reveal d1"><h4>Ownership &amp; GDPR</h4><p>Of the uploaded menu data, and its reuse in the global pool.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- FASERING -->
-<section class="block" id="fasering">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">Phasing</div>
-      <h2 class="sec">First the menu, then the <em>SOPs</em></h2>
-      <p class="sec-intro">Concrete deliverable per phase.</p>
-    </div>
-    <div class="phases">
-      <div class="phase now one reveal">
-        <span class="pl">Phase 1 · now</span>
-        <h3>Food &amp; drinks menu</h3>
-        <ul>
-          <li>Upload (PDF/photo) + extraction (dish, ingredient, drink, price, composition)</li>
-          <li>Generation of all fitting game types, linked to the Knowledge Graph</li>
-          <li>Validation queue for the CuliQuiz content team</li>
-          <li>Content Set import + distribution (campaign / tournament / battle)</li>
-          <li><b>Deliverable:</b> a venue has a validated set ready to roll out within ~5 min</li>
-        </ul>
-      </div>
-      <div class="phase two reveal d1">
-        <span class="pl">Phase 2 · later</span>
-        <h3>SOPs</h3>
-        <ul>
-          <li>Brand standards, HACCP guidelines, cleaning schedules</li>
-          <li>Compliance and procedure training from your own documents</li>
-          <li><b>Deliverable:</b> the same flow, but from procedure documents instead of a menu</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL -->
-<section class="block final">
-  <div class="wrap">
-    <div class="reveal">
-      <h2>One upload. <em>A validated, own training.</em></h2>
-      <p>Menu AI removes the barrier to start, delivers content in our own data model, and meanwhile builds the largest validated content database in hospitality.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <div class="logo"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></div>
-        <p class="tagline">Your culinary knowledge, a step smarter every shift.</p>
-      </div>
-      <div>
-        <h4>Internal page</h4>
-        <p class="note"><span class="lock">🔒 Do not share.</span> Menu AI build spec (CuliQuiz 2.0, AI content pipeline / E07) for the technical team. <br><a class="back" href="/culiquiz-2-0-en">&larr; Back to CuliQuiz 2.0</a></p>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>© CuliQuiz. Internal preview, not for the outside world.</span>
-      <span>Menu AI · build spec · Phase 1: food &amp; drinks menu</span>
-    </div>
-  </div>
-</footer>
+<div id="cq-content"></div>
 
 <script>
-  document.documentElement.classList.add('js');
-  (function(){
-    var els = document.querySelectorAll('.reveal');
-    if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('in');});return;}
-    var obs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-    els.forEach(function(el){obs.observe(el);});
-  })();
-</script>
+(function(){
+  var SALT="j5Zo6ZiMVNQsPSHKXPV2Aw==", IV="8LcCmSeu1DMI9foD", BLOB="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", ITER=250000;
+  var SS_KEY="cq20_pw";
+  function b2u(b){return Uint8Array.from(atob(b),function(c){return c.charCodeAt(0);});}
+  var gate=document.getElementById('cq-gate'),
+      form=document.getElementById('cq-gate-form'),
+      pw=document.getElementById('cq-pw'),
+      btn=document.getElementById('cq-unlock'),
+      err=document.getElementById('cq-err'),
+      content=document.getElementById('cq-content');
 
+  function initReveal(){
+    document.documentElement.classList.add('js');
+    var els=content.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){obs.observe(e);});
+  }
+
+  async function decrypt(password){
+    var enc=new TextEncoder();
+    var base=await crypto.subtle.importKey('raw',enc.encode(password),'PBKDF2',false,['deriveKey']);
+    var key=await crypto.subtle.deriveKey(
+      {name:'PBKDF2',salt:b2u(SALT),iterations:ITER,hash:'SHA-256'},
+      base,{name:'AES-GCM',length:256},false,['decrypt']);
+    var buf=await crypto.subtle.decrypt({name:'AES-GCM',iv:b2u(IV)},key,b2u(BLOB));
+    return new TextDecoder().decode(buf);
+  }
+
+  async function unlock(password,silent){
+    if(!silent){btn.disabled=true;err.textContent='Even ontsleutelen…';}
+    try{
+      var htmlStr=await decrypt(password);
+      content.innerHTML=htmlStr;
+      content.classList.add('shown');
+      gate.parentNode.removeChild(gate);
+      try{sessionStorage.setItem(SS_KEY,password);}catch(e){}
+      initReveal();
+      window.scrollTo(0,0);
+    }catch(e){
+      if(!silent){err.textContent='Onjuist wachtwoord.';btn.disabled=false;pw.value='';pw.focus();}
+    }
+  }
+
+  form.addEventListener('submit',function(e){e.preventDefault();var v=pw.value.trim();if(!v)return;unlock(v,false);});
+
+  // auto-unlock binnen dezelfde tab-sessie
+  try{var saved=sessionStorage.getItem(SS_KEY);if(saved){unlock(saved,true);}}catch(e){}
+})();
+</script>
 </body>
 </html>
