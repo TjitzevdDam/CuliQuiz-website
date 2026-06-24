@@ -12,9 +12,9 @@ pagina gebruikt (zet hier neer met exact deze naam):
   firda-opendag.jpg                 -> Firda Open dag
   miele.jpg                         -> Miele Talent van de Toekomst
   sligro.jpg                        -> ZIN Inspiratie Lab Sligro
+  rai-young-professional.jpg        -> Young Professional Career Fair (RAI, uit Horecava-beeld)
 
 Nog zonder foto (tonen een gekleurde tegel):
-  RAI Young Professional Career Fair
   ROC Amsterdam Leermeesterdag
 
 Liefst liggend (landscape), ~1600px breed. JPG.
