@@ -1,0 +1,20 @@
+FOTO'S VOOR DE HOP-PAGINA (events)
+==================================
+
+Zet hier de event-foto's neer. De pagina /hop pakt ze automatisch op
+zodra het bestand de juiste naam heeft. Gebruik exact deze namen:
+
+  gastvrij-rotterdam.png   -> Gastvrij Rotterdam 2024        (staat er al)
+  coca-cola.jpg            -> Coca-Cola Zomer Battle          (staat er al)
+  finale-2025.jpg          -> CuliQuiz Finale 2025            (toevoegen)
+  finale-2024.jpg          -> Schoolbattle Finale 2023-2024   (toevoegen)
+  horecava.jpg             -> Horecava                        (toevoegen)
+  young-professional.jpg   -> Young Professional Battle       (toevoegen)
+
+Liefst liggend (landscape), minimaal ~1200px breed. JPG of PNG.
+Zolang een foto er nog niet staat, toont de pagina "Foto volgt".
+
+Map-locatie op je Mac:
+/Users/TjitzevanderDam/Dropbox/Mac/Desktop/Claude/CuliQuiz website/assets/hop/events/
+
+Na het neerzetten: zeg het tegen Claude, dan zet ik ze live.
