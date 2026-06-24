@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Menu AI — interne preview</title>
+<meta name="description" content="Interne pagina. Wachtwoord vereist." />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#26A8B0" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.culiquiz.nl/assets/favicon-32.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Montserrat:ital,wght@0,300..700;1,300..500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#26A8B0; --teal-dark:#1B7A80; --teal-deep:#0F4E54; --teal-soft:#E6F4F5;
+    --red:#A91917; --red-soft:#F6E2E1; --yellow:#EAB600; --yellow-ink:#9C7A00; --yellow-soft:#FBF1CC;
+    --orange:#E15E17; --orange-soft:#FBE6D9; --grey:#C3CBD0;
+    --ink:#1A2226; --muted:#5E6A70; --line:#E7ECEE; --bg:#ffffff; --bg-soft:#F6FAFA; --antraciet:#16201F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-weight:400;line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:900;line-height:1.08;letter-spacing:-.015em;}
+  em{font-style:italic;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  .ribbon{background:var(--antraciet);color:#cfe7e8;font-size:12.5px;letter-spacing:.04em;text-align:center;padding:7px 16px;font-weight:500;}
+  .ribbon strong{color:var(--yellow);font-weight:700;}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav .logo img{height:32px;width:auto;}
+  .nav-right{display:flex;align-items:center;gap:22px;}
+  .nav-links{display:flex;align-items:center;gap:22px;}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--ink);transition:color .12s;}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-back{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:13.5px;font-weight:600;}
+  .nav-back:hover{color:var(--teal);}
+  .nav-tag{display:inline-flex;align-items:center;gap:7px;background:var(--teal);color:#fff;padding:7px 14px;border-radius:999px;font-weight:700;font-size:12.5px;}
+  .nav-tag .dot{width:8px;height:8px;border-radius:50%;background:#fff;}
+  @media (max-width:920px){.nav-links{display:none;}}
+
+  .hero{background:linear-gradient(160deg,#F6FAFA 0%, #E6F4F5 100%);position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;top:-140px;right:-120px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle, rgba(234,182,0,.20) 0%, transparent 70%);}
+  .hero::before{content:"";position:absolute;bottom:-160px;left:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, rgba(225,94,23,.12) 0%, transparent 70%);}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:60px 0 56px;position:relative;z-index:1;}
+  .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;background:rgba(255,255,255,.6);padding:7px 14px 7px 10px;border-radius:999px;border:1px solid rgba(38,168,176,.2);}
+  .eyebrow::before{content:"";width:24px;height:2px;background:var(--yellow);display:inline-block;}
+  .hero h1{font-size:clamp(34px,5vw,56px);color:var(--ink);}
+  .hero h1 em{color:var(--teal);font-style:normal;position:relative;}
+  .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.16em;background:rgba(234,182,0,.45);border-radius:3px;z-index:-1;}
+  .hero .lead{font-size:clamp(16px,1.7vw,18.5px);color:var(--muted);margin-top:20px;max-width:560px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--teal-deep);box-shadow:0 4px 12px rgba(15,78,84,.05);}
+  .pill .pdot{width:7px;height:7px;border-radius:50%;background:var(--teal);}
+  .pill.y .pdot{background:var(--yellow);} .pill.o .pdot{background:var(--orange);}
+
+  /* hero transform illustration */
+  .xform{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;}
+  .xform .doc{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px rgba(15,78,84,.14);padding:16px 16px 18px;width:170px;}
+  .xform .doc .dt{font-family:'Fraunces',serif;font-weight:900;font-size:13px;color:var(--teal-deep);text-align:center;border-bottom:1px dashed var(--line);padding-bottom:7px;margin-bottom:8px;}
+  .xform .doc .ln{height:7px;border-radius:4px;background:#EEF3F4;margin-bottom:7px;}
+  .xform .doc .ln.s{width:60%;} .xform .doc .ln.m{width:85%;}
+  .xform .doc .pr{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);font-weight:600;margin-top:9px;}
+  .xform .arrowx{display:flex;flex-direction:column;align-items:center;color:var(--teal);font-weight:900;font-size:22px;}
+  .xform .arrowx small{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);font-weight:700;margin-top:2px;}
+  .xform .cards{position:relative;width:160px;height:170px;}
+  .xform .gcard{position:absolute;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 28px rgba(15,78,84,.14);padding:12px 13px;width:150px;}
+  .xform .gcard .gt{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);margin-bottom:5px;}
+  .xform .gcard .gq{font-size:11.5px;font-weight:600;color:var(--ink);line-height:1.35;}
+  .xform .gcard.g1{top:0;left:8px;transform:rotate(-4deg);}
+  .xform .gcard.g2{top:54px;left:0;transform:rotate(2deg);border-top:3px solid var(--yellow);}
+  .xform .gcard.g3{top:110px;left:10px;transform:rotate(-2deg);border-top:3px solid var(--orange);}
+  @media (max-width:920px){.hero-grid{grid-template-columns:1fr;gap:30px;padding:44px 0 40px;}.xform{order:-1;}}
+
+  section.block{padding:68px 0;position:relative;}
+  .sec-label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);margin-bottom:12px;display:inline-flex;align-items:center;gap:9px;}
+  .sec-label::before{content:"";width:22px;height:2px;background:var(--yellow);display:inline-block;}
+  h2.sec{font-size:clamp(26px,3.4vw,40px);color:var(--ink);max-width:22ch;}
+  h2.sec em{color:var(--teal);font-style:normal;position:relative;}
+  h2.sec em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.14em;background:rgba(234,182,0,.4);border-radius:3px;z-index:-1;}
+  .sec-intro{color:var(--muted);max-width:660px;margin-top:14px;font-size:16.5px;}
+  .center{text-align:center;} .center .sec-label{justify-content:center;} .center h2.sec,.center .sec-intro{margin-left:auto;margin-right:auto;}
+  .soft{background:var(--bg-soft);}
+
+  .js .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease;}
+  .js .reveal.in{opacity:1;transform:none;}
+  .js .reveal.d1{transition-delay:.07s;} .js .reveal.d2{transition-delay:.14s;} .js .reveal.d3{transition-delay:.21s;} .js .reveal.d4{transition-delay:.28s;}
+  @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none;}}
+
+  /* user story */
+  .story{background:var(--teal-deep);border-radius:22px;padding:34px 32px;color:#fff;margin-top:40px;position:relative;overflow:hidden;}
+  .story::after{content:"";position:absolute;top:-70px;right:-70px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle, rgba(234,182,0,.18) 0%, transparent 70%);}
+  .story .q{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(20px,2.4vw,27px);line-height:1.25;position:relative;z-index:1;}
+  .story .q b{color:var(--yellow);font-weight:900;}
+  .story .sub{color:#bfe0e2;font-size:14px;margin-top:14px;position:relative;z-index:1;}
+  .stories2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
+  .ministory{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .ministory .who{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:5px;}
+  .ministory p{font-size:14px;color:var(--ink);}
+  .ministory p b{color:var(--teal-deep);}
+  @media (max-width:760px){.stories2{grid-template-columns:1fr;}}
+
+  /* flow stepper */
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:44px;position:relative;}
+  .fstep{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 18px;position:relative;}
+  .fstep::after{content:"";position:absolute;top:50%;right:-12px;width:12px;height:2px;background:var(--grey);z-index:1;}
+  .fstep:last-child::after{display:none;}
+  .fstep .fn{width:34px;height:34px;border-radius:10px;background:var(--teal);color:#fff;font-family:'Fraunces',serif;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;margin-bottom:13px;}
+  .fstep:nth-child(2) .fn{background:var(--teal-dark);}
+  .fstep:nth-child(3) .fn{background:var(--yellow);}
+  .fstep:nth-child(4) .fn{background:var(--orange);}
+  .fstep:nth-child(5) .fn{background:var(--red);}
+  .fstep h3{font-size:16px;margin-bottom:7px;}
+  .fstep p{font-size:13px;color:var(--muted);}
+  @media (max-width:920px){.flow{grid-template-columns:1fr;}.fstep::after{display:none;}}
+
+  /* recognize cards */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:42px;}
+  .rcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 22px;position:relative;overflow:hidden;transition:transform .15s ease, box-shadow .15s ease;}
+  .rcard::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--teal);}
+  .rcard:nth-child(2)::before{background:var(--yellow);}
+  .rcard:nth-child(3)::before{background:var(--orange);}
+  .rcard:nth-child(4)::before{background:var(--grey);}
+  .rcard:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(15,78,84,.10);}
+  .rcard .ic{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;background:var(--teal-soft);color:var(--teal-dark);}
+  .rcard:nth-child(2) .ic{background:var(--yellow-soft);color:var(--yellow-ink);}
+  .rcard:nth-child(3) .ic{background:var(--orange-soft);color:var(--orange);}
+  .rcard:nth-child(4) .ic{background:#EAF0F2;color:var(--teal-deep);}
+  .rcard .ic svg{width:24px;height:24px;}
+  .rcard h3{font-size:17px;margin-bottom:6px;}
+  .rcard .ex{font-size:13px;color:var(--teal-deep);font-weight:600;line-height:1.5;}
+  .rcard .later{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--orange);background:var(--orange-soft);padding:2px 8px;border-radius:6px;margin-top:10px;text-transform:uppercase;}
+  @media (max-width:920px){.grid4{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.grid4{grid-template-columns:1fr;}}
+
+  /* store / database */
+  .store{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;margin-top:42px;}
+  .store-list{display:flex;flex-direction:column;gap:12px;}
+  .sitem{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px 17px;}
+  .sitem .si{flex:0 0 36px;width:36px;height:36px;border-radius:10px;background:var(--teal-soft);color:var(--teal-dark);display:flex;align-items:center;justify-content:center;}
+  .sitem .si svg{width:18px;height:18px;}
+  .sitem h4{font-family:'Montserrat';font-weight:700;font-size:14.5px;margin-bottom:2px;}
+  .sitem p{font-size:13px;color:var(--muted);}
+  .moat{background:linear-gradient(150deg,var(--teal) 0%, var(--teal-dark) 100%);border-radius:20px;padding:30px 28px;color:#fff;}
+  .moat .mt{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);}
+  .moat h3{color:#fff;font-size:22px;margin:6px 0 10px;}
+  .moat p{font-size:14.5px;color:rgba(255,255,255,.92);}
+  .moat .big{font-family:'Fraunces',serif;font-weight:900;font-size:40px;color:#fff;margin-top:14px;line-height:1;}
+  .moat .big small{display:block;font-family:'Montserrat';font-weight:600;font-size:12.5px;color:#bfe0e2;margin-top:5px;}
+  @media (max-width:920px){.store{grid-template-columns:1fr;gap:26px;}}
+
+  /* pipeline */
+  .pipe{display:flex;align-items:stretch;gap:0;margin-top:44px;flex-wrap:wrap;}
+  .pnode{flex:1;min-width:150px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;margin:6px;position:relative;}
+  .pnode .pt{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px;}
+  .pnode h4{font-family:'Montserrat';font-weight:700;font-size:14.5px;margin-bottom:4px;color:var(--ink);}
+  .pnode p{font-size:12.5px;color:var(--muted);}
+  .pnode code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;background:var(--bg-soft);border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:var(--teal-deep);}
+  .pnode.hl{background:var(--teal-deep);border-color:var(--teal-deep);}
+  .pnode.hl .pt{color:var(--yellow);} .pnode.hl h4{color:#fff;} .pnode.hl p{color:#bfe0e2;}
+  .pnode.hl code{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff;}
+  .schema{margin-top:30px;background:#0F4E54;border-radius:16px;padding:22px 24px;color:#e8f5f6;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.7;overflow-x:auto;}
+  .schema .k{color:#8fd3d8;} .schema .v{color:#EAB600;} .schema .c{color:#7c969a;}
+
+  /* distribution */
+  .dist{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px;}
+  .dcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 22px;border-top:4px solid var(--teal);}
+  .dcard:nth-child(2){border-top-color:var(--orange);}
+  .dcard:nth-child(3){border-top-color:var(--red);}
+  .dcard .ic{width:48px;height:48px;border-radius:13px;background:var(--teal-soft);color:var(--teal-dark);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .dcard:nth-child(2) .ic{background:var(--orange-soft);color:var(--orange);}
+  .dcard:nth-child(3) .ic{background:var(--red-soft);color:var(--red);}
+  .dcard .ic svg{width:23px;height:23px;}
+  .dcard h3{font-size:18px;margin-bottom:7px;}
+  .dcard p{font-size:14px;color:var(--muted);}
+  @media (max-width:920px){.dist{grid-template-columns:1fr;}}
+
+  /* phases */
+  .phases{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:42px;}
+  .phase{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 24px;position:relative;}
+  .phase.now{border:2px solid var(--teal);}
+  .phase .pl{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--teal);padding:4px 11px;border-radius:7px;margin-bottom:12px;}
+  .phase.two .pl{background:var(--grey);color:var(--ink);}
+  .phase h3{font-size:19px;margin-bottom:8px;}
+  .phase ul{list-style:none;}
+  .phase li{font-size:14px;color:var(--muted);padding-left:20px;position:relative;margin-bottom:7px;}
+  .phase li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--teal);}
+  .phase.two li::before{background:var(--grey);}
+  @media (max-width:760px){.phases{grid-template-columns:1fr;}}
+
+  /* expectations */
+  .expect{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:42px;}
+  .exp{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px 18px;}
+  .exp .ck{flex:0 0 26px;width:26px;height:26px;border-radius:8px;background:#E4F6EC;color:#2f9e57;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .exp .ck svg{width:15px;height:15px;}
+  .exp h4{font-family:'Montserrat';font-weight:700;font-size:14.5px;margin-bottom:3px;}
+  .exp p{font-size:13px;color:var(--muted);}
+  @media (max-width:760px){.expect{grid-template-columns:1fr;}}
+
+  .final{background:linear-gradient(135deg,var(--teal) 0%, var(--teal-dark) 100%);color:#fff;text-align:center;}
+  .final h2{font-size:clamp(26px,3.4vw,38px);color:#fff;margin-bottom:14px;}
+  .final h2 em{color:var(--yellow);font-style:normal;}
+  .final p{font-size:16.5px;color:rgba(255,255,255,.92);max-width:640px;margin:0 auto 8px;}
+
+  footer.foot{background:#0B3B40;color:rgba(255,255,255,.72);padding:46px 0 28px;font-size:14px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:start;}
+  .foot .logo img{height:28px;margin-bottom:14px;filter:brightness(0) invert(1);}
+  .foot .tagline{font-size:13.5px;color:rgba(255,255,255,.65);max-width:300px;}
+  .foot h4{font-family:'Montserrat';font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:12px;}
+  .foot .note{font-size:13px;color:rgba(255,255,255,.7);}
+  .foot .note .lock{color:var(--yellow);font-weight:700;}
+  .foot a.back{color:#9fe0e3;font-weight:600;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:34px;padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px;color:rgba(255,255,255,.5);}
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr;gap:24px;}}
+</style>
+</head>
+<body>
+
+<div class="ribbon">🔒 <strong>Interne preview</strong> &nbsp;·&nbsp; Menu AI &mdash; uitwerking voor het technische team. Niet voor de buitenwereld.</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="https://www.culiquiz.nl"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#story">User story</a>
+        <a href="#flow">De flow</a>
+        <a href="#content">Naar content</a>
+        <a href="#fasering">Fasering</a>
+        <a href="#verwachtingen">Verwachtingen</a>
+      </div>
+      <a class="nav-back" href="/culiquiz-2-0">&larr; CuliQuiz 2.0</a>
+      <span class="nav-tag"><span class="dot"></span> Menu AI</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Feature-uitwerking · CuliQuiz 2.0</div>
+        <h1>Van menukaart naar <em>complete training</em>, in enkele momenten</h1>
+        <p class="lead">De ondernemer uploadt z'n menukaart. Menu AI herkent de gerechten, ingrediënten en dranken, en zet ze automatisch om in gevalideerde games en quizzes, klaar om uit te zetten. Geen vragen meer tikken. En elke upload voedt onze content-database.</p>
+        <div class="hero-meta">
+          <span class="pill"><span class="pdot"></span> Fase 1: menu &amp; drankenkaart</span>
+          <span class="pill y"><span class="pdot"></span> Fase 2: SOP's</span>
+          <span class="pill o"><span class="pdot"></span> Kernbelofte: ontzorgen</span>
+        </div>
+      </div>
+      <div class="xform">
+        <div class="doc">
+          <div class="dt">MENUKAART</div>
+          <div class="ln m"></div><div class="ln s"></div><div class="ln m"></div><div class="ln s"></div>
+          <div class="pr"><span>Carpaccio</span><span>&euro;14</span></div>
+          <div class="pr"><span>Coq au vin</span><span>&euro;23</span></div>
+        </div>
+        <div class="arrowx">&rarr;<small>Menu AI</small></div>
+        <div class="cards">
+          <div class="gcard g1"><div class="gt">True / False</div><div class="gq">Carpaccio wordt rauw geserveerd.</div></div>
+          <div class="gcard g2"><div class="gt">Multiple choice</div><div class="gq">Welke saus hoort bij carpaccio?</div></div>
+          <div class="gcard g3"><div class="gt">Allergenen</div><div class="gq">Coq au vin bevat: …</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- USER STORY -->
+<section class="block" id="story">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">User story</div>
+      <h2 class="sec">Waarom we dit <em>bouwen</em></h2>
+      <p class="sec-intro">Een training maken is werk: vragen bedenken, antwoorden checken, content opbouwen. Dat is precies de drempel die nieuwe klanten tegenhoudt. Menu AI haalt die drempel weg.</p>
+    </div>
+    <div class="story reveal">
+      <div class="q">Als <b>horeca-ondernemer</b> wil ik mijn <b>menukaart uploaden</b>, zodat mijn team binnen enkele momenten traint op onze <b>eigen gerechten</b>, zonder dat ik handmatig vragen hoef te maken.</div>
+      <div class="sub">De kernbelofte: ontzorgen. Van upload tot speelbare training in enkele momenten, niet dagen.</div>
+    </div>
+    <div class="stories2">
+      <div class="ministory reveal">
+        <div class="who">Manager / trainer</div>
+        <p>… wil <b>kiezen hoe de training wordt aangeboden</b> (vaste campagne, toernooi of battle), zodat adoptie snel gaat.</p>
+      </div>
+      <div class="ministory reveal d1">
+        <div class="who">CuliQuiz (platform)</div>
+        <p>… wil dat elke upload <b>gevalideerde content aan de database toevoegt</b>, zodat we de grootste hospitality-kennisbank opbouwen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DE FLOW -->
+<section class="block soft" id="flow">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">De user flow</div>
+      <h2 class="sec">Eén upload, vijf <em>stappen</em></h2>
+      <p class="sec-intro">Van document tot speelbare training. Stap 1 is alles wat de gebruiker zelf doet, de rest gebeurt automatisch.</p>
+    </div>
+    <div class="flow">
+      <div class="fstep reveal">
+        <div class="fn">1</div>
+        <h3>Upload</h3>
+        <p>De ondernemer uploadt de menukaart of drankenkaart (PDF of foto). Fase 2: SOP-documenten.</p>
+      </div>
+      <div class="fstep reveal d1">
+        <div class="fn">2</div>
+        <h3>Herken</h3>
+        <p>Menu AI extraheert gerechten, ingrediënten en dranken. Plus prijs en samenstelling per gerecht.</p>
+      </div>
+      <div class="fstep reveal d2">
+        <div class="fn">3</div>
+        <h3>Sla op</h3>
+        <p>Alles landt gestructureerd in de database: prijs, samenstelling, allergenen, gekoppeld aan de kennis-taxonomie.</p>
+      </div>
+      <div class="fstep reveal d3">
+        <div class="fn">4</div>
+        <h3>Verwerk naar content</h3>
+        <p>De input wordt vertaald naar games en quizzes, gevalideerd, in onze eigen game-types.</p>
+      </div>
+      <div class="fstep reveal d4">
+        <div class="fn">5</div>
+        <h3>Bied aan</h3>
+        <p>De gebruiker kiest de vorm: vaste campagne, toernooi of battle voor snelle adoptie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAT HET HERKENT -->
+<section class="block" id="herkent">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Wat Menu AI herkent</div>
+      <h2 class="sec">Van kaart naar <em>bouwstenen</em></h2>
+      <p class="sec-intro">Menu AI leest de kaart en haalt er de losse elementen uit. Die elementen zijn de basis voor alle content.</p>
+    </div>
+    <div class="grid4">
+      <div class="rcard reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M5 11V7a7 7 0 0 1 14 0v4M7 11v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-6"/></svg></div>
+        <h3>Gerecht</h3>
+        <div class="ex">Carpaccio, coq au vin, nasi, saté</div>
+      </div>
+      <div class="rcard reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3c0 1 .5 2 1 3l-2 11h8l-2-11c.5-1 1-2 1-3a3 3 0 0 0-3-3z"/></svg></div>
+        <h3>Ingrediënt</h3>
+        <div class="ex">Ossenhaas, kip, broccoli, hollandaise, truffelmayonaise</div>
+      </div>
+      <div class="rcard reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l-1 7a5 5 0 0 1-10 0zM8 22h8M12 14v8"/></svg></div>
+        <h3>Drank</h3>
+        <div class="ex">Wijn, koffie, theesoorten</div>
+      </div>
+      <div class="rcard reveal d3">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6l1 3h3v17H5V5h3zM9 12l2 2 4-4"/></svg></div>
+        <h3>SOP</h3>
+        <div class="ex">Brand standards, HACCP-richtlijnen, schoonmaakroosters</div>
+        <span class="later">Fase 2</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAT WE OPSLAAN + MOAT -->
+<section class="block soft" id="database">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Wat we opslaan</div>
+      <h2 class="sec">Elke kaart wordt <em>gestructureerde data</em></h2>
+      <p class="sec-intro">De extractie is niet alleen voor de training van die ene zaak. Het wordt opgeslagen, hergebruikt en bouwt aan de grootste content-database van de sector.</p>
+    </div>
+    <div class="store">
+      <div class="store-list reveal">
+        <div class="sitem">
+          <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+          <div><h4>Prijs van een gerecht</h4><p>Per item, voor latere analyse en upselling-content.</p></div>
+        </div>
+        <div class="sitem">
+          <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h12"/></svg></span>
+          <div><h4>Samenstelling van het gerecht</h4><p>De ingrediënten en bereiding achter elk gerecht.</p></div>
+        </div>
+        <div class="sitem">
+          <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.3 2 17a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.3a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg></span>
+          <div><h4>Allergenen</h4><p>Afgeleid uit de samenstelling, per gerecht.</p></div>
+        </div>
+        <div class="sitem">
+          <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></span>
+          <div><h4>Kennis-mapping</h4><p>Gekoppeld aan domein, subdomein en topic uit de Knowledge Graph.</p></div>
+        </div>
+      </div>
+      <div class="moat reveal d1">
+        <div class="mt">De strategische kern</div>
+        <h3>Een mega content-database</h3>
+        <p>Niet alleen die ene zaak traint. Elke geüploade kaart verrijkt de globale content-pool: meer gerechten, meer ingrediënten, meer gevalideerde vragen. Hoe meer kaarten, hoe sterker het platform voor iedereen.</p>
+        <div class="big">1 upload<small>= content voor de hele database</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAAR GEVALIDEERDE CONTENT (pipeline + datamodel) -->
+<section class="block" id="content">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Van input naar content</div>
+      <h2 class="sec">Gevalideerde content, in <em>ons</em> datamodel</h2>
+      <p class="sec-intro">De output is geen losse JSON om naar te kijken, maar exact het formaat dat het platform inleest: een Content Set met vragen, gekoppeld aan de Knowledge Graph en onze game-types. Zo kan de tooling er meteen iets mee.</p>
+    </div>
+    <div class="pipe">
+      <div class="pnode reveal">
+        <div class="pt">Input</div><h4>Document</h4><p>Menukaart, drankenkaart (PDF/foto).</p>
+      </div>
+      <div class="pnode reveal d1">
+        <div class="pt">AI</div><h4>Extractie</h4><p>Gerechten, ingrediënten, dranken, prijs, samenstelling.</p>
+      </div>
+      <div class="pnode hl reveal d2">
+        <div class="pt">Mens-in-de-loop</div><h4>Validatie</h4><p>Door ons gecheckt voordat het live gaat. Kwaliteit gegarandeerd.</p>
+      </div>
+      <div class="pnode reveal d3">
+        <div class="pt">Output</div><h4>Content Set</h4><p><code>source_type: organization</code>, vragen met domain/topic + game-type.</p>
+      </div>
+      <div class="pnode reveal d4">
+        <div class="pt">Tooling</div><h4>Distributie</h4><p>Campagne, toernooi of battle.</p>
+      </div>
+    </div>
+    <div class="schema reveal">
+<span class="c">// Output van Menu AI = importeerbare Content Set</span><br>
+{<br>
+&nbsp;&nbsp;<span class="k">"content_set"</span>: { <span class="k">"name"</span>: <span class="v">"Poké Perfect — Menukaart"</span>, <span class="k">"source_type"</span>: <span class="v">"organization"</span>, <span class="k">"owner_organization_id"</span>: <span class="v">"uuid"</span> },<br>
+&nbsp;&nbsp;<span class="k">"questions"</span>: [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">"game_type"</span>: <span class="v">"PUZ87"</span>, <span class="c">// True/False — of PUZ144/161/162 voor MCQ</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">"domain_id"</span>: <span class="v">"…"</span>, <span class="k">"subdomain_id"</span>: <span class="v">"…"</span>, <span class="k">"topic_id"</span>: <span class="v">"…"</span>, <span class="c">// uit Master Knowledge Graph</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">"prompt"</span>: <span class="v">"Carpaccio wordt rauw geserveerd."</span>, <span class="k">"correct"</span>: <span class="v">true</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">"explanation"</span>: <span class="v">"…"</span>, <span class="k">"allergens"</span>: [<span class="v">"…"</span>], <span class="k">"price"</span>: <span class="v">14.0</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;]<br>
+}
+    </div>
+  </div>
+</section>
+
+<!-- DISTRIBUTIE -->
+<section class="block soft" id="distributie">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Distributie</div>
+      <h2 class="sec">De gebruiker kiest de <em>vorm</em></h2>
+      <p class="sec-intro">Dezelfde content, drie manieren om uit te zetten. De ondernemer kiest wat past bij het doel.</p>
+    </div>
+    <div class="dist">
+      <div class="dcard reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <h3>Vaste campagne</h3>
+        <p>Een doorlopend trainingsprogramma, met een vaste looptijd en doelen. Voor structurele kennisopbouw.</p>
+      </div>
+      <div class="dcard reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0zM5 4H3v2a3 3 0 0 0 3 3M19 4h2v2a3 3 0 0 1-3 3"/></svg></div>
+        <h3>Toernooi</h3>
+        <p>Een tijdelijke competitie met een leaderboard. Voor energie en een gezamenlijk piekmoment.</p>
+      </div>
+      <div class="dcard reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-9 11h7l-2 9 9-11h-7z"/></svg></div>
+        <h3>Battle</h3>
+        <p>Snel, head-to-head. Voor directe adoptie: meteen spelen, meteen leren.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FASERING -->
+<section class="block" id="fasering">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Fasering</div>
+      <h2 class="sec">Eerst de kaart, dan de <em>SOP's</em></h2>
+      <p class="sec-intro">We beginnen bij de meest directe winst, en breiden uit zodra dat staat.</p>
+    </div>
+    <div class="phases">
+      <div class="phase now one reveal">
+        <span class="pl">Fase 1 · eerst</span>
+        <h3>Menu &amp; drankenkaart</h3>
+        <ul>
+          <li>Upload van menukaart en drankenkaart</li>
+          <li>Herkenning: gerechten, ingrediënten, dranken</li>
+          <li>Opslag: prijs, samenstelling, allergenen</li>
+          <li>Gevalideerde games en quizzes</li>
+          <li>Distributie: campagne, toernooi, battle</li>
+        </ul>
+      </div>
+      <div class="phase two reveal d1">
+        <span class="pl">Fase 2 · later</span>
+        <h3>SOP's</h3>
+        <ul>
+          <li>Brand standards</li>
+          <li>HACCP-richtlijnen</li>
+          <li>Schoonmaakroosters</li>
+          <li>Compliance- en procedure-training uit eigen documenten</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERWACHTINGEN -->
+<section class="block soft" id="verwachtingen">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Verwachtingen voor het tech-team</div>
+      <h2 class="sec">Waar het aan moet <em>voldoen</em></h2>
+      <p class="sec-intro">Acceptatiecriteria, zodat we hetzelfde beeld hebben van "klaar".</p>
+    </div>
+    <div class="expect">
+      <div class="exp reveal">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <div><h4>Ontzorgen, binnen enkele momenten</h4><p>Van upload tot speelbare training met minimale handelingen. Snelheid is de kernbelofte.</p></div>
+      </div>
+      <div class="exp reveal d1">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <div><h4>Output conform de Knowledge Architecture</h4><p>Elke vraag gekoppeld aan domain / subdomain / topic + source_type, in een game-type uit het platform.</p></div>
+      </div>
+      <div class="exp reveal d2">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <div><h4>Gevalideerde content</h4><p>Een validatiestap (mens-in-de-loop) voordat content live gaat. Geen ongecontroleerde AI-output naar spelers.</p></div>
+      </div>
+      <div class="exp reveal d3">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <div><h4>Importeerbaar door de tooling</h4><p>De Content Set is direct selecteerbaar in de campagne-bouwer. Geen tussenstappen of handmatig herwerk.</p></div>
+      </div>
+      <div class="exp reveal">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <div><h4>Voedt de centrale database</h4><p>Alle geëxtraheerde elementen verrijken de globale content-pool, niet alleen de eigen organisatie.</p></div>
+      </div>
+      <div class="exp reveal d1">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <div><h4>Keuze in distributie</h4><p>Bij het aanbieden kiest de gebruiker tussen campagne, toernooi of battle.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="block final">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>Eén upload. <em>Een complete, eigen training.</em></h2>
+      <p>Menu AI haalt de drempel weg om te starten, en bouwt ondertussen aan de grootste gevalideerde content-database van de hospitality. Ontzorgen voor de klant, een moat voor ons.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></div>
+        <p class="tagline">Jouw culinaire kennis, elke dienst een stapje slimmer.</p>
+      </div>
+      <div>
+        <h4>Interne pagina</h4>
+        <p class="note"><span class="lock">🔒 Niet delen.</span> Feature-uitwerking Menu AI (CuliQuiz 2.0, AI-content-pipeline / E07) voor het technische team. <br><a class="back" href="/culiquiz-2-0">&larr; Terug naar CuliQuiz 2.0</a></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© CuliQuiz. Interne preview, niet voor de buitenwereld.</span>
+      <span>Menu AI · Fase 1: menu &amp; drankenkaart · Fase 2: SOP's</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('in');});return;}
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){obs.observe(el);});
+  })();
+</script>
+
+</body>
+</html>

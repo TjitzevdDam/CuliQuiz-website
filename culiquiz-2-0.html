@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>CuliQuiz 2.0 — interne preview</title>
-<meta name="description" content="Interne visuele preview van het CuliQuiz 2.0-platform: organisaties, gebruikers, campagnes, rollen, de game-laag en de roadmap. Niet voor de buitenwereld." />
+<meta name="description" content="Interne pagina. Wachtwoord vereist." />
 <meta name="robots" content="noindex, nofollow" />
 <meta name="theme-color" content="#26A8B0" />
 <link rel="icon" type="image/png" sizes="32x32" href="https://www.culiquiz.nl/assets/favicon-32.png" />
@@ -65,6 +65,9 @@
   .nav-links a:hover::after{right:0;}
   .nav-tag{display:inline-flex;align-items:center;gap:7px;background:var(--teal-soft);color:var(--teal-deep);padding:7px 14px;border-radius:999px;font-weight:600;font-size:12.5px;}
   .nav-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);}
+  .nav-ai{display:inline-flex;align-items:center;gap:7px;background:var(--teal);color:#fff !important;padding:8px 16px;border-radius:999px;font-weight:700;font-size:13px;box-shadow:0 6px 16px rgba(38,168,176,.28);transition:background .12s,transform .12s;}
+  .nav-ai:hover{background:var(--teal-dark);transform:translateY(-1px);}
+  .nav-ai::after{display:none !important;}
   @media (max-width:920px){.nav-links{display:none;}}
 
   /* ---------- HERO ---------- */
@@ -416,7 +419,7 @@
         <a href="#game">Game-laag</a>
         <a href="#roadmap">Roadmap</a>
       </div>
-      <span class="nav-tag"><span class="dot"></span> CuliQuiz 2.0</span>
+      <a class="nav-ai" href="/menu-ai">Menu AI &rarr;</a>
     </div>
   </div>
 </nav>
