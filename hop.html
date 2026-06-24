@@ -108,6 +108,24 @@
   .doc .ext{margin-left:auto;font-size:11px;color:var(--muted);}
   @media (max-width:760px){.docs{grid-template-columns:1fr;}}
 
+  /* events accordion */
+  .ev-list{margin-top:36px;display:flex;flex-direction:column;gap:10px;}
+  .ev{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:box-shadow .14s ease;}
+  .ev[open]{box-shadow:0 12px 28px rgba(15,78,84,.08);}
+  .ev summary{cursor:pointer;list-style:none;padding:15px 18px;display:flex;align-items:center;gap:14px;font-weight:600;font-size:15px;color:var(--ink);}
+  .ev summary::-webkit-details-marker{display:none;}
+  .ev summary .evn{flex:0 0 30px;width:30px;height:30px;border-radius:8px;background:var(--teal-soft);color:var(--teal-deep);font-family:'Fraunces',serif;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .ev summary .evt{flex:1;min-width:0;}
+  .ev summary .evd{font-size:12px;color:var(--muted);font-weight:500;}
+  .ev summary .chev{flex:0 0 auto;color:var(--teal);transition:transform .2s ease;}
+  .ev summary .chev svg{width:18px;height:18px;display:block;}
+  .ev[open] summary .chev{transform:rotate(180deg);}
+  .ev .evbody{padding:0 18px 16px;}
+  .ev .evbody img{width:100%;max-height:380px;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .ev .evbody .evcap{font-size:12.5px;color:var(--muted);margin-top:8px;}
+  .ev .evbody .ph{border:1.5px dashed var(--grey);border-radius:10px;padding:26px;text-align:center;color:var(--muted);font-size:13.5px;background:var(--bg-soft);}
+  .ev .evbody .ph a{color:var(--teal-dark);font-weight:600;text-decoration:underline;}
+
   .note{background:var(--yellow-soft);border:1px solid #EEDD9A;border-radius:14px;padding:18px 20px;margin-top:34px;font-size:14px;color:#6b5800;}
   .note b{color:#574700;}
 
@@ -132,8 +150,9 @@
     <div class="nav-right">
       <div class="nav-links">
         <a href="#opleveringen">Opleveringen</a>
+        <a href="#events">Events</a>
         <a href="#campagnes">Campagnes</a>
-        <a href="#beeld">Beeldmateriaal</a>
+        <a href="#beeld">Materiaal</a>
       </div>
       <span class="nav-tag"><span class="dot"></span> HOP · opgeleverd</span>
     </div>
@@ -177,8 +196,52 @@
   </div>
 </section>
 
+<!-- EVENTS -->
+<section class="block soft" id="events">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Events</div>
+      <h2 class="sec">De <em>live events</em></h2>
+      <p class="sec-intro">Klik een event open voor een foto. Battles, finales en activaties waar CuliQuiz live gespeeld is.</p>
+    </div>
+    <div class="ev-list reveal">
+
+      <details class="ev">
+        <summary><span class="evn">1</span><span class="evt">Gastvrij Rotterdam 2024 <span class="evd">· beursactivatie</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="evbody"><img src="https://www.culiquiz.nl/assets/gastvrij-rotterdam.png" alt="Gastvrij Rotterdam 2024" loading="lazy"><div class="evcap">CuliQuiz op Gastvrij Rotterdam.</div></div>
+      </details>
+
+      <details class="ev">
+        <summary><span class="evn">2</span><span class="evt">Coca-Cola Zomer Battle <span class="evd">· merk-battle</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="evbody"><img src="https://www.culiquiz.nl/assets/nieuws/coca-cola.jpg" alt="Coca-Cola Zomer Battle" loading="lazy"><div class="evcap">De Coca-Cola Zomer Battle.</div></div>
+      </details>
+
+      <details class="ev">
+        <summary><span class="evn">3</span><span class="evt">CuliQuiz Finale 2025 <span class="evd">· landelijke finale</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="evbody"><div class="ph">Foto volgt — <a href="https://drive.google.com/drive/folders/1xAb7_XMgJ0wOaaJXWBWM3xomMW8S4_r0" target="_blank" rel="noopener">bekijk de foto's op Drive</a></div></div>
+      </details>
+
+      <details class="ev">
+        <summary><span class="evn">4</span><span class="evt">Schoolbattle Finale 2023–2024 <span class="evd">· finale</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="evbody"><div class="ph">Foto volgt — <a href="https://drive.google.com/drive/folders/1Oj4Y7nBEwEoWwt1DVb_U2dMrbE9u_Q1X" target="_blank" rel="noopener">bekijk de foto's op Drive</a></div></div>
+      </details>
+
+      <details class="ev">
+        <summary><span class="evn">5</span><span class="evt">Horecava <span class="evd">· beursactivatie</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="evbody"><div class="ph">Foto volgt — voeg hier het beeld toe.</div></div>
+      </details>
+
+      <details class="ev">
+        <summary><span class="evn">6</span><span class="evt">Young Professional Battle <span class="evd">· battle</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="evbody"><div class="ph">Foto volgt — voeg hier het beeld toe.</div></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
 <!-- CAMPAGNES -->
-<section class="block soft" id="campagnes">
+<section class="block" id="campagnes">
   <div class="wrap">
     <div class="reveal">
       <div class="sec-label">Campagnes</div>
@@ -286,20 +349,19 @@
   </div>
 </section>
 
-<!-- BEELDMATERIAAL -->
-<section class="block" id="beeld">
+<!-- MATERIAAL -->
+<section class="block soft" id="beeld">
   <div class="wrap">
     <div class="reveal">
-      <div class="sec-label">Beeldmateriaal</div>
-      <h2 class="sec">Foto's van de <em>opleveringen</em></h2>
-      <p class="sec-intro">Mapjes met beeld van de events, de campagnes en de leerboeken, plus het volledige materiaal op Drive.</p>
+      <div class="sec-label">Materiaal</div>
+      <h2 class="sec">Het volledige <em>materiaal</em> op Drive</h2>
+      <p class="sec-intro">De campagne- en leerboekmappen, het overzicht van de opleveringen en de Top 100.</p>
     </div>
     <div class="docs">
-      <a class="doc folder reveal" href="https://drive.google.com/drive/folders/1xAb7_XMgJ0wOaaJXWBWM3xomMW8S4_r0" target="_blank" rel="noopener"><span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="3.2"/><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h0a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span><span class="dn">Events — foto's</span><span class="dt">CuliQuiz finales &amp; battles</span></span><span class="ext">FOTO'S</span></a>
-      <a class="doc folder reveal d1" href="https://drive.google.com/drive/folders/1raM4V-J7SXz9Xt206k2CENja4Vqb5l9Q" target="_blank" rel="noopener"><span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="3.2"/><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h0a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span><span class="dn">Campagnes — foto's &amp; materiaal</span><span class="dt">Alle campagne-thema's per map</span></span><span class="ext">FOTO'S</span></a>
-      <a class="doc folder reveal" href="https://drive.google.com/drive/folders/1kZvmI85yYlLAxbTHGPCz_br_lu82bgAh" target="_blank" rel="noopener"><span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="3.2"/><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h0a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span><span class="dn">Leerboeken — foto's &amp; materiaal</span><span class="dt">Leerboeken &amp; game content</span></span><span class="ext">FOTO'S</span></a>
-      <a class="doc reveal d1" href="https://drive.google.com/file/d/15SAmLeD-QJIpaZ2LHIcthRiM-gKvrkwz/view" target="_blank" rel="noopener"><span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><span><span class="dn">Deliverables HOP</span><span class="dt">Overzicht van de opleveringen</span></span><span class="ext">DOCX</span></a>
-      <a class="doc reveal" href="https://www.culiquiz.nl/top100" target="_blank" rel="noopener"><span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span><span class="dn">CuliQuiz Top 100</span><span class="dt">Live op de website</span></span><span class="ext">WEB</span></a>
+      <a class="doc folder reveal" href="https://drive.google.com/drive/folders/1raM4V-J7SXz9Xt206k2CENja4Vqb5l9Q" target="_blank" rel="noopener"><span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span><span class="dn">Campagne's HOP</span><span class="dt">Alle campagne-thema's per map</span></span><span class="ext">DRIVE</span></a>
+      <a class="doc folder reveal d1" href="https://drive.google.com/drive/folders/1kZvmI85yYlLAxbTHGPCz_br_lu82bgAh" target="_blank" rel="noopener"><span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span><span class="dn">2. HOP campagnes</span><span class="dt">Leerboeken &amp; game content</span></span><span class="ext">DRIVE</span></a>
+      <a class="doc reveal" href="https://drive.google.com/file/d/15SAmLeD-QJIpaZ2LHIcthRiM-gKvrkwz/view" target="_blank" rel="noopener"><span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><span><span class="dn">Deliverables HOP</span><span class="dt">Overzicht van de opleveringen</span></span><span class="ext">DOCX</span></a>
+      <a class="doc reveal d1" href="https://www.culiquiz.nl/top100" target="_blank" rel="noopener"><span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span><span class="dn">CuliQuiz Top 100</span><span class="dt">Live op de website</span></span><span class="ext">WEB</span></a>
     </div>
 
     <div class="note reveal">
