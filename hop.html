@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>HOP — opgeleverd door CuliQuiz</title>
-<meta name="description" content="Alles wat er binnen het HOP-project is opgeleverd door CuliQuiz: campagnes, leerboeken en game content, doorklikbaar. Niet voor de buitenwereld." />
+<title>CuliQuiz Proeftuin Horeca — een HOP-project</title>
+<meta name="description" content="Projectpagina van CuliQuiz Proeftuin Horeca: een innovatieve leeroplossing met gamified modules om horecapersoneel te behouden en vakkennis te versterken. Een project binnen het Horeca Ontwikkel Platform." />
 <meta name="robots" content="noindex, nofollow" />
 <meta name="theme-color" content="#26A8B0" />
 <link rel="icon" type="image/png" sizes="32x32" href="https://www.culiquiz.nl/assets/favicon-32.png" />
@@ -25,42 +25,55 @@
   h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:900;line-height:1.1;letter-spacing:-.015em;}
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .hop-logo{fill:currentColor;display:inline-block;vertical-align:middle;}
 
-  .ribbon{background:var(--antraciet);color:#cfe7e8;font-size:12.5px;letter-spacing:.04em;text-align:center;padding:7px 16px;font-weight:500;}
-  .ribbon strong{color:var(--yellow);font-weight:700;}
+  /* co-brand bar */
+  .cobrand{background:var(--antraciet);color:#cfe7e8;font-size:12.5px;letter-spacing:.03em;padding:8px 16px;text-align:center;}
+  .cobrand .hop-logo{height:13px;margin:0 4px;color:var(--yellow);}
+  .cobrand strong{color:#fff;font-weight:600;}
 
+  /* nav */
   .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
-  .nav .logo img{height:30px;width:auto;}
-  .nav-right{display:flex;align-items:center;gap:20px;}
-  .nav-links{display:flex;align-items:center;gap:20px;}
-  .nav-links a{font-size:13.5px;font-weight:500;color:var(--ink);transition:color .12s;}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px;}
+  .brandpair{display:flex;align-items:center;gap:14px;min-width:0;}
+  .brandpair .cq img{height:30px;width:auto;display:block;}
+  .brandpair .sep{width:1px;height:26px;background:var(--line);}
+  .brandpair .hop{display:flex;align-items:center;gap:8px;color:var(--teal-deep);}
+  .brandpair .hop .hop-logo{height:18px;}
+  .brandpair .hop .hl{font-size:11px;font-weight:600;line-height:1.15;color:var(--muted);}
+  .brandpair .hop .hl b{display:block;color:var(--ink);font-size:12px;}
+  .nav-links{display:flex;align-items:center;gap:22px;}
+  .nav-links a{font-size:13.5px;font-weight:500;color:var(--ink);}
   .nav-links a:hover{color:var(--teal);}
-  .nav-tag{display:inline-flex;align-items:center;gap:7px;background:var(--teal-soft);color:var(--teal-deep);padding:6px 13px;border-radius:999px;font-weight:600;font-size:12px;}
-  .nav-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);}
-  @media (max-width:900px){.nav-links{display:none;}}
+  @media (max-width:820px){.nav-links{display:none;}.brandpair .hop .hl{display:none;}}
 
+  /* hero */
   .hero{background:linear-gradient(160deg,#F6FAFA 0%,#E6F4F5 100%);position:relative;overflow:hidden;}
-  .hero::after{content:"";position:absolute;top:-130px;right:-110px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(234,182,0,.18) 0%,transparent 70%);}
-  .hero-inner{padding:60px 0 52px;position:relative;z-index:1;max-width:760px;}
-  .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;background:rgba(255,255,255,.6);padding:7px 14px 7px 10px;border-radius:999px;border:1px solid rgba(38,168,176,.2);}
-  .eyebrow::before{content:"";width:24px;height:2px;background:var(--yellow);display:inline-block;}
-  .hero h1{font-size:clamp(32px,4.6vw,52px);color:var(--ink);}
+  .hero::after{content:"";position:absolute;top:-140px;right:-120px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(234,182,0,.18) 0%,transparent 70%);}
+  .hero-inner{padding:60px 0 50px;position:relative;z-index:1;max-width:780px;}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;background:rgba(255,255,255,.65);padding:7px 14px;border-radius:999px;border:1px solid rgba(38,168,176,.2);}
+  .eyebrow .hop-logo{height:13px;color:var(--teal-deep);}
+  .hero h1{font-size:clamp(34px,5vw,56px);color:var(--ink);}
   .hero h1 em{color:var(--teal);font-style:normal;}
-  .hero .lead{font-size:clamp(16px,1.7vw,18px);color:var(--muted);margin-top:18px;}
-  .factstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px;}
-  .fact{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 6px 16px rgba(15,78,84,.05);}
-  .fact .v{font-family:'Fraunces',serif;font-weight:900;font-size:21px;color:var(--teal-deep);}
-  .fact .l{font-size:12px;color:var(--muted);margin-top:2px;}
-  @media (max-width:760px){.factstrip{grid-template-columns:1fr 1fr;}}
+  .hero .lead{font-size:clamp(16px,1.8vw,19px);color:var(--muted);margin-top:18px;max-width:640px;}
+  .hero .runtime{margin-top:16px;font-size:13px;font-weight:600;color:var(--teal-deep);display:inline-flex;gap:8px;align-items:center;}
+  .hero .runtime .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(47,158,87,.16);}
 
-  section.block{padding:60px 0;}
-  .sec-label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);margin-bottom:11px;display:inline-flex;align-items:center;gap:9px;}
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px;}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:0 6px 16px rgba(15,78,84,.05);}
+  .stat .v{font-family:'Fraunces',serif;font-weight:900;font-size:30px;color:var(--teal-deep);line-height:1;}
+  .stat .l{font-size:12.5px;color:var(--muted);margin-top:6px;}
+  @media (max-width:760px){.stats{grid-template-columns:1fr 1fr;}}
+
+  /* sections */
+  section.block{padding:62px 0;}
+  .sec-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--teal-dark);margin-bottom:11px;display:inline-flex;align-items:center;gap:9px;}
   .sec-label::before{content:"";width:22px;height:2px;background:var(--yellow);display:inline-block;}
-  h2.sec{font-size:clamp(24px,3.2vw,36px);color:var(--ink);max-width:22ch;}
+  h2.sec{font-size:clamp(25px,3.3vw,38px);color:var(--ink);max-width:24ch;}
   h2.sec em{color:var(--teal);font-style:normal;}
-  .sec-intro{color:var(--muted);max-width:660px;margin-top:12px;font-size:16px;}
+  .sec-intro{color:var(--muted);max-width:680px;margin-top:12px;font-size:16px;}
   .soft{background:var(--bg-soft);}
 
   .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
@@ -68,93 +81,95 @@
   .js .reveal.d1{transition-delay:.06s;}.js .reveal.d2{transition-delay:.12s;}.js .reveal.d3{transition-delay:.18s;}
   @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none;}}
 
-  /* deliverables */
-  .dels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
-  .del{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px;position:relative;}
-  .del .num{font-family:'Fraunces',serif;font-weight:900;font-size:30px;color:var(--teal);line-height:1;}
-  .del h3{font-size:16px;margin:8px 0 6px;}
-  .del p{font-size:13px;color:var(--muted);}
-  .badge{position:absolute;top:18px;right:18px;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:7px;}
-  .badge.done{background:var(--green-soft);color:var(--green);}
-  .badge.run{background:var(--yellow-soft);color:var(--yellow-ink);}
-  .badge.plan{background:#EEF1F3;color:var(--muted);}
-  @media (max-width:820px){.dels{grid-template-columns:1fr 1fr;}}
-  @media (max-width:520px){.dels{grid-template-columns:1fr;}}
+  /* doel/doelgroep/resultaat */
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 24px;border-top:4px solid var(--teal);}
+  .pcard:nth-child(2){border-top-color:var(--yellow);}
+  .pcard:nth-child(3){border-top-color:var(--orange);}
+  .pcard h3{font-size:18px;margin-bottom:10px;}
+  .pcard ul{list-style:none;}
+  .pcard li{font-size:14px;color:var(--muted);padding-left:20px;position:relative;margin-bottom:9px;}
+  .pcard li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--teal);}
+  .pcard:nth-child(2) li::before{background:var(--yellow);}
+  .pcard:nth-child(3) li::before{background:var(--orange);}
+  @media (max-width:820px){.three{grid-template-columns:1fr;}}
+
+  /* activaties dashboard */
+  .acts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;}
+  .act{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .14s ease,box-shadow .14s ease;}
+  .act:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,78,84,.12);}
+  .act .ph-img{aspect-ratio:4/3;width:100%;object-fit:cover;background:var(--bg-soft);display:block;}
+  .act .noimg{aspect-ratio:4/3;width:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;background:linear-gradient(150deg,var(--teal) 0%,var(--teal-deep) 100%);color:#fff;}
+  .act .noimg span{font-family:'Fraunces',serif;font-weight:900;font-size:18px;line-height:1.2;}
+  .act-body{padding:16px 18px 18px;}
+  .act-body .when{font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--teal-dark);}
+  .act-body h3{font-size:16.5px;margin:5px 0 4px;}
+  .act-body .meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 12px;}
+  .act-body .reach{font-weight:600;color:var(--ink);}
+  .act-body .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--teal-dark);background:var(--teal-soft);padding:2px 8px;border-radius:6px;margin-top:8px;}
+  @media (max-width:880px){.acts{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.acts{grid-template-columns:1fr;}}
 
   /* campagnes */
-  .camps{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px;}
-  .campc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:16px;transition:transform .14s ease,box-shadow .14s ease;}
-  .campc:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(15,78,84,.10);}
-  .campc .cnum{flex:0 0 38px;width:38px;height:38px;border-radius:10px;background:var(--teal-soft);color:var(--teal-deep);font-family:'Fraunces',serif;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:16px;}
-  .campc .cbody{flex:1;min-width:0;}
-  .campc h3{font-size:15.5px;margin-bottom:3px;}
-  .campc .csub{font-size:12.5px;color:var(--muted);}
-  .campc .links{display:flex;flex-wrap:wrap;gap:8px;}
-  .campc .links a{font-size:12px;font-weight:600;color:var(--teal-dark);background:var(--teal-soft);border-radius:7px;padding:4px 9px;display:inline-flex;align-items:center;gap:5px;}
-  .campc .links a:hover{background:var(--teal);color:#fff;}
-  .cstat{flex:0 0 auto;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:3px 8px;border-radius:6px;align-self:flex-start;}
-  .cstat.done{background:var(--green-soft);color:var(--green);}
-  .cstat.run{background:var(--yellow-soft);color:var(--yellow-ink);}
-  @media (max-width:760px){.camps{grid-template-columns:1fr;}}
+  .mods{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:38px;}
+  .mod{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:16px;}
+  .mod .mn{flex:0 0 36px;width:36px;height:36px;border-radius:10px;background:var(--teal-soft);color:var(--teal-deep);font-family:'Fraunces',serif;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:15px;}
+  .mod.live .mn{background:var(--green-soft);color:var(--green);}
+  .mod .mbody{flex:1;min-width:0;}
+  .mod h3{font-size:15.5px;margin-bottom:3px;}
+  .mod .msub{font-size:12.5px;color:var(--muted);}
+  .mod .mright{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+  .mstat{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:3px 9px;border-radius:6px;}
+  .mstat.live{background:var(--green-soft);color:var(--green);}
+  .mstat.dev{background:var(--yellow-soft);color:var(--yellow-ink);}
+  .mlink{font-size:12px;font-weight:700;color:var(--teal-dark);display:inline-flex;align-items:center;gap:5px;white-space:nowrap;}
+  .mlink:hover{color:var(--teal);}
+  .mlink svg{width:12px;height:12px;}
+  @media (max-width:680px){.mods{grid-template-columns:1fr;}}
 
-  /* documents / folders */
-  .docs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:36px;}
-  .doc{display:flex;align-items:center;gap:13px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;transition:border-color .14s ease,box-shadow .14s ease;}
-  .doc:hover{border-color:var(--teal);box-shadow:0 8px 20px rgba(15,78,84,.07);}
-  .doc .di{flex:0 0 34px;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:var(--teal-soft);color:var(--teal-deep);}
-  .doc .di svg{width:17px;height:17px;}
-  .doc.folder .di{background:var(--yellow-soft);color:var(--yellow-ink);}
-  .doc .dn{font-weight:600;font-size:14px;}
-  .doc .dt{font-size:11.5px;color:var(--muted);}
-  .doc .ext{margin-left:auto;font-size:11px;color:var(--muted);}
-  @media (max-width:760px){.docs{grid-template-columns:1fr;}}
+  /* planning */
+  .plan{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px;}
+  .pl{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px;position:relative;}
+  .pl .when{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--orange);}
+  .pl.run .when{color:var(--teal-dark);}
+  .pl h3{font-size:17px;margin:6px 0 6px;}
+  .pl p{font-size:13.5px;color:var(--muted);}
+  .pl .pl-link{margin-top:12px;font-size:13px;font-weight:700;color:var(--teal-dark);display:inline-flex;align-items:center;gap:6px;}
+  .pl .pl-link:hover{color:var(--teal);}
+  .pl .pl-link svg{width:13px;height:13px;}
+  @media (max-width:880px){.plan{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.plan{grid-template-columns:1fr;}}
 
-  /* events accordion */
-  .ev-list{margin-top:36px;display:flex;flex-direction:column;gap:10px;}
-  .ev{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:box-shadow .14s ease;}
-  .ev[open]{box-shadow:0 12px 28px rgba(15,78,84,.08);}
-  .ev summary{cursor:pointer;list-style:none;padding:15px 18px;display:flex;align-items:center;gap:14px;font-weight:600;font-size:15px;color:var(--ink);}
-  .ev summary::-webkit-details-marker{display:none;}
-  .ev summary .evn{flex:0 0 30px;width:30px;height:30px;border-radius:8px;background:var(--teal-soft);color:var(--teal-deep);font-family:'Fraunces',serif;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;}
-  .ev summary .evt{flex:1;min-width:0;}
-  .ev summary .evd{font-size:12px;color:var(--muted);font-weight:500;}
-  .ev summary .chev{flex:0 0 auto;color:var(--teal);transition:transform .2s ease;}
-  .ev summary .chev svg{width:18px;height:18px;display:block;}
-  .ev[open] summary .chev{transform:rotate(180deg);}
-  .ev .evbody{padding:0 18px 16px;}
-  .ev .evbody img{width:100%;max-height:380px;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
-  .ev .evbody .evcap{font-size:12.5px;color:var(--muted);margin-top:8px;}
-  .ev .evbody .ph{border:1.5px dashed var(--grey);border-radius:10px;padding:26px;text-align:center;color:var(--muted);font-size:13.5px;background:var(--bg-soft);}
-  .ev .evbody .ph a{color:var(--teal-dark);font-weight:600;text-decoration:underline;}
-
-  .note{background:var(--yellow-soft);border:1px solid #EEDD9A;border-radius:14px;padding:18px 20px;margin-top:34px;font-size:14px;color:#6b5800;}
-  .note b{color:#574700;}
-
-  footer.foot{background:#0B3B40;color:rgba(255,255,255,.72);padding:44px 0 26px;font-size:14px;margin-top:10px;}
-  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;}
-  .foot .logo img{height:26px;margin-bottom:12px;filter:brightness(0) invert(1);}
-  .foot .tagline{font-size:13px;color:rgba(255,255,255,.6);max-width:300px;}
-  .foot h4{font-family:'Montserrat';font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:10px;}
-  .foot .fnote{font-size:12.5px;color:rgba(255,255,255,.68);}
-  .foot .fnote .lock{color:var(--yellow);font-weight:700;}
-  .foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:30px;padding-top:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px;color:rgba(255,255,255,.5);}
-  @media (max-width:760px){.foot-grid{grid-template-columns:1fr;gap:22px;}}
+  /* footer */
+  footer.foot{background:#0B3B40;color:rgba(255,255,255,.72);padding:48px 0 28px;font-size:14px;margin-top:10px;}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:34px;align-items:start;}
+  .foot .cq img{height:28px;margin-bottom:14px;filter:brightness(0) invert(1);}
+  .foot .tagline{font-size:13.5px;color:rgba(255,255,255,.65);max-width:320px;}
+  .foot h4{font-family:'Montserrat';font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:12px;}
+  .foot .hopline{display:flex;align-items:center;gap:9px;margin-bottom:10px;color:#fff;}
+  .foot .hopline .hop-logo{height:18px;color:var(--yellow);}
+  .foot .partners{font-size:13px;color:rgba(255,255,255,.7);}
+  .foot .partners b{color:#fff;font-weight:600;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:34px;padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px;color:rgba(255,255,255,.5);}
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr;gap:24px;}}
 </style>
 </head>
 <body>
 
-<div class="ribbon">🔒 <strong>Intern overzicht</strong> &nbsp;·&nbsp; Wat CuliQuiz voor de HOP heeft opgeleverd. Niet in het menu, niet geïndexeerd.</div>
+<div class="cobrand">Een project binnen het <svg class="hop-logo" viewBox="0 0 37 21" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.248 17.233a6.127 6.127 0 0 1-6.118-6.119 6.126 6.126 0 0 1 6.118-6.119 6.126 6.126 0 0 1 6.119 6.12 6.127 6.127 0 0 1-6.119 6.118Zm0-9.413a3.298 3.298 0 0 0-3.294 3.294 3.298 3.298 0 0 0 3.294 3.294 3.298 3.298 0 0 0 3.294-3.294 3.298 3.298 0 0 0-3.294-3.294Z"/><path d="M29.912 5.013c-3.117.232-5.655 3.124-5.655 6.25v9.264h2.824v-2.565c0-1.01-.326-2-.972-2.77l-.024-.028.222-.177s.058.122.177.311a4.104 4.104 0 0 0 2.58 1.792c.54.119 1.11.168 1.695.131 3.172-.198 5.716-2.892 5.734-6.07a6.124 6.124 0 0 0-6.581-6.138Zm1.11 9.334a3.302 3.302 0 0 1-3.88-3.879 3.288 3.288 0 0 1 2.587-2.587 3.302 3.302 0 0 1 3.879 3.88 3.288 3.288 0 0 1-2.587 2.586ZM6.95 5.053a6.09 6.09 0 0 0-2.084.073c-1.085.229-2.05.869-2.645 1.807a3.04 3.04 0 0 0-.173.308l-.223-.177s.015-.018.025-.027c.649-.774.971-1.765.971-2.773V.293H0v16.943h2.825v-6.003c0-1.673 1.2-3.17 2.86-3.383a3.297 3.297 0 0 1 3.727 3.267v6.12h2.825V11.27c0-3.087-2.225-5.797-5.284-6.211l-.003-.006Z"/></svg> <strong>Horeca Ontwikkel Platform</strong> &nbsp;·&nbsp; uitgevoerd door CuliQuiz</div>
 
 <nav class="nav">
   <div class="wrap nav-inner">
-    <a class="logo" href="https://www.culiquiz.nl"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></a>
-    <div class="nav-right">
-      <div class="nav-links">
-        <a href="#opleveringen">Opleveringen</a>
-        <a href="#events">Events</a>
-        <a href="#campagnes">Campagnes</a>
-      </div>
-      <span class="nav-tag"><span class="dot"></span> HOP · opgeleverd</span>
+    <div class="brandpair">
+      <a class="cq" href="https://www.culiquiz.nl"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></a>
+      <span class="sep"></span>
+      <span class="hop"><svg class="hop-logo" viewBox="0 0 37 21" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.248 17.233a6.127 6.127 0 0 1-6.118-6.119 6.126 6.126 0 0 1 6.118-6.119 6.126 6.126 0 0 1 6.119 6.12 6.127 6.127 0 0 1-6.119 6.118Zm0-9.413a3.298 3.298 0 0 0-3.294 3.294 3.298 3.298 0 0 0 3.294 3.294 3.298 3.298 0 0 0 3.294-3.294 3.298 3.298 0 0 0-3.294-3.294Z"/><path d="M29.912 5.013c-3.117.232-5.655 3.124-5.655 6.25v9.264h2.824v-2.565c0-1.01-.326-2-.972-2.77l-.024-.028.222-.177s.058.122.177.311a4.104 4.104 0 0 0 2.58 1.792c.54.119 1.11.168 1.695.131 3.172-.198 5.716-2.892 5.734-6.07a6.124 6.124 0 0 0-6.581-6.138Zm1.11 9.334a3.302 3.302 0 0 1-3.88-3.879 3.288 3.288 0 0 1 2.587-2.587 3.302 3.302 0 0 1 3.879 3.88 3.288 3.288 0 0 1-2.587 2.586ZM6.95 5.053a6.09 6.09 0 0 0-2.084.073c-1.085.229-2.05.869-2.645 1.807a3.04 3.04 0 0 0-.173.308l-.223-.177s.015-.018.025-.027c.649-.774.971-1.765.971-2.773V.293H0v16.943h2.825v-6.003c0-1.673 1.2-3.17 2.86-3.383a3.297 3.297 0 0 1 3.727 3.267v6.12h2.825V11.27c0-3.087-2.225-5.797-5.284-6.211l-.003-.006Z"/></svg><span class="hl">HOP-project<b>Horeca Ontwikkel Platform</b></span></span>
+    </div>
+    <div class="nav-links">
+      <a href="#doel">Doel</a>
+      <a href="#activaties">Activaties</a>
+      <a href="#modules">Modules</a>
+      <a href="#planning">Planning</a>
     </div>
   </div>
 </nav>
@@ -162,196 +177,146 @@
 <header class="hero">
   <div class="wrap">
     <div class="hero-inner">
-      <div class="eyebrow">Horeca Ontwikkel Platform · opleveringen</div>
-      <h1>Wat we hebben <em>opgeleverd</em></h1>
-      <p class="lead">Een overzicht van waar we staan binnen het HOP-project: de campagnes, de live events door heel Nederland en de overige deliverables.</p>
-      <div class="factstrip">
-        <div class="fact"><div class="v">9</div><div class="l">Live events gehouden (doel 25)</div></div>
-        <div class="fact"><div class="v">3</div><div class="l">Campagnes opgeleverd (doel 15)</div></div>
-        <div class="fact"><div class="v">5+</div><div class="l">Regio's bereikt</div></div>
-        <div class="fact"><div class="v">Top 100</div><div class="l">Live op culiquiz.nl</div></div>
+      <div class="eyebrow"><svg class="hop-logo" viewBox="0 0 37 21" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.248 17.233a6.127 6.127 0 0 1-6.118-6.119 6.126 6.126 0 0 1 6.118-6.119 6.126 6.126 0 0 1 6.119 6.12 6.127 6.127 0 0 1-6.119 6.118Zm0-9.413a3.298 3.298 0 0 0-3.294 3.294 3.298 3.298 0 0 0 3.294 3.294 3.298 3.298 0 0 0 3.294-3.294 3.298 3.298 0 0 0-3.294-3.294Z"/><path d="M29.912 5.013c-3.117.232-5.655 3.124-5.655 6.25v9.264h2.824v-2.565c0-1.01-.326-2-.972-2.77l-.024-.028.222-.177s.058.122.177.311a4.104 4.104 0 0 0 2.58 1.792c.54.119 1.11.168 1.695.131 3.172-.198 5.716-2.892 5.734-6.07a6.124 6.124 0 0 0-6.581-6.138Zm1.11 9.334a3.302 3.302 0 0 1-3.88-3.879 3.288 3.288 0 0 1 2.587-2.587 3.302 3.302 0 0 1 3.879 3.88 3.288 3.288 0 0 1-2.587 2.586ZM6.95 5.053a6.09 6.09 0 0 0-2.084.073c-1.085.229-2.05.869-2.645 1.807a3.04 3.04 0 0 0-.173.308l-.223-.177s.015-.018.025-.027c.649-.774.971-1.765.971-2.773V.293H0v16.943h2.825v-6.003c0-1.673 1.2-3.17 2.86-3.383a3.297 3.297 0 0 1 3.727 3.267v6.12h2.825V11.27c0-3.087-2.225-5.797-5.284-6.211l-.003-.006Z"/></svg> Proeftuin Horeca · projectpagina</div>
+      <h1>CuliQuiz <em>Proeftuin Horeca</em></h1>
+      <p class="lead">Een innovatieve leeroplossing met gamified modules om horecapersoneel te behouden en vakkennis te versterken. Dit is het levende overzicht van wat we binnen het HOP-project doen: de activaties, de leermodules en wat er nog op de planning staat.</p>
+      <div class="runtime"><span class="dot"></span> Looptijd 2026 · loopt</div>
+      <div class="stats">
+        <div class="stat"><div class="v">13</div><div class="l">Activaties uitgevoerd <span style="opacity:.6">van 25</span></div></div>
+        <div class="stat"><div class="v">2.500+</div><div class="l">Studenten bereikt</div></div>
+        <div class="stat"><div class="v">3</div><div class="l">Modules live <span style="opacity:.6">van 15</span></div></div>
+        <div class="stat"><div class="v">5+</div><div class="l">Regio's bereikt</div></div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- OPLEVERINGEN -->
-<section class="block" id="opleveringen">
+<!-- DOEL -->
+<section class="block" id="doel">
   <div class="wrap">
     <div class="reveal">
-      <div class="sec-label">Opleveringen</div>
-      <h2 class="sec">De <em>resultaten</em> op een rij</h2>
-      <p class="sec-intro">Wat er is opgeleverd en wat er nog loopt. De aantallen worden met Flora afgestemd voor de definitieve cijfers.</p>
+      <div class="sec-label">Het project</div>
+      <h2 class="sec">Vakkennis versterken, <em>personeel</em> behouden</h2>
+      <p class="sec-intro">De horeca kent een jaarlijks personeelsverloop van meer dan 50%. CuliQuiz Proeftuin Horeca ontwikkelt een schaalbaar, speels leerplatform en test dit in de praktijk bij zes Utrechtse horecazaken, op weg naar een landelijke blauwdruk.</p>
     </div>
-    <div class="dels">
-      <div class="del reveal"><span class="badge run">In uitvoering</span><div class="num">3/15</div><h3>Campagnes</h3><p>Nieuwe thematische modules met werkboek + game-document. 3 opgeleverd, 11 thema's vastgelegd.</p></div>
-      <div class="del reveal d1"><span class="badge run">In uitvoering</span><div class="num">9/25</div><h3>Live events</h3><p>Activaties over minimaal 5 regio's. 9 gehouden, Gastvrij Rotterdam volgt.</p></div>
-      <div class="del reveal d2"><span class="badge done">Live</span><div class="num">100</div><h3>CuliQuiz Top 100</h3><p>De landelijke ranglijst, live op culiquiz.nl. Min. 20 schoolbezoeken.</p></div>
-      <div class="del reveal"><span class="badge done">Operationeel</span><div class="num">∞</div><h3>Platform &amp; infrastructuur</h3><p>De app, het platform en de onderliggende techniek.</p></div>
-      <div class="del reveal d1"><span class="badge run">In uitvoering</span><div class="num">50</div><h3>Train-the-Trainer</h3><p>50 docenten opgeleid, in 5 cohorten van 10.</p></div>
-      <div class="del reveal d2"><span class="badge plan">Gepland</span><div class="num">15</div><h3>Referentiedossiers</h3><p>Een onderbouwend PDF-dossier per campagne.</p></div>
-      <div class="del reveal"><span class="badge plan">Gepland</span><div class="num">1</div><h3>Blauwdruk Horeca</h3><p>Landelijk uitrolbaar model uit de proeftuin.</p></div>
-      <div class="del reveal d1"><span class="badge done">Opgeleverd</span><div class="num">✓</div><h3>Certificering</h3><p>Externe certificering gekoppeld aan het leertraject.</p></div>
+    <div class="three">
+      <div class="pcard reveal">
+        <h3>Doel</h3>
+        <ul>
+          <li>Personeelsverloop van 50%+ tegengaan</li>
+          <li>15 nieuwe thematische leermodules</li>
+          <li>Getest bij zes Utrechtse horecazaken</li>
+          <li>Schaalbare "Blauwdruk Horeca"</li>
+        </ul>
+      </div>
+      <div class="pcard reveal d1">
+        <h3>Doelgroep</h3>
+        <ul>
+          <li>Professionals in opleiding en starters</li>
+          <li>Horeca-ondernemers</li>
+          <li>Brancheorganisaties</li>
+          <li>Onderwijs: vmbo, mbo, hbo</li>
+        </ul>
+      </div>
+      <div class="pcard reveal d2">
+        <h3>Resultaat</h3>
+        <ul>
+          <li>15 interactieve modules met badges &amp; certificering</li>
+          <li>25 live quiz-activaties bij opleidingen</li>
+          <li>50 docenten getraind in de methodiek</li>
+          <li>Gratis implementatie-handboek</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- EVENTS -->
-<section class="block soft" id="events">
+<!-- ACTIVATIES -->
+<section class="block soft" id="activaties">
   <div class="wrap">
     <div class="reveal">
-      <div class="sec-label">Events</div>
-      <h2 class="sec">De <em>live events</em></h2>
-      <p class="sec-intro">De live CuliQuiz-activaties voor de HOP, over heel Nederland. Klik een event open voor een foto.</p>
+      <div class="sec-label">Activaties · live dashboard</div>
+      <h2 class="sec">Wat we al <em>gedaan</em> hebben</h2>
+      <p class="sec-intro">Elke live CuliQuiz-activatie die we binnen het project hebben uitgevoerd, door heel Nederland. Meerdaagse evenementen staan los van elkaar.</p>
     </div>
-    <div class="ev-list reveal">
+    <div class="acts">
 
-      <details class="ev">
-        <summary><span class="evn">1</span><span class="evt">Horecava Amsterdam <span class="evd">· 12–16 jan 2026 · 4 activaties · 400 studenten</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
-        <div class="evbody"><img src="https://www.culiquiz.nl/assets/hop/events/horecava.jpg" alt="Horecava Amsterdam" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="ph" style="display:none">Foto volgt — zet <code>horecava.jpg</code> in de fotomap.</div></div>
-      </details>
+      <div class="act reveal"><img class="ph-img" src="https://www.culiquiz.nl/assets/hop/events/horecava-1.jpg" alt="Horecava Amsterdam" loading="lazy"><div class="act-body"><div class="when">12–16 jan 2026</div><h3>Horecava Amsterdam</h3><div class="meta"><span>Vakbeurs</span></div><span class="tag">Activatie 1 van 4</span></div></div>
+      <div class="act reveal d1"><img class="ph-img" src="https://www.culiquiz.nl/assets/hop/events/horecava-2.jpg" alt="Horecava Amsterdam" loading="lazy"><div class="act-body"><div class="when">12–16 jan 2026</div><h3>Horecava Amsterdam</h3><div class="meta"><span>Vakbeurs</span></div><span class="tag">Activatie 2 van 4</span></div></div>
+      <div class="act reveal d2"><img class="ph-img" src="https://www.culiquiz.nl/assets/hop/events/horecava-3.jpg" alt="Horecava Amsterdam" loading="lazy"><div class="act-body"><div class="when">12–16 jan 2026</div><h3>Horecava Amsterdam</h3><div class="meta"><span>Vakbeurs</span></div><span class="tag">Activatie 3 van 4</span></div></div>
+      <div class="act reveal"><img class="ph-img" src="https://www.culiquiz.nl/assets/hop/events/horecava-4.jpg" alt="Horecava Amsterdam" loading="lazy"><div class="act-body"><div class="when">12–16 jan 2026</div><h3>Horecava Amsterdam</h3><div class="meta"><span class="reach">± 400 studenten totaal</span></div><span class="tag">Activatie 4 van 4</span></div></div>
 
-      <details class="ev">
-        <summary><span class="evn">2</span><span class="evt">RAI · Young Professional Career Fair <span class="evd">· 16 jan 2026 · 1.200 studenten</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
-        <div class="evbody"><img src="https://www.culiquiz.nl/assets/hop/events/rai-young-professional.jpg" alt="RAI Young Professional Career Fair" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="ph" style="display:none">Foto volgt — zet <code>rai-young-professional.jpg</code> in de fotomap.</div></div>
-      </details>
+      <div class="act reveal d1"><div class="noimg"><span>RAI · Young Professional Career Fair</span></div><div class="act-body"><div class="when">16 jan 2026</div><h3>RAI Amsterdam</h3><div class="meta"><span class="reach">1.200 studenten</span></div></div></div>
 
-      <details class="ev">
-        <summary><span class="evn">3</span><span class="evt">ROC Mondriaan <span class="evd">· 30 jan 2026 · 60 studenten</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
-        <div class="evbody"><img src="https://www.culiquiz.nl/assets/hop/events/roc-mondriaan.jpg" alt="ROC Mondriaan" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="ph" style="display:none">Foto volgt — zet <code>roc-mondriaan.jpg</code> in de fotomap.</div></div>
-      </details>
+      <div class="act reveal d2"><img class="ph-img" src="https://www.culiquiz.nl/assets/hop/events/roc-mondriaan.jpg" alt="ROC Mondriaan" loading="lazy"><div class="act-body"><div class="when">30 jan 2026</div><h3>ROC Mondriaan</h3><div class="meta"><span class="reach">60 studenten</span></div></div></div>
 
-      <details class="ev">
-        <summary><span class="evn">4</span><span class="evt">Albeda College <span class="evd">· 5 feb 2026 · activatie tijdens wedstrijd · 150 studenten</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
-        <div class="evbody"><img src="https://www.culiquiz.nl/assets/hop/events/albeda.jpg" alt="Albeda College" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="ph" style="display:none">Foto volgt — zet <code>albeda.jpg</code> in de fotomap.</div></div>
-      </details>
+      <div class="act reveal"><img class="ph-img" src="https://www.culiquiz.nl/assets/hop/events/albeda.jpg" alt="Albeda College" loading="lazy"><div class="act-body"><div class="when">5 feb 2026</div><h3>Albeda College</h3><div class="meta"><span>Tijdens wedstrijd</span> <span class="reach">150 studenten</span></div></div></div>
 
-      <details class="ev">
-        <summary><span class="evn">5</span><span class="evt">Horeca Event · Firda College <span class="evd">· 10–11 feb 2026 · 2 activaties · 300 studenten</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
-        <div class="evbody"><img src="https://www.culiquiz.nl/assets/hop/events/firda-horeca-event.jpg" alt="Horeca Event Firda College" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="ph" style="display:none">Foto volgt — zet <code>firda-horeca-event.jpg</code> in de fotomap.</div></div>
-      </details>
+      <div class="act reveal d1"><img class="ph-img" src="https://www.culiquiz.nl/assets/hop/events/firda-horeca-event-1.jpg" alt="Horeca Event Firda College" loading="lazy"><div class="act-body"><div class="when">10 feb 2026</div><h3>Horeca Event · Firda College</h3><div class="meta"><span>Activatie</span></div><span class="tag">Activatie 1 van 2</span></div></div>
+      <div class="act reveal d2"><img class="ph-img" src="https://www.culiquiz.nl/assets/hop/events/firda-horeca-event-2.jpg" alt="Horeca Event Firda College" loading="lazy"><div class="act-body"><div class="when">11 feb 2026</div><h3>Horeca Event · Firda College</h3><div class="meta"><span class="reach">± 300 studenten totaal</span></div><span class="tag">Activatie 2 van 2</span></div></div>
 
-      <details class="ev">
-        <summary><span class="evn">6</span><span class="evt">ROC Amsterdam · Leermeesterdag <span class="evd">· 9 mrt 2026 · 30 studenten</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
-        <div class="evbody"><img src="https://www.culiquiz.nl/assets/hop/events/roc-amsterdam.jpg" alt="ROC Amsterdam Leermeesterdag" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="ph" style="display:none">Foto volgt — zet <code>roc-amsterdam.jpg</code> in de fotomap.</div></div>
-      </details>
+      <div class="act reveal"><div class="noimg"><span>ROC Amsterdam · Leermeesterdag</span></div><div class="act-body"><div class="when">9 mrt 2026</div><h3>ROC Amsterdam</h3><div class="meta"><span>Leermeesterdag</span> <span class="reach">30 studenten</span></div></div></div>
 
-      <details class="ev">
-        <summary><span class="evn">7</span><span class="evt">Firda · Open dag <span class="evd">· 26 mrt 2026 · 300 studenten</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
-        <div class="evbody"><img src="https://www.culiquiz.nl/assets/hop/events/firda-opendag.jpg" alt="Firda Open dag" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="ph" style="display:none">Foto volgt — zet <code>firda-opendag.jpg</code> in de fotomap.</div></div>
-      </details>
+      <div class="act reveal d1"><img class="ph-img" src="https://www.culiquiz.nl/assets/hop/events/firda-opendag.jpg" alt="Firda Open dag" loading="lazy"><div class="act-body"><div class="when">26 mrt 2026</div><h3>Firda · Open dag</h3><div class="meta"><span class="reach">300 studenten</span></div></div></div>
 
-      <details class="ev">
-        <summary><span class="evn">8</span><span class="evt">Miele · Talent van de Toekomst <span class="evd">· 13 apr 2026</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
-        <div class="evbody"><img src="https://www.culiquiz.nl/assets/hop/events/miele.jpg" alt="Miele Talent van de Toekomst" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="ph" style="display:none">Foto volgt — zet <code>miele.jpg</code> in de fotomap.</div></div>
-      </details>
+      <div class="act reveal d2"><img class="ph-img" src="https://www.culiquiz.nl/assets/hop/events/miele.jpg" alt="Miele Talent van de Toekomst" loading="lazy"><div class="act-body"><div class="when">13 apr 2026</div><h3>Miele · Talent van de Toekomst</h3><div class="meta"><span>Met Gault&amp;Millau</span></div></div></div>
 
-      <details class="ev">
-        <summary><span class="evn">9</span><span class="evt">ZIN Inspiratie Lab · Sligro <span class="evd">· 11 jun 2026 · De Rooi Pannen / Young Talent Academy · 60 studenten</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
-        <div class="evbody"><img src="https://www.culiquiz.nl/assets/hop/events/sligro.jpg" alt="ZIN Inspiratie Lab Sligro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="ph" style="display:none">Foto volgt — zet <code>sligro.jpg</code> in de fotomap.</div></div>
-      </details>
-
-      <details class="ev">
-        <summary><span class="evn">10</span><span class="evt">Gastvrij Rotterdam · dag 1 <span class="evd">· 21 sep 2026 · gepland</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
-        <div class="evbody"><img src="https://www.culiquiz.nl/assets/hop/events/gastvrij-rotterdam-21.jpg" alt="Gastvrij Rotterdam 21 september" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="ph" style="display:none">Foto volgt — zet <code>gastvrij-rotterdam-21.jpg</code> in de fotomap.</div></div>
-      </details>
-
-      <details class="ev">
-        <summary><span class="evn">11</span><span class="evt">Gastvrij Rotterdam · dag 2 <span class="evd">· 22 sep 2026 · gepland</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
-        <div class="evbody"><img src="https://www.culiquiz.nl/assets/hop/events/gastvrij-rotterdam-22.jpg" alt="Gastvrij Rotterdam 22 september" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="ph" style="display:none">Foto volgt — zet <code>gastvrij-rotterdam-22.jpg</code> in de fotomap.</div></div>
-      </details>
-
-      <details class="ev">
-        <summary><span class="evn">12</span><span class="evt">Gastvrij Rotterdam · dag 3 <span class="evd">· 23 sep 2026 · gepland</span></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
-        <div class="evbody"><img src="https://www.culiquiz.nl/assets/hop/events/gastvrij-rotterdam-23.jpg" alt="Gastvrij Rotterdam 23 september" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="ph" style="display:none">Foto volgt — zet <code>gastvrij-rotterdam-23.jpg</code> in de fotomap.</div></div>
-      </details>
+      <div class="act reveal"><img class="ph-img" src="https://www.culiquiz.nl/assets/hop/events/sligro.jpg" alt="ZIN Inspiratie Lab Sligro" loading="lazy"><div class="act-body"><div class="when">11 jun 2026</div><h3>ZIN Inspiratie Lab · Sligro</h3><div class="meta"><span>De Rooi Pannen</span> <span class="reach">60 studenten</span></div></div></div>
 
     </div>
   </div>
 </section>
 
-<!-- CAMPAGNES -->
-<section class="block" id="campagnes">
+<!-- MODULES -->
+<section class="block" id="modules">
   <div class="wrap">
     <div class="reveal">
-      <div class="sec-label">Campagnes</div>
-      <h2 class="sec">De HOP-<em>campagnes</em></h2>
-      <p class="sec-intro">Elke campagne bestaat uit een werkboek, een game-document en de gebouwde campagne. 3 opgeleverd, 11 thema's vastgelegd op weg naar de 15.</p>
+      <div class="sec-label">Leermodules</div>
+      <h2 class="sec">15 thematische <em>modules</em></h2>
+      <p class="sec-intro">Nieuwe, niet eerder bestaande horeca-thema's. Drie modules staan live in de Learnstrike-leeromgeving, de rest is in ontwikkeling.</p>
     </div>
-    <div class="camps">
+    <div class="mods">
 
-      <div class="campc reveal">
-        <div class="cnum">1</div>
-        <div class="cbody"><h3>Verantwoord Schenken</h3><p class="csub">NIX18 &amp; alcoholbeleid · werkboek, game-document &amp; campagne</p></div>
-        <span class="cstat done">Opgeleverd</span>
-      </div>
+      <div class="mod live reveal"><div class="mn">1</div><div class="mbody"><h3>Verantwoord Schenken</h3><div class="msub">NIX18 &amp; alcoholbeleid</div></div><div class="mright"><span class="mstat live">Live</span><a class="mlink" href="https://culiquiz.learnstrike.app" target="_blank" rel="noopener">Open in Learnstrike <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div></div>
 
-      <div class="campc reveal d1">
-        <div class="cnum">2</div>
-        <div class="cbody"><h3>Etiquette &amp; Fine Service Basics</h3><p class="csub">Werkboek, game-document &amp; campagne</p></div>
-        <span class="cstat done">Opgeleverd</span>
-      </div>
+      <div class="mod live reveal d1"><div class="mn">2</div><div class="mbody"><h3>Etiquette &amp; Fine Service Basics</h3><div class="msub">Gastvrijheid &amp; tafeletiquette</div></div><div class="mright"><span class="mstat live">Live</span><a class="mlink" href="https://culiquiz.learnstrike.app" target="_blank" rel="noopener">Open in Learnstrike <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div></div>
 
-      <div class="campc reveal">
-        <div class="cnum">3</div>
-        <div class="cbody"><h3>Kostprijsberekening / Fiche</h3><p class="csub">Werkboek, game-document &amp; campagne</p></div>
-        <span class="cstat done">Opgeleverd</span>
-      </div>
+      <div class="mod live reveal"><div class="mn">3</div><div class="mbody"><h3>Kostprijsberekening / Fiche</h3><div class="msub">Foodcost &amp; marges</div></div><div class="mright"><span class="mstat live">Live</span><a class="mlink" href="https://culiquiz.learnstrike.app" target="_blank" rel="noopener">Open in Learnstrike <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div></div>
 
-      <div class="campc reveal d1">
-        <div class="cnum">4</div>
-        <div class="cbody"><h3>Patisserie</h3><p class="csub">Nog te ontwikkelen</p></div>
-        <span class="cstat run">In ontwikkeling</span>
-      </div>
+      <div class="mod reveal d1"><div class="mn">4</div><div class="mbody"><h3>Patisserie</h3><div class="msub">Zoetwaren &amp; technieken</div></div><div class="mright"><span class="mstat dev">In ontwikkeling</span></div></div>
+      <div class="mod reveal"><div class="mn">5</div><div class="mbody"><h3>Menu Engineering &amp; Foodcost</h3><div class="msub">Slim samenstellen</div></div><div class="mright"><span class="mstat dev">In ontwikkeling</span></div></div>
+      <div class="mod reveal d1"><div class="mn">6</div><div class="mbody"><h3>Klachten &amp; Reviews Pro</h3><div class="msub">Service recovery</div></div><div class="mright"><span class="mstat dev">In ontwikkeling</span></div></div>
+      <div class="mod reveal"><div class="mn">7</div><div class="mbody"><h3>Mentale Gezondheid &amp; Werkdruk</h3><div class="msub">Vitaliteit in de keuken</div></div><div class="mright"><span class="mstat dev">In ontwikkeling</span></div></div>
+      <div class="mod reveal d1"><div class="mn">8</div><div class="mbody"><h3>Duurzame Horeca · Zero Waste</h3><div class="msub">Energie &amp; verspilling</div></div><div class="mright"><span class="mstat dev">In ontwikkeling</span></div></div>
+      <div class="mod reveal"><div class="mn">9</div><div class="mbody"><h3>Technologie in de Horeca</h3><div class="msub">Digitale kassa, QR &amp; floor-flow</div></div><div class="mright"><span class="mstat dev">In ontwikkeling</span></div></div>
+      <div class="mod reveal d1"><div class="mn">10</div><div class="mbody"><h3>Gastvrijheid 2.0 &amp; Service Recovery</h3><div class="msub">De gast centraal</div></div><div class="mright"><span class="mstat dev">In ontwikkeling</span></div></div>
+      <div class="mod reveal"><div class="mn">11</div><div class="mbody"><h3>Vis</h3><div class="msub">Soorten, herkomst &amp; bereiding</div></div><div class="mright"><span class="mstat dev">In ontwikkeling</span></div></div>
+      <div class="mod reveal d1"><div class="mn">+</div><div class="mbody"><h3>Nog 4 thema's te bepalen</h3><div class="msub">Richting het doel van 15 modules</div></div><div class="mright"><span class="mstat dev">Te plannen</span></div></div>
 
-      <div class="campc reveal">
-        <div class="cnum">5</div>
-        <div class="cbody"><h3>Menu Engineering &amp; Foodcost</h3><p class="csub">Nog te ontwikkelen</p></div>
-        <span class="cstat run">In ontwikkeling</span>
-      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="campc reveal d1">
-        <div class="cnum">6</div>
-        <div class="cbody"><h3>Klachten &amp; Reviews Pro</h3><p class="csub">Nog te ontwikkelen</p></div>
-        <span class="cstat run">In ontwikkeling</span>
-      </div>
+<!-- PLANNING -->
+<section class="block soft" id="planning">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Planning</div>
+      <h2 class="sec">Wat er nog <em>komt</em></h2>
+      <p class="sec-intro">De volgende stappen binnen het project, op weg naar de 25 activaties en 15 modules.</p>
+    </div>
+    <div class="plan">
+      <div class="pl run reveal"><div class="when">Loopt nu</div><h3>CuliQuiz Top 100</h3><p>De landelijke ranglijst met minimaal 20 schoolbezoeken en optredens door ambassadeurs.</p><a class="pl-link" href="https://www.culiquiz.nl/top100" target="_blank" rel="noopener">Bekijk de Top 100 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div>
 
-      <div class="campc reveal">
-        <div class="cnum">7</div>
-        <div class="cbody"><h3>Mentale Gezondheid &amp; Werkdruk</h3><p class="csub">Nog te ontwikkelen</p></div>
-        <span class="cstat run">In ontwikkeling</span>
-      </div>
+      <div class="pl reveal d1"><div class="when">21–23 sep 2026</div><h3>Gastvrij Rotterdam</h3><p>Drie dagen activatie op de vakbeurs in Ahoy: 21, 22 en 23 september. Goed voor 3 van de 25 activaties.</p></div>
 
-      <div class="campc reveal d1">
-        <div class="cnum">8</div>
-        <div class="cbody"><h3>Duurzame Horeca · Zero Waste &amp; Energie</h3><p class="csub">Nog te ontwikkelen</p></div>
-        <span class="cstat run">In ontwikkeling</span>
-      </div>
+      <div class="pl reveal d2"><div class="when">Komt eraan</div><h3>Train-the-Trainer</h3><p>50 docenten opgeleid in de CuliQuiz-methodiek, in 5 cohorten van 10.</p></div>
 
-      <div class="campc reveal">
-        <div class="cnum">9</div>
-        <div class="cbody"><h3>Technologie in de Horeca</h3><p class="csub">Digitale kassa, QR &amp; floor-flow · nog te ontwikkelen</p></div>
-        <span class="cstat run">In ontwikkeling</span>
-      </div>
+      <div class="pl reveal"><div class="when">In ontwikkeling</div><h3>12 nieuwe modules</h3><p>Naast de 3 live modules worden de overige thema's gebouwd: werkboek, game-document en campagne per module.</p></div>
 
-      <div class="campc reveal d1">
-        <div class="cnum">10</div>
-        <div class="cbody"><h3>Gastvrijheid 2.0 &amp; Service Recovery</h3><p class="csub">Nog te ontwikkelen</p></div>
-        <span class="cstat run">In ontwikkeling</span>
-      </div>
+      <div class="pl reveal d1"><div class="when">Gepland</div><h3>15 referentiedossiers</h3><p>Een onderbouwend PDF-dossier per module, vrij beschikbaar voor de sector.</p></div>
 
-      <div class="campc reveal">
-        <div class="cnum">11</div>
-        <div class="cbody"><h3>Vis</h3><p class="csub">Nog te ontwikkelen</p></div>
-        <span class="cstat run">In ontwikkeling</span>
-      </div>
-
-      <div class="campc reveal d1">
-        <div class="cnum">+</div>
-        <div class="cbody"><h3>Nog 4 thema's te bepalen</h3><p class="csub">Richting het doel van 15 campagnes</p></div>
-        <span class="cstat run">Te plannen</span>
-      </div>
-
+      <div class="pl reveal d2"><div class="when">Gepland</div><h3>Blauwdruk Horeca</h3><p>Het landelijk uitrolbare model dat uit de Utrechtse proeftuin voortkomt.</p></div>
     </div>
   </div>
 </section>
@@ -360,17 +325,17 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="logo"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></div>
-        <p class="tagline">Jouw culinaire kennis, elke dienst een stapje slimmer.</p>
+        <a class="cq" href="https://www.culiquiz.nl"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></a>
+        <p class="tagline">Jouw culinaire kennis, elke dienst een stapje slimmer. Penvoerder van CuliQuiz Proeftuin Horeca.</p>
       </div>
       <div>
-        <h4>Interne pagina</h4>
-        <p class="fnote"><span class="lock">🔒 Niet delen zonder afstemming.</span> Overzicht van wat CuliQuiz binnen het HOP-project heeft opgeleverd. Niet in het menu, niet geïndexeerd.</p>
+        <div class="hopline"><svg class="hop-logo" viewBox="0 0 37 21" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.248 17.233a6.127 6.127 0 0 1-6.118-6.119 6.126 6.126 0 0 1 6.118-6.119 6.126 6.126 0 0 1 6.119 6.12 6.127 6.127 0 0 1-6.119 6.118Zm0-9.413a3.298 3.298 0 0 0-3.294 3.294 3.298 3.298 0 0 0 3.294 3.294 3.298 3.298 0 0 0 3.294-3.294 3.298 3.298 0 0 0-3.294-3.294Z"/><path d="M29.912 5.013c-3.117.232-5.655 3.124-5.655 6.25v9.264h2.824v-2.565c0-1.01-.326-2-.972-2.77l-.024-.028.222-.177s.058.122.177.311a4.104 4.104 0 0 0 2.58 1.792c.54.119 1.11.168 1.695.131 3.172-.198 5.716-2.892 5.734-6.07a6.124 6.124 0 0 0-6.581-6.138Zm1.11 9.334a3.302 3.302 0 0 1-3.88-3.879 3.288 3.288 0 0 1 2.587-2.587 3.302 3.302 0 0 1 3.879 3.88 3.288 3.288 0 0 1-2.587 2.586ZM6.95 5.053a6.09 6.09 0 0 0-2.084.073c-1.085.229-2.05.869-2.645 1.807a3.04 3.04 0 0 0-.173.308l-.223-.177s.015-.018.025-.027c.649-.774.971-1.765.971-2.773V.293H0v16.943h2.825v-6.003c0-1.673 1.2-3.17 2.86-3.383a3.297 3.297 0 0 1 3.727 3.267v6.12h2.825V11.27c0-3.087-2.225-5.797-5.284-6.211l-.003-.006Z"/></svg> <span>Horeca Ontwikkel Platform</span></div>
+        <p class="partners">Het HOP is een initiatief van <b>Koninklijke Horeca Nederland</b>, <b>CNV</b> en <b>De Horeca Bond</b>.</p>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© CuliQuiz. Intern overzicht, niet voor de buitenwereld.</span>
-      <span>HOP · Horeca Ontwikkel Platform · 2025–2026</span>
+      <span>© CuliQuiz · CuliQuiz Proeftuin Horeca</span>
+      <span>Een HOP-project · looptijd 2026</span>
     </div>
   </div>
 </footer>
@@ -380,7 +345,7 @@
   (function(){
     var els=document.querySelectorAll('.reveal');
     if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
-    var obs=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    var obs=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
     els.forEach(function(e){obs.observe(e);});
   })();
 </script>
