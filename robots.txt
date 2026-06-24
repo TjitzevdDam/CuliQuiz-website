@@ -11,6 +11,7 @@ Disallow: /menu-ai
 Disallow: /culiquiz-2-0-en
 Disallow: /menu-ai-en
 Disallow: /infrastructuur
+Disallow: /infrastructuur-en
 Disallow: /hop
 
 Sitemap: https://www.culiquiz.nl/sitemap.xml
