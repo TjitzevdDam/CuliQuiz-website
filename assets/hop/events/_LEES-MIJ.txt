@@ -4,11 +4,16 @@ FOTO'S VOOR DE HOP-PAGINA (events)
 Zet hier de event-foto's neer. De pagina /hop pakt ze automatisch op
 zodra het bestand de juiste naam heeft. Gebruik exact deze namen:
 
-  gastvrij-rotterdam.png   -> Gastvrij Rotterdam 2024        (staat er al)
-  finale-2025.jpg          -> CuliQuiz Finale 2025            (toevoegen)
-  finale-2024.jpg          -> Schoolbattle Finale 2023-2024   (toevoegen)
-  horecava.jpg             -> Horecava                        (toevoegen)
-  young-professional.jpg   -> Young Professional Battle       (toevoegen)
+  horecava.jpg               -> Horecava Amsterdam (12-16 jan 2026)
+  rai-young-professional.jpg -> RAI Young Professional Career Fair (16 jan 2026)
+  roc-mondriaan.jpg          -> ROC Mondriaan (30 jan 2026)
+  albeda.jpg                 -> Albeda College (5 feb 2026)
+  firda-horeca-event.jpg     -> Horeca Event Firda College (10-11 feb 2026)
+  roc-amsterdam.jpg          -> ROC Amsterdam Leermeesterdag (9 mrt 2026)
+  firda-opendag.jpg          -> Firda Open dag (26 mrt 2026)
+  miele.jpg                  -> Miele Talent van de Toekomst (13 apr 2026)
+  sligro.jpg                 -> ZIN Inspiratie Lab Sligro (11 jun 2026)
+  gastvrij-rotterdam.png     -> Gastvrij Rotterdam (21-23 sep 2026)  (staat er al)
 
 Liefst liggend (landscape), minimaal ~1200px breed. JPG of PNG.
 Zolang een foto er nog niet staat, toont de pagina "Foto volgt".
