@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Worldchefs &amp; CuliQuiz, a conversation</title>
+<meta name="description" content="After Newport. A starting point for the conversation between Worldchefs and CuliQuiz. Not a proposal." />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#0F1A1A" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Montserrat:ital,wght@0,300..700;1,300..500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#26A8B0;
+    --teal-deep:#0F4E54;
+    --gold:#E6B638;
+    --gold-bright:#F2C94C;
+    --ink:#16221F;
+    --muted:#5E6A70;
+    --line:#E7ECEE;
+    --dark:#0F1A1A;
+    --dark-2:#13201F;
+    --dark-card:#182725;
+    --dark-line:rgba(255,255,255,.10);
+    --on-dark:#E7EDEB;
+    --on-dark-mut:#9DAFAC;
+    --paper:#ffffff;
+    --bg-soft:#F6FAFA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Montserrat',system-ui,sans-serif;color:var(--on-dark);background:var(--dark);font-weight:400;line-height:1.7;font-size:16.5px;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:900;line-height:1.12;letter-spacing:-.015em;}
+  em{font-style:italic;color:var(--gold-bright);}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 26px;}
+  .wide{max-width:1120px;}
+  .block{padding:74px 0;}
+  .block.tight{padding:54px 0;}
+
+  /* sections */
+  .dark{background:var(--dark);}
+  .dark-2{background:var(--dark-2);}
+  .paper{background:var(--paper);color:var(--ink);}
+  .paper .eyebrow{color:var(--teal-deep);}
+  .paper h2{color:var(--ink);}
+  .paper p{color:var(--muted);}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--gold);display:inline-block;}
+  h2.sec{font-size:clamp(26px,3.5vw,38px);max-width:22ch;}
+  h2.sec em{color:var(--gold-bright);font-style:normal;}
+  .lead{font-size:17px;line-height:1.75;color:var(--on-dark-mut);max-width:62ch;margin-top:18px;}
+  .lead.on-paper{color:var(--muted);}
+  .lead strong{color:var(--on-dark);font-weight:600;}
+  .lead + .lead{margin-top:16px;}
+
+  /* header */
+  .masthead{background:linear-gradient(170deg,#10201E 0%, #0C1615 100%);border-bottom:1px solid var(--dark-line);}
+  .logos{display:flex;align-items:center;justify-content:center;gap:30px;padding:34px 0 0;}
+  .logos img{height:38px;width:auto;}
+  .logos .cq{filter:brightness(0) invert(1);}
+  .logos .div{width:1px;height:34px;background:rgba(255,255,255,.2);}
+  .hero-body{padding:46px 0 80px;text-align:center;}
+  .hero-body h1{font-size:clamp(30px,4.4vw,50px);max-width:18ch;margin:0 auto;color:#fff;}
+  .hero-body h1 em{color:var(--gold-bright);font-style:italic;}
+  .hero-sub{margin:26px auto 0;max-width:60ch;color:var(--on-dark-mut);font-size:16px;line-height:1.7;}
+  .hero-rule{width:40px;height:3px;background:var(--gold);border-radius:3px;margin:30px auto 0;}
+
+  /* three tracks (paper) */
+  .tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
+  .track{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;box-shadow:0 18px 50px -28px rgba(15,78,84,.28);}
+  .track .tk{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .track .tk b{width:34px;height:34px;border-radius:50%;background:var(--teal-deep);color:#fff;font-family:'Fraunces',serif;font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none;}
+  .track .tk span{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);}
+  .track h3{font-size:21px;color:var(--ink);margin-bottom:12px;}
+  .track .desc{font-size:14px;color:var(--muted);line-height:1.6;}
+  .track .split{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);}
+  .track .row{margin-bottom:12px;}
+  .track .row .rl{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:3px;}
+  .track .row.cq .rl{color:var(--gold);}
+  .track .row p{font-size:13px;color:var(--muted);line-height:1.5;}
+  .track .tl{margin-top:auto;padding-top:16px;font-size:12.5px;font-weight:600;color:var(--ink);}
+  .track .tl span{color:var(--muted);font-weight:400;}
+
+  /* honest correction */
+  .correction{background:var(--dark-card);border:1px solid var(--dark-line);border-left:4px solid var(--gold);border-radius:16px;padding:28px 30px;margin-top:30px;}
+  .correction p{color:var(--on-dark-mut);font-size:15.5px;line-height:1.7;}
+  .correction p + p{margin-top:14px;}
+  .correction strong{color:var(--on-dark);font-weight:600;}
+
+  /* closing question */
+  .closing{text-align:center;}
+  .closing .big{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(24px,3.4vw,34px);color:#fff;line-height:1.2;max-width:20ch;margin:0 auto;}
+  .closing .big em{color:var(--gold-bright);font-style:italic;}
+  .closing p{margin:22px auto 0;max-width:58ch;color:var(--on-dark-mut);font-size:16px;}
+  .cta{display:inline-flex;align-items:center;gap:10px;margin-top:34px;background:var(--gold);color:#10201E;font-weight:700;font-size:15px;padding:15px 28px;border-radius:999px;transition:transform .12s,background .12s;}
+  .cta:hover{background:var(--gold-bright);transform:translateY(-1px);}
+
+  /* footer */
+  .foot{background:#0C1615;border-top:1px solid var(--dark-line);padding:42px 0;}
+  .foot-in{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .foot .logos{padding:0;gap:24px;justify-content:flex-start;}
+  .foot .logos img{height:30px;}
+  .foot .meta{text-align:right;font-size:13px;color:var(--on-dark-mut);line-height:1.6;}
+  .foot .meta b{color:var(--on-dark);font-weight:600;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media (max-width:860px){
+    .tracks{grid-template-columns:1fr;}
+    .foot-in{flex-direction:column;align-items:flex-start;}
+    .foot .meta{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="logos reveal">
+      <img class="cq" src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" />
+      <span class="div"></span>
+      <img src="https://worldchefs.org/wp-content/uploads/2022/02/Worldchefs_White-M.png" alt="Worldchefs" />
+    </div>
+    <div class="hero-body reveal">
+      <h1>After Newport, a conversation between Worldchefs and <em>CuliQuiz</em>.</h1>
+      <p class="hero-sub">This is not a proposal. It's a starting point for the conversation we want to have with you. Three directions we see, one question for you, and what we'd do next if you point us somewhere.</p>
+      <div class="hero-rule"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ WHAT WORLDCHEFS HAS BUILT ============ -->
+<section class="block dark-2">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">What Worldchefs has built</div>
+      <h2 class="sec">A network few <em>associations</em> ever reach</h2>
+      <p class="lead">Worldchefs has built something rare. A network of chefs across <strong>110 countries</strong>, more than two hundred national associations and education partners, and an Academy that has welcomed over <strong>twenty-five thousand</strong> aspiring chefs in eight languages, with more than nineteen thousand graduating.</p>
+      <p class="lead">A partnership with the Electrolux Food Foundation through Feed the Planet, work with the FAO through the World Food Forum, and a biennial Congress that returns to Paris in 2028, a hundred years after Worldchefs began there. Few associations in any industry carry this much reach and this much mission at the same time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S STILL OPEN ============ -->
+<section class="block dark">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">What's still open</div>
+      <h2 class="sec">The layer in <em>between</em></h2>
+      <p class="lead">In everything we've looked at, one pattern stands out. Worldchefs is strong at bringing chefs into the profession. The Academy gets them to their first job. Certification recognises their growing skill. But the everyday layer in between, the daily reinforcement of craft after the formal training ends, is not something any ecosystem really covers. Knowledge fades within weeks. Managers spend years trying to keep it alive through briefings and product trainings, and most of it slips away anyway.</p>
+      <p class="lead"><strong>This is not a Worldchefs problem. It's an industry problem, and nobody has solved it at scale.</strong> It's the exact reason CuliQuiz exists.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT CULIQUIZ BRINGS ============ -->
+<section class="block dark-2">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">What CuliQuiz brings</div>
+      <h2 class="sec">Ninety seconds a <em>day</em></h2>
+      <p class="lead">CuliQuiz is not a course. It's not an e-learning platform, and it's not a certification. It's a daily game that takes ninety seconds and keeps craft alive in the people who serve the guest. Wine, ingredients, technique, the story behind what's on the plate. The kind of knowledge that fades within weeks after training ends, and that managers spend years trying to hold onto.</p>
+      <p class="lead">We do for craft in food, drinks and hospitality what Duolingo did for language. Small daily moments, gamified, measurable, addictive in the right way.</p>
+      <p class="lead">Today we have around <strong>fifty thousand users</strong> across the Netherlands, partnerships with brands like Coca-Cola, Hendi, Rational, Tork and Mokka D'or, and a platform rebuild that lets us scale globally from September 2026. <strong>We are not asking Worldchefs to build anything.</strong> We're asking whether what we've already built fits where you want to take your community.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THREE TRACKS (PAPER) ============ -->
+<section class="block paper">
+  <div class="wrap wide">
+    <div class="reveal" style="text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">Three ways we could create value together</div>
+      <h2 class="sec" style="margin:0 auto;">Three directions. <em>One question for you.</em></h2>
+      <p class="lead on-paper" style="margin:18px auto 0;">For each one, what it could mean for Worldchefs, and what it would mean for us. We've tried to be honest about both sides.</p>
+    </div>
+    <div class="tracks reveal">
+      <div class="track">
+        <div class="tk"><b>A</b><span>The Member Layer</span></div>
+        <h3>Where the Academy ends, the daily layer begins</h3>
+        <p class="desc">Worldchefs members and Academy graduates get CuliQuiz as part of their membership. Corporate sponsors fund the content per category, the way Nestlé Professional already funds the Academy.</p>
+        <div class="split">
+          <div class="row"><div class="rl">For Worldchefs</div><p>A deeper engagement layer for members without building anything, a stronger proposition for member associations, and a new sponsorship product for your Platinum and Premium partners.</p></div>
+          <div class="row cq"><div class="rl">For CuliQuiz</div><p>Access to 110 country associations and the Academy graduate pipeline.</p></div>
+        </div>
+        <div class="tl">Timeline: <span>six to nine months to a first pilot.</span></div>
+      </div>
+      <div class="track">
+        <div class="tk"><b>B</b><span>The Kids Program</span></div>
+        <h3>Turning workshops into lasting behaviour</h3>
+        <p class="desc">Worldchefs has International Chefs Day. The Electrolux Food Foundation has Food Heroes, already reaching children in more than thirty countries. Neither has a digital tool that keeps the message alive after the workshop ends. CuliKidz, our primary school product, was built for exactly that layer.</p>
+        <div class="split">
+          <div class="row"><div class="rl">For Worldchefs</div><p>A flagship impact program with measurable scale, in line with your Feed the Planet work and your Electrolux partnership, fundable through routes you already know.</p></div>
+          <div class="row cq"><div class="rl">For CuliQuiz</div><p>Foundation backing for a product already in development, and the credibility of a Worldchefs-endorsed program.</p></div>
+        </div>
+        <div class="tl">Timeline: <span>twelve to eighteen months to a first funded cohort.</span></div>
+      </div>
+      <div class="track">
+        <div class="tk"><b>C</b><span>The Network Channel</span></div>
+        <h3>The fastest way to show mutual upside</h3>
+        <p class="desc">Your member associations across 110 countries have relationships with restaurants, hotel groups and culinary schools. When CuliQuiz lands a commercial deal that came through your network, Worldchefs earns a share.</p>
+        <div class="split">
+          <div class="row"><div class="rl">For Worldchefs</div><p>An additional revenue stream tied directly to member value. No operational lift, no governance complexity.</p></div>
+          <div class="row cq"><div class="rl">For CuliQuiz</div><p>A global referral channel no marketing budget can replicate.</p></div>
+        </div>
+        <div class="tl">Timeline: <span>first deals possible within three months.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY US, WHY NOW ============ -->
+<section class="block dark-2">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Why us, why now</div>
+      <h2 class="sec">Small enough to talk <em>directly</em></h2>
+      <p class="lead">We're not the only company building tools for the culinary world. We probably are the only one focused entirely on daily retention after the training, with a product already live at scale and an architecture we can deploy globally from September.</p>
+      <p class="lead">We are funded, growing, and small enough that this conversation stays between you, us, and the people who actually build the product. No layers, no sales funnel. If we say we'll come back in two weeks, we come back in two weeks.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ONE HONEST CORRECTION ============ -->
+<section class="block dark">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">One honest correction</div>
+      <h2 class="sec">On the Gates <em>Foundation</em></h2>
+      <div class="correction">
+        <p>In our first conversation, the Gates Foundation came up as a possible funding route. We took that seriously and looked closely. <strong>We don't think it's the right door.</strong> Gates funds global health, agricultural development, and US education, almost always through proposals they invite themselves rather than open applications. A European program for culinary craft sits outside what they fund and outside how they fund it. We'd lose a year chasing a no.</p>
+        <p>What is realistic, and what we'd like to explore with you, is the <strong>Electrolux Food Foundation</strong> as the first call, because they're already in your orbit and they fund exactly this kind of work. Then European routes like <strong>Erasmus+</strong> and <strong>EIT Food</strong> for the program-funded track.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE WANT FROM THIS CONVERSATION ============ -->
+<section class="block tight dark-2">
+  <div class="wrap">
+    <div class="closing reveal">
+      <div class="eyebrow" style="justify-content:center;">What we want from this conversation</div>
+      <p class="big">We're not asking for an agreement. <em>We're asking for direction.</em></p>
+      <p>Which of these three tracks fits where Worldchefs is heading over the next eighteen months, given your governance, your budget cycle, and your priorities?</p>
+      <p>Whatever you point us to, we come back within two weeks with a one-page concept on that track: the first three people we'd approach together, and realistic milestones for the first twelve months. You decide if it's strong enough to take further.</p>
+      <a class="cta" href="mailto:tjitze@culiquiz.nl?subject=Worldchefs%20%C3%97%20CuliQuiz%20%E2%80%94%20a%20direction">Let's pick a direction</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap wide">
+    <div class="foot-in">
+      <div class="logos">
+        <img class="cq" src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" />
+        <span class="div"></span>
+        <img src="https://worldchefs.org/wp-content/uploads/2022/02/Worldchefs_White-M.png" alt="Worldchefs" />
+      </div>
+      <div class="meta">
+        <b>Tjitze van der Dam</b>, founder &nbsp;&middot;&nbsp; <b>Bernard Lensink</b>, co-founder<br>
+        Prepared for Ragnar Fridriksson &middot; June 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('in');});return;}
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){obs.observe(el);});
+  })();
+</script>
+
+</body>
+</html>
