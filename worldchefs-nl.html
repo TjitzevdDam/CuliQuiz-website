@@ -324,6 +324,20 @@
   .closer .cta{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--teal-deep);font-weight:700;font-size:15px;padding:15px 30px;border-radius:999px;transition:transform .15s,box-shadow .15s;box-shadow:0 12px 30px rgba(0,0,0,.20);}
   .closer .cta:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(0,0,0,.28);}
   @media (max-width:860px){ .tracks3{grid-template-columns:1fr;} }
+  /* missing-layer visual */
+  .layer{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px;}
+  .lay{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 18px;text-align:center;box-shadow:0 6px 18px rgba(15,78,84,.05);}
+  .lay .lt{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+  .lay .lv{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:24px;color:var(--ink);margin-top:5px;line-height:1;}
+  .lay.miss{background:var(--teal-deep);border-color:var(--teal-deep);}
+  .lay.miss .lt{color:var(--gold);}
+  .lay.miss .lv{color:#fff;}
+  .lay.miss .ls{font-size:11px;color:rgba(255,255,255,.72);margin-top:6px;line-height:1.4;}
+  @media (max-width:680px){ .layer{grid-template-columns:repeat(2,1fr);} }
+  /* value chips (on dark band) */
+  .vals{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
+  .vals .val{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:9px 17px;font-size:13.5px;font-weight:700;color:#fff;}
+  .vals .val .vd{width:8px;height:8px;border-radius:50%;background:var(--gold);}
 
 </style>
 </head>
@@ -363,28 +377,53 @@
   </div>
 </section>
 
-<!-- ============ WAT NOG OPEN LIGT ============ -->
+<!-- ============ DE ONTBREKENDE LAAG (visual) ============ -->
 <section class="block alt">
   <div class="wrap">
     <div class="reveal">
       <span class="sec-label">Wat nog open ligt</span>
       <h2 class="sec">De laag <em>ertussenin</em></h2>
       <div class="lead-body">
-        <p>In alles wat we hebben bekeken, valt één patroon op. Worldchefs is sterk in het binnenhalen van koks in het vak. De Academy brengt ze naar hun eerste baan. Certificering erkent hun groeiende kunde. Maar de dagelijkse laag ertussenin, het levend houden van vakmanschap nadat de formele training stopt, is iets wat geen enkel ecosysteem echt afdekt. Kennis vervaagt binnen weken. Managers proberen het jarenlang levend te houden via briefings en producttrainingen, en het meeste glipt toch weg.</p>
-        <p>Dit is geen Worldchefs-probleem. Het is een probleem van de hele sector, en niemand heeft het op schaal opgelost. Het is precies de reden dat CuliQuiz bestaat.</p>
+        <p>Worldchefs is sterk in het binnenhalen van koks in het vak. De Academy brengt ze naar hun eerste baan. Certificering erkent hun groeiende kunde. Maar de dagelijkse laag ertussenin, het levend houden van vakmanschap nadat de training stopt, is iets wat geen enkel ecosysteem echt afdekt. Kennis vervaagt binnen weken, en managers proberen het jarenlang levend te houden.</p>
+        <p>Het is het makkelijkst zo te zien. Elk deel van de sector heeft een systeem, behalve het belangrijkste.</p>
+      </div>
+    </div>
+    <div class="layer reveal">
+      <div class="lay"><div class="lt">Hotels</div><div class="lv">PMS</div></div>
+      <div class="lay"><div class="lt">Restaurants</div><div class="lv">POS</div></div>
+      <div class="lay"><div class="lt">Marketing</div><div class="lv">CRM</div></div>
+      <div class="lay miss"><div class="lt">Kennis &amp; gedrag</div><div class="lv">?</div><div class="ls">geen systeem. dit is het gat.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MISSIE / VISIE (donkere band) ============ -->
+<section class="block dark">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-label">Waarom we bestaan</span>
+      <h2 class="sec">De laag die we <em>bouwen</em></h2>
+      <div class="lead-body">
+        <p>Een wereld waarin kennis elke dag beweegt in food, drinks en gastvrijheid. We willen van dit werk weer een vak maken, geen tussenbaan, voor de hele volgende generatie. De dagelijkse laag die vakmanschap levend houdt bij iedereen die de gast bedient. Dat is het gat, en het is de reden dat CuliQuiz bestaat.</p>
+      </div>
+      <div class="vals">
+        <span class="val"><span class="vd"></span> Vakmanschap</span>
+        <span class="val"><span class="vd"></span> Inspiratie</span>
+        <span class="val"><span class="vd"></span> Educatie</span>
+        <span class="val"><span class="vd"></span> Fun</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ WAT CULIQUIZ BRENGT (donkere band) ============ -->
-<section class="block dark">
+<!-- ============ WAT CULIQUIZ BRENGT ============ -->
+<section class="block">
   <div class="wrap">
     <div class="reveal">
       <span class="sec-label">Wat CuliQuiz brengt</span>
-      <h2 class="sec">Negentig seconden per <em>dag</em></h2>
+      <h2 class="sec">Een dagelijks spel, geen volgende <em>cursus</em></h2>
       <div class="lead-body">
-        <p>CuliQuiz is geen cursus. Geen e-learningplatform, en geen certificering. Het is een dagelijks spel van negentig seconden dat vakmanschap levend houdt bij de mensen die de gast bedienen. Wijn, ingrediënten, techniek, het verhaal achter wat er op het bord ligt. De kennis die binnen weken na een training vervaagt, en die managers jarenlang proberen vast te houden.</p>
+        <p>CuliQuiz is geen cursus. Geen e-learningplatform, en geen certificering. Het is een dagelijks spel van drie tot vijf minuten dat vakmanschap levend houdt bij de mensen die de gast bedienen. Wijn, ingrediënten, techniek, het verhaal achter wat er op het bord ligt.</p>
         <p>Wat Duolingo deed voor taal, doen wij voor vakmanschap in food, drinks en gastvrijheid. Kleine dagelijkse momenten, gamified, meetbaar, op de goede manier verslavend.</p>
         <p>Vandaag hebben we rond de vijftigduizend gebruikers in Nederland, samenwerkingen met merken als Coca-Cola, Hendi, Rational en Mokka D'or, en een platform-rebuild waarmee we vanaf september 2026 wereldwijd kunnen schalen. We vragen Worldchefs niet om iets te bouwen. We vragen of wat we al gebouwd hebben past bij waar jij je community naartoe wilt brengen.</p>
       </div>
@@ -393,7 +432,7 @@
 </section>
 
 <!-- ============ DRIE RICHTINGEN ============ -->
-<section class="block">
+<section class="block alt">
   <div class="wrap">
     <div class="reveal" style="text-align:center;">
       <span class="sec-label" style="margin-left:auto;margin-right:auto;">Drie manieren om samen waarde te creëren</span>
@@ -416,7 +455,7 @@
         <h3>Van workshops naar blijvend <em>gedrag</em></h3>
         <p>Worldchefs heeft International Chefs Day. De Electrolux Food Foundation heeft Food Heroes, dat al kinderen in meer dan dertig landen bereikt. Geen van beide houdt de boodschap levend nadat de workshop stopt. CuliKidz, ons basisschoolproduct, is precies voor die laag gebouwd.</p>
         <div class="what">Voor Worldchefs</div>
-        <p class="sm">Een vlaggenschip-impactprogramma met meetbare schaal, in lijn met je Feed the Planet-werk en je Electrolux-partnerschap, te funden via routes die je al kent.</p>
+        <p class="sm">Een vlaggenschip-impactprogramma met meetbare schaal, in lijn met je Feed the Planet-werk, te funden via routes die je al kent zoals de Electrolux Food Foundation, Erasmus+ en EIT Food.</p>
         <div class="what">Voor CuliQuiz</div>
         <p class="sm">Foundation-steun voor een product dat al in ontwikkeling is, en de geloofwaardigheid van een door Worldchefs gedragen programma.</p>
         <div class="tl">Tijdlijn <span>twaalf tot achttien maanden tot een eerste gefund cohort</span></div>
@@ -436,28 +475,13 @@
 </section>
 
 <!-- ============ WAAROM WIJ, WAAROM NU ============ -->
-<section class="block alt">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="sec-label">Waarom wij, waarom nu</span>
-      <h2 class="sec">Klein genoeg om <em>direct</em> te praten</h2>
-      <div class="lead-body">
-        <p>We zijn niet het enige bedrijf dat tools bouwt voor de culinaire wereld. We zijn waarschijnlijk wel de enige die volledig gericht is op dagelijkse retentie na de training, met een product dat al op schaal live is en een architectuur die we vanaf september wereldwijd kunnen uitrollen.</p>
-        <p>We zijn gefinancierd, groeien, en klein genoeg dat dit gesprek tussen jou, ons en de mensen die het product echt bouwen blijft. Geen lagen, geen sales funnel. Als we zeggen dat we binnen twee weken terugkomen, dan komen we binnen twee weken terug.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ÉÉN EERLIJKE CORRECTIE ============ -->
 <section class="block">
   <div class="wrap">
     <div class="reveal">
-      <span class="sec-label">Eén eerlijke correctie</span>
-      <h2 class="sec">Over de Gates <em>Foundation</em></h2>
+      <span class="sec-label">Waarom wij, waarom nu</span>
+      <h2 class="sec">Het deel dat niemand anders heeft <em>gebouwd</em></h2>
       <div class="lead-body">
-        <p>In ons eerste gesprek kwam de Gates Foundation op als mogelijke funding-route. We hebben dat serieus genomen en goed gekeken. We denken niet dat het de juiste deur is. Gates funt global health, agrarische ontwikkeling en Amerikaans onderwijs, bijna altijd via voorstellen die ze zelf uitnodigen in plaats van open aanvragen. Een Europees programma voor culinair vakmanschap valt buiten wat ze funden en buiten hoe ze funden. We zouden een jaar verliezen achter een nee aan.</p>
-        <p>Wat wel realistisch is, en wat we graag met jou verkennen, is de Electrolux Food Foundation als eerste call, omdat ze al in jullie orbit zitten en precies dit soort werk funden. Daarna Europese routes als Erasmus+ en EIT Food voor het programma-gefunde spoor.</p>
+        <p>We zijn niet de enige die tools bouwt voor de culinaire wereld. We zijn wel de enige die volledig gericht is op wat er na de training gebeurt, de dagelijkse gewoonte die vakmanschap levend houdt. Het product is live, het werkt op schaal, en vanaf september reist het mee. Dat is het deel dat niemand anders al gebouwd heeft, en precies het deel dat jouw community mist.</p>
       </div>
     </div>
   </div>

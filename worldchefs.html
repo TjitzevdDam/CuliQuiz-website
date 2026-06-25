@@ -324,6 +324,20 @@
   .closer .cta{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--teal-deep);font-weight:700;font-size:15px;padding:15px 30px;border-radius:999px;transition:transform .15s,box-shadow .15s;box-shadow:0 12px 30px rgba(0,0,0,.20);}
   .closer .cta:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(0,0,0,.28);}
   @media (max-width:860px){ .tracks3{grid-template-columns:1fr;} }
+  /* missing-layer visual */
+  .layer{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px;}
+  .lay{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 18px;text-align:center;box-shadow:0 6px 18px rgba(15,78,84,.05);}
+  .lay .lt{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+  .lay .lv{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:24px;color:var(--ink);margin-top:5px;line-height:1;}
+  .lay.miss{background:var(--teal-deep);border-color:var(--teal-deep);}
+  .lay.miss .lt{color:var(--gold);}
+  .lay.miss .lv{color:#fff;}
+  .lay.miss .ls{font-size:11px;color:rgba(255,255,255,.72);margin-top:6px;line-height:1.4;}
+  @media (max-width:680px){ .layer{grid-template-columns:repeat(2,1fr);} }
+  /* value chips (on dark band) */
+  .vals{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
+  .vals .val{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:9px 17px;font-size:13.5px;font-weight:700;color:#fff;}
+  .vals .val .vd{width:8px;height:8px;border-radius:50%;background:var(--gold);}
 
 </style>
 </head>
@@ -363,28 +377,53 @@
   </div>
 </section>
 
-<!-- ============ WHAT'S STILL OPEN ============ -->
+<!-- ============ THE MISSING LAYER (visual) ============ -->
 <section class="block alt">
   <div class="wrap">
     <div class="reveal">
       <span class="sec-label">What's still open</span>
       <h2 class="sec">The layer in <em>between</em></h2>
       <div class="lead-body">
-        <p>In everything we've looked at, one pattern stands out. Worldchefs is strong at bringing chefs into the profession. The Academy gets them to their first job. Certification recognises their growing skill. But the everyday layer in between, the daily reinforcement of craft after the formal training ends, is not something any ecosystem really covers. Knowledge fades within weeks. Managers spend years trying to keep it alive through briefings and product trainings, and most of it slips away anyway.</p>
-        <p>This is not a Worldchefs problem. It's an industry problem, and nobody has solved it at scale. It's the exact reason CuliQuiz exists.</p>
+        <p>Worldchefs is strong at bringing chefs into the profession. The Academy gets them to their first job. Certification recognises their growing skill. But the everyday layer in between, the daily reinforcement of craft after the training ends, is not something any ecosystem really covers. Knowledge fades within weeks, and managers spend years trying to keep it alive.</p>
+        <p>It's easiest to see this way. Every part of the industry has a system, except the most important one.</p>
+      </div>
+    </div>
+    <div class="layer reveal">
+      <div class="lay"><div class="lt">Hotels</div><div class="lv">PMS</div></div>
+      <div class="lay"><div class="lt">Restaurants</div><div class="lv">POS</div></div>
+      <div class="lay"><div class="lt">Marketing</div><div class="lv">CRM</div></div>
+      <div class="lay miss"><div class="lt">Knowledge &amp; behaviour</div><div class="lv">?</div><div class="ls">no system. this is the gap.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MISSION / VISION (dark band) ============ -->
+<section class="block dark">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-label">Why we exist</span>
+      <h2 class="sec">The layer we're <em>building</em></h2>
+      <div class="lead-body">
+        <p>A world where knowledge moves every day in food, drinks and hospitality. We want to make this work a craft again, not a stopgap job, for the whole next generation. The daily layer that keeps craftsmanship alive in everyone who serves the guest. That's the gap, and it's the reason CuliQuiz exists.</p>
+      </div>
+      <div class="vals">
+        <span class="val"><span class="vd"></span> Craftsmanship</span>
+        <span class="val"><span class="vd"></span> Inspiration</span>
+        <span class="val"><span class="vd"></span> Education</span>
+        <span class="val"><span class="vd"></span> Fun</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ WHAT CULIQUIZ BRINGS (dark band) ============ -->
-<section class="block dark">
+<!-- ============ WHAT CULIQUIZ BRINGS ============ -->
+<section class="block">
   <div class="wrap">
     <div class="reveal">
       <span class="sec-label">What CuliQuiz brings</span>
-      <h2 class="sec">Ninety seconds a <em>day</em></h2>
+      <h2 class="sec">A daily game, not another <em>course</em></h2>
       <div class="lead-body">
-        <p>CuliQuiz is not a course. It's not an e-learning platform, and it's not a certification. It's a daily game that takes ninety seconds and keeps craft alive in the people who serve the guest. Wine, ingredients, technique, the story behind what's on the plate. The kind of knowledge that fades within weeks after training ends, and that managers spend years trying to hold onto.</p>
+        <p>CuliQuiz is not a course. It's not an e-learning platform, and it's not a certification. It's a daily game that takes three to five minutes and keeps craft alive in the people who serve the guest. Wine, ingredients, technique, the story behind what's on the plate.</p>
         <p>We do for craft in food, drinks and hospitality what Duolingo did for language. Small daily moments, gamified, measurable, addictive in the right way.</p>
         <p>Today we have around fifty thousand users across the Netherlands, partnerships with brands like Coca-Cola, Hendi, Rational and Mokka D'or, and a platform rebuild that lets us scale globally from September 2026. We are not asking Worldchefs to build anything. We're asking whether what we've already built fits where you want to take your community.</p>
       </div>
@@ -393,7 +432,7 @@
 </section>
 
 <!-- ============ THREE TRACKS ============ -->
-<section class="block">
+<section class="block alt">
   <div class="wrap">
     <div class="reveal" style="text-align:center;">
       <span class="sec-label" style="margin-left:auto;margin-right:auto;">Three ways we could create value together</span>
@@ -416,7 +455,7 @@
         <h3>Turning workshops into lasting <em>behaviour</em></h3>
         <p>Worldchefs has International Chefs Day. The Electrolux Food Foundation has Food Heroes, already reaching children in more than thirty countries. Neither keeps the message alive after the workshop ends. CuliKidz, our primary school product, was built for exactly that layer.</p>
         <div class="what">For Worldchefs</div>
-        <p class="sm">A flagship impact program with measurable scale, in line with your Feed the Planet work and your Electrolux partnership, fundable through routes you already know.</p>
+        <p class="sm">A flagship impact program with measurable scale, in line with your Feed the Planet work, fundable through routes you already know like the Electrolux Food Foundation, Erasmus+ and EIT Food.</p>
         <div class="what">For CuliQuiz</div>
         <p class="sm">Foundation backing for a product already in development, and the credibility of a Worldchefs-endorsed program.</p>
         <div class="tl">Timeline <span>twelve to eighteen months to a first funded cohort</span></div>
@@ -436,28 +475,13 @@
 </section>
 
 <!-- ============ WHY US, WHY NOW ============ -->
-<section class="block alt">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="sec-label">Why us, why now</span>
-      <h2 class="sec">Small enough to talk <em>directly</em></h2>
-      <div class="lead-body">
-        <p>We're not the only company building tools for the culinary world. We probably are the only one focused entirely on daily retention after the training, with a product already live at scale and an architecture we can deploy globally from September.</p>
-        <p>We are funded, growing, and small enough that this conversation stays between you, us, and the people who actually build the product. No layers, no sales funnel. If we say we'll come back in two weeks, we come back in two weeks.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ONE HONEST CORRECTION ============ -->
 <section class="block">
   <div class="wrap">
     <div class="reveal">
-      <span class="sec-label">One honest correction</span>
-      <h2 class="sec">On the Gates <em>Foundation</em></h2>
+      <span class="sec-label">Why us, why now</span>
+      <h2 class="sec">The part nobody else has <em>built</em></h2>
       <div class="lead-body">
-        <p>In our first conversation, the Gates Foundation came up as a possible funding route. We took that seriously and looked closely. We don't think it's the right door. Gates funds global health, agricultural development and US education, almost always through proposals they invite themselves rather than open applications. A European program for culinary craft sits outside what they fund and outside how they fund it. We'd lose a year chasing a no.</p>
-        <p>What is realistic, and what we'd like to explore with you, is the Electrolux Food Foundation as the first call, because they're already in your orbit and they fund exactly this kind of work. Then European routes like Erasmus+ and EIT Food for the program-funded track.</p>
+        <p>We're not the only ones building tools for the culinary world. We are the only ones focused entirely on what happens after the training, the daily habit that keeps craft alive. The product is live, it works at scale, and from September it travels. That's the part nobody else has built yet, and it's the part your community is missing.</p>
       </div>
     </div>
   </div>
