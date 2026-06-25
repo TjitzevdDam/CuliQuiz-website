@@ -335,6 +335,18 @@
   .lay.miss .lv{color:#fff;}
   .lay.miss .ls{font-size:11px;color:rgba(255,255,255,.72);margin-top:6px;line-height:1.4;}
   @media (max-width:680px){ .layer{grid-template-columns:repeat(2,1fr);} }
+  /* win-win two-column */
+  .winwin{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px;}
+  .ww{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 30px;box-shadow:0 10px 30px rgba(15,78,84,.06);}
+  .ww.us{border-top:3px solid var(--teal);}
+  .ww.them{border-top:3px solid var(--gold);}
+  .ww h4{font-size:16px;color:var(--ink);margin-bottom:14px;}
+  .ww ul{list-style:none;padding:0;margin:0;}
+  .ww li{position:relative;padding-left:20px;margin-bottom:10px;font-size:14.5px;color:var(--ink);line-height:1.5;}
+  .ww li:last-child{margin-bottom:0;}
+  .ww li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--teal);}
+  .ww.them li::before{background:var(--gold);}
+  @media (max-width:760px){ .winwin{grid-template-columns:1fr;} }
   /* value chips (on dark band) */
   .vals{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
   .vals .val{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:9px 17px;font-size:13.5px;font-weight:700;color:#fff;}
@@ -426,7 +438,7 @@
       <div class="lead-body">
         <p>CuliQuiz is geen cursus. Geen e-learningplatform, en geen certificering. Het is een dagelijks spel van drie tot vijf minuten dat vakmanschap levend houdt bij de mensen die de gast bedienen. Wijn, ingrediënten, techniek, het verhaal achter wat er op het bord ligt.</p>
         <p>Wat Duolingo deed voor taal, doen wij voor vakmanschap in food, drinks en gastvrijheid. Kleine dagelijkse momenten, gamified, meetbaar, op de goede manier verslavend.</p>
-        <p>Vandaag hebben we rond de vijftigduizend gebruikers in Nederland, samenwerkingen met merken als Coca-Cola, Hendi, Rational en Mokka D'or, en een platform-rebuild waarmee we vanaf september 2026 wereldwijd kunnen schalen. We vragen Worldchefs niet om iets te bouwen. We vragen of wat we al gebouwd hebben past bij waar jij je community naartoe wilt brengen.</p>
+        <p>Vandaag hebben we rond de vijftigduizend gebruikers in Nederland, samenwerkingen met merken als Coca-Cola, Hendi, Rational en Mokka D'or, en een platform dat vanaf volgend jaar wereldwijd kan schalen. We vragen Worldchefs niet om iets te bouwen. We vragen of we het volgende deel samen moeten bouwen.</p>
       </div>
     </div>
   </div>
@@ -475,15 +487,37 @@
   </div>
 </section>
 
-<!-- ============ WAAROM WIJ, WAAROM NU ============ -->
+<!-- ============ WAAROM SAMEN, WAAROM NU ============ -->
 <section class="block">
   <div class="wrap">
     <div class="reveal">
-      <span class="sec-label">Waarom wij, waarom nu</span>
-      <h2 class="sec">Het deel dat niemand anders heeft <em>gebouwd</em></h2>
-      <div class="lead-body">
-        <p>We zijn niet de enige die tools bouwt voor de culinaire wereld. We zijn wel de enige die volledig gericht is op wat er na de training gebeurt, de dagelijkse gewoonte die vakmanschap levend houdt. Het product is live, het werkt op schaal, en vanaf september reist het mee. Dat is het deel dat niemand anders al gebouwd heeft, en precies het deel dat jouw community mist.</p>
+      <span class="sec-label">Waarom samen, waarom nu</span>
+      <h2 class="sec">Samen sterker dan <em>alleen</em></h2>
+      <p class="sec-intro">Het platform is klaar, en vanaf volgend jaar nemen we het mee de wereld in. De eerlijke vraag is niet of we het kunnen, maar of we het alleen doen of met jou. Dit is de ruil waar we in geloven.</p>
+    </div>
+    <div class="winwin reveal">
+      <div class="ww us">
+        <h4>Wat CuliQuiz Worldchefs brengt</h4>
+        <ul>
+          <li>De dagelijkse laag die jullie ecosysteem mist</li>
+          <li>Een moderne ledenwaarde die de volgende generatie betrokken houdt</li>
+          <li>Nieuwe omzet, uit sponsoring en een referral-aandeel</li>
+          <li>Een te funden vlaggenschip voor jullie missie</li>
+          <li>En wij bouwen het, niet jullie</li>
+        </ul>
       </div>
+      <div class="ww them">
+        <h4>Wat Worldchefs CuliQuiz brengt</h4>
+        <ul>
+          <li>Het vertrouwen van de wereldwijde koksvereniging</li>
+          <li>Bereik in 110 landen dat geen marketingbudget kan kopen</li>
+          <li>Een directe lijn naar de volgende generatie koks</li>
+          <li>Wereldschaal in een partnerschap, niet in een decennium</li>
+        </ul>
+      </div>
+    </div>
+    <div class="lead-body reveal" style="margin-top:26px;">
+      <p>In ons eentje winnen we land voor land jarenlang vertrouwen. Samen wordt de dagelijkse vaklaag een standaard die het hele vak herkent, vanaf dag één. Dat is de winst die we liever met jou bouwen.</p>
     </div>
   </div>
 </section>

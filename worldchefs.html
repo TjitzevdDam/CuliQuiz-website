@@ -335,6 +335,18 @@
   .lay.miss .lv{color:#fff;}
   .lay.miss .ls{font-size:11px;color:rgba(255,255,255,.72);margin-top:6px;line-height:1.4;}
   @media (max-width:680px){ .layer{grid-template-columns:repeat(2,1fr);} }
+  /* win-win two-column */
+  .winwin{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px;}
+  .ww{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 30px;box-shadow:0 10px 30px rgba(15,78,84,.06);}
+  .ww.us{border-top:3px solid var(--teal);}
+  .ww.them{border-top:3px solid var(--gold);}
+  .ww h4{font-size:16px;color:var(--ink);margin-bottom:14px;}
+  .ww ul{list-style:none;padding:0;margin:0;}
+  .ww li{position:relative;padding-left:20px;margin-bottom:10px;font-size:14.5px;color:var(--ink);line-height:1.5;}
+  .ww li:last-child{margin-bottom:0;}
+  .ww li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--teal);}
+  .ww.them li::before{background:var(--gold);}
+  @media (max-width:760px){ .winwin{grid-template-columns:1fr;} }
   /* value chips (on dark band) */
   .vals{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
   .vals .val{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:9px 17px;font-size:13.5px;font-weight:700;color:#fff;}
@@ -426,7 +438,7 @@
       <div class="lead-body">
         <p>CuliQuiz is not a course. It's not an e-learning platform, and it's not a certification. It's a daily game that takes three to five minutes and keeps craft alive in the people who serve the guest. Wine, ingredients, technique, the story behind what's on the plate.</p>
         <p>We do for craft in food, drinks and hospitality what Duolingo did for language. Small daily moments, gamified, measurable, addictive in the right way.</p>
-        <p>Today we have around fifty thousand users across the Netherlands, partnerships with brands like Coca-Cola, Hendi, Rational and Mokka D'or, and a platform rebuild that lets us scale globally from September 2026. We are not asking Worldchefs to build anything. We're asking whether what we've already built fits where you want to take your community.</p>
+        <p>Today we have around fifty thousand users across the Netherlands, partnerships with brands like Coca-Cola, Hendi, Rational and Mokka D'or, and a platform rebuilt to scale globally from next year. We are not asking Worldchefs to build anything. We're asking whether we should build the next part together.</p>
       </div>
     </div>
   </div>
@@ -475,15 +487,37 @@
   </div>
 </section>
 
-<!-- ============ WHY US, WHY NOW ============ -->
+<!-- ============ WHY TOGETHER, WHY NOW ============ -->
 <section class="block">
   <div class="wrap">
     <div class="reveal">
-      <span class="sec-label">Why us, why now</span>
-      <h2 class="sec">The part nobody else has <em>built</em></h2>
-      <div class="lead-body">
-        <p>We're not the only ones building tools for the culinary world. We are the only ones focused entirely on what happens after the training, the daily habit that keeps craft alive. The product is live, it works at scale, and from September it travels. That's the part nobody else has built yet, and it's the part your community is missing.</p>
+      <span class="sec-label">Why together, why now</span>
+      <h2 class="sec">Better together than <em>alone</em></h2>
+      <p class="sec-intro">The platform is ready, and from next year we're taking it to the world. The honest question is not whether we can, but whether we do it alone or with you. Here's the trade we believe in.</p>
+    </div>
+    <div class="winwin reveal">
+      <div class="ww us">
+        <h4>What CuliQuiz brings Worldchefs</h4>
+        <ul>
+          <li>The daily layer your ecosystem is missing</li>
+          <li>A modern member benefit that keeps the next generation engaged</li>
+          <li>New revenue, from sponsorship and a referral share</li>
+          <li>A fundable flagship for your mission</li>
+          <li>And we build it, not you</li>
+        </ul>
       </div>
+      <div class="ww them">
+        <h4>What Worldchefs brings CuliQuiz</h4>
+        <ul>
+          <li>The trust of the world's chef association</li>
+          <li>Reach across 110 countries no marketing budget can buy</li>
+          <li>A direct line to the next generation of chefs</li>
+          <li>World scale in a partnership, not a decade</li>
+        </ul>
+      </div>
+    </div>
+    <div class="lead-body reveal" style="margin-top:26px;">
+      <p>On our own, we'd earn trust country by country for years. Together, the daily craft layer becomes a standard the whole profession recognises, from day one. That's the win we'd rather build with you.</p>
     </div>
   </div>
 </section>
