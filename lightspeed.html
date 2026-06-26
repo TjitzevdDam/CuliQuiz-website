@@ -307,8 +307,9 @@
   /* ---------- LIGHTSPEED additions ---------- */
   .hero h1{max-width:30ch;}
   .nav-logos .logo img{height:44px;}
-  .nav-logos .partner.text{font-family:'Montserrat',sans-serif;font-weight:700;font-size:31px;letter-spacing:-.02em;color:var(--ink);line-height:1;}
-  @media (max-width:560px){ .nav-logos .partner.text{font-size:22px;} }
+  .nav-logos .partner.chip{display:inline-flex;align-items:center;background:#1A2226;border-radius:11px;padding:11px 18px;}
+  .nav-logos .partner.chip img{height:27px;width:auto;display:block;}
+  @media (max-width:560px){ .nav-logos .partner.chip{padding:8px 12px;} .nav-logos .partner.chip img{height:20px;} }
   .nav-lang{display:inline-flex;align-items:center;justify-content:center;min-width:38px;border:1.5px solid var(--line);color:var(--muted);padding:7px 13px;border-radius:999px;font-weight:700;font-size:13px;letter-spacing:.04em;transition:border-color .15s,color .15s;}
   .nav-lang:hover{border-color:var(--teal);color:var(--teal);}
   /* tracks */
@@ -369,7 +370,7 @@
     <div class="nav-logos">
       <span class="logo"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></span>
       <span class="cross">&times;</span>
-      <span class="partner text">lightspeed</span>
+      <span class="partner chip"><img src="https://www.culiquiz.nl/assets/lightspeed-logo.png" alt="Lightspeed" /></span>
     </div>
   </div>
 </nav>
