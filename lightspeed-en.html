@@ -353,187 +353,84 @@
   .closer .cta:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(0,0,0,.28);}
 
 </style>
+
+<style>
+  html,body{margin:0;}
+  #cq-gate{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px;
+    background:linear-gradient(160deg,#0F4E54 0%, #16201F 100%);font-family:'Montserrat',system-ui,sans-serif;}
+  #cq-gate .card{background:#fff;border-radius:20px;padding:40px 34px 32px;max-width:380px;width:100%;
+    box-shadow:0 30px 70px rgba(0,0,0,.35);text-align:center;border-top:4px solid #26A8B0;}
+  #cq-gate .lock{width:56px;height:56px;border-radius:16px;background:#E6F4F5;color:#0F4E54;display:flex;
+    align-items:center;justify-content:center;margin:0 auto 18px;font-size:26px;}
+  #cq-gate h1{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:23px;color:#1A2226;margin:0 0 6px;letter-spacing:-.01em;}
+  #cq-gate p{color:#5E6A70;font-size:14px;margin:0 0 22px;line-height:1.5;}
+  #cq-gate form{display:flex;flex-direction:column;gap:10px;}
+  #cq-gate input{font:inherit;font-size:15px;padding:13px 14px;border:1px solid #d9e1e2;border-radius:10px;background:#f5f7f7;color:#1A2226;width:100%;box-sizing:border-box;}
+  #cq-gate input:focus{outline:2px solid #26A8B0;outline-offset:1px;border-color:transparent;}
+  #cq-gate button{font:inherit;font-weight:700;font-size:15px;padding:13px 14px;border:none;border-radius:10px;background:#26A8B0;color:#fff;cursor:pointer;transition:background .12s;}
+  #cq-gate button:hover{background:#1B7A80;}
+  #cq-gate button:disabled{opacity:.6;cursor:wait;}
+  #cq-gate .err{color:#A91917;font-size:13px;font-weight:600;min-height:18px;margin-top:2px;}
+  #cq-gate .foot{margin-top:18px;font-size:11.5px;color:#9aa8ac;}
+  #cq-content{display:none;}
+  #cq-content.shown{display:block;}
+</style>
 </head>
 <body>
-<!-- ============ NAV ============ -->
-<nav class="nav">
-  <div class="wrap nav-inner">
-    <div class="nav-logos">
-      <span class="logo"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></span>
-      <span class="cross">&times;</span>
-      <span class="partner chip"><img src="https://www.culiquiz.nl/assets/lightspeed-logo.png" alt="Lightspeed" /></span>
-    </div>
-    <a class="nav-lang" href="/lightspeed">NL</a>
-  </div>
-</nav>
 
-<!-- ============ HERO ============ -->
-<header class="hero">
-  <div class="wrap">
-    <span class="eyebrow">CuliQuiz &times; Lightspeed</span>
-    <h1>We change what staff know and <em>do</em>. Lightspeed makes it measurable.</h1>
-    <p class="lead">A daily training layer for hospitality that positively changes knowledge and behaviour on the floor. Visibility with the young professionals, training for your teams and your customers, and with the Lightspeed POS, measurable for the first time. We already work together. This is the bigger thing we think we should build.</p>
+<div id="cq-gate">
+  <div class="card">
+    <div class="lock" aria-hidden="true">&#128274;</div>
+    <h1>CuliQuiz</h1>
+    <p>Priv&eacute; document. Voer het wachtwoord in om verder te gaan.</p>
+    <form id="cq-gate-form" autocomplete="off">
+      <input type="password" id="cq-pw" placeholder="Wachtwoord" aria-label="Wachtwoord" autofocus />
+      <button type="submit" id="cq-unlock">Openen</button>
+      <div class="err" id="cq-err" aria-live="polite"></div>
+    </form>
+    <div class="foot">Alleen voor genodigden.</div>
   </div>
-</header>
-
-<!-- ============ VISIBILITY ============ -->
-<section class="block">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="sec-label">Visibility</span>
-      <h2 class="sec">With the <em>young professionals</em></h2>
-      <p class="sec-intro">CuliQuiz is a community of around fifty thousand young hospitality professionals, exactly the generation that will soon choose a point-of-sale system. Lightspeed reaches them consistently, not as advertising, but as part of the daily flow of knowledge.</p>
-      <p class="what" style="margin-top:28px;">What's in it</p>
-      <ul class="path-list">
-        <li>Branded questions in the daily quizzes</li>
-        <li>A Lightspeed tournament or league on the platform</li>
-        <li>Visibility at the CuliQuiz Battle, the big student event</li>
-        <li>A partner spot at the CuliQuiz Top 100 and the hospitality trade shows</li>
-      </ul>
-      <p class="what" style="margin-top:22px;">For Lightspeed</p>
-      <p style="max-width:64ch;color:var(--ink);">Awareness and preference with the next generation of operators, exactly the people who will soon choose a POS.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TWO PATHS (training) ============ -->
-<section class="block alt">
-  <div class="wrap wide">
-    <div class="reveal" style="text-align:center;">
-      <span class="sec-label" style="justify-content:center;">Two paths</span>
-      <h2 class="sec" style="margin:0 auto;">Training, <em>internal</em> and <em>external</em>.</h2>
-      <p class="sec-intro" style="margin-left:auto;margin-right:auto;text-align:left;">Same principle, two audiences. Three to five minutes on the phone, daily. Not one training day a year, but hundreds of touchpoints per employee.</p>
-    </div>
-    <div class="paths">
-      <div class="path reveal d1">
-        <span class="tag">Path 1 &middot; Internal</span>
-        <h3>For Lightspeed's <em>own teams</em>.</h3>
-        <p class="what">What we see</p>
-        <p>Sales onboarding that doesn't scale. Product knowledge that doesn't reach the floor. International teams that aren't aligned. Support that depends on how well people know the system.</p>
-        <p class="what">What's in it</p>
-        <ul class="path-list">
-          <li>A dedicated Lightspeed environment inside CuliQuiz</li>
-          <li>Microgames per role: sales, support, onboarding</li>
-          <li>A few minutes a day on the phone, no separate training days</li>
-          <li>A dashboard with insight per team, location and country</li>
-          <li>New content monthly, plus optional questions of your own</li>
-          <li>Multilingual for the international rollout</li>
-        </ul>
-      </div>
-      <div class="path gold reveal d2">
-        <span class="tag">Path 2 &middot; External</span>
-        <h3>For your customers, on the <em>system</em>.</h3>
-        <p class="what">What we see</p>
-        <p>Customers buy Lightspeed, but on the floor the knowledge of the system stalls. Onboarding is a one-off, after that there's no ongoing contact to keep adoption alive. And the teams miss the hospitality knowledge that drives more revenue.</p>
-        <p class="what">What's in it</p>
-        <ul class="path-list">
-          <li>A Lightspeed-branded academy inside CuliQuiz, the Lightspeed Academy</li>
-          <li>Access for the teams of thousands of Lightspeed customers, per location</li>
-          <li>Games about the system and about wine, upsell and hospitality</li>
-          <li>Visible per customer whether it lands: participation and knowledge growth</li>
-          <li>An aggregated dashboard for Lightspeed across all customers</li>
-          <li>Connectable to the POS to measure the effect, see below</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ THE EXTRA: MEASURABLE (POS loop) ============ -->
-<section class="block">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="sec-label">The extra: measurable</span>
-      <h2 class="sec">And now, in <em>numbers</em></h2>
-      <p class="sec-intro">Training is the one lever every operator pulls and nobody can measure. With the Lightspeed POS that changes: connect what staff learn to what they sell, and the effect becomes demonstrable. On top of positively changing knowledge and behaviour, you make the results measurable.</p>
-    </div>
-    <div class="psteps reveal">
-      <div class="pstep"><div class="pn">1</div><h4>Training</h4><p>Teams practise wine pairing, upsell and cross-sell in the daily game.</p></div>
-      <span class="parrow">&rarr;</span>
-      <div class="pstep"><div class="pn">2</div><h4>Behaviour</h4><p>They apply it at the table: advising, pairing, recommending.</p></div>
-      <span class="parrow">&rarr;</span>
-      <div class="pstep pos"><div class="pn">3</div><h4>Lightspeed POS</h4><p>The till records what is actually sold, in real time.</p></div>
-      <span class="parrow">&rarr;</span>
-      <div class="pstep dash"><div class="pn">4</div><h4>Dashboard</h4><p>The data comes back as proof: training, measurably tied to revenue.</p></div>
-    </div>
-    <div class="efx reveal">
-      <div class="efx-h">Example: effect dashboard after a wine-pairing campaign</div>
-      <div class="efx-grid">
-        <div class="e"><div class="ev">+18%</div><div class="el">wine pairings sold</div></div>
-        <div class="e"><div class="ev">+&euro;2.10</div><div class="el">average spend per guest</div></div>
-        <div class="e"><div class="ev">+12%</div><div class="el">upsell on recommended dishes</div></div>
-        <div class="e"><div class="ev">+9%</div><div class="el">cross-sell of desserts &amp; drinks</div></div>
-      </div>
-      <p class="efx-note">Indicative figures. The integration compares Lightspeed sales data from before and after a campaign, per location and per team, so the effect is demonstrable, not assumed.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WIN-WIN ============ -->
-<section class="block alt">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="sec-label">Why together</span>
-      <h2 class="sec">Two halves of the same <em>loop</em></h2>
-      <p class="sec-intro">Lightspeed sees what is sold. We change what staff do. Neither of us can close the loop alone. Together, we can.</p>
-    </div>
-    <div class="winwin reveal">
-      <div class="ww us">
-        <h4>What CuliQuiz brings Lightspeed</h4>
-        <ul>
-          <li>Visibility with around 50,000 young professionals, the next generation of operators</li>
-          <li>Training that drives adoption of Lightspeed</li>
-          <li>Internal training for your own teams and partners</li>
-          <li>Proof that training moves revenue, a first for any POS</li>
-          <li>And we build the training, not you</li>
-        </ul>
-      </div>
-      <div class="ww them">
-        <h4>What Lightspeed brings CuliQuiz</h4>
-        <ul>
-          <li>The sales data that proves training actually works</li>
-          <li>Thousands of customers we can onboard together, for example through a Lightspeed Academy to train them on the system</li>
-          <li>The measurement loop we cannot close on our own</li>
-          <li>The credibility of a global commerce platform</li>
-        </ul>
-      </div>
-    </div>
-    <div class="lead-body reveal" style="margin-top:26px;">
-      <p>Until now it was about visibility. It can be more: training the floor can feel, and a number the operator can finally see. That is the loop we would like to build with you.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CLOSER ============ -->
-<section class="closer">
-  <div class="wrap">
-    <div class="reveal">
-      <h2>We're keen to go <em>further</em>.</h2>
-      <p>We already work together and the groundwork is in place. What we'd like now is to pick the first concrete step together, the one that starts turning training into numbers you can see in the POS, and get going.</p>
-      <a class="cta" href="mailto:tjitze@culiquiz.nl?subject=CuliQuiz%20and%20Lightspeed%20%E2%80%94%20the%20next%20step">Let's take the next step</a>
-      <div class="signature"><strong>Tjitze van der Dam</strong>, founder &nbsp;&middot;&nbsp; CuliQuiz BV<br>For the Lightspeed partnership team &middot; June 2026</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer class="foot">
-  <div class="wrap">
-    CuliQuiz &times; Lightspeed &middot; a partnership conversation, not for distribution.
-  </div>
-</footer>
+</div>
+<div id="cq-content"></div>
 
 <script>
-  document.documentElement.classList.add('js');
-  (function(){
-    var els = document.querySelectorAll('.reveal');
+(function(){
+  var SALT="0w2BCLStMcjpAzPUOXsz5Q==", IV="OlIwdpPraAKw1rVD", BLOB="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", ITER=250000;
+  var SS_KEY="cq20_pw";
+  function b2u(b64){var bin=atob(b64);var u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++){u[i]=bin.charCodeAt(i);}return u;}
+  function runReveal(){
+    var els=document.querySelectorAll('#cq-content .reveal');
     if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('in');});return;}
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
-    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
     els.forEach(function(el){obs.observe(el);});
-  })();
+  }
+  async function unlock(password, silent){
+    var btn=document.getElementById('cq-unlock'); var err=document.getElementById('cq-err');
+    if(btn){btn.disabled=true;}
+    try{
+      var enc=new TextEncoder();
+      var km=await crypto.subtle.importKey('raw', enc.encode(password), {name:'PBKDF2'}, false, ['deriveKey']);
+      var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b2u(SALT),iterations:ITER,hash:'SHA-256'}, km, {name:'AES-GCM',length:256}, false, ['decrypt']);
+      var plain=await crypto.subtle.decrypt({name:'AES-GCM', iv:b2u(IV)}, key, b2u(BLOB));
+      var content=document.getElementById('cq-content');
+      content.innerHTML=new TextDecoder().decode(plain);
+      content.classList.add('shown');
+      var g=document.getElementById('cq-gate'); if(g){g.parentNode.removeChild(g);}
+      try{sessionStorage.setItem(SS_KEY,password);}catch(e){}
+      document.documentElement.classList.add('js');
+      runReveal();
+    }catch(e){
+      if(btn){btn.disabled=false;}
+      if(!silent){ if(err){err.textContent='Onjuist wachtwoord.';} try{sessionStorage.removeItem(SS_KEY);}catch(x){} }
+    }
+  }
+  function init(){
+    var form=document.getElementById('cq-gate-form');
+    if(form){form.addEventListener('submit', function(e){e.preventDefault(); unlock(document.getElementById('cq-pw').value, false);});}
+    try{var saved=sessionStorage.getItem(SS_KEY); if(saved){unlock(saved, true);}}catch(e){}
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded', init);}else{init();}
+})();
 </script>
-
 </body>
 </html>
