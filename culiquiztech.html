@@ -411,6 +411,33 @@
   .tf-arrow{text-align:center;color:var(--teal);font-size:20px;font-weight:900;line-height:1;margin:8px 0;}
   .tf-arrow span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;margin-bottom:1px;}
 
+
+  /* ---------- data & privacy ---------- */
+  .dgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:42px;}
+  .dcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 26px;box-shadow:0 8px 24px rgba(15,78,84,.05);}
+  .dcard.brand{background:var(--teal-deep);border-color:var(--teal-deep);}
+  .dcard .dsub{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;}
+  .dcard.brand .dsub{color:var(--gold);}
+  .dcard .dh{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:18px;color:var(--ink);margin-top:3px;}
+  .dcard.brand .dh{color:#fff;}
+  .dcard ul{margin:14px 0 0;padding-left:18px;}
+  .dcard li{font-size:14px;color:var(--muted);line-height:1.7;}
+  .dcard.brand li{color:#cfe6e8;}
+  .dcard .dex{margin-top:14px;font-size:13px;color:var(--ink);background:var(--teal-soft);border-radius:10px;padding:12px 14px;line-height:1.5;}
+  .dcard.brand .dex{color:#fff;background:rgba(255,255,255,.10);}
+  @media (max-width:760px){ .dgrid{grid-template-columns:1fr;} }
+  /* ---------- roadmap ---------- */
+  .road{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:42px;}
+  .rstage{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px;box-shadow:0 8px 24px rgba(15,78,84,.05);border-top:3px solid var(--grey);}
+  .rstage.now{border-top-color:var(--gold);box-shadow:0 12px 30px rgba(234,182,0,.16);}
+  .rstage .rwhen{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-dark);}
+  .rstage.now .rwhen{color:#a37e00;}
+  .rstage h4{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:18px;color:var(--ink);margin:6px 0 8px;}
+  .rstage p{font-size:13px;color:var(--muted);line-height:1.5;}
+  .rstage .nowtag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#7a5b00;background:var(--gold-soft);border-radius:6px;padding:3px 8px;margin-bottom:8px;}
+  @media (max-width:860px){ .road{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:460px){ .road{grid-template-columns:1fr;} }
+
 </style>
 </head>
 <body>
@@ -470,8 +497,33 @@
   </div>
 </section>
 
-<!-- ============ DE ARCHITECTUUR (visueel) ============ -->
+<!-- ============ EEN LEVEN LANG ============ -->
 <section class="block">
+  <div class="wrap wide">
+    <div class="reveal" style="text-align:center;">
+      <span class="sec-label" style="margin-left:auto;margin-right:auto;">E&eacute;n profiel, een leven lang</span>
+      <h2 class="sec" style="margin:0 auto;">De gouden <em>stip</em></h2>
+      <p class="sec-intro" style="margin:16px auto 0;">Zoom uit naar twintig jaar. Hetzelfde profiel groeit een hele loopbaan mee, van de eerste kennismaking op de basisschool tot de eigen zaak, en reist mee van school naar werkgever naar werkgever.</p>
+    </div>
+    <div class="pipe reveal">
+      <div class="pstep"><div class="pn">1</div><h4>CuliKidz</h4><p>Basisschool, spelenderwijs nieuwsgierig naar eten.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep"><div class="pn">2</div><h4>Horecaschool</h4><p>Eigen profiel, leert de basis van het vak.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep"><div class="pn">3</div><h4>Commis</h4><p>Eerste baan, mastery begint te groeien.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep"><div class="pn">4</div><h4>Chef de partie</h4><p>Nieuwe werkgevers, het profiel reist mee.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep"><div class="pn">5</div><h4>Chef</h4><p>Traint nu zelf het team via campagnes.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep pos"><div class="pn">6</div><h4>Eigen zaak</h4><p>Owner en mentor, bouwt de volgende generatie op.</p></div>
+    </div>
+    <div class="moatnote reveal"><b>&#9733; De gouden stip.</b> E&eacute;n culinair profiel dat twintig jaar meegroeit, overal in de sector herkend wordt en bij elke stap waardevoller wordt. Geen feature die een concurrent namaakt, maar een band die we over een hele loopbaan opbouwen, en de sterkste reden om te blijven.</div>
+  </div>
+</section>
+
+<!-- ============ DE ARCHITECTUUR (visueel) ============ -->
+<section class="block alt">
   <div class="wrap wide">
     <div class="reveal" style="text-align:center;">
       <span class="sec-label" style="margin-left:auto;margin-right:auto;">De architectuur</span>
@@ -515,7 +567,7 @@
 </section>
 
 <!-- ============ MERK, ORGANISATIE & GEBRUIKER ============ -->
-<section class="block alt">
+<section class="block">
   <div class="wrap">
     <div class="reveal" style="text-align:center;">
       <span class="sec-label" style="margin-left:auto;margin-right:auto;">Merk, organisatie &amp; gebruiker</span>
@@ -530,6 +582,32 @@
       <div class="tf-tier"><div class="tl">De gebruiker</div><h4>Speelt, leert, verdient</h4><p>De medewerker bouwt kennis en mastery op. Gratis, een leven lang.</p></div>
     </div>
     <div class="moatnote reveal"><b>En terug omhoog:</b> alles wat de gebruiker speelt stroomt terug als data. Deelname en kennisgroei voor de organisatie, en met de POS-koppeling de omzet voor het merk. De gebruiker betaalt nooit; het merk financiert de gratis community. Drie partijen, &eacute;&eacute;n profiel in het midden.</div>
+  </div>
+</section>
+
+<!-- ============ DATA & PRIVACY ============ -->
+<section class="block alt">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <span class="sec-label" style="margin-left:auto;margin-right:auto;">Data &amp; privacy</span>
+      <h2 class="sec" style="margin:0 auto;">Wie ziet <em>welke</em> data</h2>
+      <p class="sec-intro" style="margin:16px auto 0;">Het kernprincipe van het platform: de organisatie bezit de individuele data, het merk of de partner krijgt alleen geaggregeerde inzichten. Privacy by design, en precies wat sell-out intelligence mogelijk maakt zonder iemand te identificeren.</p>
+    </div>
+    <div class="dgrid reveal">
+      <div class="dcard">
+        <div class="dsub">Zichtbaar voor de organisatie</div>
+        <div class="dh">De organisatie bezit</div>
+        <ul><li>Medewerker- en membership-data</li><li>Individuele voortgang, XP en mastery</li><li>Completion per medewerker</li></ul>
+        <div class="dex">Een restaurant ziet de wijn-mastery van het eigen team, op naam.</div>
+      </div>
+      <div class="dcard brand">
+        <div class="dsub">Zichtbaar voor merk / partner</div>
+        <div class="dh">Het merk ziet alleen geaggregeerd</div>
+        <ul><li>Bereik en participatie van de campagne</li><li>Completion en kennisgroei in de breedte</li><li>Met de POS-koppeling: het effect op de verkoop</li></ul>
+        <div class="dex">Een merk ziet 300 zaken, 6.000 medewerkers, 72% completion, nooit &eacute;&eacute;n persoon.</div>
+      </div>
+    </div>
+    <p class="arch-note reveal">Dit model maakt twee dingen tegelijk waar: merken krijgen voor het eerst sell-out intelligence over de hele sector, en de medewerker houdt z'n privacy. Die combinatie is de basis onder het verdienmodel, en moeilijk na te bouwen zonder dezelfde datalaag.</p>
   </div>
 </section>
 
@@ -655,6 +733,23 @@
       <div class="am"><div class="av">10</div><div class="al">landen waar we draaien of interesse zien</div></div>
       <div class="am"><div class="av">350 mln</div><div class="al">hospitality-banen wereldwijd, 1 op de 10</div></div>
       <div class="am"><div class="av">&euro;10,7M</div><div class="al">ARR-doel binnen 5 jaar</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section class="block alt">
+  <div class="wrap wide">
+    <div class="reveal" style="text-align:center;">
+      <span class="sec-label" style="margin-left:auto;margin-right:auto;">Roadmap</span>
+      <h2 class="sec" style="margin:0 auto;">Van proof of concept naar <em>platform</em></h2>
+      <p class="sec-intro" style="margin:16px auto 0;">Gefaseerd opgebouwd, met live momenten als validatie. De eerste publieke tests draaien rond de grote horecabeurzen.</p>
+    </div>
+    <div class="road reveal">
+      <div class="rstage"><div class="rwhen">Gevalideerd</div><h4>Proof of concept</h4><p>Game-loop, spelersprofielen, campagnesysteem en leaderboards bewezen.</p></div>
+      <div class="rstage now"><span class="nowtag">Nu in aanbouw</span><div class="rwhen">Sept. 2026 &middot; Gastvrij Rotterdam</div><h4>MVP</h4><p>Dagelijkse engagement, campagnebeheer, team-competities en dashboards voor zaken en merken.</p></div>
+      <div class="rstage"><div class="rwhen">Jan. 2027 &middot; Horecava</div><h4>Menu AI BETA</h4><p>Top 50 tot 100 gerechten voorgeladen, zodat elke kaart vanaf dag &eacute;&eacute;n grotendeels speelbaar is.</p></div>
+      <div class="rstage"><div class="rwhen">Daarna</div><h4>Schaal</h4><p>Geavanceerde analytics, merk-dashboards, marktinzichten en internationale uitrol.</p></div>
     </div>
   </div>
 </section>
