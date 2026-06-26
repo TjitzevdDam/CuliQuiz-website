@@ -13,6 +13,7 @@ Disallow: /menu-ai-en
 Disallow: /infrastructuur
 Disallow: /infrastructuur-en
 Disallow: /lightspeed
+Disallow: /lightspeed-en
 Disallow: /worldchefs
 Disallow: /worldchefs-nl
 Disallow: /hop
