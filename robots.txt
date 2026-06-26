@@ -14,7 +14,6 @@ Disallow: /infrastructuur
 Disallow: /infrastructuur-en
 Disallow: /lightspeed
 Disallow: /worldchefs
-Disallow: /lightspeed
 Disallow: /worldchefs-nl
 Disallow: /hop
 
