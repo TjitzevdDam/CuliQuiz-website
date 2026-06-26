@@ -343,6 +343,19 @@
   /* closer cta */
   .closer .cta{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--teal-deep);font-weight:700;font-size:15px;padding:15px 30px;border-radius:999px;transition:transform .15s,box-shadow .15s;box-shadow:0 12px 30px rgba(0,0,0,.20);}
   .closer .cta:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(0,0,0,.28);}
+  /* moat-noot */
+  .moatnote{margin-top:22px;background:var(--gold-soft);border:1px solid #F0E2A8;border-left:5px solid var(--gold);border-radius:14px;padding:20px 26px;font-size:15px;color:var(--ink);line-height:1.6;}
+  .moatnote b{color:#7a5b00;}
+  /* effect dashboard */
+  .efx{margin-top:18px;background:var(--teal-deep);border-radius:18px;padding:26px 28px;color:#fff;}
+  .efx-h{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .efx-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .efx .e{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:18px;text-align:center;}
+  .efx .ev{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:28px;color:#fff;}
+  .efx .el{font-size:12px;color:#bfe0e2;margin-top:4px;line-height:1.35;}
+  .efx-note{font-size:12px;color:#9fc4c7;margin-top:14px;}
+  @media (max-width:860px){ .efx-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .efx-grid{grid-template-columns:1fr;} }
 
 </style>
 </head>
@@ -361,8 +374,8 @@
 <header class="hero">
   <div class="wrap">
     <span class="eyebrow">CuliQuiz, het techverhaal</span>
-    <h1>De kennislaag voor hospitality, gebouwd op <em>AI</em> en dagelijkse games.</h1>
-    <p class="lead">CuliQuiz traint de grootste workforce ter wereld, drie tot vijf minuten per dag, met content die onze eigen Menu AI automatisch genereert. Volledig in-house gebouwd. En eromheen iets wat geen pure software-speler heeft: een echte community en live events.</p>
+    <h1>Een leerplatform voor hospitality, met een <em>classificatie-AI</em> eronder.</h1>
+    <p class="lead">CuliQuiz traint de grootste workforce ter wereld, drie tot vijf minuten per dag. Onze Menu AI herkent elke menukaart, classificeert hem in onze kennisgraaf en koppelt hem aan een gevalideerde database. We koppelen aan het kassasysteem om het effect te meten. Volledig in-house gebouwd. En eromheen iets wat geen pure software-speler heeft: een community en live events.</p>
   </div>
 </header>
 
@@ -374,79 +387,104 @@
       <h2 class="sec">De ontbrekende laag, in <em>software</em></h2>
       <div class="lead-body">
         <p>Elke hoek van de horeca heeft een systeem. Hotels een PMS, restaurants een POS, marketing een CRM. Voor de kennis en het gedrag van de mensen op de vloer bestaat er niets. Dat gat vullen wij: een dagelijkse, gamified leerlaag die kennis levend houdt waar het telt, aan tafel.</p>
-        <p>Wat Duolingo deed voor taal, bouwen wij voor vakmanschap in food, drinks en gastvrijheid. Vandaag rond de vijftigduizend gebruikers in Nederland; vanaf volgend jaar wereldwijd.</p>
+        <p>Wat Duolingo deed voor taal, bouwen wij voor vakmanschap in food, drinks en gastvrijheid. Microgames van drie tot vijf minuten, meerdere spelvormen, streaks en mastery per onderwerp. Vandaag rond de vijftigduizend gebruikers in Nederland; vanaf volgend jaar wereldwijd.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ DE TECH (4 lagen) ============ -->
+<!-- ============ DE ARCHITECTUUR ============ -->
 <section class="block alt">
   <div class="wrap wide">
     <div class="reveal" style="text-align:center;">
-      <span class="sec-label" style="margin-left:auto;margin-right:auto;">Onder de motorkap</span>
-      <h2 class="sec" style="margin:0 auto;">Vier lagen, in-house <em>gebouwd</em></h2>
-      <p class="sec-intro" style="margin:16px auto 0;">Geen losse app, maar een stack die elkaar versterkt. We bouwen het zelf, met een eigen techteam.</p>
+      <span class="sec-label" style="margin-left:auto;margin-right:auto;">De architectuur</span>
+      <h2 class="sec" style="margin:0 auto;">Eén model, eindeloos <em>schaalbaar</em></h2>
+      <p class="sec-intro" style="margin:16px auto 0;">Niet een app met features eraan geplakt, maar een datamodel dat de hele sector beschrijft. In-house gebouwd, met een eigen techteam.</p>
     </div>
     <div class="techgrid reveal">
       <div class="tcard">
-        <span class="tag">De learning-engine</span>
-        <h3>Duolingo-achtig, maar voor de vloer</h3>
-        <p>Dagelijkse microgames van drie tot vijf minuten: true/false, multiple choice, sorteren, beeldvragen. Gebouwd op de vergeetcurve, met streaks, battles en mastery per onderwerp. Verslavend op de goede manier.</p>
+        <span class="tag">Het datamodel</span>
+        <h3>Alles is een organisatie</h3>
+        <p>Eén concept voor restaurants, ketens, scholen, merken en events. Het verschil zit in drie knoppen: het type, de capabilities en de rollen. Geen losse begrippen, geen migraties bij een nieuw soort klant. Eindeloos schaalbaar.</p>
       </div>
       <div class="tcard">
-        <span class="tag">Het platform</span>
-        <h3>CuliQuiz 2.0</h3>
-        <p>De tooling eronder: organisaties, leden, rollen, campagnes en een dashboard. Volledig in-house ontwikkeld en uit te rollen, meertalig en multi-locatie.</p>
+        <span class="tag">De gebruiker</span>
+        <h3>E&eacute;n profiel, een leven lang</h3>
+        <p>Een professional heeft &eacute;&eacute;n account dat meereist langs elke werkgever, via memberships. E&eacute;n progressie, &eacute;&eacute;n mastery-profiel. Van CuliKidz op de basisschool tot een eigen zaak. Een persoonlijke kennisgraaf die twintig jaar meegroeit.</p>
       </div>
       <div class="tcard gold">
-        <span class="tag">De USP</span>
-        <h3>Menu AI</h3>
-        <p>Upload een menukaart, en AI maakt er automatisch gevalideerde microgames van, op maat van de zaak. De enige tool die zo snel een training op maat levert en instant meebeweegt met een nieuwe kaart.</p>
-      </div>
-      <div class="tcard">
-        <span class="tag">De moat</span>
-        <h3>De datalaag</h3>
-        <p>Elk gerecht, ingredi&euml;nt en drank is een entiteit, getagd op organisatie en onderwerp, met meerdere spelvormen eraan. Elke upload verrijkt de globale content-pool. Hoe voller, hoe waardevoller. Een vliegwiel dat een concurrent niet kopieert.</p>
+        <span class="tag">De kennisgraaf</span>
+        <h3>Het hele vak, gestructureerd</h3>
+        <p>Elk gerecht, ingredi&euml;nt en drank is geclassificeerd: domein &rarr; subdomein &rarr; topic &rarr; leerdoel. Dat voedt de training, de analytics, de aanbevelingen en Menu AI. Geen vragenbak, maar een knowledge graph van een hele industrie.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ MENU AI PIPELINE ============ -->
+<!-- ============ MENU AI ============ -->
 <section class="block">
   <div class="wrap wide">
     <div class="reveal">
-      <span class="sec-label">De USP, uitgewerkt</span>
-      <h2 class="sec">Van menukaart naar speelbare <em>training</em></h2>
-      <p class="sec-intro">Geen AI-vraaggenerator, maar een classificatie-pijplijn. De kern is dat elk item z'n plek krijgt in onze knowledge architecture, daarna pas volgen de vragen.</p>
+      <span class="sec-label">De classificatie-engine</span>
+      <h2 class="sec">Menu AI, geen <em>vraaggenerator</em></h2>
+      <p class="sec-intro">Menu AI verzint geen content. Het herkent elke kaart, classificeert elk item in de kennisgraaf en koppelt het aan onze gevalideerde database. De intelligentie zit in de classificatie, niet in het uitspugen van vragen.</p>
     </div>
     <div class="pipe reveal">
       <div class="pstep"><div class="pn">1</div><h4>Upload</h4><p>Menukaart als foto of PDF.</p></div>
       <span class="parrow">&rarr;</span>
-      <div class="pstep"><div class="pn">2</div><h4>OCR &amp; extractie</h4><p>Herkenning van gerecht, ingredi&euml;nt en drank.</p></div>
+      <div class="pstep"><div class="pn">2</div><h4>Herkenning</h4><p>OCR haalt gerecht, ingredi&euml;nt en drank eruit.</p></div>
       <span class="parrow">&rarr;</span>
       <div class="pstep pos"><div class="pn">3</div><h4>Classificatie</h4><p>Plek in domein &rarr; subdomein &rarr; topic &rarr; leerdoel.</p></div>
       <span class="parrow">&rarr;</span>
-      <div class="pstep"><div class="pn">4</div><h4>Vraaggeneratie</h4><p>Meerdere spelvormen per item.</p></div>
+      <div class="pstep"><div class="pn">4</div><h4>Matching</h4><p>Koppeling aan gevalideerde content in de database.</p></div>
       <span class="parrow">&rarr;</span>
-      <div class="pstep"><div class="pn">5</div><h4>Validatie</h4><p>Alleen nieuw wordt gekeurd, bekend is direct speelbaar.</p></div>
+      <div class="pstep"><div class="pn">5</div><h4>Validatie</h4><p>Alleen echt nieuwe items voorgesteld en gekeurd.</p></div>
       <span class="parrow">&rarr;</span>
       <div class="pstep dash"><div class="pn">6</div><h4>Campagne</h4><p>Toernooi, battle of doorlopende training.</p></div>
     </div>
-    <div class="lead-body reveal" style="margin-top:24px;">
-      <p>Doordat classificatie de kern is, koppelt elk item direct aan mastery, analytics, aanbevelingen en leerwegen. En het meet door: gekoppeld aan de POS (Lightspeed) zie je of de training het gedrag op de vloer echt verandert, van upsell tot wijn-spijs, in cijfers.</p>
+    <div class="moatnote reveal">
+      <b>De datalaag is de moat.</b> De content zit in de database, niet in een AI die vragen verzint. Bekende items leveren direct hun gevalideerde spelvormen; alleen het nieuwe gaat langs een mens. Elke upload verrijkt de globale pool: hoe voller, hoe meer vanzelf gaat, en hoe moeilijker te kopi&euml;ren. Een vliegwiel.
+    </div>
+  </div>
+</section>
+
+<!-- ============ DE POS-KOPPELING ============ -->
+<section class="block alt">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="sec-label">De POS-koppeling</span>
+      <h2 class="sec">Van training naar <em>omzet</em>, meetbaar</h2>
+      <p class="sec-intro">Training is de enige knop die elke ondernemer indrukt en die niemand kan meten. Door te koppelen aan het kassasysteem (POS, zoals Lightspeed) sluiten we de cirkel: van leren naar gedrag naar omzet, in cijfers.</p>
+    </div>
+    <div class="pipe reveal">
+      <div class="pstep"><div class="pn">1</div><h4>Training</h4><p>Wijn-spijs, upsell en cross-sell in het dagelijkse spel.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep"><div class="pn">2</div><h4>Gedrag</h4><p>Het team past het toe aan tafel.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep pos"><div class="pn">3</div><h4>POS</h4><p>De kassa registreert wat er werkelijk verkocht wordt.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep dash"><div class="pn">4</div><h4>Dashboard</h4><p>De data komt terug als bewijs, gekoppeld aan omzet.</p></div>
+    </div>
+    <div class="efx reveal">
+      <div class="efx-h">Voorbeeld: effect-dashboard na een wijn-spijs-campagne</div>
+      <div class="efx-grid">
+        <div class="e"><div class="ev">+18%</div><div class="el">wijn-spijs-combinaties verkocht</div></div>
+        <div class="e"><div class="ev">+&euro;2,10</div><div class="el">gemiddelde besteding per gast</div></div>
+        <div class="e"><div class="ev">+12%</div><div class="el">upsell op aanbevolen gerechten</div></div>
+        <div class="e"><div class="ev">+9%</div><div class="el">cross-sell van desserts &amp; dranken</div></div>
+      </div>
+      <p class="efx-note">Indicatieve cijfers. De koppeling vergelijkt POS-data van v&oacute;&oacute;r en n&aacute; een campagne, per locatie en per team, zodat het effect aantoonbaar wordt.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ WAT ONS UNIEK MAAKT: OFFLINE ============ -->
-<section class="block alt">
+<section class="block">
   <div class="wrap wide">
     <div class="reveal" style="text-align:center;">
       <span class="sec-label" style="margin-left:auto;margin-right:auto;">Wat ons uniek maakt</span>
       <h2 class="sec" style="margin:0 auto;">Geen pure software-speler</h2>
-      <p class="sec-intro" style="margin:16px auto 0;">De tech is de schaal. De moat is wat eromheen leeft: een community en echte events die je niet namaakt met een app.</p>
+      <p class="sec-intro" style="margin:16px auto 0;">De tech is de schaal. De echte moat is wat eromheen leeft: een community en live events die je niet namaakt met een app.</p>
     </div>
     <div class="evgrid reveal">
       <div class="evcard"><div class="evt">Het spektakel</div><h4>De Battle</h4><p>Het grote live studenten-event, klassen die tegen elkaar strijden. Vanaf 2027 op de Horecava.</p></div>
@@ -455,18 +493,18 @@
       <div class="evcard"><div class="evt">Offline</div><h4>Het kaartspel</h4><p>Een fysiek kaartspel met 300 vragen. CuliQuiz buiten het scherm.</p></div>
     </div>
     <div class="lead-body reveal" style="margin-top:24px;">
-      <p>Daar komen de gebruikers vandaan en daar wordt het merk gedragen, door ambassadeurs als Alain Caron en Mounir Toub, en partners als Coca-Cola, Hendi en Rational. Software trekt geen community; dat doen wij.</p>
+      <p>Daar komen de gebruikers vandaan en daar wordt het merk gedragen, door ambassadeurs als Alain Caron en Mounir Toub, en partners als Coca-Cola, Hendi en Rational. Software trekt geen community; dat doen wij. Dat maakt de tech pas echt waardevol.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ AMBITIE ============ -->
-<section class="block">
+<section class="block alt">
   <div class="wrap">
     <div class="reveal">
       <span class="sec-label">De schaal</span>
       <h2 class="sec">Van Nederland naar de <em>wereld</em></h2>
-      <p class="sec-intro">Een bewezen, winstgevend fundament in Nederland, dan de Engelstalige markten, dan wereldwijd. Menu AI is de motor die dat schaalbaar maakt: content op maat, in elke taal, vanaf dag &eacute;&eacute;n.</p>
+      <p class="sec-intro">Een bewezen, winstgevend fundament in Nederland, dan de Engelstalige markten, dan wereldwijd. Menu AI is de motor die dat schaalbaar maakt: classificatie en content in elke taal, multi-locatie, vanaf dag &eacute;&eacute;n.</p>
     </div>
     <div class="ambi reveal">
       <div class="am"><div class="av">50.000</div><div class="al">gebruikers in 2025</div></div>
@@ -481,8 +519,8 @@
 <section class="closer">
   <div class="wrap">
     <div class="reveal">
-      <h2>We laten het je graag <em>zien</em>.</h2>
-      <p>Dit is het korte verhaal. De tech, de pijplijn en de roadmap lichten we graag live toe, met een demo van Menu AI en het platform erbij.</p>
+      <h2>De korte versie, met diepte <em>eronder</em>.</h2>
+      <p>Dit is het verhaal in het kort. De architectuur, de classificatie-engine, de POS-koppeling en de roadmap lichten we graag verder toe.</p>
       <div class="signature"><strong>Tjitze van der Dam</strong>, founder &nbsp;&middot;&nbsp; CuliQuiz BV<br>juni 2026</div>
     </div>
   </div>
