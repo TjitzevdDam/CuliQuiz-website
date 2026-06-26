@@ -448,6 +448,19 @@
   .marktband .mbl{font-size:13px;color:#bfe0e2;margin-top:10px;line-height:1.45;}
   @media (max-width:760px){ .marktband{grid-template-columns:1fr;} .marktband .mb{border-right:none;border-bottom:1px solid rgba(255,255,255,.10);} .marktband .mb:last-child{border-bottom:none;} }
 
+
+  .tf-tier.own{border-color:var(--teal);border-top:3px solid var(--teal);}
+
+  /* ---------- landenkaart ---------- */
+  .landkaart{margin:36px auto 0;max-width:880px;background:#FAF6EC;border:1px solid var(--line);border-radius:18px;padding:14px 14px 8px;box-shadow:0 12px 30px rgba(15,78,84,.06);}
+  .landkaart img{display:block;width:100%;height:auto;border-radius:10px;}
+  .landkaart figcaption{display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 10px 8px;text-align:center;}
+  .lk-legend{display:inline-flex;align-items:center;font-size:12.5px;font-weight:700;color:var(--ink);}
+  .lk-dot{width:11px;height:11px;border-radius:50%;display:inline-block;}
+  .lk-dot.teal{background:var(--teal);margin-right:6px;}
+  .lk-dot.gold{background:var(--gold);margin:0 6px 0 16px;}
+  .lk-cap{font-size:13.5px;color:var(--muted);font-style:italic;max-width:62ch;line-height:1.5;}
+
 </style>
 </head>
 <body>
@@ -582,16 +595,16 @@
     <div class="reveal" style="text-align:center;">
       <span class="sec-label" style="margin-left:auto;margin-right:auto;">Merk, organisatie &amp; gebruiker</span>
       <h2 class="sec" style="margin:0 auto;">Hoe het <em>samenkomt</em></h2>
-      <p class="sec-intro" style="margin:16px auto 0;">Een merk bereikt de vloer niet met reclame, maar via de organisatie en het spel. En alles wat de gebruiker doet, stroomt terug als data.</p>
+      <p class="sec-intro" style="margin:16px auto 0;">Campagnes komen van twee kanten. De organisatie maakt ze zelf, uit haar eigen menukaart, drankenkaart en SOP's. Een merk kan er campagnes bovenop zetten over het hele netwerk. Allebei komen ze samen bij de gebruiker, en alles stroomt terug als data.</p>
     </div>
     <div class="triflow reveal">
-      <div class="tf-tier brand"><div class="tl">Het merk</div><h4>Maakt een campagne</h4><p>FMCG of leverancier. Bereik via educatie, betaalt voor de doelgroep.</p></div>
-      <div class="tf-arrow"><span>campagne</span>&darr;</div>
-      <div class="tf-tier"><div class="tl">De organisatie</div><h4>Zet 'm uit naar het team</h4><p>Restaurant, keten of school distribueert de training naar de vloer.</p></div>
+      <div class="tf-tier brand"><div class="tl">Het merk</div><h4>Zet campagnes uit over het netwerk</h4><p>FMCG of leverancier. Bereik via educatie, betaalt voor de doelgroep. Optioneel, bovenop de eigen training.</p></div>
+      <div class="tf-arrow"><span>merk-campagne</span>&darr;</div>
+      <div class="tf-tier own"><div class="tl">De organisatie</div><h4>Maakt ook haar eigen campagnes</h4><p>Uit de eigen menukaart, drankenkaart en SOP's, en zet alles uit naar het team.</p></div>
       <div class="tf-arrow"><span>training</span>&darr;</div>
       <div class="tf-tier"><div class="tl">De gebruiker</div><h4>Speelt, leert, verdient</h4><p>De medewerker bouwt kennis en mastery op. Gratis, een leven lang.</p></div>
     </div>
-    <div class="moatnote reveal"><b>En terug omhoog:</b> alles wat de gebruiker speelt stroomt terug als data. Deelname en kennisgroei voor de organisatie, en met de POS-koppeling de omzet voor het merk. De gebruiker betaalt nooit; het merk financiert de gratis community. Drie partijen, &eacute;&eacute;n profiel in het midden.</div>
+    <div class="moatnote reveal"><b>En terug omhoog:</b> alles wat de gebruiker speelt stroomt terug als data. Deelname en kennisgroei voor de organisatie, en met de POS-koppeling de omzet voor het merk. De gebruiker betaalt nooit: de organisatie traint haar eigen team, en merken financieren de bredere community.</div>
   </div>
 </section>
 
@@ -748,9 +761,16 @@
       <h2 class="sec" style="margin:0 auto;">Van Nederland naar de <em>wereld</em></h2>
       <p class="sec-intro" style="margin:16px auto 0;">Een bewezen, winstgevend fundament in Nederland, dan de Engelstalige markten, dan wereldwijd. Menu AI is de motor die dat schaalbaar maakt: classificatie en content in elke taal, multi-locatie, vanaf dag &eacute;&eacute;n.</p>
     </div>
+    <figure class="landkaart reveal">
+      <img src="https://www.culiquiz.nl/assets/landenkaart.png" alt="Wereldkaart: actief in Nederland, interesse uit landen op vijf continenten (VS, VK, Belgi&euml;, Oostenrijk, Marokko, Jordani&euml;, Thailand, Australi&euml;, Nieuw-Zeeland)" loading="lazy" />
+      <figcaption>
+        <span class="lk-legend"><span class="lk-dot teal"></span> Actief in<span class="lk-dot gold"></span> Interesse uit</span>
+        <span class="lk-cap">Internationale interesse is er al, nog v&oacute;&oacute;r we &eacute;&eacute;n euro aan groei besteedden.</span>
+      </figcaption>
+    </figure>
     <div class="ambi reveal">
       <div class="am"><div class="av">50.000</div><div class="al">gebruikers, vandaag al winstgevend</div></div>
-      <div class="am"><div class="av">10</div><div class="al">landen waar we draaien of interesse zien</div></div>
+      <div class="am"><div class="av">5</div><div class="al">continenten met interesse, nog v&oacute;&oacute;r &eacute;&eacute;n euro groei-budget</div></div>
       <div class="am"><div class="av">&euro;10,7M</div><div class="al">ARR-doel binnen 5 jaar</div></div>
     </div>
   </div>
