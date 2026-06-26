@@ -395,6 +395,22 @@
   .m3.brand p{color:#bfe0e2;}
   @media (max-width:760px){ .model3{grid-template-columns:1fr;} }
 
+
+  /* ---------- gebruikersflow (loopnote) + merk/org/gebruiker (triflow) ---------- */
+  .loopnote{margin:24px auto 0;max-width:760px;text-align:center;font-size:15.5px;color:var(--ink);font-weight:600;line-height:1.6;}
+  .loopnote .loopicon{display:inline-block;color:var(--teal);font-size:21px;font-weight:900;margin-right:6px;transform:translateY(3px);}
+  .triflow{max-width:520px;margin:40px auto 0;}
+  .tf-tier{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 24px;text-align:center;box-shadow:0 6px 18px rgba(15,78,84,.05);}
+  .tf-tier.brand{background:var(--teal-deep);border-color:var(--teal-deep);}
+  .tf-tier .tl{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;}
+  .tf-tier.brand .tl{color:var(--gold);}
+  .tf-tier h4{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:17px;color:var(--ink);margin:3px 0 4px;}
+  .tf-tier.brand h4{color:#fff;}
+  .tf-tier p{font-size:13px;color:var(--muted);line-height:1.5;}
+  .tf-tier.brand p{color:#bfe0e2;}
+  .tf-arrow{text-align:center;color:var(--teal);font-size:20px;font-weight:900;line-height:1;margin:8px 0;}
+  .tf-arrow span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;margin-bottom:1px;}
+
 </style>
 </head>
 <body>
@@ -431,8 +447,31 @@
   </div>
 </section>
 
-<!-- ============ DE ARCHITECTUUR (visueel) ============ -->
+<!-- ============ DE GEBRUIKERSFLOW ============ -->
 <section class="block alt">
+  <div class="wrap wide">
+    <div class="reveal" style="text-align:center;">
+      <span class="sec-label" style="margin-left:auto;margin-right:auto;">Hoe het werkt voor de gebruiker</span>
+      <h2 class="sec" style="margin:0 auto;">Spelen, verdienen, <em>groeien</em></h2>
+      <p class="sec-intro" style="margin:16px auto 0;">Voor de medewerker is het een spel van een paar minuten per dag. Daaronder draait een complete gamification-engine die kennis omzet in gedrag, en gedrag in een profiel dat blijft groeien.</p>
+    </div>
+    <div class="pipe reveal">
+      <div class="pstep"><div class="pn">1</div><h4>Speel</h4><p>Een microgame van 3 tot 5 minuten over de eigen kaart.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep"><div class="pn">2</div><h4>Verdien</h4><p>XP en punten voor elk goed antwoord, met dagelijkse streaks.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep"><div class="pn">3</div><h4>Groei</h4><p>Levels en mastery per onderwerp, zichtbaar in je profiel.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep"><div class="pn">4</div><h4>Strijd</h4><p>Battles en leaderboards met collega's en andere zaken.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep pos"><div class="pn">5</div><h4>Verzamel</h4><p>Achievements, certificaten en echte beloningen.</p></div>
+    </div>
+    <div class="loopnote reveal"><span class="loopicon">&#8635;</span> En dan weer van voren af aan. Hoe vaker je speelt, hoe hoger je mastery en hoe waardevoller je profiel, een leven lang, langs elke werkgever mee.</div>
+  </div>
+</section>
+
+<!-- ============ DE ARCHITECTUUR (visueel) ============ -->
+<section class="block">
   <div class="wrap wide">
     <div class="reveal" style="text-align:center;">
       <span class="sec-label" style="margin-left:auto;margin-right:auto;">De architectuur</span>
@@ -472,6 +511,25 @@
       </div>
       <p class="arch-note">Elk gerecht, ingredi&euml;nt en drank wordt zo geclassificeerd. Daardoor koppelt het direct aan mastery, analytics, aanbevelingen en Menu AI. Geen vragenbak, maar een gestructureerd kennismodel van een hele industrie.</p>
     </div>
+  </div>
+</section>
+
+<!-- ============ MERK, ORGANISATIE & GEBRUIKER ============ -->
+<section class="block alt">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <span class="sec-label" style="margin-left:auto;margin-right:auto;">Merk, organisatie &amp; gebruiker</span>
+      <h2 class="sec" style="margin:0 auto;">Hoe het <em>samenkomt</em></h2>
+      <p class="sec-intro" style="margin:16px auto 0;">Een merk bereikt de vloer niet met reclame, maar via de organisatie en het spel. En alles wat de gebruiker doet, stroomt terug als data.</p>
+    </div>
+    <div class="triflow reveal">
+      <div class="tf-tier brand"><div class="tl">Het merk</div><h4>Maakt een campagne</h4><p>FMCG of leverancier. Bereik via educatie, betaalt voor de doelgroep.</p></div>
+      <div class="tf-arrow"><span>campagne</span>&darr;</div>
+      <div class="tf-tier"><div class="tl">De organisatie</div><h4>Zet 'm uit naar het team</h4><p>Restaurant, keten of school distribueert de training naar de vloer.</p></div>
+      <div class="tf-arrow"><span>training</span>&darr;</div>
+      <div class="tf-tier"><div class="tl">De gebruiker</div><h4>Speelt, leert, verdient</h4><p>De medewerker bouwt kennis en mastery op. Gratis, een leven lang.</p></div>
+    </div>
+    <div class="moatnote reveal"><b>En terug omhoog:</b> alles wat de gebruiker speelt stroomt terug als data. Deelname en kennisgroei voor de organisatie, en met de POS-koppeling de omzet voor het merk. De gebruiker betaalt nooit; het merk financiert de gratis community. Drie partijen, &eacute;&eacute;n profiel in het midden.</div>
   </div>
 </section>
 
