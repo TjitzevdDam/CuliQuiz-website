@@ -438,6 +438,16 @@
   @media (max-width:860px){ .road{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:460px){ .road{grid-template-columns:1fr;} }
 
+
+  /* ---------- marktband ---------- */
+  .marktband{display:grid;grid-template-columns:repeat(3,1fr);margin-top:42px;background:var(--teal-deep);border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(15,78,84,.16);}
+  .marktband .mb{padding:34px 26px;text-align:center;border-right:1px solid rgba(255,255,255,.10);}
+  .marktband .mb:last-child{border-right:none;}
+  .marktband .mbv{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:40px;color:#fff;line-height:1;}
+  .marktband .mb.hl .mbv{color:var(--gold);}
+  .marktband .mbl{font-size:13px;color:#bfe0e2;margin-top:10px;line-height:1.45;}
+  @media (max-width:760px){ .marktband{grid-template-columns:1fr;} .marktband .mb{border-right:none;border-bottom:1px solid rgba(255,255,255,.10);} .marktband .mb:last-child{border-bottom:none;} }
+
 </style>
 </head>
 <body>
@@ -724,14 +734,23 @@
 <section class="block">
   <div class="wrap">
     <div class="reveal">
-      <span class="sec-label">Markt &amp; ambitie</span>
-      <h2 class="sec">Van Nederland naar de <em>wereld</em></h2>
-      <p class="sec-intro">Een bewezen, winstgevend fundament in Nederland, dan de Engelstalige markten, dan wereldwijd. Menu AI is de motor die dat schaalbaar maakt: classificatie en content in elke taal, multi-locatie, vanaf dag &eacute;&eacute;n.</p>
+      <span class="sec-label">De markt</span>
+      <h2 class="sec">De grootste workforce <em>ter wereld</em></h2>
+      <p class="sec-intro">Hospitality is geen niche, maar &eacute;&eacute;n van de grootste werkvelden op aarde, en juist het deel zonder systeem voor kennis en gedrag. Dat is de markt die we aanboren.</p>
+    </div>
+    <div class="marktband reveal">
+      <div class="mb"><div class="mbv">500.000</div><div class="mbl">werkenden in de horeca in Nederland, onze thuismarkt</div></div>
+      <div class="mb hl"><div class="mbv">350 miljoen</div><div class="mbl">hospitality-banen wereldwijd</div></div>
+      <div class="mb"><div class="mbv">1 op de 10</div><div class="mbl">werkenden ter wereld zit in hospitality</div></div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:48px;">
+      <span class="sec-label" style="margin-left:auto;margin-right:auto;">De ambitie</span>
+      <h2 class="sec" style="margin:0 auto;">Van Nederland naar de <em>wereld</em></h2>
+      <p class="sec-intro" style="margin:16px auto 0;">Een bewezen, winstgevend fundament in Nederland, dan de Engelstalige markten, dan wereldwijd. Menu AI is de motor die dat schaalbaar maakt: classificatie en content in elke taal, multi-locatie, vanaf dag &eacute;&eacute;n.</p>
     </div>
     <div class="ambi reveal">
       <div class="am"><div class="av">50.000</div><div class="al">gebruikers, vandaag al winstgevend</div></div>
       <div class="am"><div class="av">10</div><div class="al">landen waar we draaien of interesse zien</div></div>
-      <div class="am"><div class="av">350 mln</div><div class="al">hospitality-banen wereldwijd, 1 op de 10</div></div>
       <div class="am"><div class="av">&euro;10,7M</div><div class="al">ARR-doel binnen 5 jaar</div></div>
     </div>
   </div>
