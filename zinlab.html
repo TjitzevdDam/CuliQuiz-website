@@ -370,7 +370,154 @@
   .foot-inner{display:flex;flex-direction:column;align-items:flex-start;gap:10px;}
   .foot-inner .logo img{height:40px;width:auto;}
   .foot .tagline{font-size:14px;color:var(--muted);margin:0;}
+  /* nav home link */
+  .nav-inner{justify-content:space-between;}
+  .nav-home{font-size:13px;font-weight:700;color:var(--teal-dark);text-decoration:none;letter-spacing:.01em;white-space:nowrap;}
+  .nav-home:hover{color:var(--teal);}
+  /* het model: fases */
+  .fases{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;margin-top:42px;text-align:left;align-items:start;}
+  .fase{border-radius:18px;padding:30px 30px;}
+  .fase.one{background:var(--teal-deep);color:#fff;}
+  .fase.two{background:#fff;border:1px solid var(--line);box-shadow:0 10px 30px rgba(15,78,84,.05);}
+  .fase .f-tag{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:10px;}
+  .fase.one .f-tag{color:var(--gold);}
+  .fase.two .f-tag{color:var(--teal-dark);}
+  .fase h3{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:21px;margin-bottom:8px;}
+  .fase.one h3{color:#fff;}
+  .fase.two h3{color:var(--ink);}
+  .fase>p{font-size:14px;line-height:1.6;margin-bottom:16px;}
+  .fase.one>p{color:#bfe0e2;}
+  .fase.two>p{color:var(--muted);}
+  .fase ul{list-style:none;padding:0;margin:0;}
+  .fase li{position:relative;padding-left:24px;font-size:14px;line-height:1.5;margin-bottom:11px;}
+  .fase li:before{content:'';position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:50%;}
+  .fase.one li{color:#cfe6e8;}
+  .fase.one li:before{background:var(--gold);}
+  .fase.two li{color:var(--muted);}
+  .fase.two li:before{background:var(--teal);}
+  .fase.one b{color:#fff;}
+  .fase.two b{color:var(--ink);}
+  .f-big{display:block;font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:46px;line-height:1;color:var(--teal);margin:2px 0 2px;}
+  @media (max-width:760px){ .fases{grid-template-columns:1fr;} }
 
+/* ---------- MINI GAME (cq-game prefix) ---------- */
+  .cq-game-section{padding:64px 0;background:var(--bg);}
+  .cq-game-stage{display:flex;justify-content:center;margin-top:40px;}
+  .cq-game-device{
+    width:100%;max-width:306px;height:648px;
+    background:linear-gradient(180deg,#0F4E54 0%, #1B7A80 100%);
+    border-radius:48px;overflow:hidden;
+    display:flex;flex-direction:column;position:relative;
+    box-shadow:0 30px 60px -16px rgba(15,78,84,.4), inset 0 0 0 2px rgba(255,255,255,.06);
+    border:11px solid #0c0c0e;
+    font-family:'Montserrat',system-ui,sans-serif;color:#fff;
+    -webkit-user-select:none;user-select:none;
+  }
+  .cq-game-device::before{content:"";position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle at 25% 30%, rgba(255,255,255,.14) 2px, transparent 2.5px),
+      radial-gradient(circle at 75% 70%, rgba(234,182,0,.18) 1.6px, transparent 2px),
+      radial-gradient(circle, rgba(255,255,255,.06) 1.2px, transparent 1.6px);
+    background-size:120px 120px, 90px 90px, 26px 26px;
+    background-position:0 0, 0 0, 0 0;
+    pointer-events:none;z-index:1;}
+  .cq-game-device::after{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);
+    width:92px;height:22px;background:#050607;border-radius:999px;z-index:30;pointer-events:none;}
+
+  .cq-game-topbar{display:flex;align-items:center;justify-content:center;gap:10px;padding:48px 18px 6px;position:relative;z-index:5;}
+  .cq-game-topbar img.cq-cuq{height:22px;width:auto;filter:brightness(0) invert(1);}
+  .cq-game-topbar .cq-game-cross{color:rgba(255,255,255,.55);font-size:16px;font-weight:300;line-height:1;}
+  .cq-game-topbar img.cq-rat{height:22px;width:auto;background:#fff;padding:6px 10px;border-radius:8px;box-sizing:content-box;box-shadow:0 2px 6px rgba(0,0,0,.18);}
+  .cq-game-sublabel{text-align:center;font-size:9.5px;letter-spacing:.22em;font-weight:700;color:rgba(255,255,255,.7);position:relative;z-index:5;margin-top:2px;}
+
+  .cq-game-body{position:relative;flex:1;overflow:hidden;background:transparent;}
+
+  .cq-game-screen{position:absolute;inset:0;display:none;flex-direction:column;padding:14px 16px 16px;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .cq-game-screen::-webkit-scrollbar{display:none;}
+  .cq-game-screen.is-active{display:flex;animation:cqgfade .25s ease both;}
+  @keyframes cqgfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @keyframes cqCardIn{from{opacity:0;transform:translateY(-10px) scale(.96);}to{opacity:1;transform:none;}}
+  @keyframes cqAnswerIn{from{opacity:0;transform:translateX(-16px);}to{opacity:1;transform:none;}}
+  @keyframes cqIconPulse{0%,100%{transform:translateY(-50%) scale(1);box-shadow:0 0 0 0 rgba(225,94,23,.45);}50%{transform:translateY(-50%) scale(1.06);box-shadow:0 0 0 10px rgba(225,94,23,0);}}
+  @keyframes cqPopHit{0%{transform:scale(1);}40%{transform:scale(1.05);}100%{transform:scale(1);}}
+  @keyframes cqShakeHit{0%,100%{transform:translateX(0);}20%{transform:translateX(-5px);}40%{transform:translateX(5px);}60%{transform:translateX(-4px);}80%{transform:translateX(4px);}}
+  @keyframes cqScorePop{0%{transform:scale(1);}40%{transform:scale(1.18);}100%{transform:scale(1);}}
+  @keyframes cqDotPop{0%{transform:scale(1);}50%{transform:scale(1.6);}100%{transform:scale(1);}}
+
+  .cq-game-hud{display:flex;align-items:center;justify-content:center;gap:8px;padding:0 0 6px;}
+  .cq-game-chip{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#0F4E54;font-weight:700;font-size:11.5px;padding:5px 13px;border-radius:999px;}
+  .cq-game-chip .cq-x3{color:#E15E17;font-weight:800;display:inline-block;}
+  .cq-game-chip.is-pop{animation:cqScorePop .45s cubic-bezier(.2,1.5,.4,1);}
+  .cq-game-progress{display:flex;justify-content:center;gap:6px;padding:0 0 10px;}
+  .cq-game-progress span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s ease;}
+  .cq-game-progress span.on{background:#EAB600;animation:cqDotPop .4s cubic-bezier(.2,1.4,.4,1);}
+
+  @media (prefers-reduced-motion:reduce){
+    .cq-game-card, .cq-game-card.is-fresh, .cq-game-card::before, .cq-game-answer,
+    .cq-game-answer.is-correct, .cq-game-answer.is-wrong,
+    .cq-game-chip.is-pop, .cq-game-progress span.on{
+      animation:none !important;
+    }
+  }
+
+  /* START screen */
+  .cq-game-start{justify-content:center;align-items:center;text-align:center;}
+  .cq-game-start h3{font-family:'Fraunces',serif;font-size:26px;font-weight:900;margin-bottom:10px;color:#fff;}
+  .cq-game-start p{font-size:13.5px;color:rgba(255,255,255,.85);max-width:24ch;margin:0 auto 24px;line-height:1.5;}
+  .cq-game-startbtn{appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:15px;color:#0F4E54;padding:12px 28px;border-radius:999px;background:#EAB600;box-shadow:0 6px 0 #B48A00;transition:transform .1s ease,box-shadow .1s ease;}
+  .cq-game-startbtn:active{transform:translateY(3px);box-shadow:0 3px 0 #B48A00;}
+
+  /* PLAY screen */
+  .cq-game-play{justify-content:flex-start;align-items:stretch;}
+  .cq-game-card{width:100%;background:#fff;border-radius:14px;padding:13px 14px 13px 56px;position:relative;box-shadow:0 8px 20px -4px rgba(0,0,0,.25);margin-bottom:11px;}
+  .cq-game-card.is-fresh{animation:cqCardIn .4s cubic-bezier(.2,.8,.2,1) both;}
+  .cq-game-card::before{content:"?";position:absolute;left:11px;top:50%;transform:translateY(-50%);width:36px;height:36px;background:#E15E17;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:900;font-size:23px;animation:cqIconPulse 2.2s ease-in-out infinite;}
+  .cq-game-card .cq-game-q{font-size:15px;font-weight:600;color:#0F4E54;line-height:1.35;}
+  .cq-game-answers{display:flex;flex-direction:column;gap:8px;width:100%;}
+  .cq-game-answer{
+    position:relative;background:#EAB600;color:#0F4E54;
+    padding:10px 14px 10px 44px;font-weight:700;font-size:12px;
+    cursor:pointer;border:0;text-align:left;line-height:1.3;
+    clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 100%, 14px 100%);
+    transition:background .15s ease;
+    font-family:inherit;
+    animation:cqAnswerIn .4s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .cq-game-answer:nth-child(1){animation-delay:.10s;}
+  .cq-game-answer:nth-child(2){animation-delay:.18s;}
+  .cq-game-answer:nth-child(3){animation-delay:.26s;}
+  .cq-game-answer .cq-game-letter{
+    position:absolute;left:8px;top:0;bottom:0;width:28px;display:flex;align-items:center;justify-content:center;
+    background:#D4A300;font-family:'Fraunces',serif;font-weight:900;font-size:16px;color:#fff;
+    clip-path:polygon(0 0, 100% 0, calc(100% - 14px) 100%, 14px 100%);
+  }
+  .cq-game-answer:hover:not(:disabled){background:#F2C42A;}
+  .cq-game-answer:disabled{cursor:default;opacity:.95;}
+  .cq-game-answer.is-correct{background:#5DA836;color:#fff;animation:cqPopHit .45s cubic-bezier(.2,1.4,.4,1);}
+  .cq-game-answer.is-correct .cq-game-letter{background:#3F7E1E;color:#fff;}
+  .cq-game-answer.is-wrong{background:#D8463A;color:#fff;animation:cqShakeHit .4s ease;}
+  .cq-game-answer.is-wrong .cq-game-letter{background:#B2301F;color:#fff;}
+
+  .cq-game-feedback{margin-top:11px;padding:9px 12px;background:rgba(0,0,0,.25);border-radius:10px;color:#fff;font-size:11.5px;line-height:1.4;display:none;width:100%;}
+  .cq-game-feedback.is-shown{display:block;animation:cqgfade .25s ease both;}
+  .cq-game-feedback strong{display:block;margin-bottom:3px;color:#EAB600;font-size:10.5px;letter-spacing:.05em;}
+  .cq-game-nextbtn{margin-top:10px;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:12.5px;color:#0F4E54;padding:9px 22px;border-radius:999px;background:#EAB600;box-shadow:0 4px 0 #B48A00;align-self:center;}
+  .cq-game-nextbtn:active{transform:translateY(2px);box-shadow:0 2px 0 #B48A00;}
+
+  /* RESULT screen */
+  .cq-game-result{justify-content:center;align-items:center;text-align:center;}
+  .cq-game-result .cq-game-score{font-family:'Fraunces',serif;font-weight:900;font-size:48px;color:#EAB600;margin-bottom:4px;}
+  .cq-game-result h3{font-family:'Fraunces',serif;font-size:22px;color:#fff;margin-bottom:8px;}
+  .cq-game-result p{font-size:13px;color:rgba(255,255,255,.85);max-width:26ch;margin:0 auto 20px;line-height:1.5;}
+  .cq-game-stars{display:flex;gap:6px;margin-bottom:22px;}
+  .cq-game-stars span{width:24px;height:24px;background:#EAB600;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);}
+  .cq-game-stars span.off{background:rgba(255,255,255,.25);}
+
+  @media (max-width:420px){.cq-game-device{height:580px;}}
+  @media print{.cq-game-section{display:none;}}
+
+  
+  .cq-game-topbar img.cq-rat{height:34px;padding:5px 8px;}
 </style>
 </head>
 <body>
@@ -378,10 +525,11 @@
 <nav class="nav">
   <div class="wrap nav-inner">
     <div class="nav-logos">
-      <span class="logo"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></span>
+      <a class="logo" href="https://www.culiquiz.nl"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></a>
       <span class="cross">&times;</span>
       <span class="partner"><img src="https://www.culiquiz.nl/assets/zin-logo.png" alt="ZiN Inspiratielab" /></span>
     </div>
+    <a class="nav-home" href="https://www.culiquiz.nl">culiquiz.nl &rarr;</a>
   </div>
 </nav>
 
@@ -393,6 +541,49 @@
     <p class="lead">ZiN inspireert horecaprofessionals live en in de diepte: een dag vol vakmanschap, smaak en nieuwe energie. CuliQuiz houdt die kennis daarna elke dag levend, in een app die voelt als een spel. Dezelfde missie, twee helften die elkaar versterken: de vonk &eacute;n de gewoonte. Zo blijft wat iemand bij ZiN leert ook echt hangen, op de vloer, en wordt het meetbaar.</p>
   </div>
 </header>
+
+<!-- ============ MINI-GAME (3 ZiN-vragen) ============ -->
+<section class="cq-game-section">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <div class="sec-label" style="justify-content:center;margin-left:auto;margin-right:auto;">Een proefje</div>
+      <h2 class="sec" style="margin:0 auto;">Speel mee met drie <em>ZiN-vragen</em></h2>
+      <p class="sec-intro" style="margin:14px auto 0;">Drie korte vragen over vakkennis, zoals ZiN ze live brengt en CuliQuiz ze dagelijks speelbaar maakt. Klik in de telefoon en speel mee.</p>
+    </div>
+    <div class="cq-game-stage reveal d1">
+      <div class="cq-game-device" id="cqGameDevice">
+        <div class="cq-game-topbar">
+          <img class="cq-cuq" src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" />
+          <span class="cq-game-cross" aria-hidden="true">&times;</span>
+          <img class="cq-rat" src="https://www.culiquiz.nl/assets/zin-logo.png" alt="ZiN Inspiratielab" />
+        </div>
+        <div class="cq-game-sublabel">CARD GAME</div>
+        <div class="cq-game-body">
+          <div class="cq-game-screen cq-game-start is-active" id="cqGameStart">
+            <h3>Klaar voor 3 vragen?</h3>
+            <p>Vakkennis zoals ZiN het brengt, drie keuzes per vraag. Goed of fout, je krijgt er uitleg bij.</p>
+            <button class="cq-game-startbtn" id="cqGameStartBtn">Start</button>
+          </div>
+          <div class="cq-game-screen cq-game-play" id="cqGamePlay">
+            <div class="cq-game-hud"><span class="cq-game-chip">Score <span class="cq-x3" id="cqGameScore">0</span></span></div>
+            <div class="cq-game-progress" id="cqGameProgress"><span></span><span></span><span></span></div>
+            <div class="cq-game-card"><div class="cq-game-q" id="cqGameQ">Laden&hellip;</div></div>
+            <div class="cq-game-answers" id="cqGameAnswers"></div>
+            <div class="cq-game-feedback" id="cqGameFeedback"><strong id="cqGameFeedbackTitle">UITLEG</strong><span id="cqGameWhy"></span></div>
+            <button class="cq-game-nextbtn" id="cqGameNext" style="display:none;">Volgende</button>
+          </div>
+          <div class="cq-game-screen cq-game-result" id="cqGameResult">
+            <div class="cq-game-score" id="cqGameFinal">0 / 3</div>
+            <h3 id="cqGameTitle">Mooi gespeeld.</h3>
+            <p id="cqGameMsg">Speel nog een keer of scroll verder.</p>
+            <div class="cq-game-stars" id="cqGameStars"><span class="off"></span><span class="off"></span><span class="off"></span></div>
+            <button class="cq-game-startbtn" id="cqGameAgain">Opnieuw</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ DEZELFDE MISSIE / TWEE HELFTEN ============ -->
 <section class="block">
@@ -443,7 +634,7 @@
       <span class="parrow">&rarr;</span>
       <div class="pstep pos"><div class="pn">3</div><h4>Badge &amp; certificaat</h4><p>Een ZiN-badge en bewijs van wat hij beheerst.</p></div>
       <span class="parrow">&rarr;</span>
-      <div class="pstep"><div class="pn">4</div><h4>Profiel reist mee</h4><p>Op LinkedIn en mee naar elke volgende werkgever.</p></div>
+      <div class="pstep"><div class="pn">4</div><h4>Profiel reist mee</h4><p>Met de gebruiker mee, naar elke volgende werkgever. En te delen op LinkedIn.</p></div>
       <span class="parrow">&rarr;</span>
       <div class="pstep dash"><div class="pn">5</div><h4>Volgende leerlijn</h4><p>Terug naar ZiN voor de volgende stap. De cirkel rond.</p></div>
     </div>
@@ -487,27 +678,39 @@
         <p class="what">Wederzijds bereik</p>
         <ul class="path-list">
           <li>Wij brengen een meetbare digitale laag en warme introducties</li>
-          <li>ZiN brengt 2.000+ deelnemers, 500 members en ~100 partners</li>
+          <li>ZiN brengt 2.500 deelnemers, waarvan ~2.000 een vaste groep, en ~100 partners</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ DE PILOT ============ -->
+<!-- ============ HET MODEL ============ -->
 <section class="block alt">
-  <div class="wrap">
+  <div class="wrap wide">
     <div class="reveal" style="text-align:center;">
-      <span class="sec-label" style="margin-left:auto;margin-right:auto;">De eerste stap</span>
-      <h2 class="sec" style="margin:0 auto;">Klein beginnen, in <em>stapjes</em> uitbouwen</h2>
-      <p class="sec-intro" style="margin:16px auto 0;">Geen groot traject vooraf. We pakken &eacute;&eacute;n leerlijn, draaien een pilot, en kijken of het werkt op de vloer.</p>
+      <span class="sec-label" style="margin-left:auto;margin-right:auto;">Het model</span>
+      <h2 class="sec" style="margin:0 auto;">Samen bouwen, in <em>twee fases</em></h2>
+      <p class="sec-intro" style="margin:16px auto 0;">Geen groot traject vooraf. We bouwen het samen, eerst kosteloos. Het model moet aan twee kanten kloppen: voor ZiN &eacute;n voor CuliQuiz.</p>
     </div>
-    <div class="pilot reveal">
-      <div class="pl-step"><span class="pl-n">1</span><div><b>Kies &eacute;&eacute;n leerlijn</b><span>Bijvoorbeeld bier of koffie, een onderwerp dat al in beide werelden leeft.</span></div></div>
-      <div class="pl-step"><span class="pl-n">2</span><div><b>Een half jaar doorloop</b><span>De live ZiN-deelnemers leren door in de app, voorjaar 2027. Past in het programma dat deze zomer wordt gebouwd.</span></div></div>
-      <div class="pl-step"><span class="pl-n">3</span><div><b>Meet of het beklijft</b><span>Blijven ze leren? Blijft de kennis hangen? De bewijslast op de vloer, niet op papier.</span></div></div>
+    <div class="fases reveal">
+      <div class="fase one">
+        <div class="f-tag">Fase 1 &middot; de pilot, 6 maanden, kosteloos</div>
+        <h3>Samen ervoor gaan</h3>
+        <p>We draaien een pilot van zes maanden met ZiN, kosteloos, en bouwen het samen op.</p>
+        <ul>
+          <li><b>CuliQuiz</b> ontwikkelt een aantal leerlijnen speciaal voor ZiN, gekoppeld aan de app.</li>
+          <li><b>ZiN</b> levert de gebruikers, die zich actief aansluiten en content delen.</li>
+          <li>De ZiN-gebruiker sluit <b>kosteloos</b> aan op de ZiN-omgeving, met content die voor hem relevant is. Hij speelt gratis.</li>
+        </ul>
+      </div>
+      <div class="fase two">
+        <div class="f-tag">Wat ZiN inbrengt</div>
+        <span class="f-big">2.500</span>
+        <p style="margin-bottom:0;">deelnemers, waarvan al een vaste groep van ongeveer 2.000. Zij sluiten actief aan en delen content.</p>
+      </div>
     </div>
-    <div class="moatnote reveal"><b>Waarom dit nu past.</b> CuliQuiz won net de Innovation Arena, lanceert Menu AI in januari en heeft deze week de nieuwe app live. ZiN bouwt deze zomer het programma voor 2027. De timing om samen een eerste leerlijn te koppelen is precies nu.</div>
+    <div class="moatnote reveal"><b>Het model klopt aan twee kanten.</b> ZiN brengt de gebruikers en de live-content, CuliQuiz brengt de digitale laag en het bereik. In fase 1 maken we het samen en kosteloos. Werkt het, dan zoeken we in fase 2 samen de zakelijke vorm die voor allebei werkt.</div>
   </div>
 </section>
 
@@ -535,7 +738,7 @@
         <ul>
           <li>40+ expert-trainers als bron voor gevalideerde content</li>
           <li>15 leerlijnen en 250 trainingen aan onderwerpen die al leven</li>
-          <li>2.000+ deelnemers, 500 members en ~100 partners aan warm bereik</li>
+          <li>2.500 deelnemers (~2.000 een vaste groep) en ~100 partners aan warm bereik</li>
           <li>De live-beleving en het netwerk die wij niet namaken</li>
           <li>De distributiekracht en het vertrouwen van Sligro</li>
         </ul>
@@ -567,6 +770,40 @@
     </div>
   </div>
 </footer>
+
+<!-- mini-game logica -->
+<script>
+(function(){
+  var device = document.getElementById('cqGameDevice');
+  if(!device) return;
+  var QUESTIONS = [
+    { q: "Welke wijn past klassiek het best bij een rijpe blauwschimmelkaas?",
+      a: ["Een droge witte wijn","Een zoete dessertwijn zoals Sauternes","Een lichte ros\u00e9"],
+      c: 1,
+      why: "De zoetheid van een Sauternes balanceert het zout en de pit van blauwschimmelkaas. Een klassieke combinatie." },
+    { q: "Wat bepaalt vooral of een espresso bitter of juist zuur smaakt?",
+      a: ["De maling en de extractietijd","De kleur van het kopje","De hoeveelheid melk erbij"],
+      c: 0,
+      why: "Te grof of te kort getrokken wordt zuur, te fijn of te lang wordt bitter. De maling en extractietijd sturen de smaak." },
+    { q: "Een gast twijfelt tussen twee gerechten. Wat werkt het best?",
+      a: ["Snel zelf voor de gast kiezen","Vragen wat hij lekker vindt en gericht aanraden","Altijd het duurste gerecht aanraden"],
+      c: 1,
+      why: "Een goede aanbeveling begint bij de gast: vraag z'n voorkeur en adviseer gericht. Dat verkoopt \u00e9n verrast." }
+  ];
+  var idx=0, score=0, answered=false;
+  var screens={start:document.getElementById('cqGameStart'),play:document.getElementById('cqGamePlay'),result:document.getElementById('cqGameResult')};
+  var elQ=document.getElementById('cqGameQ'),elAnswers=document.getElementById('cqGameAnswers'),elScore=document.getElementById('cqGameScore'),elProgress=document.getElementById('cqGameProgress'),elFeedback=document.getElementById('cqGameFeedback'),elFeedbackTitle=document.getElementById('cqGameFeedbackTitle'),elWhy=document.getElementById('cqGameWhy'),elNext=document.getElementById('cqGameNext');
+  function show(name){Object.keys(screens).forEach(function(k){screens[k].classList.toggle('is-active',k===name);});}
+  function render(){answered=false;var q=QUESTIONS[idx];elQ.textContent=q.q;var card=device.querySelector('.cq-game-card');if(card){card.classList.remove('is-fresh');void card.offsetWidth;card.classList.add('is-fresh');}elAnswers.innerHTML='';var letters=['A','B','C'];q.a.forEach(function(txt,i){var btn=document.createElement('button');btn.className='cq-game-answer';btn.type='button';btn.innerHTML='<span class="cq-game-letter">'+letters[i]+'</span>'+txt;btn.addEventListener('click',function(){answer(i,btn);});elAnswers.appendChild(btn);});var dots=elProgress.querySelectorAll('span');dots.forEach(function(d,i){if(i<=idx&&!d.classList.contains('on')){d.classList.add('on');}else if(i>idx){d.classList.remove('on');}});elFeedback.classList.remove('is-shown');elNext.style.display='none';}
+  function answer(i,btn){if(answered)return;answered=true;var q=QUESTIONS[idx];var correct=q.c;var allButtons=elAnswers.querySelectorAll('.cq-game-answer');allButtons.forEach(function(bb,j){bb.disabled=true;if(j===correct)bb.classList.add('is-correct');});if(i!==correct){btn.classList.add('is-wrong');}else{score++;elScore.textContent=String(score);var chip=elScore.closest('.cq-game-chip');if(chip){chip.classList.remove('is-pop');void chip.offsetWidth;chip.classList.add('is-pop');}}elFeedbackTitle.textContent=(i===correct)?'GOED':'NIET HELEMAAL';elFeedbackTitle.style.color=(i===correct)?'#5DA836':'#FFB4AB';elWhy.textContent=q.why;elFeedback.classList.add('is-shown');var last=(idx===QUESTIONS.length-1);elNext.textContent=last?'Resultaat':'Volgende';elNext.style.display='inline-block';}
+  function next(){if(idx<QUESTIONS.length-1){idx++;render();}else{result();}}
+  function result(){show('result');document.getElementById('cqGameFinal').textContent=score+' / '+QUESTIONS.length;var msgs=[{t:'Nog even oefenen.',m:'Niets om je voor te schamen. Precies dit soort kennis brengt ZiN live, en houdt CuliQuiz daarna levend.'},{t:'Op de goede weg.',m:'Een deel zit er al in. De rest blijft hangen door het dagelijks te spelen.'},{t:'Sterk.',m:'Twee van de drie. Dit is het niveau waar we samen naartoe willen, op schaal.'},{t:'Foutloos.',m:'Drie van de drie. Niet veel mensen halen dit zonder oefening.'}];var info=msgs[score]||msgs[0];document.getElementById('cqGameTitle').textContent=info.t;document.getElementById('cqGameMsg').textContent=info.m;var stars=document.getElementById('cqGameStars').querySelectorAll('span');stars.forEach(function(s,i){s.classList.toggle('off',i>=score);});}
+  function start(){idx=0;score=0;elScore.textContent='0';show('play');render();}
+  document.getElementById('cqGameStartBtn').addEventListener('click',start);
+  document.getElementById('cqGameAgain').addEventListener('click',start);
+  elNext.addEventListener('click',next);
+})();
+</script>
 
 </body>
 </html>
