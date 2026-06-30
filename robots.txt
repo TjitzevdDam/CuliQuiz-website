@@ -17,6 +17,7 @@ Disallow: /lightspeed-en
 Disallow: /worldchefs
 Disallow: /worldchefs-nl
 Disallow: /culiquiztech
+Disallow: /zinlab
 Disallow: /hop
 
 Sitemap: https://www.culiquiz.nl/sitemap.xml
