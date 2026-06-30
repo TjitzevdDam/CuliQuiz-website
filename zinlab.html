@@ -370,6 +370,12 @@
   .foot-inner{display:flex;flex-direction:column;align-items:flex-start;gap:10px;}
   .foot-inner .logo img{height:40px;width:auto;}
   .foot .tagline{font-size:14px;color:var(--muted);margin:0;}
+  /* hero met telefoon ernaast */
+  .hero-grid{display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:center;}
+  .hero-visual{display:flex;justify-content:center;}
+  .hero-visual .cq-game-device{max-width:284px;height:566px;border-width:9px;border-radius:42px;}
+  .hero-hint{font-size:14px;color:var(--teal-dark);font-weight:600;margin-top:18px;}
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;gap:30px;justify-items:start;} }
   /* nav home link */
   .nav-inner{justify-content:space-between;}
   .nav-home{font-size:13px;font-weight:700;color:var(--teal-dark);text-decoration:none;letter-spacing:.01em;white-space:nowrap;}
@@ -536,54 +542,48 @@
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">CuliQuiz &times; ZiN Inspiratielab</span>
-    <h1>ZiN ontsteekt de vonk. Wij houden 'm <em>dagelijks</em> brandend.</h1>
-    <p class="lead">ZiN inspireert horecaprofessionals live en in de diepte: een dag vol vakmanschap, smaak en nieuwe energie. CuliQuiz houdt die kennis daarna elke dag levend, in een app die voelt als een spel. Dezelfde missie, twee helften die elkaar versterken: de vonk &eacute;n de gewoonte. Zo blijft wat iemand bij ZiN leert ook echt hangen, op de vloer, en wordt het meetbaar.</p>
-  </div>
-</header>
-
-<!-- ============ MINI-GAME (3 ZiN-vragen) ============ -->
-<section class="cq-game-section">
-  <div class="wrap">
-    <div class="reveal" style="text-align:center;">
-      <div class="sec-label" style="justify-content:center;margin-left:auto;margin-right:auto;">Een proefje</div>
-      <h2 class="sec" style="margin:0 auto;">Speel mee met drie <em>ZiN-vragen</em></h2>
-      <p class="sec-intro" style="margin:14px auto 0;">Drie korte vragen over vakkennis, zoals ZiN ze live brengt en CuliQuiz ze dagelijks speelbaar maakt. Klik in de telefoon en speel mee.</p>
-    </div>
-    <div class="cq-game-stage reveal d1">
-      <div class="cq-game-device" id="cqGameDevice">
-        <div class="cq-game-topbar">
-          <img class="cq-cuq" src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" />
-          <span class="cq-game-cross" aria-hidden="true">&times;</span>
-          <img class="cq-rat" src="https://www.culiquiz.nl/assets/zin-logo.png" alt="ZiN Inspiratielab" />
-        </div>
-        <div class="cq-game-sublabel">CARD GAME</div>
-        <div class="cq-game-body">
-          <div class="cq-game-screen cq-game-start is-active" id="cqGameStart">
-            <h3>Klaar voor 3 vragen?</h3>
-            <p>Vakkennis zoals ZiN het brengt, drie keuzes per vraag. Goed of fout, je krijgt er uitleg bij.</p>
-            <button class="cq-game-startbtn" id="cqGameStartBtn">Start</button>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">CuliQuiz &times; ZiN Inspiratielab</span>
+        <h1>ZiN ontsteekt de vonk. Wij houden 'm <em>dagelijks</em> brandend.</h1>
+        <p class="lead">ZiN inspireert horecaprofessionals live en in de diepte: een dag vol vakmanschap, smaak en nieuwe energie. CuliQuiz houdt die kennis daarna elke dag levend, in een app die voelt als een spel. Dezelfde missie, twee helften die elkaar versterken: de vonk &eacute;n de gewoonte.</p>
+        <p class="hero-hint">Speel mee met drie ZiN-vragen, klik in de telefoon &rarr;</p>
+      </div>
+      <div class="hero-visual">
+        <div class="cq-game-device" id="cqGameDevice">
+          <div class="cq-game-topbar">
+            <img class="cq-cuq" src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" />
+            <span class="cq-game-cross" aria-hidden="true">&times;</span>
+            <img class="cq-rat" src="https://www.culiquiz.nl/assets/zin-logo.png" alt="ZiN Inspiratielab" />
           </div>
-          <div class="cq-game-screen cq-game-play" id="cqGamePlay">
-            <div class="cq-game-hud"><span class="cq-game-chip">Score <span class="cq-x3" id="cqGameScore">0</span></span></div>
-            <div class="cq-game-progress" id="cqGameProgress"><span></span><span></span><span></span></div>
-            <div class="cq-game-card"><div class="cq-game-q" id="cqGameQ">Laden&hellip;</div></div>
-            <div class="cq-game-answers" id="cqGameAnswers"></div>
-            <div class="cq-game-feedback" id="cqGameFeedback"><strong id="cqGameFeedbackTitle">UITLEG</strong><span id="cqGameWhy"></span></div>
-            <button class="cq-game-nextbtn" id="cqGameNext" style="display:none;">Volgende</button>
-          </div>
-          <div class="cq-game-screen cq-game-result" id="cqGameResult">
-            <div class="cq-game-score" id="cqGameFinal">0 / 3</div>
-            <h3 id="cqGameTitle">Mooi gespeeld.</h3>
-            <p id="cqGameMsg">Speel nog een keer of scroll verder.</p>
-            <div class="cq-game-stars" id="cqGameStars"><span class="off"></span><span class="off"></span><span class="off"></span></div>
-            <button class="cq-game-startbtn" id="cqGameAgain">Opnieuw</button>
+          <div class="cq-game-sublabel">CARD GAME</div>
+          <div class="cq-game-body">
+            <div class="cq-game-screen cq-game-start is-active" id="cqGameStart">
+              <h3>Klaar voor 3 vragen?</h3>
+              <p>Vakkennis zoals ZiN het brengt, drie keuzes per vraag. Goed of fout, je krijgt er uitleg bij.</p>
+              <button class="cq-game-startbtn" id="cqGameStartBtn">Start</button>
+            </div>
+            <div class="cq-game-screen cq-game-play" id="cqGamePlay">
+              <div class="cq-game-hud"><span class="cq-game-chip">Score <span class="cq-x3" id="cqGameScore">0</span></span></div>
+              <div class="cq-game-progress" id="cqGameProgress"><span></span><span></span><span></span></div>
+              <div class="cq-game-card"><div class="cq-game-q" id="cqGameQ">Laden&hellip;</div></div>
+              <div class="cq-game-answers" id="cqGameAnswers"></div>
+              <div class="cq-game-feedback" id="cqGameFeedback"><strong id="cqGameFeedbackTitle">UITLEG</strong><span id="cqGameWhy"></span></div>
+              <button class="cq-game-nextbtn" id="cqGameNext" style="display:none;">Volgende</button>
+            </div>
+            <div class="cq-game-screen cq-game-result" id="cqGameResult">
+              <div class="cq-game-score" id="cqGameFinal">0 / 3</div>
+              <h3 id="cqGameTitle">Mooi gespeeld.</h3>
+              <p id="cqGameMsg">Speel nog een keer of scroll verder.</p>
+              <div class="cq-game-stars" id="cqGameStars"><span class="off"></span><span class="off"></span><span class="off"></span></div>
+              <button class="cq-game-startbtn" id="cqGameAgain">Opnieuw</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</header>
 
 <!-- ============ DEZELFDE MISSIE / TWEE HELFTEN ============ -->
 <section class="block">
