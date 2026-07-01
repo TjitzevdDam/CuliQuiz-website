@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Worldchefs &amp; CuliQuiz, a conversation</title>
-<meta name="description" content="Worldchefs and CuliQuiz: two parts of the same mission. Three ways we could build it together." />
+<title>Worldchefs &amp; CuliQuiz, a partnership</title>
+<meta name="description" content="Worldchefs and CuliQuiz: one shared mission. A daily layer on top of the Worldchefs Academy, and a partnership where both sides open a door." />
 <meta name="robots" content="noindex,nofollow" />
 <meta name="theme-color" content="#26A8B0" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -351,6 +351,31 @@
   .vals{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
   .vals .val{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:9px 17px;font-size:13.5px;font-weight:700;color:#fff;}
   .vals .val .vd{width:8px;height:8px;border-radius:50%;background:var(--gold);}
+  /* ---------- academy stack + career pipe (worldchefs rebuild) ---------- */
+  .astack{margin-top:40px;max-width:640px;}
+  .arow{border-radius:16px;padding:24px 28px;}
+  .arow.top{background:linear-gradient(135deg,var(--teal) 0%, var(--teal-dark) 100%);color:#fff;box-shadow:0 18px 40px rgba(15,78,84,.2);}
+  .arow.base{background:#fff;border:1px solid var(--line);box-shadow:0 8px 22px rgba(15,78,84,.06);}
+  .arow .al{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;}
+  .arow.top .al{color:var(--gold);}
+  .arow.base .al{color:var(--teal-dark);}
+  .arow .ah{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:22px;margin:4px 0 8px;line-height:1.1;}
+  .arow.top .ah{color:#fff;}
+  .arow.base .ah{color:var(--ink);}
+  .arow p{font-size:14.5px;line-height:1.55;margin:0;}
+  .arow.top p{color:rgba(255,255,255,.9);}
+  .arow.base p{color:var(--muted);}
+  .astack-plus{text-align:center;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:12px 0;}
+  .pipe{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:42px;}
+  .pstep{flex:1;min-width:142px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px 13px;text-align:center;box-shadow:0 6px 18px rgba(15,78,84,.05);}
+  .pstep .pn{width:30px;height:30px;border-radius:9px;background:var(--teal);color:#fff;font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;}
+  .pstep.pos .pn{background:var(--gold);color:#3a2e00;}
+  .pstep h4{font-size:14px;color:var(--ink);margin-bottom:4px;line-height:1.2;}
+  .pstep p{font-size:12px;color:var(--muted);line-height:1.4;}
+  .parrow{display:flex;align-items:center;color:var(--teal);font-weight:900;font-size:18px;}
+  @media (max-width:900px){ .pipe{flex-direction:column;} .parrow{transform:rotate(90deg);justify-content:center;} .pstep{min-width:0;} }
+  .moatnote{margin-top:26px;background:var(--gold-soft);border:1px solid #F0E2A8;border-left:5px solid var(--gold);border-radius:14px;padding:20px 26px;font-size:15px;color:var(--ink);line-height:1.6;}
+  .moatnote b{color:#7a5b00;}
 
 </style>
 </head>
@@ -370,154 +395,111 @@
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">After Newport</span>
+    <span class="eyebrow">For Worldchefs</span>
     <h1>Worldchefs brings chefs into the craft. We keep it alive, <em>every day after</em>.</h1>
-    <p class="lead">Two parts of the same mission. Three ways we could build it together, and one question for you.</p>
+    <p class="lead">One shared mission. A daily layer on top of your Academy, and a partnership where both sides open a door.</p>
   </div>
 </header>
 
-<!-- ============ WHAT WORLDCHEFS HAS BUILT ============ -->
+<!-- ============ SHARED MISSION + NETWORK ============ -->
 <section class="block">
   <div class="wrap">
     <div class="reveal">
-      <span class="sec-label">What Worldchefs has built</span>
-      <h2 class="sec">A network few associations ever <em>reach</em></h2>
+      <span class="sec-label">Where we start</span>
+      <h2 class="sec">The same mission, from two <em>sides</em></h2>
       <div class="lead-body">
-        <p>Worldchefs has built something rare. A network of chefs across 110 countries, more than two hundred national associations and education partners, and an Academy that has welcomed over twenty-five thousand aspiring chefs in eight languages, with more than nineteen thousand graduating.</p>
-        <p>A partnership with the Electrolux Food Foundation through Feed the Planet, work with the FAO through the World Food Forum, and a biennial Congress that returns to Paris in 2028, a hundred years after Worldchefs began there. Few associations in any industry carry this much reach and this much mission at the same time.</p>
+        <p>Worldchefs has built something rare. A network of chefs across 110 countries, more than two hundred national associations, and an Academy that has welcomed tens of thousands of aspiring chefs in eight languages. Few associations carry this much reach and this much mission at the same time.</p>
+        <p>We want the same thing you do. To keep this a craft, not a stopgap job, for the whole next generation. Worldchefs brings a chef into the profession. We keep the craft alive in them, every day after.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ THE MISSING LAYER (visual) ============ -->
+<!-- ============ THE LAYER ON TOP OF THE ACADEMY ============ -->
 <section class="block alt">
   <div class="wrap">
     <div class="reveal">
-      <span class="sec-label">What's still open</span>
-      <h2 class="sec">The layer in <em>between</em></h2>
+      <span class="sec-label">The idea</span>
+      <h2 class="sec">A daily layer on top of your <em>Academy</em></h2>
       <div class="lead-body">
-        <p>Worldchefs is strong at bringing chefs into the profession. The Academy gets them to their first job. Certification recognises their growing skill. But the everyday layer in between, the daily reinforcement of craft after the training ends, is not something any ecosystem really covers. Knowledge fades within weeks, and managers spend years trying to keep it alive.</p>
-        <p>It's easiest to see this way. Every part of the industry has a system, except the most important one.</p>
+        <p>The Academy gets a chef their foundation and their first job. What keeps it alive after is a daily habit. CuliQuiz is that habit: three to five minutes a day, gamified, on the phone, the way this generation actually learns. Wine, ingredients, technique, the story on the plate.</p>
       </div>
     </div>
-    <div class="layer reveal">
-      <div class="lay"><div class="lt">Hotels</div><div class="lv">PMS</div></div>
-      <div class="lay"><div class="lt">Restaurants</div><div class="lv">POS</div></div>
-      <div class="lay"><div class="lt">Marketing</div><div class="lv">CRM</div></div>
-      <div class="lay miss"><div class="lt">Knowledge &amp; behaviour</div><div class="lv">?</div><div class="ls">no system. this is the gap.</div></div>
+    <div class="astack reveal">
+      <div class="arow top">
+        <div class="al">CuliQuiz</div>
+        <div class="ah">The daily layer</div>
+        <p>Three to five minutes a day, gamified, on the phone. The way the next generation actually learns.</p>
+      </div>
+      <div class="astack-plus">on top of</div>
+      <div class="arow base">
+        <div class="al">Worldchefs Academy</div>
+        <div class="ah">The foundation</div>
+        <p>Video lessons, certification, the first job. Tens of thousands of chefs, in eight languages.</p>
+      </div>
+    </div>
+    <div class="lead-body reveal" style="margin-top:30px;">
+      <p>It is a rejuvenating step for your whole community, and it speaks to the next generation in the way they already live. Your Academy stays exactly as it is. We sit on top of it, and it costs Worldchefs nothing to add.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ MISSION / VISION (dark band) ============ -->
-<section class="block dark">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="sec-label">Why we exist</span>
-      <h2 class="sec">The layer we're <em>building</em></h2>
-      <div class="lead-body">
-        <p>A world where knowledge moves every day in food, drinks and hospitality. We want to make this work a craft again, not a stopgap job, for the whole next generation. The daily layer that keeps craftsmanship alive in everyone who serves the guest. That's the gap, and it's the reason CuliQuiz exists.</p>
-      </div>
-      <div class="vals">
-        <span class="val"><span class="vd"></span> Craftsmanship</span>
-        <span class="val"><span class="vd"></span> Inspiration</span>
-        <span class="val"><span class="vd"></span> Education</span>
-        <span class="val"><span class="vd"></span> Fun</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WHAT CULIQUIZ BRINGS ============ -->
+<!-- ============ ONE PROFILE, ACROSS THE NETWORK ============ -->
 <section class="block">
-  <div class="wrap">
+  <div class="wrap wide">
     <div class="reveal">
-      <span class="sec-label">What CuliQuiz brings</span>
-      <h2 class="sec">A daily game, not another <em>course</em></h2>
+      <span class="sec-label">What we'd build together</span>
+      <h2 class="sec">One profile, across the <em>network</em></h2>
       <div class="lead-body">
-        <p>CuliQuiz is not a course. It's not an e-learning platform, and it's not a certification. It's a daily game that takes three to five minutes and keeps craft alive in the people who serve the guest. Wine, ingredients, technique, the story behind what's on the plate.</p>
-        <p>We do for craft in food, drinks and hospitality what Duolingo did for language. Small daily moments, gamified, measurable, addictive in the right way.</p>
-        <p>Today we have around fifty thousand users across the Netherlands, partnerships with brands like Coca-Cola, Hendi, Rational and Mokka D'or, and a platform rebuilt to scale globally from next year. We are not asking Worldchefs to build anything. We're asking whether we should build the next part together.</p>
+        <p>A chef's profile shouldn't reset with every new job. In CuliQuiz it grows with them, a whole career long, and travels from school to employer to employer. Build that on top of the Worldchefs network, and a chef's profile is recognised in every country you reach. That is the ecosystem we want to build together.</p>
       </div>
     </div>
+    <div class="pipe reveal">
+      <div class="pstep"><div class="pn">1</div><h4>CuliKidz</h4><p>Primary school, curious about food through play.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep"><div class="pn">2</div><h4>Culinary school</h4><p>Own profile, learns the basics of the craft.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep"><div class="pn">3</div><h4>Commis</h4><p>First job, mastery starts to grow.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep"><div class="pn">4</div><h4>Chef de partie</h4><p>New employers, the profile travels along.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep"><div class="pn">5</div><h4>Chef</h4><p>Now trains the team through campaigns.</p></div>
+      <span class="parrow">&rarr;</span>
+      <div class="pstep pos"><div class="pn">6</div><h4>Own venue</h4><p>Owner and mentor, builds the next generation.</p></div>
+    </div>
+    <div class="moatnote reveal"><b>&#9733; One profile, a career long.</b> Recognised across the Worldchefs network of 110 countries, and more valuable at every step. Not a feature a competitor copies, but a bond built over a whole career, and the strongest reason a chef stays.</div>
   </div>
 </section>
 
-<!-- ============ THREE TRACKS ============ -->
+<!-- ============ THE PARTNERSHIP (win-win) ============ -->
 <section class="block alt">
   <div class="wrap">
-    <div class="reveal" style="text-align:center;">
-      <span class="sec-label" style="margin-left:auto;margin-right:auto;">Three ways we could create value together</span>
-      <h2 class="sec" style="margin:0 auto;">Three directions. <em>One question for you.</em></h2>
-      <p class="sec-intro" style="margin:16px auto 0;">For each one, what it could mean for Worldchefs, and what it would mean for us. We've tried to be honest about both sides.</p>
-    </div>
-    <div class="tracks3 reveal">
-      <div class="path">
-        <span class="tag">A &middot; The Member Layer</span>
-        <h3>Where the Academy ends, the daily <em>layer</em> begins</h3>
-        <p>Worldchefs members and Academy graduates get CuliQuiz as part of their membership. Corporate sponsors fund the content per category, the way Nestlé Professional already funds the Academy.</p>
-        <div class="what">For Worldchefs</div>
-        <p class="sm">A deeper engagement layer for members without building anything, a stronger proposition for member associations, and a new sponsorship product for your Platinum and Premium partners.</p>
-        <div class="what">For CuliQuiz</div>
-        <p class="sm">Access to 110 country associations and the Academy graduate pipeline.</p>
-        <div class="tl">Timeline <span>six to nine months to a first pilot</span></div>
-      </div>
-      <div class="path">
-        <span class="tag">B &middot; The Kids Program</span>
-        <h3>Turning workshops into lasting <em>behaviour</em></h3>
-        <p>Worldchefs has International Chefs Day. The Electrolux Food Foundation has Food Heroes, already reaching children in more than thirty countries. Neither keeps the message alive after the workshop ends. CuliKidz, our primary school product, was built for exactly that layer.</p>
-        <div class="what">For Worldchefs</div>
-        <p class="sm">A flagship impact program with measurable scale, in line with your Feed the Planet work, fundable through routes you already know like the Electrolux Food Foundation, Erasmus+ and EIT Food.</p>
-        <div class="what">For CuliQuiz</div>
-        <p class="sm">Foundation backing for a product already in development, and the credibility of a Worldchefs-endorsed program.</p>
-        <div class="tl">Timeline <span>twelve to eighteen months to a first funded cohort</span></div>
-      </div>
-      <div class="path gold">
-        <span class="tag">C &middot; The Network Channel</span>
-        <h3>The fastest way to show mutual <em>upside</em></h3>
-        <p>Your member associations across 110 countries have relationships with restaurants, hotel groups and culinary schools. When CuliQuiz lands a commercial deal that came through your network, Worldchefs earns a share.</p>
-        <div class="what">For Worldchefs</div>
-        <p class="sm">An additional revenue stream tied directly to member value. No operational lift, no governance complexity.</p>
-        <div class="what">For CuliQuiz</div>
-        <p class="sm">A global referral channel no marketing budget can replicate.</p>
-        <div class="tl">Timeline <span>first deals possible within three months</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WHY TOGETHER, WHY NOW ============ -->
-<section class="block">
-  <div class="wrap">
     <div class="reveal">
-      <span class="sec-label">Why together, why now</span>
-      <h2 class="sec">Better together than <em>alone</em></h2>
-      <p class="sec-intro">The platform is ready, and from next year we're taking it to the world. The honest question is not whether we can, but whether we do it alone or with you. Here's the trade we believe in.</p>
+      <span class="sec-label">The partnership</span>
+      <h2 class="sec">A door, both <em>ways</em></h2>
+      <p class="sec-intro">Simple and mutual. You open your network to us, we open our platform to you. Neither side has to build anything new.</p>
     </div>
     <div class="winwin reveal">
       <div class="ww us">
         <h4>What CuliQuiz brings Worldchefs</h4>
         <ul>
-          <li>The daily layer your ecosystem is missing</li>
-          <li>A modern member benefit that keeps the next generation engaged</li>
-          <li>New revenue, from sponsorship and a referral share</li>
-          <li>A fundable flagship for your mission</li>
-          <li>And we build it, not you</li>
+          <li>A daily interaction and education layer on top of your Academy</li>
+          <li>A rejuvenating step that reaches the next generation the way they learn</li>
+          <li>Access to the app for your members and associations</li>
+          <li>At no cost, and we build it, not you</li>
         </ul>
       </div>
       <div class="ww them">
-        <h4>What Worldchefs brings CuliQuiz</h4>
+        <h4>What we'd ask of Worldchefs</h4>
         <ul>
-          <li>The trust of the world's chef association</li>
-          <li>Reach across 110 countries no marketing budget can buy</li>
-          <li>A direct line to the next generation of chefs</li>
-          <li>World scale in a partnership, not a decade</li>
+          <li>The Worldchefs name on our platform, as an official partner</li>
+          <li>Visibility inside your Academy, your platform and your website</li>
+          <li>Access to your network of countries and associations</li>
         </ul>
       </div>
     </div>
     <div class="lead-body reveal" style="margin-top:26px;">
-      <p>On our own, we'd earn trust country by country for years. Together, the daily craft layer becomes a standard the whole profession recognises, from day one. That's the win we'd rather build with you.</p>
+      <p>In one line: your members get the app, we get your platform. You gain access to us, we gain access to you. Nobody builds a second thing, and we strengthen each other.</p>
     </div>
   </div>
 </section>
@@ -527,10 +509,10 @@
   <div class="wrap">
     <div class="reveal">
       <h2>We're not asking for an agreement.<br>We're asking for <em>direction</em>.</h2>
-      <p>Which of these three tracks fits where Worldchefs is heading over the next eighteen months, given your governance, your budget cycle, and your priorities?</p>
-      <p>Whatever you point us to, we come back within two weeks with a one-page concept on that track: the first three people we'd approach together, and realistic milestones for the first twelve months. You decide if it's strong enough to take further.</p>
-      <a class="cta" href="mailto:tjitze@culiquiz.nl?subject=Worldchefs%20and%20CuliQuiz%20%E2%80%94%20a%20direction">Let's pick a direction</a>
-      <div class="signature"><strong>Tjitze van der Dam</strong>, founder &nbsp;&middot;&nbsp; <strong>Bernard Lensink</strong>, co-founder<br>Prepared for Ragnar Fridriksson &middot; June 2026</div>
+      <p>Does a daily layer on top of your Academy fit where Worldchefs is heading?</p>
+      <p>Point us at it, and we come back within two weeks with a one-page concept: what a first pilot looks like, who we would start with, and the first twelve months. You decide if it is strong enough to take further.</p>
+      <a class="cta" href="mailto:tjitze@culiquiz.nl?subject=Worldchefs%20and%20CuliQuiz%2C%20a%20direction">Let's pick a direction</a>
+      <div class="signature"><strong>Tjitze van der Dam</strong>, founder &nbsp;&middot;&nbsp; <strong>Bernard Lensink</strong>, co-founder<br>Prepared for Ragnar Fridriksson &middot; July 2026</div>
     </div>
   </div>
 </section>
@@ -538,7 +520,7 @@
 <!-- ============ FOOTER ============ -->
 <footer class="foot">
   <div class="wrap">
-    CuliQuiz &times; Worldchefs &middot; a conversation document, not for distribution.
+    CuliQuiz &times; Worldchefs &middot; a partnership conversation, not for distribution.
   </div>
 </footer>
 
