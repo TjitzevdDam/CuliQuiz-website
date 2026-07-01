@@ -376,6 +376,32 @@
   @media (max-width:900px){ .pipe{flex-direction:column;} .parrow{transform:rotate(90deg);justify-content:center;} .pstep{min-width:0;} }
   .moatnote{margin-top:26px;background:var(--gold-soft);border:1px solid #F0E2A8;border-left:5px solid var(--gold);border-radius:14px;padding:20px 26px;font-size:15px;color:var(--ink);line-height:1.6;}
   .moatnote b{color:#7a5b00;}
+  /* ---------- market band + world map + plan (worldchefs adds 2) ---------- */
+  .marktband{display:grid;grid-template-columns:repeat(3,1fr);margin-top:42px;background:var(--teal-deep);border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(15,78,84,.16);}
+  .marktband .mb{padding:34px 26px;text-align:center;border-right:1px solid rgba(255,255,255,.10);}
+  .marktband .mb:last-child{border-right:none;}
+  .marktband .mbv{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:38px;color:#fff;line-height:1;}
+  .marktband .mb.hl .mbv{color:var(--gold);}
+  .marktband .mbl{font-size:13px;color:#bfe0e2;margin-top:10px;line-height:1.45;}
+  @media (max-width:760px){ .marktband{grid-template-columns:1fr;} .marktband .mb{border-right:none;border-bottom:1px solid rgba(255,255,255,.10);} .marktband .mb:last-child{border-bottom:none;} }
+  .landkaart{margin:36px auto 0;max-width:880px;background:#FAF6EC;border:1px solid var(--line);border-radius:18px;padding:14px 14px 8px;box-shadow:0 12px 30px rgba(15,78,84,.06);}
+  .landkaart img{display:block;width:100%;height:auto;border-radius:10px;}
+  .landkaart figcaption{display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 10px 8px;text-align:center;}
+  .lk-legend{display:inline-flex;align-items:center;font-size:12.5px;font-weight:700;color:var(--ink);}
+  .lk-dot{width:11px;height:11px;border-radius:50%;display:inline-block;}
+  .lk-dot.teal{background:var(--teal);margin-right:6px;}
+  .lk-dot.gold{background:var(--gold);margin:0 6px 0 16px;}
+  .lk-cap{font-size:13.5px;color:var(--muted);font-style:italic;max-width:62ch;line-height:1.5;}
+  .road{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:42px;}
+  .rstage{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px;box-shadow:0 8px 24px rgba(15,78,84,.05);border-top:3px solid #C9D2D6;}
+  .rstage.now{border-top-color:var(--gold);box-shadow:0 12px 30px rgba(234,182,0,.16);}
+  .rstage .rwhen{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-dark);}
+  .rstage.now .rwhen{color:#a37e00;}
+  .rstage h4{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:18px;color:var(--ink);margin:6px 0 8px;}
+  .rstage p{font-size:13px;color:var(--muted);line-height:1.5;}
+  .rstage .nowtag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#7a5b00;background:var(--gold-soft);border-radius:6px;padding:3px 8px;margin-bottom:8px;}
+  @media (max-width:860px){ .road{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:460px){ .road{grid-template-columns:1fr;} }
 
 </style>
 </head>
@@ -444,8 +470,65 @@
   </div>
 </section>
 
+<!-- ============ PHONE DEMO (3 vragen) ============ -->
+<section class="cq-game-section">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <div class="sec-label" style="justify-content:center;">Zie het werken</div>
+      <h2 class="sec" style="margin:0 auto;">Drie vragen, zestig <em>seconden</em></h2>
+      <p class="sec-intro" style="margin:14px auto 0;">Dit is wat elke dag op de telefoon van een kok belandt. Tik in de telefoon en speel mee.</p>
+    </div>
+    <div class="cq-game-stage reveal d1">
+      <div class="cq-game-device" id="cqGameDevice">
+        <div class="cq-game-topbar">
+          <img class="cq-cuq" src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" />
+          <span class="cq-game-cross" aria-hidden="true">×</span>
+          <img class="cq-rat" src="https://www.culiquiz.nl/assets/worldchefs-logo.webp" alt="Worldchefs" />
+        </div>
+        <div class="cq-game-sublabel">DAGELIJKS SPEL</div>
+
+        <div class="cq-game-body">
+          <div class="cq-game-screen cq-game-start is-active" id="cqGameStart">
+            <h3>Klaar voor 3 vragen?</h3>
+            <p>Kok-content, drie keuzes per vraag. Goed of fout, je krijgt de uitleg erbij.</p>
+            <button class="cq-game-startbtn" id="cqGameStartBtn">Start</button>
+          </div>
+
+          <div class="cq-game-screen cq-game-play" id="cqGamePlay">
+            <div class="cq-game-hud">
+              <span class="cq-game-chip">Score <span class="cq-x3" id="cqGameScore">0</span></span>
+            </div>
+            <div class="cq-game-progress" id="cqGameProgress">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="cq-game-card">
+              <div class="cq-game-q" id="cqGameQ">Laden…</div>
+            </div>
+            <div class="cq-game-answers" id="cqGameAnswers"></div>
+            <div class="cq-game-feedback" id="cqGameFeedback">
+              <strong id="cqGameFeedbackTitle">WAAROM</strong>
+              <span id="cqGameWhy"></span>
+            </div>
+            <button class="cq-game-nextbtn" id="cqGameNext" style="display:none;">Volgende</button>
+          </div>
+
+          <div class="cq-game-screen cq-game-result" id="cqGameResult">
+            <div class="cq-game-score" id="cqGameFinal">0 / 3</div>
+            <h3 id="cqGameTitle">Mooi gespeeld.</h3>
+            <p id="cqGameMsg">Speel nog een keer, of lees verder.</p>
+            <div class="cq-game-stars" id="cqGameStars">
+              <span class="off"></span><span class="off"></span><span class="off"></span>
+            </div>
+            <button class="cq-game-startbtn" id="cqGameAgain">Opnieuw</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ ONE PROFILE, ACROSS THE NETWORK ============ -->
-<section class="block">
+<section class="block alt">
   <div class="wrap wide">
     <div class="reveal">
       <span class="sec-label">Wat we samen bouwen</span>
@@ -471,8 +554,50 @@
   </div>
 </section>
 
-<!-- ============ THE PARTNERSHIP (win-win) ============ -->
+<!-- ============ VALUE: ACCESS TO THE NEXT GENERATION ============ -->
+<section class="block">
+  <div class="wrap wide">
+    <div class="reveal">
+      <span class="sec-label">De waarde voor Worldchefs</span>
+      <h2 class="sec">Toegang tot de volgende generatie, de <em>toekomst</em></h2>
+      <div class="lead-body">
+        <p>De mensen die de komende dertig jaar de horeca bepalen, stromen nu het vak in. Zij leren niet uit handleidingen of lange cursussen. Zij leren zoals ze leven: op de telefoon, in korte momenten, in de flow van een spel. Dat is precies wat CuliQuiz is. Door het naar jullie community te brengen, krijgt Worldchefs een directe lijn naar de generatie die de toekomst van het vak is.</p>
+      </div>
+    </div>
+    <div class="marktband reveal">
+      <div class="mb"><div class="mbv">350 miljoen</div><div class="mbl">horecabanen wereldwijd, een van de grootste werkvelden op aarde</div></div>
+      <div class="mb hl"><div class="mbv">1 op de 10</div><div class="mbl">werkenden ter wereld zit in de horeca</div></div>
+      <div class="mb"><div class="mbv">50.000</div><div class="mbl">koks en medewerkers spelen CuliQuiz nu al</div></div>
+    </div>
+    <figure class="landkaart reveal">
+      <img src="https://www.culiquiz.nl/assets/landenkaart.png" alt="Wereldkaart: actief in Nederland, interesse uit landen op vijf continenten" loading="lazy" />
+      <figcaption>
+        <span class="lk-legend"><span class="lk-dot teal"></span> Actief in<span class="lk-dot gold"></span> Interesse uit</span>
+        <span class="lk-cap">De interesse kwam al van vijf continenten, nog voor we één euro aan groei besteedden. Jullie netwerk van 110 landen maakt daar een standaard van.</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ THE PLAN ============ -->
 <section class="block alt">
+  <div class="wrap wide">
+    <div class="reveal" style="text-align:center;">
+      <span class="sec-label" style="margin-left:auto;margin-right:auto;">Het plan</span>
+      <h2 class="sec" style="margin:0 auto;">Hoe we het bouwen, stap voor <em>stap</em></h2>
+      <p class="sec-intro" style="margin:16px auto 0;">Niets groots om te tekenen. Een gefaseerd pad dat zich bewijst voordat het groeit, in het tempo dat jullie governance toelaat.</p>
+    </div>
+    <div class="road reveal">
+      <div class="rstage"><div class="rwhen">Stap 1</div><h4>Een pilot</h4><p>Eén vereniging, één land. Een branded CuliQuiz-laag boven op de Academy voor een eerste groep koks. Wij bouwen het, jullie openen de deur.</p></div>
+      <div class="rstage now"><span class="nowtag">Waar het zich bewijst</span><div class="rwhen">Stap 2</div><h4>Bewijs</h4><p>We meten betrokkenheid en bereik, en maken er een gedeelde case study van die je aan je leden en partners laat zien.</p></div>
+      <div class="rstage"><div class="rwhen">Stap 3</div><h4>Uitrol</h4><p>Openstellen voor meer verenigingen, in meer talen, in het tempo dat past bij jullie governance en budgetcyclus.</p></div>
+      <div class="rstage"><div class="rwhen">Stap 4</div><h4>Een standaard</h4><p>De dagelijkse vaklaag wordt onderdeel van wat een Worldchefs-lidmaatschap betekent, herkend door het hele netwerk.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE PARTNERSHIP (win-win) ============ -->
+<section class="block">
   <div class="wrap">
     <div class="reveal">
       <span class="sec-label">Het partnership</span>
@@ -534,9 +659,152 @@
     },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
     els.forEach(function(el){obs.observe(el);});
   })();
+
+  /* ============================================================
+     Mini-game. Drie vragen, drie keuzes. Kok-content.
+     ============================================================ */
+  (function(){
+    var device = document.getElementById('cqGameDevice');
+    if(!device) return;
+
+    var QUESTIONS = [
+      {
+        q: "Wat betekent 'mise en place' echt in een professionele keuken?",
+        a: [
+          "Alles voorbereid en op zijn plek voordat de service begint",
+          "Een Franse manier van uitserveren",
+          "De dagelijkse schoonmaakroutine"
+        ],
+        c: 0,
+        why: "Mise en place, alles op zijn plek, is de discipline die de service rustig houdt. Bereid voor en organiseer voordat de eerste bon binnenkomt."
+      },
+      {
+        q: "Waarom laten veel koks een steak rusten na het bakken?",
+        a: [
+          "Zodat de sappen zich herverdelen en het mals blijft",
+          "Om hem af te koelen voor het uitserveren",
+          "Om een laatste laagje kruiden toe te voegen"
+        ],
+        c: 0,
+        why: "Rusten laat de sappen terugtrekken door het vlees. Snijd je te vroeg, dan lopen ze op de plank in plaats van in de hap."
+      },
+      {
+        q: "Wat is een klassiek principe voor het combineren van wijn en gerecht?",
+        a: [
+          "Serveer altijd rode wijn bij vis",
+          "Stem het gewicht van de wijn af op het gewicht van het gerecht",
+          "Hoe kouder de wijn, hoe beter de combinatie"
+        ],
+        c: 1,
+        why: "Stem de intensiteit af: een licht gerecht met een lichte wijn, een rijk gerecht met een vollere. Gewicht telt zwaarder dan de oude kleurregels."
+      }
+    ];
+
+    var idx = 0, score = 0, answered = false;
+    var screens = {
+      start: document.getElementById('cqGameStart'),
+      play:  document.getElementById('cqGamePlay'),
+      result:document.getElementById('cqGameResult')
+    };
+    var elQ = document.getElementById('cqGameQ');
+    var elAnswers = document.getElementById('cqGameAnswers');
+    var elScore = document.getElementById('cqGameScore');
+    var elProgress = document.getElementById('cqGameProgress');
+    var elFeedback = document.getElementById('cqGameFeedback');
+    var elFeedbackTitle = document.getElementById('cqGameFeedbackTitle');
+    var elWhy = document.getElementById('cqGameWhy');
+    var elNext = document.getElementById('cqGameNext');
+
+    function show(name){
+      Object.keys(screens).forEach(function(k){
+        screens[k].classList.toggle('is-active', k===name);
+      });
+    }
+
+    function render(){
+      answered = false;
+      var q = QUESTIONS[idx];
+      elQ.textContent = q.q;
+      var card = device.querySelector('.cq-game-card');
+      if(card){ card.classList.remove('is-fresh'); void card.offsetWidth; card.classList.add('is-fresh'); }
+      elAnswers.innerHTML = '';
+      var letters = ['A','B','C'];
+      q.a.forEach(function(txt, i){
+        var btn = document.createElement('button');
+        btn.className = 'cq-game-answer';
+        btn.type = 'button';
+        btn.innerHTML = '<span class="cq-game-letter">' + letters[i] + '</span>' + txt;
+        btn.addEventListener('click', function(){ answer(i, btn); });
+        elAnswers.appendChild(btn);
+      });
+      var dots = elProgress.querySelectorAll('span');
+      dots.forEach(function(d, i){
+        if(i <= idx && !d.classList.contains('on')){ d.classList.add('on'); }
+        else if(i > idx){ d.classList.remove('on'); }
+      });
+      elFeedback.classList.remove('is-shown');
+      elNext.style.display = 'none';
+    }
+
+    function answer(i, btn){
+      if(answered) return;
+      answered = true;
+      var q = QUESTIONS[idx];
+      var correct = q.c;
+      var allButtons = elAnswers.querySelectorAll('.cq-game-answer');
+      allButtons.forEach(function(b, j){
+        b.disabled = true;
+        if(j === correct) b.classList.add('is-correct');
+      });
+      if(i !== correct){
+        btn.classList.add('is-wrong');
+      } else {
+        score++;
+        elScore.textContent = String(score);
+        var chip = elScore.closest('.cq-game-chip');
+        if(chip){ chip.classList.remove('is-pop'); void chip.offsetWidth; chip.classList.add('is-pop'); }
+      }
+      elFeedbackTitle.textContent = (i === correct) ? 'GOED' : 'NIET HELEMAAL';
+      elFeedbackTitle.style.color = (i === correct) ? '#5DA836' : '#FFB4AB';
+      elWhy.textContent = q.why;
+      elFeedback.classList.add('is-shown');
+      var last = (idx === QUESTIONS.length - 1);
+      elNext.textContent = last ? 'Resultaat' : 'Volgende';
+      elNext.style.display = 'inline-block';
+    }
+
+    function next(){
+      if(idx < QUESTIONS.length - 1){ idx++; render(); } else { result(); }
+    }
+
+    function result(){
+      show('result');
+      document.getElementById('cqGameFinal').textContent = score + ' / ' + QUESTIONS.length;
+      var msgs = [
+        {t: 'Nog even oefenen.', m: 'Niets om je voor te schamen. Dit is content die mensen pas op de vloer leren.'},
+        {t: 'Op de goede weg.', m: 'Een stukje van het verhaal zit al bij je. De rest leert het platform dagelijks.'},
+        {t: 'Sterk.', m: 'Twee van de drie. Dit is het niveau waar we naartoe bouwen, op schaal.'},
+        {t: 'Foutloos.', m: 'Drie van de drie. Niet veel mensen halen dit zonder oefening.'}
+      ];
+      var info = msgs[score] || msgs[0];
+      document.getElementById('cqGameTitle').textContent = info.t;
+      document.getElementById('cqGameMsg').textContent = info.m;
+      var stars = document.getElementById('cqGameStars').querySelectorAll('span');
+      stars.forEach(function(s, i){ s.classList.toggle('off', i >= score); });
+    }
+
+    function start(){
+      idx = 0; score = 0;
+      elScore.textContent = '0';
+      show('play');
+      render();
+    }
+
+    document.getElementById('cqGameStartBtn').addEventListener('click', start);
+    document.getElementById('cqGameAgain').addEventListener('click', start);
+    elNext.addEventListener('click', next);
+  })();
 </script>
 
-  {SNIP}
-<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
