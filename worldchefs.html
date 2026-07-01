@@ -406,6 +406,29 @@
 </style>
 </head>
 <body>
+<script>
+  // Set lock class BEFORE rendering to prevent flash of content
+  try{
+    if(localStorage.getItem('cq_worldchefs_unlocked') !== '1'){
+      document.documentElement.classList.add('cq-locked');
+    }
+  }catch(e){
+    document.documentElement.classList.add('cq-locked');
+  }
+</script>
+<div id="cqGate" class="cq-gate">
+  <div class="cq-gate-card">
+    <img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" />
+    <h2>For Worldchefs</h2>
+    <p>This page is for you. Enter the password to continue.</p>
+    <form id="cqGateForm" novalidate>
+      <input type="password" id="cqGateInput" placeholder="Password" autocomplete="off" />
+      <button type="submit">Open</button>
+    </form>
+    <p id="cqGateError" class="cq-gate-error" hidden>That password is not correct.</p>
+  </div>
+</div>
+
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <div class="wrap nav-inner">
@@ -651,6 +674,47 @@
 
 <script>
   document.documentElement.classList.add('js');
+
+  /* ============================================================
+     Gate (wachtwoord, case-insensitive). Alleen de SHA-256-hash
+     staat in de bron. Hash bijwerken: printf '%s' "ww_lowercase" | shasum -a 256
+     ============================================================ */
+  (function(){
+    if(!document.documentElement.classList.contains('cq-locked')) return;
+    var EXPECTED_HASH = '25f51b147c2bf1b4f8178b2d7b41370da6884ff03c00a7d722b9f5f30439c289';
+    var STORAGE_KEY = 'cq_worldchefs_unlocked';
+    async function sha256(text){
+      var enc = new TextEncoder();
+      var hash = await crypto.subtle.digest('SHA-256', enc.encode(text));
+      return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
+    }
+    function unlock(){
+      document.documentElement.classList.remove('cq-locked');
+      var gate = document.getElementById('cqGate');
+      if(gate) gate.remove();
+      try{ localStorage.setItem(STORAGE_KEY, '1'); }catch(e){}
+    }
+    function init(){
+      var form = document.getElementById('cqGateForm');
+      var input = document.getElementById('cqGateInput');
+      var error = document.getElementById('cqGateError');
+      if(!form || !input) return;
+      setTimeout(function(){ input.focus(); }, 80);
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        error.hidden = true;
+        var ww = input.value.trim();
+        if(!ww) return;
+        sha256(ww.toLowerCase()).then(function(hash){
+          if(hash === EXPECTED_HASH){ unlock(); }
+          else { error.hidden = false; input.select(); }
+        });
+      });
+    }
+    if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', init); }
+    else { init(); }
+  })();
+
   (function(){
     var els = document.querySelectorAll('.reveal');
     if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('in');});return;}
