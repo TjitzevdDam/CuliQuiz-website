@@ -17,6 +17,8 @@ Disallow: /lightspeed-en
 Disallow: /worldchefs
 Disallow: /worldchefs-nl
 Disallow: /culiquiztech
+Disallow: /merken
+Disallow: /merken-en
 Disallow: /zinlab
 Disallow: /hop
 
