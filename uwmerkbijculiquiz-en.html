@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>What does CuliQuiz do for your brand?</title>
-<meta name="description" content="What CuliQuiz does for your brand: training, marketing, reach and interaction on the floor, plus a dashboard to watch the interactions with your brand in real time." />
+<meta name="description" content="What CuliQuiz does for your brand: making your product story land with the employee on the floor, plus a dashboard to watch the interactions with your brand in real time." />
 <meta name="robots" content="noindex,nofollow" />
 <meta name="theme-color" content="#26A8B0" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -307,7 +307,11 @@
   /* ---------- FMCG brand page additions ---------- */
   .nav-lang{display:inline-flex;align-items:center;justify-content:center;min-width:38px;border:1.5px solid var(--line);color:var(--muted);padding:7px 13px;border-radius:999px;font-weight:700;font-size:13px;letter-spacing:.04em;transition:border-color .15s,color .15s;}
   .nav-lang:hover{border-color:var(--teal);color:var(--teal);}
-  .nav-meta .nl-mut{color:var(--muted);}
+  /* hero two-column (text + phone-game) */
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;}
+  .hero-grid .cq-game-stage{margin-top:0;}
+  .game-hint{text-align:center;font-size:13px;color:var(--muted);margin-top:16px;}
+  @media (max-width:880px){ .hero-grid{grid-template-columns:1fr;gap:34px;} }
   /* missing-layer visual */
   .layer{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px;}
   .lay{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 18px;text-align:center;box-shadow:0 6px 18px rgba(15,78,84,.05);}
@@ -327,29 +331,123 @@
   .pcard h4{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:17px;color:var(--ink);margin-bottom:6px;}
   .pcard p{font-size:14.5px;color:var(--muted);line-height:1.5;}
   @media (max-width:780px){ .proof{grid-template-columns:1fr;} }
-  /* offering cards: 4 in 2x2 */
   .paths.four{grid-template-columns:1fr 1fr;}
   @media (max-width:780px){ .paths.four{grid-template-columns:1fr;} }
+  /* ---------- inline brand dashboard (bdash) ---------- */
+  .bdash{margin-top:20px;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(15,78,84,.14);background:#fff;}
+  .bdash-top{background:linear-gradient(135deg,var(--teal-deep) 0%, var(--teal) 100%);color:#fff;padding:18px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .bdash-top h3{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:19px;color:#fff;line-height:1.1;margin:0;}
+  .bdash-top .sub{font-size:12.5px;color:rgba(255,255,255,.82);margin-top:3px;}
+  .bdash-live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.03em;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:7px 14px;border-radius:999px;}
+  .bdash-live .dot{width:8px;height:8px;border-radius:50%;background:#7BE06B;}
+  .js .bdash-live .dot{animation:bdpulse 1.8s ease-out infinite;}
+  @keyframes bdpulse{0%{box-shadow:0 0 0 0 rgba(123,224,107,.6);}70%{box-shadow:0 0 0 8px rgba(123,224,107,0);}100%{box-shadow:0 0 0 0 rgba(123,224,107,0);}}
+  .bdash-body{padding:22px 26px 26px;}
+  .bkpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .bkpi .k{background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:15px 16px;}
+  .bkpi .kv{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:25px;color:var(--ink);line-height:1;}
+  .bkpi .kv.gold{color:#a37e00;}
+  .bkpi .kl{font-size:11.5px;color:var(--muted);margin-top:7px;line-height:1.35;}
+  .bkpi .kd{font-size:11px;color:#3F9A2E;font-weight:700;margin-top:5px;}
+  .bcols{display:grid;grid-template-columns:1.35fr 1fr;gap:18px;margin-top:18px;}
+  .bpanel{border:1px solid var(--line);border-radius:12px;padding:16px 18px 14px;}
+  .bpanel h4{font-size:12.5px;font-weight:700;color:var(--ink);margin:0 0 14px;display:flex;justify-content:space-between;align-items:baseline;text-transform:uppercase;letter-spacing:.05em;}
+  .bpanel h4 span{color:var(--muted);font-weight:600;font-size:10.5px;letter-spacing:0;text-transform:none;}
+  .bchart{display:flex;align-items:flex-end;gap:9px;height:118px;padding-bottom:20px;border-bottom:1px solid var(--line);}
+  .bchart .bar{flex:1;background:linear-gradient(180deg,#4bc2c9 0%, var(--teal) 100%);border-radius:6px 6px 0 0;position:relative;min-height:6px;}
+  .bchart .bar b{position:absolute;bottom:-19px;left:0;right:0;text-align:center;font-size:10px;color:var(--muted);font-weight:600;}
+  .bchart .bar.hi{background:linear-gradient(180deg,#F2C42A 0%, var(--gold) 100%);}
+  .brow{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;}
+  .brow:last-child{border-bottom:none;}
+  .brow .nm{color:var(--ink);font-weight:600;}
+  .brow .vg{color:#3F9A2E;font-weight:800;}
+  @media (max-width:760px){ .bkpi{grid-template-columns:1fr 1fr;} .bcols{grid-template-columns:1fr;} }
 
 </style>
 </head>
 <body>
 <nav class="nav">
   <div class="wrap wide nav-inner">
-    <div class="nav-logos">
-      <a class="logo" href="https://www.culiquiz.nl"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></a>
-    </div>
+    <div class="nav-logos"><a class="logo" href="https://www.culiquiz.nl"><img src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" /></a></div>
     <a class="nav-lang" href="/uwmerkbijculiquiz">NL</a>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="wrap">
-    <span class="eyebrow">For brands</span>
-    <h1>What does CuliQuiz do for <em>your brand</em>?</h1>
-    <p class="lead">In food, drinks and hospitality, knowledge moves every day. Your brand lives on the floor, with the people who sell it. CuliQuiz puts your brand there every day, and makes visible what it does.</p>
+  <div class="wrap wide">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">For brands</span>
+        <h1>What does CuliQuiz do for <em>your brand</em>?</h1>
+        <p class="lead">Getting your product onto the menu at restaurants is step one. Getting the staff to actually sell it is step two. That happens when your product's story lands with the employee on the floor. How do you reach them? With a three-minute game a day, on their own phone.</p>
+      </div>
+      <div class="cq-game-stage">
+      <div class="cq-game-device" id="cqGameDevice">
+        <div class="cq-game-topbar">
+          <img class="cq-cuq" src="https://www.culiquiz.nl/assets/logo.png" alt="CuliQuiz" />
+        </div>
+        <div class="cq-game-sublabel">DAILY GAME</div>
+        <div class="cq-game-body">
+          <div class="cq-game-screen cq-game-start is-active" id="cqGameStart">
+            <h3>Ready for 3 questions?</h3>
+            <p>About selling and a product's story. Right or wrong, you get the why.</p>
+            <button class="cq-game-startbtn" id="cqGameStartBtn">Start</button>
+          </div>
+          <div class="cq-game-screen cq-game-play" id="cqGamePlay">
+            <div class="cq-game-hud"><span class="cq-game-chip">Score <span class="cq-x3" id="cqGameScore">0</span></span></div>
+            <div class="cq-game-progress" id="cqGameProgress"><span></span><span></span><span></span></div>
+            <div class="cq-game-card"><div class="cq-game-q" id="cqGameQ">Loading…</div></div>
+            <div class="cq-game-answers" id="cqGameAnswers"></div>
+            <div class="cq-game-feedback" id="cqGameFeedback"><strong id="cqGameFeedbackTitle">WHY</strong><span id="cqGameWhy"></span></div>
+            <button class="cq-game-nextbtn" id="cqGameNext" style="display:none;">Next</button>
+          </div>
+          <div class="cq-game-screen cq-game-result" id="cqGameResult">
+            <div class="cq-game-score" id="cqGameFinal">0 / 3</div>
+            <h3 id="cqGameTitle">Nicely played.</h3>
+            <p id="cqGameMsg">Play again, or read on.</p>
+            <div class="cq-game-stars" id="cqGameStars"><span class="off"></span><span class="off"></span><span class="off"></span></div>
+            <button class="cq-game-startbtn" id="cqGameAgain">Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="game-hint">Tap start and play a round yourself.</p>
+    </div>
   </div>
 </header>
+
+<section class="block alt tight">
+  <div class="wrap wide">
+    <div class="reveal">
+      <span class="sec-label">Dashboard &amp; real-time</span>
+      <h2 class="sec">Watch your brand in <em>real time</em></h2>
+      <p class="sec-intro">Everything that happens on the floor flows back as data. Who played your campaign, how the scores run per location, and what it does to sales. Sell-out intelligence that puts expectation and reality side by side.</p>
+    </div>
+    <div class="bdash reveal">
+      <div class="bdash-top">
+        <div><h3>Brand dashboard</h3><div class="sub">Your brand, real time</div></div>
+        <span class="bdash-live"><span class="dot"></span>Live</span>
+      </div>
+      <div class="bdash-body">
+        <div class="bkpi">
+          <div class="k"><div class="kv">3.403</div><div class="kl">Active players</div><div class="kd">+8% this week</div></div>
+          <div class="k"><div class="kv gold">12.847</div><div class="kl">Interactions with your brand</div><div class="kd">+2% this month</div></div>
+          <div class="k"><div class="kv">52</div><div class="kl">Connected locations</div><div class="kd">3 new</div></div>
+          <div class="k"><div class="kv">92%</div><div class="kl">Campaign completed</div><div class="kd">+5% this month</div></div>
+        </div>
+        <div class="bcols">
+          <div class="bpanel"><h4>Interactions this week<span>7 days</span></h4><div class="bchart"><div class="bar" style="height:42%"><b>Ma</b></div><div class="bar" style="height:58%"><b>Di</b></div><div class="bar" style="height:47%"><b>Wo</b></div><div class="bar" style="height:74%"><b>Do</b></div><div class="bar hi" style="height:96%"><b>Vr</b></div><div class="bar" style="height:63%"><b>Za</b></div><div class="bar" style="height:39%"><b>Zo</b></div></div></div>
+          <div class="bpanel"><h4>Sell-out intelligence<span>effect on the floor</span></h4>
+            <div class="brow"><span class="nm">Signature serve</span><span class="vg">+18%</span></div>
+            <div class="brow"><span class="nm">Wine pairing advice</span><span class="vg">+12%</span></div>
+            <div class="brow"><span class="nm">Dessert upsell</span><span class="vg">+9%</span></div>
+            <div class="brow"><span class="nm">Repeat purchase</span><span class="vg">+6%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="block">
   <div class="wrap">
@@ -393,53 +491,15 @@
       <p class="sec-intro" style="margin:16px auto 0;">Not a one-off training, but rhythm. And rhythm builds behaviour. Four ways your brand moves with it, every day.</p>
     </div>
     <div class="paths four reveal">
-      <div class="path">
-        <span class="tag">Training</span>
-        <h3>Knowledge &amp; behaviour on the <em>floor</em></h3>
-        <p>Your brand is understood, remembered and sold well. Three minutes a day on the phone: onboarding, product knowledge, HACCP and certificates. Measurable per employee and per location.</p>
-      </div>
-      <div class="path">
-        <span class="tag">Marketing</span>
-        <h3>Campaigns visible in <em>behaviour</em></h3>
-        <p>Not built for reach, but for use. A continuous feedback loop from the floor and from sales, with insights from the end user. You see not just that your campaign runs, but that it works.</p>
-      </div>
-      <div class="path gold">
-        <span class="tag">Reach &amp; interaction</span>
-        <h3>More than 200 touchpoints a <em>year</em></h3>
-        <p>Daily micro-moments, battles and gamification with the people who sell your brand. The floor plays with your brand, every day. Not an ad that passes by, but interaction that sticks.</p>
-      </div>
-      <div class="path">
-        <span class="tag">Sales</span>
-        <h3>Adoption in the <em>conversation</em></h3>
-        <p>Sales uses what works. Conversations get easier, mistakes are prevented. It saves time and builds confidence with the customer, right where your brand is sold.</p>
-      </div>
+      <div class="path"><span class="tag">Training</span><h3>Knowledge &amp; behaviour on the <em>floor</em></h3><p>Your brand is understood, remembered and sold well. Three minutes a day on the phone: onboarding, product knowledge, HACCP and certificates. Measurable per employee and per location.</p></div>
+      <div class="path"><span class="tag">Marketing</span><h3>Campaigns visible in <em>behaviour</em></h3><p>Not built for reach, but for use. A continuous feedback loop from the floor and from sales, with insights from the end user. You see not just that your campaign runs, but that it works.</p></div>
+      <div class="path gold"><span class="tag">Reach &amp; interaction</span><h3>More than 200 touchpoints a <em>year</em></h3><p>Daily micro-moments, battles and gamification with the people who sell your brand. The floor plays with your brand, every day. Not an ad that passes by, but interaction that sticks.</p></div>
+      <div class="path"><span class="tag">Sales</span><h3>Adoption in the <em>conversation</em></h3><p>Sales uses what works. Conversations get easier, mistakes are prevented. It saves time and builds confidence with the customer, right where your brand is sold.</p></div>
     </div>
   </div>
 </section>
 
 <section class="block alt">
-  <div class="wrap wide">
-    <div class="reveal">
-      <span class="sec-label">Dashboard &amp; real-time</span>
-      <h2 class="sec">Watch your brand in <em>real time</em></h2>
-      <div class="lead-body">
-        <p>Everything that happens on the floor flows back as data. Who completed the onboarding, who played your brand's campaign, how the scores run per location. No assumptions, evidence.</p>
-        <p>And the next step: watch the interactions with your brand in real time. Sell-out intelligence that puts expectation and reality side by side, exactly where it matters.</p>
-      </div>
-    </div>
-    <div class="dashboard-embed reveal d2">
-      <div class="dashboard-frame">
-        <iframe src="https://quest-shared-67849119.figma.site" title="Brand dashboard, sketch" loading="lazy" allowfullscreen></iframe>
-      </div>
-    </div>
-    <div class="dashboard-meta reveal d2">
-      <span>Brand dashboard &middot; sketch</span>
-      <span>Knowledge level, campaign activation and sell-out intelligence per location.</span>
-    </div>
-  </div>
-</section>
-
-<section class="block">
   <div class="wrap wide">
     <div class="reveal">
       <span class="sec-label">Return on engagement</span>
@@ -469,31 +529,59 @@
 </section>
 
 <footer class="foot">
-  <div class="wrap">
-    CuliQuiz &middot; what we do for brands. <a href="https://www.culiquiz.nl">culiquiz.nl</a>
-  </div>
+  <div class="wrap">CuliQuiz &middot; what we do for brands. <a href="https://www.culiquiz.nl">culiquiz.nl</a></div>
 </footer>
 
 <script>
   document.documentElement.classList.add('js');
+
   (function(){
     var els = document.querySelectorAll('.reveal');
     if(!('IntersectionObserver' in window)){ els.forEach(function(el){el.classList.add('in');}); }
-    else{
-      var obs = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-      },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-      els.forEach(function(el){ obs.observe(el); });
+    else{ var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+      els.forEach(function(el){obs.observe(el);}); }
+  })();
+
+  (function(){
+    var device = document.getElementById('cqGameDevice');
+    if(!device) return;
+    var QUESTIONS = [{"q":"A guest is unsure about a wine. What sells it best?","a":["The story behind it: the region and the maker","Just naming the lowest price","Saying it is the most popular"],"c":0,"why":"A story makes a guest curious and confident in their choice. Product knowledge sells better than a discount."},{"q":"Why does an employee who knows a product's origin sell more of it?","a":["They can answer questions and recommend with conviction","They work faster","It is cheaper"],"c":0,"why":"Whoever knows the story advises with confidence. The guest feels that confidence, and orders."},{"q":"When does an upsell work best?","a":["At the moment of ordering, with an appealing description","Afterwards, at checkout","Only when the guest asks for it"],"c":0,"why":"The best upsell is a good suggestion at the right moment. Describe it well, right when the guest chooses."}];
+    var UI = {"correct":"CORRECT","notquite":"NOT QUITE","next":"Next","result":"Result","msgs":[{"t":"Worth a round.","m":"No shame. This is how it feels for a new employee too."},{"t":"On your way.","m":"Part of it is already there. The rest, the game teaches daily."},{"t":"Strong.","m":"Two of three. This is the level your brand wants on the floor."},{"t":"Flawless.","m":"Three of three. That is how a well-trained employee sells your brand."}]};
+    var idx=0, score=0, answered=false;
+    var screens={start:document.getElementById('cqGameStart'),play:document.getElementById('cqGamePlay'),result:document.getElementById('cqGameResult')};
+    var elQ=document.getElementById('cqGameQ'), elAnswers=document.getElementById('cqGameAnswers'), elScore=document.getElementById('cqGameScore'),
+        elProgress=document.getElementById('cqGameProgress'), elFeedback=document.getElementById('cqGameFeedback'),
+        elFeedbackTitle=document.getElementById('cqGameFeedbackTitle'), elWhy=document.getElementById('cqGameWhy'), elNext=document.getElementById('cqGameNext');
+    function show(name){ Object.keys(screens).forEach(function(k){ screens[k].classList.toggle('is-active', k===name); }); }
+    function render(){
+      answered=false; var q=QUESTIONS[idx]; elQ.textContent=q.q;
+      var card=device.querySelector('.cq-game-card'); if(card){ card.classList.remove('is-fresh'); void card.offsetWidth; card.classList.add('is-fresh'); }
+      elAnswers.innerHTML=''; var letters=['A','B','C'];
+      q.a.forEach(function(txt,i){ var b=document.createElement('button'); b.className='cq-game-answer'; b.type='button';
+        b.innerHTML='<span class="cq-game-letter">'+letters[i]+'</span>'+txt; b.addEventListener('click',function(){answer(i,b);}); elAnswers.appendChild(b); });
+      var dots=elProgress.querySelectorAll('span'); dots.forEach(function(d,i){ if(i<=idx&&!d.classList.contains('on')){d.classList.add('on');} else if(i>idx){d.classList.remove('on');} });
+      elFeedback.classList.remove('is-shown'); elNext.style.display='none';
     }
-    function fitDashboard(){
-      var embed = document.querySelector('.dashboard-embed');
-      var frame = embed && embed.querySelector('.dashboard-frame');
-      if(!embed || !frame) return;
-      frame.style.setProperty('--dash-scale', embed.clientWidth / 1440);
+    function answer(i,btn){
+      if(answered)return; answered=true; var q=QUESTIONS[idx]; var correct=q.c;
+      elAnswers.querySelectorAll('.cq-game-answer').forEach(function(b,j){ b.disabled=true; if(j===correct)b.classList.add('is-correct'); });
+      if(i!==correct){ btn.classList.add('is-wrong'); } else { score++; elScore.textContent=String(score);
+        var chip=elScore.closest('.cq-game-chip'); if(chip){ chip.classList.remove('is-pop'); void chip.offsetWidth; chip.classList.add('is-pop'); } }
+      elFeedbackTitle.textContent=(i===correct)?UI.correct:UI.notquite; elFeedbackTitle.style.color=(i===correct)?'#5DA836':'#FFB4AB';
+      elWhy.textContent=q.why; elFeedback.classList.add('is-shown');
+      var last=(idx===QUESTIONS.length-1); elNext.textContent=last?UI.result:UI.next; elNext.style.display='inline-block';
     }
-    fitDashboard();
-    window.addEventListener('resize', fitDashboard);
-    if('ResizeObserver' in window){ var e = document.querySelector('.dashboard-embed'); if(e) new ResizeObserver(fitDashboard).observe(e); }
+    function next(){ if(idx<QUESTIONS.length-1){ idx++; render(); } else { result(); } }
+    function result(){
+      show('result'); document.getElementById('cqGameFinal').textContent=score+' / '+QUESTIONS.length;
+      var info=UI.msgs[score]||UI.msgs[0];
+      document.getElementById('cqGameTitle').textContent=info.t; document.getElementById('cqGameMsg').textContent=info.m;
+      document.getElementById('cqGameStars').querySelectorAll('span').forEach(function(s,i){ s.classList.toggle('off', i>=score); });
+    }
+    function start(){ idx=0; score=0; elScore.textContent='0'; show('play'); render(); }
+    document.getElementById('cqGameStartBtn').addEventListener('click', start);
+    document.getElementById('cqGameAgain').addEventListener('click', start);
+    elNext.addEventListener('click', next);
   })();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
