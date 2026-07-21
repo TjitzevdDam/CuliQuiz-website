@@ -19,8 +19,8 @@ Disallow: /worldchefs-nl
 Disallow: /culiquiztech
 Disallow: /uwmerkbijculiquiz
 Disallow: /uwmerkbijculiquiz-en
-Disallow: /voorrestaurants
-Disallow: /voorrestaurants-en
+Disallow: /horeca
+Disallow: /horeca-en
 Disallow: /zinlab
 Disallow: /hop
 
