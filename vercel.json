@@ -38,8 +38,6 @@
     { "source": "/app", "destination": "/scholen", "permanent": true },
     { "source": "/download", "destination": "/scholen", "permanent": true },
 
-    { "source": "/support", "destination": "/en/support", "permanent": false },
-    { "source": "/support.html", "destination": "/en/support", "permanent": false },
     { "source": "/account-deletion", "destination": "/en/account-deletion", "permanent": false },
     { "source": "/account-deletion.html", "destination": "/en/account-deletion", "permanent": false },
     { "source": "/what-we-deliver", "destination": "/en/what-we-deliver", "permanent": false },
