@@ -37,6 +37,18 @@
 
     { "source": "/app", "destination": "/scholen", "permanent": true },
     { "source": "/download", "destination": "/scholen", "permanent": true },
+    { "source": "/voor-scholen", "destination": "/scholen", "permanent": true },
+    { "source": "/voorpartners", "destination": "/ambassadeurs", "permanent": true },
+    { "source": "/faqs", "destination": "/wat-leveren-we", "permanent": true },
+    { "source": "/cart", "destination": "/", "permanent": true },
+
+    { "source": "/nieuws/culiquiz-battle-2025-van-start-op-4-november", "destination": "/nieuws/battle-2025", "permanent": true },
+    { "source": "/nieuws/culiquiz-app-lanceert-op-gastvrij-rotterdam-2024", "destination": "/nieuws/gastvrij-rotterdam-2024", "permanent": true },
+    { "source": "/nieuws/bekendmaking-culiquiz-top-100-tijdens-gastvrij-rotterdam", "destination": "/nieuws/top100", "permanent": true },
+    { "source": "/nieuws/finale20232024", "destination": "/nieuws/finale-2023-2024", "permanent": true },
+    { "source": "/nieuws/culiquiz-en-horecava-lanceren-succesvolle-eerste-young-professional-carrirefair", "destination": "/nieuws/young-professional", "permanent": true },
+    { "source": "/nieuws/young-professional-carrirefair", "destination": "/nieuws/young-professional", "permanent": true },
+    { "source": "/nieuws/refszmvsrpjw0uu03o7m1i3cs5dlhx", "destination": "/nieuws", "permanent": true },
 
     { "source": "/account-deletion", "destination": "/en/account-deletion", "permanent": false },
     { "source": "/account-deletion.html", "destination": "/en/account-deletion", "permanent": false },
