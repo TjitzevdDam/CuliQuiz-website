@@ -6,6 +6,27 @@
   "trailingSlash": false,
   "cleanUrls": true,
   "redirects": [
+    { "source": "/voorscholen", "destination": "/scholen", "permanent": true },
+    { "source": "/voorscholen.html", "destination": "/scholen", "permanent": true },
+    { "source": "/school", "destination": "/scholen", "permanent": true },
+    { "source": "/school.html", "destination": "/scholen", "permanent": true },
+    { "source": "/onderwijs", "destination": "/scholen", "permanent": true },
+
+    { "source": "/faq", "destination": "/wat-leveren-we", "permanent": true },
+    { "source": "/faq.html", "destination": "/wat-leveren-we", "permanent": true },
+    { "source": "/veelgestelde-vragen", "destination": "/wat-leveren-we", "permanent": true },
+    { "source": "/hospitality-professionals-training", "destination": "/wat-leveren-we", "permanent": true },
+    { "source": "/hospitality-professionals-training.html", "destination": "/wat-leveren-we", "permanent": true },
+    { "source": "/training", "destination": "/wat-leveren-we", "permanent": true },
+    { "source": "/trainingen", "destination": "/wat-leveren-we", "permanent": true },
+
+    { "source": "/culiquiz-kaartspel", "destination": "/spelelement", "permanent": true },
+    { "source": "/culiquiz-kaartspel.html", "destination": "/spelelement", "permanent": true },
+    { "source": "/kaartspel", "destination": "/spelelement", "permanent": true },
+
+    { "source": "/over-ons", "destination": "/ambassadeurs", "permanent": true },
+    { "source": "/over-ons.html", "destination": "/ambassadeurs", "permanent": true },
+    { "source": "/voorpartners.html", "destination": "/ambassadeurs", "permanent": true },
     { "source": "/hop-verantwoording", "destination": "/hop", "permanent": false },
 
     { "source": "/home", "destination": "/", "permanent": true },
