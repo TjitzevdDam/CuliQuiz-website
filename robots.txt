@@ -23,7 +23,7 @@ Disallow: /horeca
 Disallow: /horeca-en
 Disallow: /zinlab
 Disallow: /hop
-Disallow: /prijzen
-Disallow: /en/pricing
+Disallow: /pakketten
+Disallow: /en/packages
 
 Sitemap: https://www.culiquiz.nl/sitemap.xml
