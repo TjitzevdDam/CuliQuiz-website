@@ -2825,13 +2825,27 @@ p { margin: 0 0 1rem; }
 .price-hero-card .amount-sub { color: var(--c-ink-soft); font-size: .96rem; margin-bottom: 18px; }
 .price-hero-card .check-list { margin: 0 0 20px; }
 .price-hero-card .founding-accent {
-  background: var(--c-primary-light);
-  color: var(--c-primary-dark);
+  background: rgba(225, 94, 23, .10);
+  border-left: 3px solid var(--c-orange);
+  color: var(--c-ink-soft);
   border-radius: var(--radius);
   padding: 14px 16px;
-  font-weight: 600;
-  font-size: .9rem;
   line-height: 1.45;
+}
+.price-hero-card .fa-label {
+  display: block;
+  font-weight: 700;
+  font-size: .74rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--c-orange);
+}
+.price-hero-card .fa-highlight {
+  display: block;
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: .98rem;
+  color: var(--c-ink);
 }
 
 /* Waarom-blokken: 3-koloms variant van bestaande pillar-cards */
