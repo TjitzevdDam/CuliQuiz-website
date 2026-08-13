@@ -658,18 +658,40 @@ p { margin: 0 0 1rem; }
   max-width: 680px;
 }
 .banner-deadline {
-  margin: 16px 0 0;
+  margin: 20px 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, .16);
+  border: 1px solid rgba(255, 255, 255, .4);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 11px 18px;
+  border-radius: 12px;
+}
+.banner-deadline svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+.form-deadline {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: #fff;
+  background: var(--c-primary-light);
+  color: var(--c-primary-dark);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: .98rem;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  margin: 0 0 20px;
 }
-.banner-deadline svg {
-  width: 19px;
-  height: 19px;
-  stroke: #fff;
+.form-deadline svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
   flex-shrink: 0;
 }
 
