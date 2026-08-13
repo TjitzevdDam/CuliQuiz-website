@@ -694,6 +694,7 @@ p { margin: 0 0 1rem; }
   stroke: currentColor;
   flex-shrink: 0;
 }
+.top100-form-block .form-deadline { color: var(--c-primary-dark); }
 
 .top100-winners {
   background: var(--c-bg-soft);
