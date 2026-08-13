@@ -657,7 +657,7 @@ p { margin: 0 0 1rem; }
   font-weight: 500;
   max-width: 680px;
 }
-.top100-deadline {
+.banner-deadline {
   margin: 16px 0 0;
   display: inline-flex;
   align-items: center;
@@ -666,7 +666,7 @@ p { margin: 0 0 1rem; }
   font-weight: 700;
   font-size: 1.05rem;
 }
-.top100-deadline svg {
+.banner-deadline svg {
   width: 19px;
   height: 19px;
   stroke: #fff;
