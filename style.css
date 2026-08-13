@@ -3045,3 +3045,82 @@ p { margin: 0 0 1rem; }
   .pricing-grid { grid-template-columns: 1fr; }
   .founding-list { grid-template-columns: 1fr; }
 }
+
+/* ============ KLANTPAGINA (o.a. Lucy Chang) ============ */
+/* Kleine, token-gebaseerde helpers voor content-vormen die de pakketten-
+   pagina niet had: prose-blok, quote, tagline, subkop, accent-paneel,
+   tijdlijn-datum en een 2-koloms variant van de bestaande sector-grid. */
+
+.pr-prose { max-width: 760px; margin: 0 auto; }
+.pr-prose p { color: var(--c-ink-soft); margin: 0 0 18px; font-size: 1.05rem; line-height: 1.7; }
+.pr-prose p:last-child { margin-bottom: 0; }
+.pr-prose strong { color: var(--c-ink); }
+
+.pr-quote {
+  max-width: 760px;
+  margin: 30px auto 0;
+  background: #fff;
+  border: 1px solid #eef2f3;
+  border-left: 4px solid var(--c-primary);
+  border-radius: var(--radius);
+  padding: 28px 30px;
+  box-shadow: var(--shadow-sm);
+}
+.pr-quote blockquote {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: var(--c-ink);
+}
+.pr-quote cite { display: block; margin-top: 14px; font-style: normal; font-weight: 600; font-size: .9rem; color: var(--c-ink-soft); }
+
+.pr-tagline {
+  text-align: center;
+  margin-top: 44px;
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  color: var(--c-primary);
+}
+
+.pr-subhead {
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--c-ink);
+  margin: 44px 0 20px;
+  text-align: center;
+}
+.pr-subhead.first { margin-top: 0; }
+
+.sector-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+.pr-accent {
+  max-width: 860px;
+  margin: 34px auto 0;
+  background: linear-gradient(150deg, var(--c-primary) 0%, var(--c-primary-dark) 100%);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 34px 36px;
+  box-shadow: var(--shadow-lg);
+}
+.pr-accent .pr-accent-lead { display: block; font-family: var(--font-head); font-weight: 900; font-size: 1.3rem; color: #fff; margin-bottom: 12px; }
+.pr-accent p { color: rgba(255, 255, 255, .92); margin: 0 0 12px; line-height: 1.6; }
+.pr-accent p:last-child { margin-bottom: 0; }
+.pr-accent strong { color: #fff; }
+
+.how-date {
+  display: inline-block;
+  font-weight: 700;
+  font-size: .78rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--c-primary-dark);
+  margin-bottom: 6px;
+}
+
+@media (max-width: 860px) {
+  .sector-grid.cols-2 { grid-template-columns: 1fr; }
+}
