@@ -657,6 +657,25 @@ p { margin: 0 0 1rem; }
   font-weight: 500;
   max-width: 680px;
 }
+.top100-deadline {
+  margin: 22px 0 0;
+}
+.top100-deadline span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #fff;
+  color: var(--c-orange);
+  font-weight: 700;
+  font-size: .95rem;
+  padding: 10px 18px;
+  border-radius: 999px;
+}
+.top100-deadline svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--c-orange);
+}
 
 .top100-winners {
   background: var(--c-bg-soft);
