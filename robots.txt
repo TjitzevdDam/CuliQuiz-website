@@ -25,6 +25,7 @@ Disallow: /zinlab
 Disallow: /hop
 Disallow: /pakketten
 Disallow: /en/packages
+Disallow: /horeca-vakcollege
 Disallow: /lucy-chang
 
 Sitemap: https://www.culiquiz.nl/sitemap.xml
