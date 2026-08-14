@@ -3171,9 +3171,9 @@ p { margin: 0 0 1rem; }
     var(--c-bg);
 }
 .hv-tag {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-family: var(--font-head);
   font-weight: 900;
   font-size: 1.15rem;
@@ -3182,6 +3182,8 @@ p { margin: 0 0 1rem; }
 }
 .hv-tag .x { color: var(--c-grey); font-weight: 400; }
 .hv-tag .hv { color: var(--c-ink); }
+.hv-tag-logo { height: 30px; width: auto; display: block; }
+@media (max-width: 560px) { .hv-tag-logo { height: 24px; } }
 .hv-hero h1 { font-size: clamp(2rem, 4.4vw, 3.1rem); max-width: 18ch; margin: .2em 0 .5em; }
 .hv-hero .lead { max-width: 60ch; }
 .hv-hero .lead + .lead { margin-top: 14px; }
@@ -3286,16 +3288,3 @@ p { margin: 0 0 1rem; }
 .hv-ask .ask-item:nth-child(3) { border-left-color: var(--c-yellow); }
 .hv-ask .ask-item:nth-child(3) .ask-n { background: rgba(234,182,0,.16); color: #9c7a00; }
 
-/* Co-brand lockup in de header (partnervoorstel Horeca Vakcollege) */
-.hv-lockup { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-.hv-lockup .logo { display: block; line-height: 0; }
-.hv-lockup-x { color: #b7c2c6; font-size: 22px; font-weight: 300; line-height: 1; }
-.hv-lockup-partner { display: block; line-height: 0; }
-.hv-lockup-partner img { height: 30px; width: auto; display: block; }
-@media (max-width: 1080px) {
-  .hv-lockup { gap: 10px; }
-  .hv-lockup-partner img { height: 25px; }
-}
-@media (max-width: 860px) {
-  .hv-lockup-x, .hv-lockup-partner { display: none; }
-}
