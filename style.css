@@ -3285,3 +3285,17 @@ p { margin: 0 0 1rem; }
 .hv-ask .ask-item:nth-child(2) .ask-n { background: var(--orange-soft, rgba(225,94,23,.12)); color: var(--c-orange); }
 .hv-ask .ask-item:nth-child(3) { border-left-color: var(--c-yellow); }
 .hv-ask .ask-item:nth-child(3) .ask-n { background: rgba(234,182,0,.16); color: #9c7a00; }
+
+/* Co-brand lockup in de header (partnervoorstel Horeca Vakcollege) */
+.hv-lockup { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.hv-lockup .logo { display: block; line-height: 0; }
+.hv-lockup-x { color: #b7c2c6; font-size: 22px; font-weight: 300; line-height: 1; }
+.hv-lockup-partner { display: block; line-height: 0; }
+.hv-lockup-partner img { height: 30px; width: auto; display: block; }
+@media (max-width: 1080px) {
+  .hv-lockup { gap: 10px; }
+  .hv-lockup-partner img { height: 25px; }
+}
+@media (max-width: 860px) {
+  .hv-lockup-x, .hv-lockup-partner { display: none; }
+}
