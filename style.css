@@ -434,6 +434,12 @@ p { margin: 0 0 1rem; }
   box-shadow: var(--shadow-sm);
   padding: 14px 22px;
   transition: transform .25s, box-shadow .25s;
+  text-decoration: none;
+  color: inherit;
+}
+a.partner-logo:focus-visible {
+  outline: 3px solid var(--c-primary);
+  outline-offset: 3px;
 }
 .partner-logo:hover {
   transform: translateY(-4px);
