@@ -163,12 +163,15 @@
     document.head.appendChild(s);
   }
 
-  // Google Analytics 4 (gtag.js) — Measurement ID: G-5Y4GQWX2W1
+  // Google Analytics 4 (gtag.js) — twee properties meten parallel:
+  //   G-5Y4GQWX2W1  bestaande property
+  //   G-4CNTQLGHD0  tweede property
   // Plus Google Ads conversion tag: AW-623191309 (loads alongside GA4)
   function loadGA4() {
     if (window.__cqGA4Loaded) return;
     window.__cqGA4Loaded = true;
     var GA_ID = 'G-5Y4GQWX2W1';
+    var GA_ID_2 = 'G-4CNTQLGHD0';
     var AW_ID = 'AW-623191309';
     var s = document.createElement('script');
     s.async = true;
@@ -179,6 +182,7 @@
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', GA_ID, { anonymize_ip: true });
+    gtag('config', GA_ID_2, { anonymize_ip: true });
     gtag('config', AW_ID); // Google Ads conversion tracking
   }
 
