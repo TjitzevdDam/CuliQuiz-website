@@ -163,6 +163,22 @@
     document.head.appendChild(s);
   }
 
+  // Google Tag Manager — Container ID: GTM-5D7L49Z9
+  // Laadt pas na toestemming voor Statistieken, net als de overige tags.
+  // De noscript-iframe uit Google's standaardsnippet zit hier bewust niet in:
+  // die laadt buiten JS om en zou dus ook zonder toestemming vuren.
+  function loadGTM() {
+    if (window.__cqGTMLoaded) return;
+    window.__cqGTMLoaded = true;
+    var GTM_ID = 'GTM-5D7L49Z9';
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+    document.head.appendChild(s);
+  }
+
   // Google Analytics 4 (gtag.js) — Measurement ID: G-5Y4GQWX2W1
   // Plus Google Ads conversion tag: AW-623191309 (loads alongside GA4)
   function loadGA4() {
@@ -281,6 +297,7 @@
     if (!consent) return;
     if (consent.analytics) {
       loadVercelAnalytics();
+      loadGTM();
       loadGA4();
       loadClarity();
       // loadZohoSalesIQ(); // Mr. Q bot uitgeschakeld — paraphrasing was onbetrouwbaar
